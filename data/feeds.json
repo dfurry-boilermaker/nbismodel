@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-11-23",
+  "feeds": [
+    {
+      "id": "financials",
+      "label": "Reported financials",
+      "updatedAt": "2026-11-12",
+      "sourceUrl": "https://nebius.com/financials",
+      "cadence": "Hand-updated when a new earnings release is added to data/financials.json",
+      "state": "snapshot",
+      "note": "Latest quarter in the file is Q3 2026, reported November 12, 2026."
+    },
+    {
+      "id": "guidance",
+      "label": "Guidance tracker",
+      "updatedAt": "2026-11-12",
+      "sourceUrl": "https://nebius.com/financials",
+      "cadence": "Hand-updated in data/guidance.json",
+      "state": "snapshot",
+      "note": "Scored against the actuals stored in the same file."
+    },
+    {
+      "id": "filings",
+      "label": "SEC EDGAR submissions",
+      "updatedAt": "2026-11-23",
+      "sourceUrl": "https://data.sec.gov/submissions/CIK0001513845.json",
+      "cadence": "Checked while building this version. Not on a cron yet.",
+      "state": "snapshot",
+      "note": "CIK 0001513845. Forms 20-F and 6-K."
+    },
+    {
+      "id": "openrouter",
+      "label": "OpenRouter provider prices",
+      "updatedAt": "2026-11-23",
+      "sourceUrl": "https://openrouter.ai/api/v1/models",
+      "cadence": "Daily cron, and a live read on the pricing page when the API answers",
+      "state": "live-capable",
+      "note": "History starts with the November 23, 2026 snapshot. Throughput and latency were null in that response."
+    },
+    {
+      "id": "token-factory",
+      "label": "Token Factory catalog",
+      "updatedAt": "2026-11-23",
+      "sourceUrl": "https://tokenfactory.nebius.com/api/public/models_info",
+      "cadence": "Daily cron",
+      "state": "snapshot",
+      "note": "Public API allowed by robots.txt. One snapshot so far."
+    },
+    {
+      "id": "gpu",
+      "label": "AI Cloud GPU list prices",
+      "updatedAt": "2026-11-23",
+      "sourceUrl": "https://docs.nebius.com/compute/resources/pricing",
+      "cadence": "Daily cron",
+      "state": "snapshot",
+      "note": "USD on-demand and preemptible rates. Reserved rates were not on the page."
+    },
+    {
+      "id": "quote",
+      "label": "NBIS share price",
+      "updatedAt": null,
+      "sourceUrl": "",
+      "cadence": "Weekday cron once a quote key is set",
+      "state": "empty",
+      "note": "No price is stored. Stooq's robots.txt disallows general crawlers. Nasdaq and Yahoo were not scraped. Set FINNHUB_API_KEY or ALPHAVANTAGE_API_KEY."
+    },
+    {
+      "id": "satellite",
+      "label": "Sentinel-2 scenes",
+      "updatedAt": "2026-11-23",
+      "sourceUrl": "https://planetarycomputer.microsoft.com/api/stac/v1/search",
+      "cadence": "Weekly cron",
+      "state": "snapshot",
+      "note": "Four cloud-screened scenes for M\u00e4nts\u00e4l\u00e4. Other sites have no facility coordinate, so they have no image."
+    }
+  ]
+}

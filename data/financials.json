@@ -1,0 +1,832 @@
+{
+  "schemaVersion": 1,
+  "unit": "USD millions, except share counts which are labeled in the row",
+  "retrievedAt": "2026-11-23",
+  "cik": "0001513845",
+  "forms": "Nebius Group N.V. is a foreign private issuer. It files Forms 20-F and 6-K with the SEC. It does not file Forms 10-Q or 10-K. Quarterly figures below come from earnings releases and shareholder letters linked from nebius.com/financials, which the company also furnishes on Form 6-K. Annual segment figures come from the Form 20-F for the year ended December 31, 2025.",
+  "sources": {
+    "pr-q3-2024": {
+      "id": "pr-q3-2024",
+      "url": "https://assets.nebius.com/assets/eabb4ebd-e198-4e17-b633-6acd9b67de00/Nebius_Group_N_V_announces_third_quarter_2024_financial_results.pdf",
+      "title": "Q3 2024 earnings release",
+      "date": "2024-10-31"
+    },
+    "pr-q4-2024": {
+      "id": "pr-q4-2024",
+      "url": "https://assets.nebius.com/assets/ffacb067-9b61-42df-baa2-d513d9397845/20250220%20Nebius%20Group%20announces%204Q%20and%20FY%202024%20financial%20results.pdf",
+      "title": "Q4 and FY 2024 earnings release",
+      "date": "2025-02-20"
+    },
+    "pr-q1-2025": {
+      "id": "pr-q1-2025",
+      "url": "https://assets.nebius.com/assets/0369f7c5-dde6-4e32-873e-f1dd2a511212/20250520%20Nebius%20Group%20announces%20first%20quarter%202025%20financial%20results.pdf",
+      "title": "Q1 2025 earnings release",
+      "date": "2025-05-20"
+    },
+    "pr-q2-2025": {
+      "id": "pr-q2-2025",
+      "url": "https://assets.nebius.com/assets/a1ea2731-32b4-4b8d-82b4-0557fddadd1a/Nebius%20-%20Financial%20results%20-%20Q2%202025.pdf",
+      "title": "Q2 2025 earnings release",
+      "date": "2025-08-07"
+    },
+    "pr-q3-2025": {
+      "id": "pr-q3-2025",
+      "url": "https://assets.nebius.com/assets/fc878470-ce91-4c8a-a716-45fe2923d603/20251111%20Nebius%20reports%20third%20quarter%202025%20financial%20results.pdf",
+      "title": "Q3 2025 earnings release",
+      "date": "2025-11-11"
+    },
+    "pr-q4-2025": {
+      "id": "pr-q4-2025",
+      "url": "https://assets.nebius.com/assets/04f48f4e-48e9-468e-a428-ef16565c3fb5/Financial%20results_Q4%202025_11022026.pdf",
+      "title": "Q4 and FY 2025 earnings release",
+      "date": "2026-02-12"
+    },
+    "pr-q1-2026": {
+      "id": "pr-q1-2026",
+      "url": "https://assets.nebius.com/assets/0de223a2-f519-408d-8c7e-04f2fef342a9/Financial%20results_Q1%202026.pdf",
+      "title": "Q1 2026 earnings release",
+      "date": "2026-05-13"
+    },
+    "pr-q2-2026": {
+      "id": "pr-q2-2026",
+      "url": "https://assets.nebius.com/assets/dfe7a7f3-771e-4653-94e8-8f86bf126b1d/PR.pdf",
+      "title": "Q2 2026 earnings release",
+      "date": "2026-08-12"
+    },
+    "pr-q3-2026": {
+      "id": "pr-q3-2026",
+      "url": "https://assets.nebius.com/assets/e2ac679c-fc62-4799-ba0e-6611e59c6863/Nebius-2026-Q3.pdf",
+      "title": "Q3 2026 earnings release",
+      "date": "2026-11-12"
+    },
+    "shl-q1-2025": {
+      "id": "shl-q1-2025",
+      "url": "https://assets.nebius.com/assets/c0669639-37f2-4317-80d5-0c633e8e3186/Nebius%20Group_Letter%20to%20shareholders_Q12025.pdf",
+      "title": "Q1 2025 shareholder letter",
+      "date": "2025-05-20"
+    },
+    "shl-q2-2025": {
+      "id": "shl-q2-2025",
+      "url": "https://assets.nebius.com/assets/98fceb3b-2951-4647-9864-4b0654af057c/Nebius%20-%20Letter%20to%20shareholders%20-%20Q2%202025.pdf",
+      "title": "Q2 2025 shareholder letter",
+      "date": "2025-08-07"
+    },
+    "shl-q3-2025": {
+      "id": "shl-q3-2025",
+      "url": "https://assets.nebius.com/assets/7f8a9169-0d2b-469d-87e7-44342ea7fcd2/SHLQ3%20%284%29.pdf",
+      "title": "Q3 2025 shareholder letter",
+      "date": "2025-11-11"
+    },
+    "shl-q4-2025": {
+      "id": "shl-q4-2025",
+      "url": "https://assets.nebius.com/assets/85571bd2-050b-468c-954c-42e9d24e4cd2/Letter%20to%20Shareholders%20Q4%202025.pdf",
+      "title": "Q4 2025 shareholder letter",
+      "date": "2026-02-12"
+    },
+    "shl-q1-2026": {
+      "id": "shl-q1-2026",
+      "url": "https://assets.nebius.com/assets/aa1bc2e6-df83-40cd-a6a2-95e7cda3d16c/Nebius%20SHL_Q1%202026.pdf",
+      "title": "Q1 2026 shareholder letter",
+      "date": "2026-05-13"
+    },
+    "shl-q2-2026": {
+      "id": "shl-q2-2026",
+      "url": "https://assets.nebius.com/assets/4462517b-ce83-41f2-96ed-f2ac1bc06a05/SHLQ226%20%281%29.pdf",
+      "title": "Q2 2026 shareholder letter",
+      "date": "2026-08-12"
+    },
+    "shl-q3-2026": {
+      "id": "shl-q3-2026",
+      "url": "https://assets.nebius.com/assets/24c6bfb3-c90e-4076-9fe9-c2ab736b51ec/Nebius-SHL-2026-Q3.pdf",
+      "title": "Q3 2026 shareholder letter",
+      "date": "2026-11-12"
+    },
+    "f20-2024": {
+      "id": "f20-2024",
+      "url": "https://www.sec.gov/Archives/edgar/data/1513845/000155837025005991/nbis-20241231x20f.htm",
+      "title": "Form 20-F for the year ended December 31, 2024",
+      "date": "2025-04-30"
+    },
+    "f20-2025": {
+      "id": "f20-2025",
+      "url": "https://www.sec.gov/Archives/edgar/data/1513845/000110465926052948/nbis-20251231x20f.htm",
+      "title": "Form 20-F for the year ended December 31, 2025",
+      "date": "2026-04-30"
+    },
+    "ir": {
+      "id": "ir",
+      "url": "https://nebius.com/financials",
+      "title": "Nebius financials page",
+      "date": "2026-11-23"
+    },
+    "blog-nj": {
+      "id": "blog-nj",
+      "url": "https://nebius.com/blog/posts/300-mw-new-jersey-and-iceland-regions",
+      "title": "Nebius blog: New Jersey and Iceland",
+      "date": "2025-03-05"
+    },
+    "regions": {
+      "id": "regions",
+      "url": "https://docs.nebius.com/overview/regions",
+      "title": "Nebius AI Cloud regions",
+      "date": "2026-11-23"
+    },
+    "ytj": {
+      "id": "ytj",
+      "url": "https://tietopalvelu.ytj.fi/yritys/2541661-9",
+      "title": "Finnish YTJ record, Nebius DC Oy (2541661-9)",
+      "date": "2026-11-23"
+    },
+    "osm": {
+      "id": "osm",
+      "url": "https://www.openstreetmap.org/way/846760920",
+      "title": "OpenStreetMap way 846760920, Global DC OY / M\u00e4nts\u00e4l\u00e4",
+      "date": "2026-11-23"
+    },
+    "edgar": {
+      "id": "edgar",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001513845",
+      "title": "SEC EDGAR company filings, CIK 0001513845",
+      "date": "2026-11-23"
+    },
+    "gpu-docs": {
+      "id": "gpu-docs",
+      "url": "https://docs.nebius.com/compute/resources/pricing",
+      "title": "Nebius AI Cloud compute pricing",
+      "date": "2026-11-23"
+    },
+    "gpu-page": {
+      "id": "gpu-page",
+      "url": "https://nebius.com/prices",
+      "title": "Nebius NVIDIA GPU pricing page",
+      "date": "2026-11-23"
+    },
+    "tf": {
+      "id": "tf",
+      "url": "https://tokenfactory.nebius.com/api/public/models_info",
+      "title": "Token Factory public model catalog API",
+      "date": "2026-11-23"
+    },
+    "or": {
+      "id": "or",
+      "url": "https://openrouter.ai/api/v1/models",
+      "title": "OpenRouter models API",
+      "date": "2026-11-23"
+    }
+  },
+  "quarters": [
+    {
+      "id": "2024-Q3",
+      "label": "Q3 2024",
+      "periodEnd": "2024-09-30",
+      "reportedAt": "2024-10-31",
+      "scopeNote": "Reported after Nasdaq trading resumed on October 21, 2024, for a quarter that ended before that date. Toloka was still consolidated. Later releases recast Toloka into discontinued operations and do not restate this quarter's revenue in the documents reviewed.",
+      "revenue": {
+        "value": 43.3,
+        "source": "pr-q3-2024",
+        "basis": "As originally reported, consolidated."
+      },
+      "adjustedEbitda": {
+        "value": -51.9,
+        "source": "pr-q3-2024"
+      },
+      "netIncome": {
+        "value": -51.8,
+        "source": "pr-q3-2024",
+        "basis": "Net loss from continuing operations, as labeled in that release."
+      },
+      "capex": {
+        "value": -167.0,
+        "source": "pr-q3-2024",
+        "basis": "Capital expenditures for the three months, as stated in the narrative. Not the later cash-flow line 'purchases of property and equipment'."
+      },
+      "cash": {
+        "value": 2288.2,
+        "source": "pr-q3-2024",
+        "basis": "Cash and cash equivalents, September 30, 2024."
+      },
+      "debtCurrent": {
+        "value": 6.2,
+        "source": "pr-q3-2024",
+        "basis": "Debt, current portion, September 30, 2024 column of the balance sheet."
+      },
+      "debtNonCurrent": {
+        "value": null,
+        "source": "pr-q3-2024",
+        "note": "No non-current debt line was extracted from this release."
+      },
+      "arr": {
+        "value": 120,
+        "source": "pr-q3-2024",
+        "basis": "Core AI infrastructure ARR, described as surpassing $120 million as of September 2024. Stored as the stated threshold, not a point estimate above it.",
+        "note": "The release says ARR was surpassing $120 million, so this is a floor stated by the company, not an exact ARR."
+      },
+      "segmentRevenue": [
+        {
+          "name": "Nebius core share of group revenue",
+          "metric": {
+            "value": null,
+            "source": "pr-q3-2024",
+            "note": "Approximately two-thirds of group revenue. No dollar segment revenue was stated."
+          }
+        }
+      ],
+      "other": [
+        {
+          "label": "Shares issued and outstanding",
+          "metric": {
+            "value": null,
+            "source": "pr-q3-2024",
+            "note": "Not transcribed for this quarter."
+          }
+        }
+      ]
+    },
+    {
+      "id": "2024-Q4",
+      "label": "Q4 2024",
+      "periodEnd": "2024-12-31",
+      "reportedAt": "2025-02-20",
+      "scopeNote": "Primary figures are the recast continuing-operations comparatives in the Q4 2025 earnings release. First-reported figures from February 20, 2025 are kept beside them.",
+      "revenue": {
+        "value": 35.2,
+        "source": "pr-q4-2025",
+        "basis": "Continuing operations, as presented in the cited release. From Q2 2025, Toloka is discontinued and prior periods in later releases are recast.",
+        "firstReported": {
+          "value": 37.9,
+          "source": "pr-q4-2024",
+          "note": "As first reported, before the Toloka discontinued-operations recast."
+        }
+      },
+      "adjustedEbitda": {
+        "value": -63.9,
+        "source": "pr-q4-2025",
+        "basis": "Continuing operations, as presented in the cited release. From Q2 2025, Toloka is discontinued and prior periods in later releases are recast.",
+        "firstReported": {
+          "value": -75.5,
+          "source": "pr-q4-2024"
+        }
+      },
+      "netIncome": {
+        "value": -122.9,
+        "source": "pr-q4-2025",
+        "basis": "Net loss from continuing operations.",
+        "firstReported": {
+          "value": -136.6,
+          "source": "pr-q4-2024"
+        }
+      },
+      "capex": {
+        "value": -417.5,
+        "source": "pr-q4-2025",
+        "basis": "Purchases of property and equipment and intangible assets, cash flow, Q4 2024 comparative. Sign stored as an outflow.",
+        "note": "The February 2025 release described capital expenditures of $417.6 million. The later cash-flow line is $417.5 million.",
+        "firstReported": {
+          "value": -417.6,
+          "source": "pr-q4-2024",
+          "note": "Narrative capital expenditures."
+        }
+      },
+      "cash": {
+        "value": 2434.7,
+        "source": "pr-q4-2025",
+        "basis": "Cash and cash equivalents on the December 31, 2024 balance-sheet column in the Q4 2025 release.",
+        "firstReported": {
+          "value": 2449.6,
+          "source": "pr-q4-2024",
+          "note": "Consolidated cash and cash equivalents as first reported. The Q4 2025 cash-flow statement still shows an ending cash balance of $2,449.6 million for 2024."
+        }
+      },
+      "debtCurrent": {
+        "value": 6.1,
+        "source": "pr-q4-2025",
+        "basis": "Debt, current, December 31, 2024 column."
+      },
+      "debtNonCurrent": {
+        "value": 0,
+        "source": "pr-q4-2025",
+        "basis": "Debt, non-current, shown as none on the December 31, 2024 column."
+      },
+      "arr": {
+        "value": null,
+        "source": "shl-q4-2025",
+        "note": "The Q4 2025 letter's chart labels 2024 ARR at $90 million. That is a year figure, not a Q4 point, and is stored on the FY 2024 row of the guidance history rather than as this quarter's ARR."
+      },
+      "segmentRevenue": [],
+      "other": []
+    },
+    {
+      "id": "2025-Q1",
+      "label": "Q1 2025",
+      "periodEnd": "2025-03-31",
+      "reportedAt": "2025-05-20",
+      "scopeNote": "Primary income-statement figures are the Q1 2025 comparative column in the Q1 2026 earnings release, which sums with the other 2025 quarters to the FY 2025 totals. Cash and debt are from the Q1 2025 balance sheet.",
+      "revenue": {
+        "value": 50.9,
+        "source": "pr-q1-2026",
+        "basis": "Continuing operations, as presented in the cited release. From Q2 2025, Toloka is discontinued and prior periods in later releases are recast.",
+        "firstReported": {
+          "value": 55.3,
+          "source": "pr-q1-2025"
+        }
+      },
+      "adjustedEbitda": {
+        "value": -53.7,
+        "source": "pr-q1-2026",
+        "basis": "Non-GAAP definition is the one in the Q1 2026 release.",
+        "firstReported": {
+          "value": -62.6,
+          "source": "pr-q1-2025"
+        }
+      },
+      "netIncome": {
+        "value": -104.3,
+        "source": "pr-q1-2026",
+        "basis": "Net loss from continuing operations.",
+        "firstReported": {
+          "value": -113.6,
+          "source": "pr-q1-2025"
+        }
+      },
+      "capex": {
+        "value": -543.9,
+        "source": "pr-q1-2026",
+        "basis": "Purchases of property and equipment and intangible assets, Q1 2025 comparative column."
+      },
+      "cash": {
+        "value": 1447.0,
+        "source": "pr-q1-2025",
+        "basis": "Cash and cash equivalents, March 31, 2025."
+      },
+      "debtCurrent": {
+        "value": 6.2,
+        "source": "pr-q1-2025",
+        "basis": "Debt, current portion, March 31, 2025."
+      },
+      "debtNonCurrent": {
+        "value": null,
+        "source": "pr-q1-2025",
+        "note": "No non-current debt balance was extracted for March 31, 2025."
+      },
+      "arr": {
+        "value": 249,
+        "source": "shl-q1-2025",
+        "basis": "Core infrastructure ARR at the end of Q1. Last month of the quarter multiplied by 12."
+      },
+      "segmentRevenue": [],
+      "other": []
+    },
+    {
+      "id": "2025-Q2",
+      "label": "Q2 2025",
+      "periodEnd": "2025-06-30",
+      "reportedAt": "2025-08-07",
+      "revenue": {
+        "value": 105.1,
+        "source": "pr-q2-2025",
+        "basis": "Same figure appears as the Q2 2025 comparative in the Q2 2026 release."
+      },
+      "adjustedEbitda": {
+        "value": -21.0,
+        "source": "pr-q2-2025"
+      },
+      "netIncome": {
+        "value": 502.5,
+        "source": "pr-q2-2025",
+        "basis": "Net income from continuing operations. The quarter includes the Toloka deconsolidation."
+      },
+      "capex": {
+        "value": -510.6,
+        "source": "pr-q2-2026",
+        "basis": "Purchases of property and equipment and intangible assets, Q2 2025 column of the Q2 2026 cash-flow statement. The selected cash-flow box in the Q2 2025 PDF text layer is mis-aligned and was not used."
+      },
+      "cash": {
+        "value": 1679.3,
+        "source": "pr-q2-2025",
+        "basis": "Cash and cash equivalents, June 30, 2025."
+      },
+      "debtCurrent": {
+        "value": 8.0,
+        "source": "pr-q2-2025"
+      },
+      "debtNonCurrent": {
+        "value": 978.2,
+        "source": "pr-q2-2025",
+        "basis": "Debt, non-current, June 30, 2025."
+      },
+      "arr": {
+        "value": 430,
+        "source": "shl-q2-2025",
+        "basis": "Core AI infrastructure ARR at the end of June."
+      },
+      "segmentRevenue": [],
+      "other": [
+        {
+          "label": "Shares issued and outstanding",
+          "metric": {
+            "value": 238.705092,
+            "source": "pr-q2-2025",
+            "basis": "Millions of shares. 238,705,092 issued and outstanding as of June 30, 2025, excluding treasury."
+          }
+        }
+      ]
+    },
+    {
+      "id": "2025-Q3",
+      "label": "Q3 2025",
+      "periodEnd": "2025-09-30",
+      "reportedAt": "2025-11-11",
+      "revenue": {
+        "value": 146.1,
+        "source": "pr-q3-2026",
+        "basis": "Same figure is in the Q3 2025 release."
+      },
+      "adjustedEbitda": {
+        "value": -5.2,
+        "source": "pr-q3-2026"
+      },
+      "netIncome": {
+        "value": -119.6,
+        "source": "pr-q3-2026",
+        "basis": "Net loss from continuing operations."
+      },
+      "capex": {
+        "value": -955.5,
+        "source": "pr-q3-2026",
+        "basis": "Purchases of property and equipment and intangible assets."
+      },
+      "cash": {
+        "value": 4794.8,
+        "source": "pr-q3-2025",
+        "basis": "Cash and cash equivalents, September 30, 2025."
+      },
+      "debtCurrent": {
+        "value": 16.0,
+        "source": "pr-q3-2025"
+      },
+      "debtNonCurrent": {
+        "value": 4090.8,
+        "source": "pr-q3-2025"
+      },
+      "arr": {
+        "value": 551,
+        "source": "shl-q3-2025",
+        "basis": "Core ARR at the end of September, described as approximately $551 million."
+      },
+      "segmentRevenue": [
+        {
+          "name": "Core AI infrastructure share",
+          "metric": {
+            "value": null,
+            "source": "shl-q3-2025",
+            "note": "Approximately 90% of group revenue. Dollar segment revenue was not stated."
+          }
+        }
+      ],
+      "other": []
+    },
+    {
+      "id": "2025-Q4",
+      "label": "Q4 2025",
+      "periodEnd": "2025-12-31",
+      "reportedAt": "2026-02-12",
+      "revenue": {
+        "value": 227.7,
+        "source": "pr-q4-2025"
+      },
+      "adjustedEbitda": {
+        "value": 15.0,
+        "source": "pr-q4-2025",
+        "basis": "Group adjusted EBITDA. The letter also describes a 24% adjusted EBITDA margin for the core business in the quarter."
+      },
+      "netIncome": {
+        "value": -249.6,
+        "source": "pr-q4-2025",
+        "basis": "Net loss from continuing operations."
+      },
+      "capex": {
+        "value": -2056.0,
+        "source": "pr-q4-2025",
+        "basis": "Purchases of property and equipment and intangible assets."
+      },
+      "cash": {
+        "value": 3678.1,
+        "source": "pr-q4-2025",
+        "basis": "Cash and cash equivalents, December 31, 2025."
+      },
+      "debtCurrent": {
+        "value": 24.5,
+        "source": "pr-q4-2025"
+      },
+      "debtNonCurrent": {
+        "value": 4103.2,
+        "source": "pr-q4-2025"
+      },
+      "arr": {
+        "value": 1250,
+        "source": "shl-q4-2025",
+        "basis": "ARR at year-end. Last month of the quarter multiplied by 12."
+      },
+      "segmentRevenue": [
+        {
+          "name": "Core AI cloud",
+          "metric": {
+            "value": 214.2,
+            "source": "shl-q4-2025",
+            "basis": "About 94% of group revenue in the quarter."
+          }
+        }
+      ],
+      "other": [
+        {
+          "label": "Active power",
+          "metric": {
+            "value": 170,
+            "source": "shl-q4-2025",
+            "basis": "Megawatts, approximate, at year-end 2025."
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-Q1",
+      "label": "Q1 2026",
+      "periodEnd": "2026-03-31",
+      "reportedAt": "2026-05-13",
+      "revenue": {
+        "value": 399.0,
+        "source": "pr-q1-2026"
+      },
+      "adjustedEbitda": {
+        "value": 129.5,
+        "source": "pr-q1-2026"
+      },
+      "netIncome": {
+        "value": 621.2,
+        "source": "pr-q1-2026",
+        "basis": "Net income from continuing operations. The shareholder letter describes a $781 million non-operating gain related to financing; this site does not split that gain out of the $621.2 million."
+      },
+      "capex": {
+        "value": -2472.9,
+        "source": "pr-q1-2026",
+        "basis": "Purchases of property and equipment and intangible assets. The letter rounds the quarter's capital expenditures to approximately $2.5 billion."
+      },
+      "cash": {
+        "value": 9298.2,
+        "source": "pr-q1-2026",
+        "basis": "Cash and cash equivalents, March 31, 2026."
+      },
+      "debtCurrent": {
+        "value": 18.4,
+        "source": "pr-q1-2026"
+      },
+      "debtNonCurrent": {
+        "value": 8432.0,
+        "source": "pr-q1-2026"
+      },
+      "arr": {
+        "value": 1920,
+        "source": "shl-q1-2026",
+        "basis": "Nebius AI cloud ARR. Last month of AI cloud revenue multiplied by 12."
+      },
+      "segmentRevenue": [],
+      "other": [
+        {
+          "label": "Core AI cloud adjusted EBITDA",
+          "metric": {
+            "value": 174.0,
+            "source": "shl-q1-2026",
+            "basis": "The letter states a 45% adjusted EBITDA margin on the core business. Segment revenue in dollars was not stated."
+          }
+        },
+        {
+          "label": "Shares issued and outstanding",
+          "metric": {
+            "value": 253.898194,
+            "source": "pr-q1-2026",
+            "basis": "Millions. 253,898,194 as of March 31, 2026, excluding treasury."
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-Q2",
+      "label": "Q2 2026",
+      "periodEnd": "2026-06-30",
+      "reportedAt": "2026-08-12",
+      "revenue": {
+        "value": 582.3,
+        "source": "pr-q2-2026"
+      },
+      "adjustedEbitda": {
+        "value": 236.2,
+        "source": "pr-q2-2026"
+      },
+      "netIncome": {
+        "value": -190.4,
+        "source": "pr-q2-2026",
+        "basis": "Net loss from continuing operations."
+      },
+      "capex": {
+        "value": -5657.4,
+        "source": "pr-q2-2026"
+      },
+      "cash": {
+        "value": 8042.1,
+        "source": "pr-q2-2026",
+        "basis": "Cash and cash equivalents, June 30, 2026."
+      },
+      "debtCurrent": {
+        "value": 46.7,
+        "source": "pr-q2-2026"
+      },
+      "debtNonCurrent": {
+        "value": 8499.0,
+        "source": "pr-q2-2026"
+      },
+      "arr": {
+        "value": 3000,
+        "source": "shl-q2-2026",
+        "basis": "AI cloud ARR at the end of June. The Q3 2026 letter repeats $3.0 billion as the June figure."
+      },
+      "segmentRevenue": [
+        {
+          "name": "Nebius AI cloud",
+          "metric": {
+            "value": 575,
+            "source": "shl-q2-2026",
+            "basis": "The letter states AI cloud revenue of $575 million and a 50% adjusted EBITDA margin. Segment adjusted EBITDA in dollars was not stated."
+          }
+        }
+      ],
+      "other": []
+    },
+    {
+      "id": "2026-Q3",
+      "label": "Q3 2026",
+      "periodEnd": "2026-09-30",
+      "reportedAt": "2026-11-12",
+      "revenue": {
+        "value": 980.8,
+        "source": "pr-q3-2026",
+        "basis": "The letter rounds this to $981 million and says about $325 million was non-recurring asset-light revenue."
+      },
+      "adjustedEbitda": {
+        "value": 465.8,
+        "source": "pr-q3-2026"
+      },
+      "netIncome": {
+        "value": -37.5,
+        "source": "pr-q3-2026",
+        "basis": "Net loss from continuing operations."
+      },
+      "capex": {
+        "value": -7300.4,
+        "source": "pr-q3-2026"
+      },
+      "cash": {
+        "value": 7425.6,
+        "source": "pr-q3-2026",
+        "basis": "Cash and cash equivalents, September 30, 2026. The cash-flow statement also shows cash and restricted cash combined of $8,641.1 million. The difference is not given its own balance-sheet caption in the text that was parsed, so restricted cash is not stored as its own figure."
+      },
+      "debtCurrent": {
+        "value": 187.5,
+        "source": "pr-q3-2026"
+      },
+      "debtNonCurrent": {
+        "value": 14003.3,
+        "source": "pr-q3-2026"
+      },
+      "arr": {
+        "value": 6400,
+        "source": "shl-q3-2026",
+        "basis": "ARR at the end of September. The same letter says the company no longer sees ARR as the right measure of the business."
+      },
+      "segmentRevenue": [
+        {
+          "name": "Nebius AI cloud",
+          "metric": {
+            "value": 973.8,
+            "source": "shl-q3-2026",
+            "basis": "About 99% of group revenue. The letter states a 53% adjusted EBITDA margin for AI cloud. Segment adjusted EBITDA in dollars was not stated."
+          }
+        }
+      ],
+      "other": [
+        {
+          "label": "Remaining performance obligations",
+          "metric": {
+            "value": 38700,
+            "source": "shl-q3-2026",
+            "basis": "USD millions. $38.7 billion at September 30, 2026, up from $37.5 billion at June 30, 2026."
+          }
+        },
+        {
+          "label": "Shares issued and outstanding",
+          "metric": {
+            "value": 292.902405,
+            "source": "pr-q3-2026",
+            "basis": "Millions. 292,902,405 as of September 30, 2026 (259,597,352 Class A and 33,305,053 Class B), excluding 29,138,539 Class A treasury shares. Not diluted for convertibles or options."
+          }
+        },
+        {
+          "label": "Contracted power",
+          "metric": {
+            "value": 4000,
+            "source": "shl-q3-2026",
+            "basis": "Megawatts, a floor. The letter says more than 4 GW contracted, with an expectation of 5 GW by year-end 2026."
+          }
+        }
+      ]
+    }
+  ],
+  "annual": {
+    "id": "FY",
+    "label": "Annual segment figures, Form 20-F for the year ended December 31, 2025",
+    "source": "f20-2025",
+    "rows": [
+      {
+        "line": "Total revenue",
+        "y2023": 9.8,
+        "y2024": 91.5,
+        "y2025": 529.8
+      },
+      {
+        "line": "Nebius segment revenue",
+        "y2023": 9.6,
+        "y2024": 68.3,
+        "y2025": 480.3
+      },
+      {
+        "line": "Avride segment revenue",
+        "y2023": 0.3,
+        "y2024": 1.3,
+        "y2025": null,
+        "note": "2025 described as immaterial in the Q4 2025 shareholder letter. The 20-F segment table's 2025 Avride revenue line was not a clean extracted number and is left blank."
+      },
+      {
+        "line": "TripleTen segment revenue",
+        "y2023": 8.2,
+        "y2024": 28.8,
+        "y2025": 54.1
+      },
+      {
+        "line": "Segment revenue eliminations",
+        "y2023": -8.0,
+        "y2024": -5.9,
+        "y2025": -5.9
+      },
+      {
+        "line": "Group adjusted EBITDA",
+        "y2023": -240.7,
+        "y2024": -226.3,
+        "y2025": -64.9
+      },
+      {
+        "line": "Nebius segment adjusted EBITDA",
+        "y2023": -134.1,
+        "y2024": -128.5,
+        "y2025": 59.0
+      },
+      {
+        "line": "Avride segment adjusted EBITDA",
+        "y2023": -69.6,
+        "y2024": -67.0,
+        "y2025": -82.7
+      },
+      {
+        "line": "TripleTen segment adjusted EBITDA",
+        "y2023": -37.0,
+        "y2024": -30.8,
+        "y2025": -41.2
+      },
+      {
+        "line": "Purchases of property and equipment and intangibles",
+        "y2023": null,
+        "y2024": -807.5,
+        "y2025": -4066.0,
+        "note": "FY 2024 and FY 2025 from the Q4 2025 cash-flow statement. The February 2025 release described FY 2024 capital expenditures of $808.1 million."
+      },
+      {
+        "line": "ClickHouse carrying value, non-marketable equity securities",
+        "y2023": null,
+        "y2024": 89.7,
+        "y2025": 737.1,
+        "note": "December 31 balances in the 2025 Form 20-F. Remeasured to $737.1 million as of May 28, 2025."
+      },
+      {
+        "line": "Toloka preferred shares, non-marketable",
+        "y2023": null,
+        "y2024": null,
+        "y2025": 97.0
+      },
+      {
+        "line": "Equity-method investments, total",
+        "y2023": null,
+        "y2024": 6.4,
+        "y2025": 11.1,
+        "note": "2025 total includes a venture-capital fund at $6.4 million and Toloka at $4.7 million."
+      }
+    ]
+  }
+}

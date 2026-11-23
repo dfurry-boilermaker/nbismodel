@@ -1,0 +1,789 @@
+{
+  "schemaVersion": 1,
+  "retrievedAt": "2026-11-23",
+  "asOf": "2026-11-23",
+  "omitted": [
+    "A 2025 capex raise to about $5 billion, and a FY 2025 revenue range of $500\u2013550 million, are widely attributed to the November 11, 2025 earnings call. They were not found in the shareholder-letter or earnings-release text extracted for this version, so they are omitted rather than copied from secondary coverage.",
+    "GPU-count deployment targets beyond the Finland 'up to 60,000 H100-equivalent' capacity statement were not found as dated guidance with a later actual."
+  ],
+  "sources": {
+    "pr-q3-2024": {
+      "id": "pr-q3-2024",
+      "url": "https://assets.nebius.com/assets/eabb4ebd-e198-4e17-b633-6acd9b67de00/Nebius_Group_N_V_announces_third_quarter_2024_financial_results.pdf",
+      "title": "Q3 2024 earnings release",
+      "date": "2024-10-31"
+    },
+    "pr-q4-2024": {
+      "id": "pr-q4-2024",
+      "url": "https://assets.nebius.com/assets/ffacb067-9b61-42df-baa2-d513d9397845/20250220%20Nebius%20Group%20announces%204Q%20and%20FY%202024%20financial%20results.pdf",
+      "title": "Q4 and FY 2024 earnings release",
+      "date": "2025-02-20"
+    },
+    "pr-q1-2025": {
+      "id": "pr-q1-2025",
+      "url": "https://assets.nebius.com/assets/0369f7c5-dde6-4e32-873e-f1dd2a511212/20250520%20Nebius%20Group%20announces%20first%20quarter%202025%20financial%20results.pdf",
+      "title": "Q1 2025 earnings release",
+      "date": "2025-05-20"
+    },
+    "pr-q2-2025": {
+      "id": "pr-q2-2025",
+      "url": "https://assets.nebius.com/assets/a1ea2731-32b4-4b8d-82b4-0557fddadd1a/Nebius%20-%20Financial%20results%20-%20Q2%202025.pdf",
+      "title": "Q2 2025 earnings release",
+      "date": "2025-08-07"
+    },
+    "pr-q3-2025": {
+      "id": "pr-q3-2025",
+      "url": "https://assets.nebius.com/assets/fc878470-ce91-4c8a-a716-45fe2923d603/20251111%20Nebius%20reports%20third%20quarter%202025%20financial%20results.pdf",
+      "title": "Q3 2025 earnings release",
+      "date": "2025-11-11"
+    },
+    "pr-q4-2025": {
+      "id": "pr-q4-2025",
+      "url": "https://assets.nebius.com/assets/04f48f4e-48e9-468e-a428-ef16565c3fb5/Financial%20results_Q4%202025_11022026.pdf",
+      "title": "Q4 and FY 2025 earnings release",
+      "date": "2026-02-12"
+    },
+    "pr-q1-2026": {
+      "id": "pr-q1-2026",
+      "url": "https://assets.nebius.com/assets/0de223a2-f519-408d-8c7e-04f2fef342a9/Financial%20results_Q1%202026.pdf",
+      "title": "Q1 2026 earnings release",
+      "date": "2026-05-13"
+    },
+    "pr-q2-2026": {
+      "id": "pr-q2-2026",
+      "url": "https://assets.nebius.com/assets/dfe7a7f3-771e-4653-94e8-8f86bf126b1d/PR.pdf",
+      "title": "Q2 2026 earnings release",
+      "date": "2026-08-12"
+    },
+    "pr-q3-2026": {
+      "id": "pr-q3-2026",
+      "url": "https://assets.nebius.com/assets/e2ac679c-fc62-4799-ba0e-6611e59c6863/Nebius-2026-Q3.pdf",
+      "title": "Q3 2026 earnings release",
+      "date": "2026-11-12"
+    },
+    "shl-q1-2025": {
+      "id": "shl-q1-2025",
+      "url": "https://assets.nebius.com/assets/c0669639-37f2-4317-80d5-0c633e8e3186/Nebius%20Group_Letter%20to%20shareholders_Q12025.pdf",
+      "title": "Q1 2025 shareholder letter",
+      "date": "2025-05-20"
+    },
+    "shl-q2-2025": {
+      "id": "shl-q2-2025",
+      "url": "https://assets.nebius.com/assets/98fceb3b-2951-4647-9864-4b0654af057c/Nebius%20-%20Letter%20to%20shareholders%20-%20Q2%202025.pdf",
+      "title": "Q2 2025 shareholder letter",
+      "date": "2025-08-07"
+    },
+    "shl-q3-2025": {
+      "id": "shl-q3-2025",
+      "url": "https://assets.nebius.com/assets/7f8a9169-0d2b-469d-87e7-44342ea7fcd2/SHLQ3%20%284%29.pdf",
+      "title": "Q3 2025 shareholder letter",
+      "date": "2025-11-11"
+    },
+    "shl-q4-2025": {
+      "id": "shl-q4-2025",
+      "url": "https://assets.nebius.com/assets/85571bd2-050b-468c-954c-42e9d24e4cd2/Letter%20to%20Shareholders%20Q4%202025.pdf",
+      "title": "Q4 2025 shareholder letter",
+      "date": "2026-02-12"
+    },
+    "shl-q1-2026": {
+      "id": "shl-q1-2026",
+      "url": "https://assets.nebius.com/assets/aa1bc2e6-df83-40cd-a6a2-95e7cda3d16c/Nebius%20SHL_Q1%202026.pdf",
+      "title": "Q1 2026 shareholder letter",
+      "date": "2026-05-13"
+    },
+    "shl-q2-2026": {
+      "id": "shl-q2-2026",
+      "url": "https://assets.nebius.com/assets/4462517b-ce83-41f2-96ed-f2ac1bc06a05/SHLQ226%20%281%29.pdf",
+      "title": "Q2 2026 shareholder letter",
+      "date": "2026-08-12"
+    },
+    "shl-q3-2026": {
+      "id": "shl-q3-2026",
+      "url": "https://assets.nebius.com/assets/24c6bfb3-c90e-4076-9fe9-c2ab736b51ec/Nebius-SHL-2026-Q3.pdf",
+      "title": "Q3 2026 shareholder letter",
+      "date": "2026-11-12"
+    },
+    "f20-2024": {
+      "id": "f20-2024",
+      "url": "https://www.sec.gov/Archives/edgar/data/1513845/000155837025005991/nbis-20241231x20f.htm",
+      "title": "Form 20-F for the year ended December 31, 2024",
+      "date": "2025-04-30"
+    },
+    "f20-2025": {
+      "id": "f20-2025",
+      "url": "https://www.sec.gov/Archives/edgar/data/1513845/000110465926052948/nbis-20251231x20f.htm",
+      "title": "Form 20-F for the year ended December 31, 2025",
+      "date": "2026-04-30"
+    },
+    "ir": {
+      "id": "ir",
+      "url": "https://nebius.com/financials",
+      "title": "Nebius financials page",
+      "date": "2026-11-23"
+    },
+    "blog-nj": {
+      "id": "blog-nj",
+      "url": "https://nebius.com/blog/posts/300-mw-new-jersey-and-iceland-regions",
+      "title": "Nebius blog: New Jersey and Iceland",
+      "date": "2025-03-05"
+    },
+    "regions": {
+      "id": "regions",
+      "url": "https://docs.nebius.com/overview/regions",
+      "title": "Nebius AI Cloud regions",
+      "date": "2026-11-23"
+    },
+    "ytj": {
+      "id": "ytj",
+      "url": "https://tietopalvelu.ytj.fi/yritys/2541661-9",
+      "title": "Finnish YTJ record, Nebius DC Oy (2541661-9)",
+      "date": "2026-11-23"
+    },
+    "osm": {
+      "id": "osm",
+      "url": "https://www.openstreetmap.org/way/846760920",
+      "title": "OpenStreetMap way 846760920, Global DC OY / M\u00e4nts\u00e4l\u00e4",
+      "date": "2026-11-23"
+    },
+    "edgar": {
+      "id": "edgar",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001513845",
+      "title": "SEC EDGAR company filings, CIK 0001513845",
+      "date": "2026-11-23"
+    },
+    "gpu-docs": {
+      "id": "gpu-docs",
+      "url": "https://docs.nebius.com/compute/resources/pricing",
+      "title": "Nebius AI Cloud compute pricing",
+      "date": "2026-11-23"
+    },
+    "gpu-page": {
+      "id": "gpu-page",
+      "url": "https://nebius.com/prices",
+      "title": "Nebius NVIDIA GPU pricing page",
+      "date": "2026-11-23"
+    },
+    "tf": {
+      "id": "tf",
+      "url": "https://tokenfactory.nebius.com/api/public/models_info",
+      "title": "Token Factory public model catalog API",
+      "date": "2026-11-23"
+    },
+    "or": {
+      "id": "or",
+      "url": "https://openrouter.ai/api/v1/models",
+      "title": "OpenRouter models API",
+      "date": "2026-11-23"
+    }
+  },
+  "items": [
+    {
+      "id": "arr-ye-2025",
+      "title": "Year-end 2025 ARR",
+      "unit": "USD millions",
+      "kind": "range",
+      "revisions": [
+        {
+          "date": "2025-05-20",
+          "label": "$750\u20131,000 million",
+          "low": 750,
+          "high": 1000,
+          "periodEnd": "2025-12-31",
+          "source": "shl-q1-2025",
+          "change": "initial",
+          "note": "Core annualized run-rate revenue by the end of 2025."
+        },
+        {
+          "date": "2025-08-07",
+          "label": "$900\u20131,100 million",
+          "low": 900,
+          "high": 1100,
+          "periodEnd": "2025-12-31",
+          "source": "pr-q2-2025",
+          "change": "raised",
+          "note": "Raised from $750 million\u2013$1.0 billion. The Q4 2025 letter still describes $900 million\u2013$1.1 billion as the most recent guidance this result was measured against."
+        }
+      ],
+      "actual": {
+        "value": 1250,
+        "asOf": "2025-12-31",
+        "source": "shl-q4-2025",
+        "note": "Year-end ARR of $1.25 billion."
+      }
+    },
+    {
+      "id": "arr-dec-2026",
+      "title": "ARR by December 2026",
+      "unit": "USD millions",
+      "kind": "range",
+      "revisions": [
+        {
+          "date": "2025-11-11",
+          "label": "$7\u20139 billion by December 2026",
+          "low": 7000,
+          "high": 9000,
+          "periodEnd": "2026-12-31",
+          "source": "shl-q3-2025",
+          "change": "initial",
+          "note": "Introduced with the 2026 capacity plan."
+        },
+        {
+          "date": "2026-02-12",
+          "label": "Reaffirmed $7\u20139 billion",
+          "low": 7000,
+          "high": 9000,
+          "periodEnd": "2026-12-31",
+          "source": "shl-q4-2025",
+          "change": "reaffirmed",
+          "note": "Letter says the company is on track to end the year in this range."
+        },
+        {
+          "date": "2026-05-13",
+          "label": "Still shown as $7\u20139 billion",
+          "low": 7000,
+          "high": 9000,
+          "periodEnd": "2026-12-31",
+          "source": "shl-q1-2026",
+          "change": "reaffirmed",
+          "note": "Shown on the Q1 2026 highlights page."
+        },
+        {
+          "date": "2026-08-12",
+          "label": "Full-year 2026 guidance reaffirmed",
+          "low": 7000,
+          "high": 9000,
+          "periodEnd": "2026-12-31",
+          "source": "shl-q2-2026",
+          "change": "reaffirmed",
+          "note": "The letter says full-year 2026 guidance was reaffirmed across all metrics. It does not restate the ARR range in that sentence."
+        },
+        {
+          "date": "2026-11-12",
+          "label": "December target replaced",
+          "low": null,
+          "high": null,
+          "periodEnd": "2026-12-31",
+          "source": "shl-q3-2026",
+          "change": "replaced",
+          "note": "The company said it had guided to $7\u20139 billion by December and now expects ARR to exceed $7 billion for the month of February, a shift of about two months. From 2027 it will guide revenue, pre-tax earnings, and capacity instead of ARR."
+        }
+      ],
+      "actual": {
+        "value": 6400,
+        "asOf": "2026-09-30",
+        "source": "shl-q3-2026",
+        "note": "Latest reported ARR, which is before the revised February 2027 timing. Not a December actual."
+      }
+    },
+    {
+      "id": "arr-feb-2027",
+      "title": "ARR for February 2027",
+      "unit": "USD millions",
+      "kind": "minimum",
+      "revisions": [
+        {
+          "date": "2026-11-12",
+          "label": "Exceed $7 billion in February",
+          "low": 7000,
+          "high": null,
+          "periodEnd": "2027-02-28",
+          "source": "shl-q3-2026",
+          "change": "initial",
+          "note": "Replaces the December 2026 arrival. The company said this is expected even before New Jersey ramps to full capacity."
+        }
+      ],
+      "actual": {
+        "value": 6400,
+        "asOf": "2026-09-30",
+        "source": "shl-q3-2026",
+        "note": "Last reported ARR. The target month has not arrived."
+      }
+    },
+    {
+      "id": "revenue-fy-2026",
+      "title": "FY 2026 group revenue",
+      "unit": "USD millions",
+      "kind": "range",
+      "revisions": [
+        {
+          "date": "2026-05-13",
+          "label": "$3.0\u20133.4 billion",
+          "low": 3000,
+          "high": 3400,
+          "periodEnd": "2026-12-31",
+          "source": "shl-q1-2026",
+          "change": "initial",
+          "note": "Shown as 2026 revenue guidance on the Q1 2026 highlights page, with an adjusted EBITDA margin of about 40%."
+        },
+        {
+          "date": "2026-08-12",
+          "label": "Reaffirmed",
+          "low": 3000,
+          "high": 3400,
+          "periodEnd": "2026-12-31",
+          "source": "shl-q2-2026",
+          "change": "reaffirmed",
+          "note": "Full-year 2026 guidance reaffirmed across all metrics."
+        },
+        {
+          "date": "2026-11-12",
+          "label": "Low end of $3.0\u20133.4 billion",
+          "low": 3000,
+          "high": 3000,
+          "periodEnd": "2026-12-31",
+          "source": "shl-q3-2026",
+          "change": "cut",
+          "note": "Some third-party capacity moved into the first half of 2027. The company now expects revenue at the low end of the existing range. The $3.4 billion top of the range was not withdrawn as a range, but it is no longer the expectation."
+        }
+      ],
+      "actual": {
+        "value": 1962.1,
+        "asOf": "2026-09-30",
+        "source": "pr-q3-2026",
+        "note": "Nine-month revenue, not a full-year actual. Q1 399.0 + Q2 582.3 + Q3 980.8."
+      }
+    },
+    {
+      "id": "ebitda-margin-2026",
+      "title": "FY 2026 adjusted EBITDA margin",
+      "unit": "percent",
+      "kind": "point",
+      "revisions": [
+        {
+          "date": "2026-05-13",
+          "label": "About 40%",
+          "low": 40,
+          "high": 40,
+          "periodEnd": "2026-12-31",
+          "source": "shl-q1-2026",
+          "change": "initial",
+          "note": "Shown with the 2026 revenue guidance."
+        },
+        {
+          "date": "2026-11-12",
+          "label": "Unchanged, about 40%",
+          "low": 40,
+          "high": 40,
+          "periodEnd": "2026-12-31",
+          "source": "shl-q3-2026",
+          "change": "reaffirmed",
+          "note": "Explicitly unchanged in the guidance update."
+        }
+      ],
+      "actual": null
+    },
+    {
+      "id": "capex-2026",
+      "title": "FY 2026 capital expenditures",
+      "unit": "USD millions",
+      "kind": "point",
+      "revisions": [
+        {
+          "date": "2026-11-12",
+          "label": "Previous range $20\u201325 billion",
+          "low": 20000,
+          "high": 25000,
+          "periodEnd": "2026-12-31",
+          "source": "shl-q3-2026",
+          "change": "initial",
+          "note": "The November 12, 2026 letter refers to this as the previous range. The earlier letter that first set it was not identified in the documents reviewed, so the issue date stored here is the date that range was described."
+        },
+        {
+          "date": "2026-11-12",
+          "label": "Approximately $27 billion",
+          "low": 27000,
+          "high": 27000,
+          "periodEnd": "2026-12-31",
+          "source": "shl-q3-2026",
+          "change": "raised",
+          "note": "Above the $20\u201325 billion range, as the company invests in 2027 capacity at owned sites. This is capex guidance, not the separate $27 billion Meta agreement described in the Q1 2026 letter."
+        }
+      ],
+      "actual": {
+        "value": 15430.7,
+        "asOf": "2026-09-30",
+        "source": "pr-q3-2026",
+        "note": "Nine-month purchases of property and equipment and intangible assets. Not a full-year actual."
+      }
+    },
+    {
+      "id": "capex-2027",
+      "title": "FY 2027 capital expenditures",
+      "unit": "USD millions",
+      "kind": "range",
+      "revisions": [
+        {
+          "date": "2026-11-12",
+          "label": "$40\u201345 billion",
+          "low": 40000,
+          "high": 45000,
+          "periodEnd": "2027-12-31",
+          "source": "shl-q3-2026",
+          "change": "initial",
+          "note": "Initial 2027 outlook. Sized for more than 1 GW of new capacity. The company expects to cover 75\u201385% through prepayments and asset-backed financing from investment-grade customers, plus the balance sheet."
+        }
+      ],
+      "actual": null
+    },
+    {
+      "id": "revenue-2027",
+      "title": "FY 2027 revenue",
+      "unit": "USD millions",
+      "kind": "range",
+      "revisions": [
+        {
+          "date": "2026-11-12",
+          "label": "$12\u201313 billion",
+          "low": 12000,
+          "high": 13000,
+          "periodEnd": "2027-12-31",
+          "source": "shl-q3-2026",
+          "change": "initial",
+          "note": "Initial outlook. The company describes it as a conservative pace of build-out."
+        }
+      ],
+      "actual": null
+    },
+    {
+      "id": "pretax-2027",
+      "title": "Pre-tax breakeven",
+      "unit": "qualitative",
+      "kind": "point",
+      "revisions": [
+        {
+          "date": "2026-11-12",
+          "label": "Pre-tax breakeven in Q4 2027",
+          "low": null,
+          "high": null,
+          "periodEnd": "2027-12-31",
+          "source": "shl-q3-2026",
+          "change": "initial",
+          "note": "After financing costs, and assuming a five-year depreciation life for compute. No dollar profit was guided."
+        }
+      ],
+      "actual": null
+    },
+    {
+      "id": "contracted-power-2026",
+      "title": "Contracted power by year-end 2026",
+      "unit": "MW",
+      "kind": "minimum",
+      "revisions": [
+        {
+          "date": "2025-08-07",
+          "label": "More than 1 GW being secured",
+          "low": 1000,
+          "high": null,
+          "periodEnd": "2026-12-31",
+          "source": "pr-q2-2025",
+          "change": "initial",
+          "note": "Described as power the company was in the process of securing, not yet a closed total."
+        },
+        {
+          "date": "2025-11-11",
+          "label": "About 2.5 GW",
+          "low": 2500,
+          "high": 2500,
+          "periodEnd": "2026-12-31",
+          "source": "shl-q3-2025",
+          "change": "raised",
+          "note": "Raised from the prior 1 GW contracted-power plan."
+        },
+        {
+          "date": "2026-02-12",
+          "label": "More than 3 GW",
+          "low": 3000,
+          "high": null,
+          "periodEnd": "2026-12-31",
+          "source": "shl-q4-2025",
+          "change": "raised",
+          "note": "The letter also says more than 2 GW was already secured on that date, ahead of the November target of more than 2.5 GW by year-end."
+        },
+        {
+          "date": "2026-05-13",
+          "label": "More than 4 GW",
+          "low": 4000,
+          "high": null,
+          "periodEnd": "2026-12-31",
+          "source": "shl-q1-2026",
+          "change": "raised",
+          "note": "Raised from more than 3 GW. The letter says the 3 GW target had already been surpassed."
+        },
+        {
+          "date": "2026-11-12",
+          "label": "5 GW",
+          "low": 5000,
+          "high": 5000,
+          "periodEnd": "2026-12-31",
+          "source": "shl-q3-2026",
+          "change": "raised",
+          "note": "The company says it continues to expect 5 GW by year-end and already has more than 4 GW contracted."
+        }
+      ],
+      "actual": {
+        "value": 4000,
+        "asOf": "2026-11-12",
+        "source": "shl-q3-2026",
+        "approximate": true,
+        "note": "A floor. 'More than 4 GW' is stored as 4,000 MW and flagged approximate. Not a point census."
+      }
+    },
+    {
+      "id": "connected-power-2026",
+      "title": "Connected power by year-end 2026",
+      "unit": "MW",
+      "kind": "range",
+      "revisions": [
+        {
+          "date": "2025-11-11",
+          "label": "800 MW to 1 GW",
+          "low": 800,
+          "high": 1000,
+          "periodEnd": "2026-12-31",
+          "source": "shl-q3-2025",
+          "change": "initial",
+          "note": "Connected power means power connected into built data centers, as defined in that letter."
+        },
+        {
+          "date": "2026-02-12",
+          "label": "Reaffirmed 800 MW to 1 GW",
+          "low": 800,
+          "high": 1000,
+          "periodEnd": "2026-12-31",
+          "source": "shl-q4-2025",
+          "change": "reaffirmed",
+          "note": ""
+        },
+        {
+          "date": "2026-05-13",
+          "label": "Reaffirmed 800 MW to 1 GW",
+          "low": 800,
+          "high": 1000,
+          "periodEnd": "2026-12-31",
+          "source": "shl-q1-2026",
+          "change": "reaffirmed",
+          "note": ""
+        }
+      ],
+      "actual": {
+        "value": null,
+        "asOf": "2026-11-12",
+        "source": "shl-q3-2026",
+        "note": "No updated connected-megawatt figure was stated in the Q3 2026 letter passages reviewed. That letter does say delivery dates at a number of colocation sites, including remaining New Jersey tranches, shifted into the first half of 2027."
+      }
+    },
+    {
+      "id": "connected-power-2025",
+      "title": "Connected power by year-end 2025",
+      "unit": "MW",
+      "kind": "point",
+      "revisions": [
+        {
+          "date": "2025-08-07",
+          "label": "220 MW",
+          "low": 220,
+          "high": 220,
+          "periodEnd": "2025-12-31",
+          "source": "shl-q2-2025",
+          "change": "initial",
+          "note": "Includes active power and power fully provisioned and available once GPUs are installed, per the letter's footnote."
+        }
+      ],
+      "actual": {
+        "value": null,
+        "asOf": "2025-12-31",
+        "source": "shl-q4-2025",
+        "note": "Year-end 2025 reporting gave active power of about 170 MW, not a separate connected-power actual."
+      }
+    },
+    {
+      "id": "active-power-2025",
+      "title": "Active power by year-end 2025",
+      "unit": "MW",
+      "kind": "point",
+      "revisions": [
+        {
+          "date": "2025-11-11",
+          "label": "100 MW",
+          "low": 100,
+          "high": 100,
+          "periodEnd": "2025-12-31",
+          "source": "shl-q3-2025",
+          "change": "initial",
+          "note": "The letter said the company was on track for 100 MW of active power, defined as power consumed by IT equipment."
+        }
+      ],
+      "actual": {
+        "value": 170,
+        "asOf": "2025-12-31",
+        "source": "shl-q4-2025",
+        "approximate": true,
+        "note": "About 170 MW, versus the 100 MW target."
+      }
+    },
+    {
+      "id": "finland-75mw",
+      "title": "Finland contracted power, expansion",
+      "unit": "MW",
+      "kind": "point",
+      "revisions": [
+        {
+          "date": "2024-10-31",
+          "label": "Triple capacity to 75 MW",
+          "low": 75,
+          "high": 75,
+          "periodEnd": "2026-03-31",
+          "source": "pr-q3-2024",
+          "change": "initial",
+          "note": "By the end of 2025 or early 2026. The release says this would enable up to 60,000 GPUs in H100-equivalent at that location, with a footnote that the associated revenue potential used the company's medium-term plan. The 60,000 figure is a capacity statement, not a deployment that has been scored."
+        },
+        {
+          "date": "2025-08-07",
+          "label": "About 75 MW contracted, expansion substantially complete by end of 2025",
+          "low": 75,
+          "high": 75,
+          "periodEnd": "2025-12-31",
+          "source": "shl-q2-2025",
+          "change": "reaffirmed",
+          "note": ""
+        }
+      ],
+      "actual": {
+        "value": null,
+        "asOf": "2026-11-12",
+        "source": "shl-q3-2026",
+        "note": "Later letters do not state the megawatts in service at M\u00e4nts\u00e4l\u00e4."
+      }
+    },
+    {
+      "id": "new-jersey-schedule",
+      "title": "New Jersey delivery",
+      "unit": "MW",
+      "kind": "point",
+      "revisions": [
+        {
+          "date": "2025-03-05",
+          "label": "Expandable up to 300 MW; 100 MW of installed capacity previously committed for the end of 2025",
+          "low": 100,
+          "high": 300,
+          "periodEnd": "2025-12-31",
+          "source": "blog-nj",
+          "change": "initial",
+          "note": "Built with DataOne. The post says the site goes live phase by phase."
+        },
+        {
+          "date": "2025-08-07",
+          "label": "200 MW contracted and in construction; 100 MW to be available in 2025 and the rest in 2026",
+          "low": 100,
+          "high": 200,
+          "periodEnd": "2026-12-31",
+          "source": "shl-q2-2025",
+          "change": "timing",
+          "note": "The letter calls the location Vinefield, New Jersey, and said instances were planned for the fall of 2025."
+        },
+        {
+          "date": "2026-11-12",
+          "label": "Remaining tranches move; more than half of the Microsoft-contracted New Jersey capacity expected by year-end 2026, the rest in Q2 2027",
+          "low": null,
+          "high": null,
+          "periodEnd": "2027-06-30",
+          "source": "shl-q3-2026",
+          "change": "timing",
+          "note": "The letter says DataOne began retiring temporary generation ahead of permanent power, which reset the schedule. Microsoft was part of the planning. No new megawatt total was stated."
+        }
+      ],
+      "actual": null
+    },
+    {
+      "id": "iceland-10mw",
+      "title": "Keflav\u00edk 10 MW cluster",
+      "unit": "MW",
+      "kind": "point",
+      "revisions": [
+        {
+          "date": "2025-03-05",
+          "label": "10 MW, expected fully operational by the end of March 2025",
+          "low": 10,
+          "high": 10,
+          "periodEnd": "2025-03-31",
+          "source": "blog-nj",
+          "change": "initial",
+          "note": "Colocation with Verne, on Icelandic renewable power."
+        }
+      ],
+      "actual": {
+        "value": null,
+        "asOf": "2026-11-23",
+        "source": "regions",
+        "note": "The AI Cloud regions document lists eu-north2 as Iceland and shows compute available there. That confirms a live region. It does not confirm the March 31, 2025 date or that the cluster is 10 MW."
+      }
+    },
+    {
+      "id": "pennsylvania",
+      "title": "Pennsylvania owned AI factory",
+      "unit": "MW",
+      "kind": "point",
+      "revisions": [
+        {
+          "date": "2026-05-13",
+          "label": "Up to 1.2 GW, phases beginning in 2027",
+          "low": 1200,
+          "high": 1200,
+          "periodEnd": "2027-12-31",
+          "source": "shl-q1-2026",
+          "change": "initial",
+          "note": "Announced with the Q1 2026 results. Municipality not named in the letter passages reviewed."
+        }
+      ],
+      "actual": null
+    },
+    {
+      "id": "missouri-independence",
+      "title": "Independence, Missouri AI factory",
+      "unit": "MW",
+      "kind": "point",
+      "revisions": [
+        {
+          "date": "2026-05-13",
+          "label": "1.2 GW AI factory in Independence, Missouri",
+          "low": 1200,
+          "high": 1200,
+          "periodEnd": null,
+          "source": "shl-q1-2026",
+          "change": "initial",
+          "note": "Described alongside the Pennsylvania site. No in-service date was extracted."
+        },
+        {
+          "date": "2026-11-12",
+          "label": "1.1 GW under contract after a 300 MW expansion",
+          "low": 1100,
+          "high": 1100,
+          "periodEnd": "2026-12-31",
+          "source": "shl-q3-2026",
+          "change": "cut",
+          "note": "The letter says a 300 MW expansion took the Missouri site to 1.1 GW under contract. It is stored as an update to the Independence site because that is the Missouri factory named in May. The letter does not repeat the city name in the November sentence."
+        }
+      ],
+      "actual": null
+    },
+    {
+      "id": "new-capacity-per-year",
+      "title": "New capacity brought online per year",
+      "unit": "MW",
+      "kind": "minimum",
+      "revisions": [
+        {
+          "date": "2026-11-12",
+          "label": "More than 1 GW of new capacity each year",
+          "low": 1000,
+          "high": null,
+          "periodEnd": null,
+          "source": "shl-q3-2026",
+          "change": "initial",
+          "note": "Stated with the 2027 outlook. No single year is the measurement period yet."
+        }
+      ],
+      "actual": null
+    }
+  ]
+}

@@ -1,0 +1,350 @@
+{
+  "schemaVersion": 1,
+  "retrievedAt": "2026-11-23",
+  "sources": {
+    "pr-q3-2024": {
+      "id": "pr-q3-2024",
+      "url": "https://assets.nebius.com/assets/eabb4ebd-e198-4e17-b633-6acd9b67de00/Nebius_Group_N_V_announces_third_quarter_2024_financial_results.pdf",
+      "title": "Q3 2024 earnings release",
+      "date": "2024-10-31"
+    },
+    "pr-q4-2024": {
+      "id": "pr-q4-2024",
+      "url": "https://assets.nebius.com/assets/ffacb067-9b61-42df-baa2-d513d9397845/20250220%20Nebius%20Group%20announces%204Q%20and%20FY%202024%20financial%20results.pdf",
+      "title": "Q4 and FY 2024 earnings release",
+      "date": "2025-02-20"
+    },
+    "pr-q1-2025": {
+      "id": "pr-q1-2025",
+      "url": "https://assets.nebius.com/assets/0369f7c5-dde6-4e32-873e-f1dd2a511212/20250520%20Nebius%20Group%20announces%20first%20quarter%202025%20financial%20results.pdf",
+      "title": "Q1 2025 earnings release",
+      "date": "2025-05-20"
+    },
+    "pr-q2-2025": {
+      "id": "pr-q2-2025",
+      "url": "https://assets.nebius.com/assets/a1ea2731-32b4-4b8d-82b4-0557fddadd1a/Nebius%20-%20Financial%20results%20-%20Q2%202025.pdf",
+      "title": "Q2 2025 earnings release",
+      "date": "2025-08-07"
+    },
+    "pr-q3-2025": {
+      "id": "pr-q3-2025",
+      "url": "https://assets.nebius.com/assets/fc878470-ce91-4c8a-a716-45fe2923d603/20251111%20Nebius%20reports%20third%20quarter%202025%20financial%20results.pdf",
+      "title": "Q3 2025 earnings release",
+      "date": "2025-11-11"
+    },
+    "pr-q4-2025": {
+      "id": "pr-q4-2025",
+      "url": "https://assets.nebius.com/assets/04f48f4e-48e9-468e-a428-ef16565c3fb5/Financial%20results_Q4%202025_11022026.pdf",
+      "title": "Q4 and FY 2025 earnings release",
+      "date": "2026-02-12"
+    },
+    "pr-q1-2026": {
+      "id": "pr-q1-2026",
+      "url": "https://assets.nebius.com/assets/0de223a2-f519-408d-8c7e-04f2fef342a9/Financial%20results_Q1%202026.pdf",
+      "title": "Q1 2026 earnings release",
+      "date": "2026-05-13"
+    },
+    "pr-q2-2026": {
+      "id": "pr-q2-2026",
+      "url": "https://assets.nebius.com/assets/dfe7a7f3-771e-4653-94e8-8f86bf126b1d/PR.pdf",
+      "title": "Q2 2026 earnings release",
+      "date": "2026-08-12"
+    },
+    "pr-q3-2026": {
+      "id": "pr-q3-2026",
+      "url": "https://assets.nebius.com/assets/e2ac679c-fc62-4799-ba0e-6611e59c6863/Nebius-2026-Q3.pdf",
+      "title": "Q3 2026 earnings release",
+      "date": "2026-11-12"
+    },
+    "shl-q1-2025": {
+      "id": "shl-q1-2025",
+      "url": "https://assets.nebius.com/assets/c0669639-37f2-4317-80d5-0c633e8e3186/Nebius%20Group_Letter%20to%20shareholders_Q12025.pdf",
+      "title": "Q1 2025 shareholder letter",
+      "date": "2025-05-20"
+    },
+    "shl-q2-2025": {
+      "id": "shl-q2-2025",
+      "url": "https://assets.nebius.com/assets/98fceb3b-2951-4647-9864-4b0654af057c/Nebius%20-%20Letter%20to%20shareholders%20-%20Q2%202025.pdf",
+      "title": "Q2 2025 shareholder letter",
+      "date": "2025-08-07"
+    },
+    "shl-q3-2025": {
+      "id": "shl-q3-2025",
+      "url": "https://assets.nebius.com/assets/7f8a9169-0d2b-469d-87e7-44342ea7fcd2/SHLQ3%20%284%29.pdf",
+      "title": "Q3 2025 shareholder letter",
+      "date": "2025-11-11"
+    },
+    "shl-q4-2025": {
+      "id": "shl-q4-2025",
+      "url": "https://assets.nebius.com/assets/85571bd2-050b-468c-954c-42e9d24e4cd2/Letter%20to%20Shareholders%20Q4%202025.pdf",
+      "title": "Q4 2025 shareholder letter",
+      "date": "2026-02-12"
+    },
+    "shl-q1-2026": {
+      "id": "shl-q1-2026",
+      "url": "https://assets.nebius.com/assets/aa1bc2e6-df83-40cd-a6a2-95e7cda3d16c/Nebius%20SHL_Q1%202026.pdf",
+      "title": "Q1 2026 shareholder letter",
+      "date": "2026-05-13"
+    },
+    "shl-q2-2026": {
+      "id": "shl-q2-2026",
+      "url": "https://assets.nebius.com/assets/4462517b-ce83-41f2-96ed-f2ac1bc06a05/SHLQ226%20%281%29.pdf",
+      "title": "Q2 2026 shareholder letter",
+      "date": "2026-08-12"
+    },
+    "shl-q3-2026": {
+      "id": "shl-q3-2026",
+      "url": "https://assets.nebius.com/assets/24c6bfb3-c90e-4076-9fe9-c2ab736b51ec/Nebius-SHL-2026-Q3.pdf",
+      "title": "Q3 2026 shareholder letter",
+      "date": "2026-11-12"
+    },
+    "f20-2024": {
+      "id": "f20-2024",
+      "url": "https://www.sec.gov/Archives/edgar/data/1513845/000155837025005991/nbis-20241231x20f.htm",
+      "title": "Form 20-F for the year ended December 31, 2024",
+      "date": "2025-04-30"
+    },
+    "f20-2025": {
+      "id": "f20-2025",
+      "url": "https://www.sec.gov/Archives/edgar/data/1513845/000110465926052948/nbis-20251231x20f.htm",
+      "title": "Form 20-F for the year ended December 31, 2025",
+      "date": "2026-04-30"
+    },
+    "ir": {
+      "id": "ir",
+      "url": "https://nebius.com/financials",
+      "title": "Nebius financials page",
+      "date": "2026-11-23"
+    },
+    "blog-nj": {
+      "id": "blog-nj",
+      "url": "https://nebius.com/blog/posts/300-mw-new-jersey-and-iceland-regions",
+      "title": "Nebius blog: New Jersey and Iceland",
+      "date": "2025-03-05"
+    },
+    "regions": {
+      "id": "regions",
+      "url": "https://docs.nebius.com/overview/regions",
+      "title": "Nebius AI Cloud regions",
+      "date": "2026-11-23"
+    },
+    "ytj": {
+      "id": "ytj",
+      "url": "https://tietopalvelu.ytj.fi/yritys/2541661-9",
+      "title": "Finnish YTJ record, Nebius DC Oy (2541661-9)",
+      "date": "2026-11-23"
+    },
+    "osm": {
+      "id": "osm",
+      "url": "https://www.openstreetmap.org/way/846760920",
+      "title": "OpenStreetMap way 846760920, Global DC OY / M\u00e4nts\u00e4l\u00e4",
+      "date": "2026-11-23"
+    },
+    "edgar": {
+      "id": "edgar",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001513845",
+      "title": "SEC EDGAR company filings, CIK 0001513845",
+      "date": "2026-11-23"
+    },
+    "gpu-docs": {
+      "id": "gpu-docs",
+      "url": "https://docs.nebius.com/compute/resources/pricing",
+      "title": "Nebius AI Cloud compute pricing",
+      "date": "2026-11-23"
+    },
+    "gpu-page": {
+      "id": "gpu-page",
+      "url": "https://nebius.com/prices",
+      "title": "Nebius NVIDIA GPU pricing page",
+      "date": "2026-11-23"
+    },
+    "tf": {
+      "id": "tf",
+      "url": "https://tokenfactory.nebius.com/api/public/models_info",
+      "title": "Token Factory public model catalog API",
+      "date": "2026-11-23"
+    },
+    "or": {
+      "id": "or",
+      "url": "https://openrouter.ai/api/v1/models",
+      "title": "OpenRouter models API",
+      "date": "2026-11-23"
+    }
+  },
+  "holdings": [
+    {
+      "id": "avride",
+      "name": "Avride",
+      "relationship": "Consolidated subsidiary as of the Q3 2026 earnings release. The 2025 Form 20-F says the company is pursuing third-party investment in which it may give up control.",
+      "metrics": [
+        {
+          "label": "Segment revenue, 2023",
+          "value": "$0.3 million",
+          "source": "f20-2025"
+        },
+        {
+          "label": "Segment revenue, 2024",
+          "value": "$1.3 million",
+          "source": "f20-2025"
+        },
+        {
+          "label": "Segment revenue, 2025",
+          "value": "Immaterial for the quarter and the full year, per the Q4 2025 letter",
+          "source": "shl-q4-2025"
+        },
+        {
+          "label": "Segment adjusted EBITDA, 2025",
+          "value": "$(82.7) million",
+          "source": "f20-2025"
+        },
+        {
+          "label": "Uber and Nebius commitments",
+          "value": "Up to $375 million of strategic investments and other commitments, announced October 2025",
+          "source": "f20-2025"
+        },
+        {
+          "label": "SAFE proceeds, 2025",
+          "value": "$100.0 million of proceeds from SAFEs issued by Avride, in the 2025 financing cash flow",
+          "source": "f20-2025"
+        },
+        {
+          "label": "Vehicle fleet",
+          "value": "250 vehicles, with a target of 350 by year-end 2026",
+          "source": "shl-q3-2026"
+        },
+        {
+          "label": "Autonomous mileage",
+          "value": "More than 2 million miles",
+          "source": "shl-q3-2026"
+        },
+        {
+          "label": "Robotaxi rides",
+          "value": "More than 100,000 passenger rides. Dallas operating area 31 square miles.",
+          "source": "shl-q3-2026"
+        },
+        {
+          "label": "Driverless operations",
+          "value": "Planned for the first half of 2027",
+          "source": "shl-q3-2026"
+        },
+        {
+          "label": "Delivery campuses",
+          "value": "25, after adding more than 20 in the fall",
+          "source": "shl-q3-2026"
+        }
+      ],
+      "unavailable": [
+        "Current ownership percentage after the Uber SAFE is not stated as a single figure in the 2025 Form 20-F passages reviewed.",
+        "A current revenue run-rate for 2026 was not broken out in the quarterly releases reviewed."
+      ]
+    },
+    {
+      "id": "tripleten",
+      "name": "TripleTen",
+      "relationship": "Consolidated edtech business.",
+      "metrics": [
+        {
+          "label": "Revenue, 2024",
+          "value": "$28.8 million",
+          "source": "f20-2025"
+        },
+        {
+          "label": "Revenue, 2025",
+          "value": "$54.1 million, up $25.3 million or 88%",
+          "source": "f20-2025"
+        },
+        {
+          "label": "Adjusted EBITDA, 2025",
+          "value": "$(41.2) million",
+          "source": "f20-2025"
+        },
+        {
+          "label": "Q4 2025 mix",
+          "value": "About 6% of group revenue",
+          "source": "shl-q4-2025"
+        }
+      ],
+      "unavailable": [
+        "2026 quarterly revenue was not broken out in the releases reviewed.",
+        "Student counts after 2024 were not extracted."
+      ]
+    },
+    {
+      "id": "toloka",
+      "name": "Toloka",
+      "relationship": "Deconsolidated effective May 2, 2025. Equity-method common stock plus preferred stock measured under the measurement alternative. Not controlled.",
+      "metrics": [
+        {
+          "label": "Voting interest",
+          "value": "49% on an outstanding basis",
+          "source": "f20-2025"
+        },
+        {
+          "label": "Economic interest",
+          "value": "81% on an outstanding basis",
+          "source": "f20-2025"
+        },
+        {
+          "label": "Equity-method carrying value, December 31, 2025",
+          "value": "$4.7 million, inside $11.1 million of equity-method investments",
+          "source": "f20-2025"
+        },
+        {
+          "label": "Preferred stock carrying value, December 31, 2025",
+          "value": "$97.0 million",
+          "source": "f20-2025"
+        },
+        {
+          "label": "Fair value of retained interest at deconsolidation",
+          "value": "$130.6 million, of which common stock was $33.6 million",
+          "source": "f20-2025"
+        },
+        {
+          "label": "Cash invested in the financing",
+          "value": "$39.0 million",
+          "source": "f20-2025"
+        }
+      ],
+      "unavailable": [
+        "Toloka revenue after deconsolidation is not in Nebius consolidated revenue.",
+        "No 2026 Toloka operating metrics were in the Q3 2026 release."
+      ]
+    },
+    {
+      "id": "clickhouse",
+      "name": "ClickHouse",
+      "relationship": "Significant minority stake. The company lost significant influence in 2022. Not consolidated.",
+      "metrics": [
+        {
+          "label": "Stake in the 2024 Form 20-F",
+          "value": "28%, as stated in that annual report",
+          "source": "f20-2024"
+        },
+        {
+          "label": "Stake in the 2025 Form 20-F",
+          "value": "Described only as a significant minority stake. No new percentage after the Series C and Series D financings.",
+          "source": "f20-2025"
+        },
+        {
+          "label": "Carrying value, December 31, 2024",
+          "value": "$89.7 million",
+          "source": "f20-2025"
+        },
+        {
+          "label": "Carrying value, December 31, 2025",
+          "value": "$737.1 million, remeasured as of May 28, 2025. Upward adjustment of $597.4 million.",
+          "source": "f20-2025"
+        },
+        {
+          "label": "Series D, January 2026",
+          "value": "$400 million raised from investors other than the group, at a valuation of approximately $15 billion. Nebius did not invest.",
+          "source": "f20-2025"
+        }
+      ],
+      "unavailable": [
+        "A post-Series D ownership percentage was not stated.",
+        "ClickHouse revenue is not reported inside Nebius revenue."
+      ]
+    }
+  ]
+}

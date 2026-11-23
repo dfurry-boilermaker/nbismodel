@@ -1,0 +1,599 @@
+{
+  "schemaVersion": 1,
+  "retrievedAt": "2026-11-23",
+  "imageryNote": "Satellite crops are Copernicus Sentinel-2 L2A, 10 m multispectral pixels, rendered from the Microsoft Planetary Computer mirror of the Copernicus archive. Each frame is labeled with the scene acquisition time in the product metadata. Cloud cover is the scene-level figure, not a measurement inside the crop. Downloading pixels from the Copernicus Data Space Ecosystem itself needs CDSE credentials; the scheduled job searches CDSE and falls back to Planetary Computer for the image. Frames are not a construction survey.",
+  "sources": {
+    "pr-q3-2024": {
+      "id": "pr-q3-2024",
+      "url": "https://assets.nebius.com/assets/eabb4ebd-e198-4e17-b633-6acd9b67de00/Nebius_Group_N_V_announces_third_quarter_2024_financial_results.pdf",
+      "title": "Q3 2024 earnings release",
+      "date": "2024-10-31"
+    },
+    "pr-q4-2024": {
+      "id": "pr-q4-2024",
+      "url": "https://assets.nebius.com/assets/ffacb067-9b61-42df-baa2-d513d9397845/20250220%20Nebius%20Group%20announces%204Q%20and%20FY%202024%20financial%20results.pdf",
+      "title": "Q4 and FY 2024 earnings release",
+      "date": "2025-02-20"
+    },
+    "pr-q1-2025": {
+      "id": "pr-q1-2025",
+      "url": "https://assets.nebius.com/assets/0369f7c5-dde6-4e32-873e-f1dd2a511212/20250520%20Nebius%20Group%20announces%20first%20quarter%202025%20financial%20results.pdf",
+      "title": "Q1 2025 earnings release",
+      "date": "2025-05-20"
+    },
+    "pr-q2-2025": {
+      "id": "pr-q2-2025",
+      "url": "https://assets.nebius.com/assets/a1ea2731-32b4-4b8d-82b4-0557fddadd1a/Nebius%20-%20Financial%20results%20-%20Q2%202025.pdf",
+      "title": "Q2 2025 earnings release",
+      "date": "2025-08-07"
+    },
+    "pr-q3-2025": {
+      "id": "pr-q3-2025",
+      "url": "https://assets.nebius.com/assets/fc878470-ce91-4c8a-a716-45fe2923d603/20251111%20Nebius%20reports%20third%20quarter%202025%20financial%20results.pdf",
+      "title": "Q3 2025 earnings release",
+      "date": "2025-11-11"
+    },
+    "pr-q4-2025": {
+      "id": "pr-q4-2025",
+      "url": "https://assets.nebius.com/assets/04f48f4e-48e9-468e-a428-ef16565c3fb5/Financial%20results_Q4%202025_11022026.pdf",
+      "title": "Q4 and FY 2025 earnings release",
+      "date": "2026-02-12"
+    },
+    "pr-q1-2026": {
+      "id": "pr-q1-2026",
+      "url": "https://assets.nebius.com/assets/0de223a2-f519-408d-8c7e-04f2fef342a9/Financial%20results_Q1%202026.pdf",
+      "title": "Q1 2026 earnings release",
+      "date": "2026-05-13"
+    },
+    "pr-q2-2026": {
+      "id": "pr-q2-2026",
+      "url": "https://assets.nebius.com/assets/dfe7a7f3-771e-4653-94e8-8f86bf126b1d/PR.pdf",
+      "title": "Q2 2026 earnings release",
+      "date": "2026-08-12"
+    },
+    "pr-q3-2026": {
+      "id": "pr-q3-2026",
+      "url": "https://assets.nebius.com/assets/e2ac679c-fc62-4799-ba0e-6611e59c6863/Nebius-2026-Q3.pdf",
+      "title": "Q3 2026 earnings release",
+      "date": "2026-11-12"
+    },
+    "shl-q1-2025": {
+      "id": "shl-q1-2025",
+      "url": "https://assets.nebius.com/assets/c0669639-37f2-4317-80d5-0c633e8e3186/Nebius%20Group_Letter%20to%20shareholders_Q12025.pdf",
+      "title": "Q1 2025 shareholder letter",
+      "date": "2025-05-20"
+    },
+    "shl-q2-2025": {
+      "id": "shl-q2-2025",
+      "url": "https://assets.nebius.com/assets/98fceb3b-2951-4647-9864-4b0654af057c/Nebius%20-%20Letter%20to%20shareholders%20-%20Q2%202025.pdf",
+      "title": "Q2 2025 shareholder letter",
+      "date": "2025-08-07"
+    },
+    "shl-q3-2025": {
+      "id": "shl-q3-2025",
+      "url": "https://assets.nebius.com/assets/7f8a9169-0d2b-469d-87e7-44342ea7fcd2/SHLQ3%20%284%29.pdf",
+      "title": "Q3 2025 shareholder letter",
+      "date": "2025-11-11"
+    },
+    "shl-q4-2025": {
+      "id": "shl-q4-2025",
+      "url": "https://assets.nebius.com/assets/85571bd2-050b-468c-954c-42e9d24e4cd2/Letter%20to%20Shareholders%20Q4%202025.pdf",
+      "title": "Q4 2025 shareholder letter",
+      "date": "2026-02-12"
+    },
+    "shl-q1-2026": {
+      "id": "shl-q1-2026",
+      "url": "https://assets.nebius.com/assets/aa1bc2e6-df83-40cd-a6a2-95e7cda3d16c/Nebius%20SHL_Q1%202026.pdf",
+      "title": "Q1 2026 shareholder letter",
+      "date": "2026-05-13"
+    },
+    "shl-q2-2026": {
+      "id": "shl-q2-2026",
+      "url": "https://assets.nebius.com/assets/4462517b-ce83-41f2-96ed-f2ac1bc06a05/SHLQ226%20%281%29.pdf",
+      "title": "Q2 2026 shareholder letter",
+      "date": "2026-08-12"
+    },
+    "shl-q3-2026": {
+      "id": "shl-q3-2026",
+      "url": "https://assets.nebius.com/assets/24c6bfb3-c90e-4076-9fe9-c2ab736b51ec/Nebius-SHL-2026-Q3.pdf",
+      "title": "Q3 2026 shareholder letter",
+      "date": "2026-11-12"
+    },
+    "f20-2024": {
+      "id": "f20-2024",
+      "url": "https://www.sec.gov/Archives/edgar/data/1513845/000155837025005991/nbis-20241231x20f.htm",
+      "title": "Form 20-F for the year ended December 31, 2024",
+      "date": "2025-04-30"
+    },
+    "f20-2025": {
+      "id": "f20-2025",
+      "url": "https://www.sec.gov/Archives/edgar/data/1513845/000110465926052948/nbis-20251231x20f.htm",
+      "title": "Form 20-F for the year ended December 31, 2025",
+      "date": "2026-04-30"
+    },
+    "ir": {
+      "id": "ir",
+      "url": "https://nebius.com/financials",
+      "title": "Nebius financials page",
+      "date": "2026-11-23"
+    },
+    "blog-nj": {
+      "id": "blog-nj",
+      "url": "https://nebius.com/blog/posts/300-mw-new-jersey-and-iceland-regions",
+      "title": "Nebius blog: New Jersey and Iceland",
+      "date": "2025-03-05"
+    },
+    "regions": {
+      "id": "regions",
+      "url": "https://docs.nebius.com/overview/regions",
+      "title": "Nebius AI Cloud regions",
+      "date": "2026-11-23"
+    },
+    "ytj": {
+      "id": "ytj",
+      "url": "https://tietopalvelu.ytj.fi/yritys/2541661-9",
+      "title": "Finnish YTJ record, Nebius DC Oy (2541661-9)",
+      "date": "2026-11-23"
+    },
+    "osm": {
+      "id": "osm",
+      "url": "https://www.openstreetmap.org/way/846760920",
+      "title": "OpenStreetMap way 846760920, Global DC OY / M\u00e4nts\u00e4l\u00e4",
+      "date": "2026-11-23"
+    },
+    "edgar": {
+      "id": "edgar",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001513845",
+      "title": "SEC EDGAR company filings, CIK 0001513845",
+      "date": "2026-11-23"
+    },
+    "gpu-docs": {
+      "id": "gpu-docs",
+      "url": "https://docs.nebius.com/compute/resources/pricing",
+      "title": "Nebius AI Cloud compute pricing",
+      "date": "2026-11-23"
+    },
+    "gpu-page": {
+      "id": "gpu-page",
+      "url": "https://nebius.com/prices",
+      "title": "Nebius NVIDIA GPU pricing page",
+      "date": "2026-11-23"
+    },
+    "tf": {
+      "id": "tf",
+      "url": "https://tokenfactory.nebius.com/api/public/models_info",
+      "title": "Token Factory public model catalog API",
+      "date": "2026-11-23"
+    },
+    "or": {
+      "id": "or",
+      "url": "https://openrouter.ai/api/v1/models",
+      "title": "OpenRouter models API",
+      "date": "2026-11-23"
+    }
+  },
+  "sites": [
+    {
+      "id": "mantasala",
+      "name": "M\u00e4nts\u00e4l\u00e4",
+      "place": "M\u00e4nts\u00e4l\u00e4, Finland",
+      "relationship": "Owned. Finnish registry name Nebius DC Oy, formerly Global DC Oy and Yandex Oy.",
+      "status": "Serving. Cloud region eu-north1 is Finland.",
+      "cloudRegions": [
+        "eu-north1"
+      ],
+      "capacity": "Company target of about 75 MW contracted power for the expansion, by the end of 2025 or early 2026. Megawatts in service were not restated in the 2026 letters reviewed.",
+      "dates": "Expansion described October 31, 2024 and again August 7, 2025. A second M\u00e4nts\u00e4l\u00e4 site is named for 2027 deployment and has no separate footprint here.",
+      "pin": {
+        "lat": 60.629787,
+        "lon": 25.264085,
+        "precision": "Facility. Address from the Finnish Business Information System. Image window is centered on the OpenStreetMap coordinate published for that address."
+      },
+      "scenes": [
+        {
+          "file": "/satellites/mantasala-2024-09-05.jpg",
+          "acquiredAt": "2024-09-05T09:40:31.024000Z",
+          "cloudCoverPct": 0.73098,
+          "itemId": "S2A_MSIL2A_20240905T094031_R036_T35VMH_20240905T133953",
+          "platform": "sentinel-2a"
+        },
+        {
+          "file": "/satellites/mantasala-2025-07-24.jpg",
+          "acquiredAt": "2025-07-24T09:40:51.024000Z",
+          "cloudCoverPct": 0.287113,
+          "itemId": "S2A_MSIL2A_20250724T094051_R036_T35VMH_20250724T112813",
+          "platform": "sentinel-2a"
+        },
+        {
+          "file": "/satellites/mantasala-2026-05-30.jpg",
+          "acquiredAt": "2026-05-30T09:40:51.024000Z",
+          "cloudCoverPct": 0.000239,
+          "itemId": "S2A_MSIL2A_20260530T094051_R036_T35VMH_20260530T143215",
+          "platform": "sentinel-2a"
+        },
+        {
+          "file": "/satellites/mantasala-2026-10-20.jpg",
+          "acquiredAt": "2026-10-20T09:40:29.029000Z",
+          "cloudCoverPct": 0.000743,
+          "itemId": "S2B_MSIL2A_20261020T094029_R036_T35VMH_20261020T120754",
+          "platform": "sentinel-2b"
+        }
+      ],
+      "sources": [
+        "ytj",
+        "osm",
+        "regions",
+        "pr-q3-2024",
+        "shl-q2-2025",
+        "shl-q3-2026"
+      ],
+      "notes": "Sentinel-2 pixels are 10 m. The crops are about 2 km across. Roofs and new pads are visible; this is not a survey and not a measurement of megawatts."
+    },
+    {
+      "id": "mantasala-2",
+      "name": "Second M\u00e4nts\u00e4l\u00e4 site",
+      "place": "M\u00e4nts\u00e4l\u00e4, Finland",
+      "relationship": "Owned site named for future deployment. No separate address published in the sources reviewed.",
+      "status": "Named for 2027. Not a separate live cloud region.",
+      "cloudRegions": [],
+      "capacity": "Not disclosed.",
+      "dates": "Q3 2026 shareholder letter: expected to deploy capacity in 2027, with Lappeenranta, Missouri, and Alabama.",
+      "pin": null,
+      "scenes": [],
+      "sources": [
+        "shl-q3-2026"
+      ],
+      "notes": "Not pinned. A second marker on the town would invent a footprint."
+    },
+    {
+      "id": "lappeenranta",
+      "name": "Lappeenranta",
+      "place": "Lappeenranta, Finland",
+      "relationship": "Owned site named for 2027 deployment.",
+      "status": "Named, not in the live regions list retrieved November 23, 2026.",
+      "cloudRegions": [],
+      "capacity": "Not disclosed for this name. On May 13, 2026 the company announced a new owned Finland location of 310 MW at full deployment and did not name the municipality in that paragraph. These two statements are not tied together here.",
+      "dates": "Named November 12, 2026 for a 2027 deployment.",
+      "pin": {
+        "lat": 61.0587,
+        "lon": 28.1881,
+        "precision": "City centroid of Lappeenranta, not a facility."
+      },
+      "scenes": [],
+      "sources": [
+        "shl-q3-2026",
+        "shl-q1-2026"
+      ],
+      "notes": "No satellite image. A city image would not be the site."
+    },
+    {
+      "id": "finland-310",
+      "name": "Finland 310 MW factory",
+      "place": "Finland, municipality not named",
+      "relationship": "Owned.",
+      "status": "Announced May 13, 2026.",
+      "cloudRegions": [],
+      "capacity": "310 MW when fully deployed.",
+      "dates": "Announced in the Q1 2026 shareholder letter. In-service date not stated there.",
+      "pin": null,
+      "scenes": [],
+      "sources": [
+        "shl-q1-2026"
+      ],
+      "notes": "Kept separate from Lappeenranta and the second M\u00e4nts\u00e4l\u00e4 site because the May letter did not name the city."
+    },
+    {
+      "id": "keflavik",
+      "name": "Keflav\u00edk",
+      "place": "Keflav\u00edk, Iceland",
+      "relationship": "Colocation with Verne.",
+      "status": "Cloud region eu-north2 is Iceland and lists compute as available.",
+      "cloudRegions": [
+        "eu-north2"
+      ],
+      "capacity": "10 MW cluster, as announced.",
+      "dates": "March 5, 2025 post: expected fully operational by the end of March 2025. Completion of that date was not confirmed in a later filing reviewed.",
+      "pin": {
+        "lat": 63.999,
+        "lon": -22.56,
+        "precision": "Town of Keflav\u00edk. The Verne campus footprint was not taken from a Nebius filing."
+      },
+      "scenes": [],
+      "sources": [
+        "blog-nj",
+        "regions"
+      ],
+      "notes": "No satellite image, because the pin is the town, not the hall."
+    },
+    {
+      "id": "france",
+      "name": "France",
+      "place": "Paris cluster announced; regions eu-west1 and eu-west2 are both France",
+      "relationship": "Colocation, as described in 2025 letters.",
+      "status": "Serving. Both France region codes list compute.",
+      "cloudRegions": [
+        "eu-west1",
+        "eu-west2"
+      ],
+      "capacity": "Not disclosed in the primary sources reviewed. A 5 MW figure appears in secondary write-ups and is not used.",
+      "dates": "GPU cluster in Paris announced around September 2024, in the Q3 2024 release, as one of the first in Europe with NVIDIA H200 GPUs.",
+      "pin": {
+        "lat": 48.8566,
+        "lon": 2.3522,
+        "precision": "Paris city centroid. The colocation address was not published in the sources reviewed. Two region codes are not treated as two proven campuses."
+      },
+      "scenes": [],
+      "sources": [
+        "pr-q3-2024",
+        "regions",
+        "shl-q2-2025"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "kansas-city",
+      "name": "Kansas City",
+      "place": "Kansas City, Missouri, United States",
+      "relationship": "Colocation.",
+      "status": "Serving. Region us-central1 is Kansas City.",
+      "cloudRegions": [
+        "us-central1"
+      ],
+      "capacity": "Not disclosed in megawatts in the company posts and letters reviewed.",
+      "dates": "First phase expected in March 2025. The Q2 2025 letter says the site launched in April 2025, with more capacity in early July. The March 5, 2025 post said a second phase was expected by the end of Q2 2025.",
+      "pin": {
+        "lat": 39.0997,
+        "lon": -94.5786,
+        "precision": "City centroid, not the colocation hall."
+      },
+      "scenes": [],
+      "sources": [
+        "blog-nj",
+        "shl-q2-2025",
+        "regions"
+      ],
+      "notes": "This is separate from the Independence, Missouri factory."
+    },
+    {
+      "id": "new-jersey",
+      "name": "New Jersey",
+      "place": "Vinefield, New Jersey, as named by the company",
+      "relationship": "Build with DataOne. The Q2 2025 letter calls it a new facility.",
+      "status": "Partial delivery. The November 12, 2026 letter says remaining tranches moved, with more than half of the Microsoft-contracted capacity expected by year-end 2026 and the rest in Q2 2027.",
+      "cloudRegions": [],
+      "capacity": "Expandable up to 300 MW (March 5, 2025). As of August 7, 2025, 200 MW was contracted and in construction, of which 100 MW was planned for 2025.",
+      "dates": "See the guidance item. Instances were planned for fall 2025.",
+      "pin": null,
+      "scenes": [],
+      "sources": [
+        "blog-nj",
+        "shl-q2-2025",
+        "shl-q3-2026"
+      ],
+      "notes": "Not pinned. The company spelling is Vinefield. A street address was not in the sources reviewed, and Vineland is a different name this site does not assume."
+    },
+    {
+      "id": "uk",
+      "name": "United Kingdom",
+      "place": "United Kingdom",
+      "relationship": "Announced capacity. Two cloud regions.",
+      "status": "Serving. uk-south1 and uk-south2 both list compute.",
+      "cloudRegions": [
+        "uk-south1",
+        "uk-south2"
+      ],
+      "capacity": "Not disclosed in megawatts.",
+      "dates": "Announced in the Q2 2025 letter for later in 2025. NVIDIA Blackwell Ultra in the UK was expected during Q4 2025. The Q4 2025 letter counts the UK among new sites.",
+      "pin": null,
+      "scenes": [],
+      "sources": [
+        "shl-q2-2025",
+        "shl-q4-2025",
+        "regions"
+      ],
+      "notes": "Two region codes are listed. They are not mapped as two cities."
+    },
+    {
+      "id": "israel",
+      "name": "Israel",
+      "place": "Israel",
+      "relationship": "Announced, and a live cloud region.",
+      "status": "Serving. me-west1 is Israel.",
+      "cloudRegions": [
+        "me-west1"
+      ],
+      "capacity": "Not disclosed.",
+      "dates": "Announced in the Q2 2025 letter for later in 2025. Counted among new sites in the Q4 2025 letter.",
+      "pin": null,
+      "scenes": [],
+      "sources": [
+        "shl-q2-2025",
+        "shl-q4-2025",
+        "regions"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "woodbury",
+      "name": "Woodbury, Minnesota",
+      "place": "Woodbury, Minnesota, United States",
+      "relationship": "The regions document places us-north1 in Woodbury. The Q4 2025 letter lists Minnesota among nine new sites.",
+      "status": "Serving.",
+      "cloudRegions": [
+        "us-north1"
+      ],
+      "capacity": "Not disclosed.",
+      "dates": "Named as a new location on February 12, 2026.",
+      "pin": {
+        "lat": 44.9239,
+        "lon": -92.9594,
+        "precision": "City centroid of Woodbury. The regions page names the city; it does not publish a street address."
+      },
+      "scenes": [],
+      "sources": [
+        "regions",
+        "shl-q4-2025"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "madrid",
+      "name": "Madrid",
+      "place": "Madrid, Spain",
+      "relationship": "Live cloud region eu-south1. Spain also appears on the Q3 2026 capacity map.",
+      "status": "Serving.",
+      "cloudRegions": [
+        "eu-south1"
+      ],
+      "capacity": "Not disclosed.",
+      "dates": "Region listed as available on November 23, 2026. Announcement date of the site was not extracted.",
+      "pin": {
+        "lat": 40.4168,
+        "lon": -3.7038,
+        "precision": "City centroid of Madrid."
+      },
+      "scenes": [],
+      "sources": [
+        "regions",
+        "shl-q3-2026"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "independence",
+      "name": "Independence, Missouri",
+      "place": "Independence, Missouri, United States",
+      "relationship": "Owned AI factory, distinct from the Kansas City colocation.",
+      "status": "Announced. Not in the live regions list.",
+      "cloudRegions": [],
+      "capacity": "Described as 1.2 GW on May 13, 2026. On November 12, 2026 the company said a Missouri site was 1.1 GW under contract after a 300 MW expansion.",
+      "dates": "Named May 13, 2026. The Q3 2026 letter also lists Missouri among owned sites expected to deploy capacity in 2027.",
+      "pin": {
+        "lat": 39.0911,
+        "lon": -94.4155,
+        "precision": "City centroid of Independence. No street address was published."
+      },
+      "scenes": [],
+      "sources": [
+        "shl-q1-2026",
+        "shl-q3-2026"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "alabama",
+      "name": "Alabama",
+      "place": "Alabama, United States",
+      "relationship": "Owned site named for 2027 deployment.",
+      "status": "Announced February 12, 2026 among new sites. Not a live cloud region in the regions document.",
+      "cloudRegions": [],
+      "capacity": "Not disclosed.",
+      "dates": "2027 deployment named on November 12, 2026.",
+      "pin": null,
+      "scenes": [],
+      "sources": [
+        "shl-q4-2025",
+        "shl-q3-2026"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "oklahoma",
+      "name": "Oklahoma",
+      "place": "Oklahoma, United States",
+      "relationship": "Named as a new site.",
+      "status": "Announced February 12, 2026. Not in the live regions list.",
+      "cloudRegions": [],
+      "capacity": "Not disclosed.",
+      "dates": "No in-service date extracted.",
+      "pin": null,
+      "scenes": [],
+      "sources": [
+        "shl-q4-2025",
+        "shl-q3-2026"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "pennsylvania",
+      "name": "Pennsylvania",
+      "place": "Pennsylvania, United States",
+      "relationship": "Owned AI factory.",
+      "status": "Announced. Not a live cloud region.",
+      "cloudRegions": [],
+      "capacity": "Up to 1.2 GW.",
+      "dates": "Announced May 13, 2026. Phases beginning in 2027. Municipality not named.",
+      "pin": null,
+      "scenes": [],
+      "sources": [
+        "pr-q1-2026",
+        "shl-q1-2026"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "south-carolina",
+      "name": "South Carolina",
+      "place": "South Carolina, United States",
+      "relationship": "Colocation. Described as the eighth US site.",
+      "status": "Announced November 12, 2026.",
+      "cloudRegions": [],
+      "capacity": "50 MW.",
+      "dates": "Announced in the Q3 2026 letter. City not named.",
+      "pin": null,
+      "scenes": [],
+      "sources": [
+        "shl-q3-2026"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "estonia",
+      "name": "Estonia",
+      "place": "Estonia",
+      "relationship": "Named on the Q3 2026 capacity map.",
+      "status": "Shown on the map. Not in the live regions list.",
+      "cloudRegions": [],
+      "capacity": "Not disclosed.",
+      "dates": "Map dated November 12, 2026.",
+      "pin": null,
+      "scenes": [],
+      "sources": [
+        "shl-q3-2026"
+      ],
+      "notes": "The map is a company graphic. City and megawatts were not in the prose that was reviewed."
+    },
+    {
+      "id": "alberta",
+      "name": "Alberta",
+      "place": "Alberta, Canada",
+      "relationship": "Named on the Q3 2026 capacity map.",
+      "status": "Shown on the map. Not in the live regions list.",
+      "cloudRegions": [],
+      "capacity": "Not disclosed.",
+      "dates": "Map dated November 12, 2026.",
+      "pin": null,
+      "scenes": [],
+      "sources": [
+        "shl-q3-2026"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "india",
+      "name": "India",
+      "place": "India",
+      "relationship": "Named on the Q3 2026 capacity map.",
+      "status": "Shown on the map. Not in the live regions list.",
+      "cloudRegions": [],
+      "capacity": "Not disclosed.",
+      "dates": "Map dated November 12, 2026.",
+      "pin": null,
+      "scenes": [],
+      "sources": [
+        "shl-q3-2026"
+      ],
+      "notes": ""
+    }
+  ]
+}

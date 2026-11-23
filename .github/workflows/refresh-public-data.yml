@@ -1,0 +1,37 @@
+name: Refresh public data
+
+on:
+  schedule:
+    - cron: "0 7 * * *"
+  workflow_dispatch:
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run fetch:prices
+      - run: npm run fetch:quote
+        env:
+          FINNHUB_API_KEY: ${{ secrets.FINNHUB_API_KEY }}
+          ALPHAVANTAGE_API_KEY: ${{ secrets.ALPHAVANTAGE_API_KEY }}
+      - run: sudo apt-get update && sudo apt-get install -y gdal-bin
+      - run: npm run fetch:satellite
+      - name: Commit snapshots
+        run: |
+          git config user.name "nbismodel-refresh"
+          git config user.email "nbismodel-refresh@users.noreply.github.com"
+          git add data public/satellites
+          if git diff --cached --quiet; then
+            echo "No data changes"
+          else
+            git commit -m "Refresh public price, quote, and satellite snapshots"
+            git push
+          fi
