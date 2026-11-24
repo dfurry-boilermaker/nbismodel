@@ -140,6 +140,8 @@ button:not(:disabled), summary { cursor: pointer; }
 .app-main :is(.rounded-xl, .rounded-lg, .rounded-md, .rounded) { border-radius: 0; }
 .app-main article { transition: border-color .2s; }
 .app-main article:hover { border-color: #516d81; }
+.app-main figure { min-width: 0; }
+.app-main figcaption { overflow-wrap: anywhere; }
 .app-main label > span:first-child { font-family: var(--font-mono); font-size: 11px; }
 .app-main label > span:last-child { line-height: 1.65; }
 .app-main label { min-width: 0; }
