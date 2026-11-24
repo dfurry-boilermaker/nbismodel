@@ -46,9 +46,11 @@ export default function MethodologyPage() {
         show up in secondary transcripts. They were not in the shareholder-letter text
         extracted for this version, so they are not in the tracker. Actual 2025 capex of
         $4,066 million and revenue of $529.8 million are on the financials page, from the
-        earnings release. GPU counts, other than the company&apos;s own &quot;up to 60,000
-        H100-equivalent&quot; capacity remark about Finland, were not scored. Peer GPU prices
-        were not collected.
+        earnings release. A full-year 2026 range of $3.0–3.2 billion is sometimes attributed
+        to the November 12, 2026 call. The furnished letter says the low end of $3.0–3.4
+        billion. No call transcript was furnished on EDGAR through November 24, 2026, so the
+        narrower range is not given a row. GPU counts, other than the company&apos;s own
+        &quot;up to 60,000 H100-equivalent&quot; capacity remark about Finland, were not scored.
       </p>
       <h2 className="text-lg font-medium text-foreground">Prices</h2>
       <p>
@@ -69,18 +71,57 @@ export default function MethodologyPage() {
         20 closes. The band is price × exp(±1.96 × volatility × sqrt(days / 252)), with zero
         drift. Implied volatility has no feed.
       </p>
-      <h2 className="text-lg font-medium text-foreground">Long-term model</h2>
+      <h2 className="text-lg font-medium text-foreground">Long-term model, version 2.0.0</h2>
       <p>
-        FCFF equals EBITDA minus tax minus capex. Tax is the tax rate times positive EBITDA,
-        because depreciation is not forecast; the default rate is zero, so the term is zero
-        until you change it. 2026 and 2027 revenue and capex start from the November 12, 2026
-        guidance. The 2027 revenue and capex midpoints are averages of the stated ranges, and
-        the page says so. Margin after 2026, growth after 2027, the later capex ratio, WACC,
-        and terminal growth are assumptions with amber badges. Cash flows sit on December 31
-        and are discounted from November 23, 2026 by actual days over 365. Terminal value is
-        next year&apos;s FCFF divided by WACC minus growth. Equity value subtracts debt minus
-        cash. The share count is the basic count on September 30, 2026, not a diluted count.
-        Convertible notes are in the debt number and are not also turned into shares.
+        The prior model on this site was an unversioned five-year free-cash-flow sketch. On
+        the same November 2026 guidance it produced -$182.00 per basic share in the company
+        case, -$350.13 in the bear case, and $27.47 in the bull case. It subtracted all
+        capex, held a 40% margin, and put a Gordon terminal value on whatever free cash flow
+        was left. It did not split non-recurring revenue, did not depreciate servers over the
+        disclosed five-year life, and counted the convertible notes as debt without also
+        showing the shares they can become. Figures of $0, $92.74, $579.33, and $162.23 are
+        not what that code calculated.
+      </p>
+      <p>
+        Version 2.0.0 keeps free cash flow equal to EBITDA minus capex. Tax stays at zero
+        because the company has not guided a cash tax rate, so depreciation does not change
+        free cash flow. Depreciation is still computed. Servers and network equipment use the
+        five-year life disclosed in the November 12, 2026 financial statements. The
+        server-and-network share of capex is not disclosed; the model uses 85% and shows 70%
+        and 100% beside it. The other 15% is depreciated over 15 years, which is an assumption.
+        Opening gross plant is estimated by annualizing third-quarter depreciation of $354.7
+        million and multiplying by those lives.
+      </p>
+      <p>
+        2026 in the forecast is only the rest of the year: the $3.0 billion and $27 billion
+        guides minus the nine months already reported. 2027 uses the outlook ranges. The bear
+        case takes the low revenue and the high capex. The base case takes the midpoints. The
+        bull case takes the high revenue and the low capex, then a lower capex path that the
+        company did not guide. It does not use the $3.4 billion top of the 2026 range, because
+        the letter says the company expects the low end. It also does not multiply the
+        disclosed new-deal price, above $25 million of annual contract value per megawatt, by
+        planned gigawatts. That product is far above the $12–13 billion revenue outlook.
+      </p>
+      <p>
+        If replacement capex on the estimated gross base is larger than EBITDA, the terminal
+        value is a five-year run-off of exit EBITDA with no further capex. A Gordon growth
+        value is used only when maintenance free cash flow is positive. Equity value is
+        enterprise value minus carrying debt plus unrestricted cash. Restricted cash of
+        $1,215.5 million is not subtracted from debt. The October 2026 Citi facility is a
+        $3.5 billion commitment whose drawn amount was not disclosed, so it is not in the debt.
+        One bridge leaves the notes outstanding. The other removes their carrying value and
+        adds the shares at the initial conversion rates. The headline bear and base cases
+        leave the notes outstanding. The headline bull case share-settles them. The weighted
+        figure uses 25%, 50%, and 25%. Those weights are an assumption.
+      </p>
+      <p>
+        The residual funding need is capex minus EBITDA minus the stated 2027 coverage, after
+        unrestricted cash. It is already in free cash flow as capex, so it is not subtracted a
+        second time. Shares are added for that residual only if it would clear at the $223.90
+        reference price from the August 2026 notes. In the published cases that price is above
+        the model&apos;s per-share arithmetic, so no new shares are added. The result is negative
+        in every published case. It is not floored at zero, and it is not a statement that the
+        shares trade at zero. Cash flows are discounted from November 24, 2026.
       </p>
       <h2 className="text-lg font-medium text-foreground">Satellite images</h2>
       <p>

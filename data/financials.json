@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "unit": "USD millions, except share counts which are labeled in the row",
-  "retrievedAt": "2026-11-23",
+  "retrievedAt": "2026-11-24",
   "cik": "0001513845",
   "forms": "Nebius Group N.V. is a foreign private issuer. It files Forms 20-F and 6-K with the SEC. It does not file Forms 10-Q or 10-K. Quarterly figures below come from earnings releases and shareholder letters linked from nebius.com/financials, which the company also furnishes on Form 6-K. Annual segment figures come from the Form 20-F for the year ended December 31, 2025.",
   "sources": {
@@ -140,7 +140,7 @@
     "osm": {
       "id": "osm",
       "url": "https://www.openstreetmap.org/way/846760920",
-      "title": "OpenStreetMap way 846760920, Global DC OY / M\u00e4nts\u00e4l\u00e4",
+      "title": "OpenStreetMap way 846760920, Global DC OY / Mäntsälä",
       "date": "2026-11-23"
     },
     "edgar": {
@@ -172,6 +172,30 @@
       "url": "https://openrouter.ai/api/v1/models",
       "title": "OpenRouter models API",
       "date": "2026-11-23"
+    },
+    "fs-q3-2026": {
+      "id": "fs-q3-2026",
+      "url": "https://www.sec.gov/Archives/edgar/data/1513845/000110465926126238/nbis-ex99d2.htm",
+      "title": "Unaudited financial statements, Exhibit 99.2 to the November 12, 2026 Form 6-K",
+      "date": "2026-11-12"
+    },
+    "ofr-q3-2026": {
+      "id": "ofr-q3-2026",
+      "url": "https://www.sec.gov/Archives/edgar/data/1513845/000110465926126238/nbis-ex99d1.htm",
+      "title": "Operating and financial review, Exhibit 99.1 to the November 12, 2026 Form 6-K",
+      "date": "2026-11-12"
+    },
+    "6k-citi": {
+      "id": "6k-citi",
+      "url": "https://www.sec.gov/Archives/edgar/data/1513845/000110465926117978/tm2628078d1_ex99-1.htm",
+      "title": "Citi $3.5 billion facility announcement, Exhibit 99.1 to Form 6-K",
+      "date": "2026-10-22"
+    },
+    "424b5-2025-11-12": {
+      "id": "424b5-2025-11-12",
+      "url": "https://www.sec.gov/Archives/edgar/data/1513845/000110465925110025/tm2530771-1_424b5.htm",
+      "title": "Prospectus supplement filed November 12, 2025",
+      "date": "2025-11-12"
     }
   },
   "quarters": [
@@ -668,34 +692,36 @@
       "reportedAt": "2026-11-12",
       "revenue": {
         "value": 980.8,
-        "source": "pr-q3-2026",
-        "basis": "The letter rounds this to $981 million and says about $325 million was non-recurring asset-light revenue."
+        "source": "fs-q3-2026",
+        "basis": "Reported group revenue. The operating review in the same Form 6-K says Nebius AI cloud revenue included $325.1 million of strategic-partnership revenue, and that this revenue is non-recurring in nature. The shareholder letter rounds that amount to about $325 million. Recurring group revenue is 980.8 − 325.1 = 655.7, a calculation on this site."
       },
       "adjustedEbitda": {
         "value": 465.8,
-        "source": "pr-q3-2026"
+        "source": "fs-q3-2026"
       },
       "netIncome": {
         "value": -37.5,
-        "source": "pr-q3-2026",
+        "source": "fs-q3-2026",
         "basis": "Net loss from continuing operations."
       },
       "capex": {
         "value": -7300.4,
-        "source": "pr-q3-2026"
+        "source": "fs-q3-2026",
+        "basis": "Purchases of property and equipment and intangible assets for the quarter. Nine-month purchases were $15,430.7 million; the quarter is the nine-month total minus the first half."
       },
       "cash": {
         "value": 7425.6,
-        "source": "pr-q3-2026",
-        "basis": "Cash and cash equivalents, September 30, 2026. The cash-flow statement also shows cash and restricted cash combined of $8,641.1 million. The difference is not given its own balance-sheet caption in the text that was parsed, so restricted cash is not stored as its own figure."
+        "source": "fs-q3-2026",
+        "basis": "Cash and cash equivalents. Restricted cash is a separate line below, $1,215.5 million. Combined cash and restricted cash were $8,641.1 million."
       },
       "debtCurrent": {
         "value": 187.5,
-        "source": "pr-q3-2026"
+        "source": "fs-q3-2026"
       },
       "debtNonCurrent": {
         "value": 14003.3,
-        "source": "pr-q3-2026"
+        "source": "fs-q3-2026",
+        "basis": "Carrying amount. The instrument-level principal, coupons, conversion prices, and maturities are in the capital-structure table."
       },
       "arr": {
         "value": 6400,
@@ -707,8 +733,8 @@
           "name": "Nebius AI cloud",
           "metric": {
             "value": 973.8,
-            "source": "shl-q3-2026",
-            "basis": "About 99% of group revenue. The letter states a 53% adjusted EBITDA margin for AI cloud. Segment adjusted EBITDA in dollars was not stated."
+            "source": "ofr-q3-2026",
+            "basis": "About 99% of group revenue. Of this, $325.1 million was strategic-partnership revenue. Recurring AI-cloud revenue is 973.8 − 325.1 = 648.7, a calculation on this site."
           }
         }
       ],
@@ -735,6 +761,62 @@
             "value": 4000,
             "source": "shl-q3-2026",
             "basis": "Megawatts, a floor. The letter says more than 4 GW contracted, with an expectation of 5 GW by year-end 2026."
+          }
+        },
+        {
+          "label": "Strategic-partnership revenue, non-recurring",
+          "metric": {
+            "value": 325.1,
+            "source": "ofr-q3-2026",
+            "basis": "Included in Nebius AI cloud revenue. The letter says approximately $325 million. Nine-month strategic-partnership revenue was $409.1 million, so the first half was $84.0 million combined. The filing does not split that $84.0 million between Q1 and Q2."
+          }
+        },
+        {
+          "label": "Recurring group revenue",
+          "metric": {
+            "value": 655.7,
+            "source": "ofr-q3-2026",
+            "basis": "Calculated on this site as reported revenue of $980.8 million minus strategic-partnership revenue of $325.1 million. Not a line the company printed."
+          }
+        },
+        {
+          "label": "Nebius AI cloud adjusted EBITDA",
+          "metric": {
+            "value": 518.2,
+            "source": "shl-q3-2026",
+            "basis": "The letter states $518.2 million and a 53.2% adjusted EBITDA margin. 518.2 / 973.8 is 53.2%."
+          }
+        },
+        {
+          "label": "Restricted cash",
+          "metric": {
+            "value": 1215.5,
+            "source": "fs-q3-2026",
+            "basis": "Restricted cash and cash equivalents at September 30, 2026. Not included in the $7,425.6 million cash line."
+          }
+        },
+        {
+          "label": "Deferred revenue, current",
+          "metric": {
+            "value": 1445.5,
+            "source": "fs-q3-2026",
+            "basis": "September 30, 2026."
+          }
+        },
+        {
+          "label": "Deferred revenue, non-current",
+          "metric": {
+            "value": 7963.7,
+            "source": "fs-q3-2026",
+            "basis": "September 30, 2026. Together with the current portion, deferred revenue is $9,409.2 million."
+          }
+        },
+        {
+          "label": "Server and network useful life",
+          "metric": {
+            "value": 5,
+            "source": "fs-q3-2026",
+            "basis": "Years, revised from four years effective January 1, 2026. The change reduced depreciation by $43.1 million in the quarter and $129.2 million in the nine months."
           }
         }
       ]

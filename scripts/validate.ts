@@ -1,7 +1,7 @@
 import { readFileSync } from "node:fs";
 import { financials, guidance } from "../lib/load";
 import { scoreGuidance } from "../lib/guidance";
-import { runDcf, COMPANY_CASE } from "../lib/dcf";
+import { BASIC_ECONOMIC_SHARES, CONVERT_SHARES, MODEL_VERSION, runCase, weightedValue } from "../lib/dcf";
 import { priceBand } from "../lib/vol";
 
 const ids = new Set(Object.keys(financials.sources));
@@ -41,8 +41,19 @@ if (!december || scoreGuidance(december, "2026-11-23").status !== "superseded") 
   throw new Error("December 2026 ARR should be superseded");
 }
 
-const dcf = runDcf(COMPANY_CASE);
-if (!dcf.ok || !Number.isFinite(dcf.perShare)) throw new Error("DCF did not run");
+if (MODEL_VERSION !== "2.0.0") throw new Error(`model version ${MODEL_VERSION}`);
+if (CONVERT_SHARES !== 68_112_588) throw new Error(`convert shares ${CONVERT_SHARES}`);
+if (BASIC_ECONOMIC_SHARES !== 313_968_341) throw new Error(`basic shares ${BASIC_ECONOMIC_SHARES}`);
+const base = runCase("base");
+const bear = runCase("bear");
+const bull = runCase("bull");
+if (!(base.bridges.none.perShare < 0 && bear.bridges.none.perShare < base.bridges.none.perShare && bull.bridges.all.perShare < 0)) {
+  throw new Error(`case signs ${bear.bridges.none.perShare} ${base.bridges.none.perShare} ${bull.bridges.all.perShare}`);
+}
+const weighted = weightedValue([bear, base, bull]);
+if (!Number.isFinite(weighted) || weighted >= 0) throw new Error(`weighted ${weighted}`);
+const recurring = financials.quarters.find((quarter) => quarter.id === "2026-Q3")?.other.find((row) => row.label === "Recurring group revenue");
+if (!recurring || Math.abs((recurring.metric.value ?? 0) - 655.7) > 0.05) throw new Error("Q3 recurring revenue");
 const band = priceBand({ price: 100, annualVol: 0.8, horizonDays: 5, z: 1.96 });
 if ("error" in band || !(band.low < 100 && band.high > 100)) throw new Error("Vol band");
 
@@ -50,4 +61,12 @@ const gpu = JSON.parse(readFileSync("data/pricing/gpu.json", "utf8"));
 const h100 = gpu.snapshots.at(-1).rows.find((row: { item: string; term: string }) => row.item.includes("H100") && row.term === "on-demand" && !row.item.startsWith("Preempt"));
 if (!h100 || h100.priceUsd !== 4.5) throw new Error(`H100 price ${h100?.priceUsd}`);
 
-console.log("validate ok", { perShare: dcf.perShare, band });
+console.log("validate ok", {
+  version: MODEL_VERSION,
+  bear: bear.bridges.none.perShare,
+  base: base.bridges.none.perShare,
+  baseConverted: base.bridges.all.perShare,
+  bull: bull.bridges.all.perShare,
+  weighted,
+  band,
+});

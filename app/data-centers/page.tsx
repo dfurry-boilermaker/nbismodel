@@ -12,10 +12,11 @@ export default function DataCentersPage() {
         <div className="eyebrow">/ 03 / Infrastructure</div>
         <h1 className="text-3xl font-semibold text-accent">Data centers</h1>
         <p className="mt-3 max-w-3xl text-sm leading-6 text-muted">
-          Sites named by Nebius in shareholder letters, the March 5, 2025 capacity post, or the
-          live AI Cloud regions document retrieved November 23, 2026. Megawatts are blank when
-          the company did not state them. Secondary catalogs that publish their own megawatt
-          guesses are not used.
+          Sites named by Nebius in shareholder letters, the March 5, 2025 capacity post, the
+          November 12, 2025 prospectus supplement, or the live AI Cloud regions document.
+          Each site splits megawatts into contracted or planned, operational, and energized.
+          A blank cell means that category was not disclosed for that site. Secondary catalogs
+          are not used.
         </p>
         <p className="mt-3 rounded-md border border-amber/40 bg-amber/10 p-3 text-sm text-amber">
           {centers.imageryNote}
@@ -26,7 +27,7 @@ export default function DataCentersPage() {
         <table className="w-full min-w-[880px] text-left text-sm">
           <thead className="bg-panel text-xs uppercase tracking-wide text-muted">
             <tr>
-              {["Site", "Relationship", "Status", "Capacity", "Dates", "Sources"].map((heading) => (
+              {["Site", "Relationship", "Contracted or planned", "Operational", "Energized", "Dates"].map((heading) => (
                 <th key={heading} className="px-3 py-2 font-medium">{heading}</th>
               ))}
             </tr>
@@ -40,19 +41,22 @@ export default function DataCentersPage() {
                   <div className="text-xs text-muted">
                     {site.cloudRegions.length ? site.cloudRegions.join(", ") : "No live region code"}
                   </div>
+                  <div className="mt-1 text-xs">{site.status}</div>
+                  <div className="mt-1 text-xs">
+                    {site.sources.map((id) => (
+                      <span key={id} className="mr-2">
+                        <SourceA source={id} sources={centers.sources}>{centers.sources[id]?.date ?? id}</SourceA>
+                      </span>
+                    ))}
+                  </div>
                 </td>
                 <td className="px-3 py-3 text-muted">{site.relationship}</td>
-                <td className="px-3 py-3">{site.status}</td>
-                <td className="px-3 py-3">{site.capacity}</td>
-                <td className="px-3 py-3 text-muted">{site.dates}</td>
-                <td className="px-3 py-3">
-                  {site.sources.map((id) => (
-                    <div key={id}>
-                      <SourceA source={id} sources={centers.sources}>
-                        {centers.sources[id]?.title ?? id}
-                      </SourceA>
-                    </div>
-                  ))}
+                <Mw cell={site.mw.contractedOrPlanned} />
+                <Mw cell={site.mw.operational} />
+                <Mw cell={site.mw.energized} />
+                <td className="px-3 py-3 text-muted">
+                  {site.dates}
+                  <span className="mt-1 block text-xs">{site.capacity}</span>
                 </td>
               </tr>
             ))}
@@ -91,5 +95,18 @@ export default function DataCentersPage() {
         </p>
       </section>
     </div>
+  );
+}
+
+function Mw({ cell }: { cell: { value: number | null; source: string; note: string } }) {
+  return (
+    <td className="px-3 py-3 align-top text-sm">
+      {cell.value == null ? (
+        <span className="text-amber">Not disclosed</span>
+      ) : (
+        <SourceA source={cell.source} sources={centers.sources}>{cell.value.toLocaleString("en-US")} MW</SourceA>
+      )}
+      <span className="mt-1 block text-xs text-muted">{cell.note}</span>
+    </td>
   );
 }

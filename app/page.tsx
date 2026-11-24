@@ -5,12 +5,17 @@ import { DcfModel } from "@/components/dcf-model";
 import { VolModel } from "@/components/vol-model";
 import { Orbit, PixelWord, ResearchArt } from "@/components/research-art";
 import { centers, feeds, financials, guidance, quotes } from "@/lib/load";
-import { COMPANY_CASE, runDcf } from "@/lib/dcf";
+import { MODEL_VERSION, allCases, headlineValue, weightedValue } from "@/lib/dcf";
 import { scoreGuidance, STATUS_TONE } from "@/lib/guidance";
-import { formatCompactUsd } from "@/lib/utils";
+
+function dollars(value: number): string {
+  const sign = value < 0 ? "-" : "";
+  return `${sign}$${Math.abs(value).toLocaleString("en-US", { maximumFractionDigits: 0 })}`;
+}
 
 export default function HomePage() {
-  const dcf = runDcf(COMPANY_CASE);
+  const cases = allCases();
+  const weighted = weightedValue(cases);
   const lastQuote = quotes.points.at(-1);
   const scored = guidance.items.map((item) => ({ item, score: scoreGuidance(item, guidance.asOf) }));
   return (
@@ -55,8 +60,8 @@ export default function HomePage() {
             <ResearchArt variant="wave" figure="2" />
             <div className="feature-copy">
               <h2>Beyond<br />the share price.</h2>
-              {dcf.ok ? <div className="feature-value">{formatCompactUsd(dcf.perShare)}</div> : <p className="text-bad">{dcf.reason}</p>}
-              <p className="feature-note">Modeled value per basic share. Guided revenue, explicit assumptions, and the math behind them. Not a price target.</p>
+              <div className="feature-value">{dollars(weighted)}</div>
+              <p className="feature-note">Model {MODEL_VERSION} weighted arithmetic per share. Bear {dollars(headlineValue(cases[0]))}, base {dollars(headlineValue(cases[1]))}, bull {dollars(headlineValue(cases[2]))}. Not a price target. A negative figure is not floored at zero.</p>
               <Link href="/models" className="pill-link">Inspect the inputs <span aria-hidden="true">↗</span></Link>
             </div>
           </div>
@@ -80,7 +85,7 @@ export default function HomePage() {
           <aside className="research-aside">
             <div className="section-label">/ Reading the signals</div>
             <p>Company guidance, measured against reported results. Every revision is dated. Every status has a reason.</p>
-            <p>Missing numbers stay missing. We never fill the gaps with estimates.</p>
+            <p>Missing reported numbers stay missing. Estimates appear only in the model, and each one is labeled.</p>
             <div className="aside-links"><Link href="/guidance">[↗] Guidance history</Link><Link href="/methodology">[↗] How we score it</Link></div>
           </aside>
           <div className="overflow-x-auto scorecard">

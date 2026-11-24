@@ -84,7 +84,7 @@ The GitHub Action needs permission to push, and `FINNHUB_API_KEY` or `ALPHAVANTA
 
 The short-term band is a zero-drift lognormal range from realized or typed volatility. It does not use a stored price until the quote file has at least 20 closes.
 
-The long-term model is a five-year free-cash-flow forecast discounted from November 23, 2026, plus a Gordon terminal value. The company case uses the November 12, 2026 guidance for 2026 and 2027. Margin after 2026, later growth, the capex ratio after 2027, WACC, and terminal growth are labeled assumptions and can be edited in the browser. The math is on the models page. It is not a price target.
+The long-term model is version 2.0.0. It discounts the rest of 2026 and four later years from November 24, 2026. 2026 and 2027 start from the November 12, 2026 outlook. Bear, base, and bull are labeled on the models page, with a 25/50/25 weighted figure that is an assumption. Convertible notes are shown both as debt and as shares. The result is negative in every published case and is not floored at zero. It is not a price target.
 
 ### Half-hour NBIS quote
 

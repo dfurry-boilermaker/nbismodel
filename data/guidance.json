@@ -1,9 +1,11 @@
 {
   "schemaVersion": 1,
-  "retrievedAt": "2026-11-23",
-  "asOf": "2026-11-23",
+  "retrievedAt": "2026-11-24",
+  "asOf": "2026-11-24",
   "omitted": [
-    "A 2025 capex raise to about $5 billion, and a FY 2025 revenue range of $500\u2013550 million, are widely attributed to the November 11, 2025 earnings call. They were not found in the shareholder-letter or earnings-release text extracted for this version, so they are omitted rather than copied from secondary coverage.",
+    "A full-year 2026 revenue range of $3.0–3.2 billion is sometimes attributed to the November 12, 2026 earnings call. The furnished shareholder letter and earnings release say the company expects the low end of the existing $3.0–3.4 billion range. No earnings-call transcript was furnished on EDGAR through November 24, 2026, so a $3.0–3.2 billion call figure is not given a row.",
+    "A 2025 capex raise to about $5 billion, and a FY 2025 revenue range of $500–550 million, are widely attributed to the November 11, 2025 earnings call. They were not in the shareholder letter or earnings release extracted for this version.",
+    "The server-and-network share of capex is not disclosed. The model uses 85% as an estimate and shows 70% and 100% beside it.",
     "GPU-count deployment targets beyond the Finland 'up to 60,000 H100-equivalent' capacity statement were not found as dated guidance with a later actual."
   ],
   "sources": {
@@ -142,7 +144,7 @@
     "osm": {
       "id": "osm",
       "url": "https://www.openstreetmap.org/way/846760920",
-      "title": "OpenStreetMap way 846760920, Global DC OY / M\u00e4nts\u00e4l\u00e4",
+      "title": "OpenStreetMap way 846760920, Global DC OY / Mäntsälä",
       "date": "2026-11-23"
     },
     "edgar": {
@@ -174,6 +176,30 @@
       "url": "https://openrouter.ai/api/v1/models",
       "title": "OpenRouter models API",
       "date": "2026-11-23"
+    },
+    "ofr-q3-2026": {
+      "id": "ofr-q3-2026",
+      "url": "https://www.sec.gov/Archives/edgar/data/1513845/000110465926126238/nbis-ex99d1.htm",
+      "title": "Operating and financial review, Exhibit 99.1 to the November 12, 2026 Form 6-K",
+      "date": "2026-11-12"
+    },
+    "fs-q3-2026": {
+      "id": "fs-q3-2026",
+      "url": "https://www.sec.gov/Archives/edgar/data/1513845/000110465926126238/nbis-ex99d2.htm",
+      "title": "Unaudited financial statements, Exhibit 99.2 to the November 12, 2026 Form 6-K",
+      "date": "2026-11-12"
+    },
+    "6k-citi": {
+      "id": "6k-citi",
+      "url": "https://www.sec.gov/Archives/edgar/data/1513845/000110465926117978/tm2628078d1_ex99-1.htm",
+      "title": "Citi $3.5 billion facility announcement, Exhibit 99.1 to Form 6-K",
+      "date": "2026-10-22"
+    },
+    "424b5-2025-11-12": {
+      "id": "424b5-2025-11-12",
+      "url": "https://www.sec.gov/Archives/edgar/data/1513845/000110465925110025/tm2530771-1_424b5.htm",
+      "title": "Prospectus supplement filed November 12, 2025",
+      "date": "2025-11-12"
     }
   },
   "items": [
@@ -185,7 +211,7 @@
       "revisions": [
         {
           "date": "2025-05-20",
-          "label": "$750\u20131,000 million",
+          "label": "$750–1,000 million",
           "low": 750,
           "high": 1000,
           "periodEnd": "2025-12-31",
@@ -195,13 +221,13 @@
         },
         {
           "date": "2025-08-07",
-          "label": "$900\u20131,100 million",
+          "label": "$900–1,100 million",
           "low": 900,
           "high": 1100,
           "periodEnd": "2025-12-31",
           "source": "pr-q2-2025",
           "change": "raised",
-          "note": "Raised from $750 million\u2013$1.0 billion. The Q4 2025 letter still describes $900 million\u2013$1.1 billion as the most recent guidance this result was measured against."
+          "note": "Raised from $750 million–$1.0 billion. The Q4 2025 letter still describes $900 million–$1.1 billion as the most recent guidance this result was measured against."
         }
       ],
       "actual": {
@@ -219,7 +245,7 @@
       "revisions": [
         {
           "date": "2025-11-11",
-          "label": "$7\u20139 billion by December 2026",
+          "label": "$7–9 billion by December 2026",
           "low": 7000,
           "high": 9000,
           "periodEnd": "2026-12-31",
@@ -229,7 +255,7 @@
         },
         {
           "date": "2026-02-12",
-          "label": "Reaffirmed $7\u20139 billion",
+          "label": "Reaffirmed $7–9 billion",
           "low": 7000,
           "high": 9000,
           "periodEnd": "2026-12-31",
@@ -239,7 +265,7 @@
         },
         {
           "date": "2026-05-13",
-          "label": "Still shown as $7\u20139 billion",
+          "label": "Still shown as $7–9 billion",
           "low": 7000,
           "high": 9000,
           "periodEnd": "2026-12-31",
@@ -265,7 +291,7 @@
           "periodEnd": "2026-12-31",
           "source": "shl-q3-2026",
           "change": "replaced",
-          "note": "The company said it had guided to $7\u20139 billion by December and now expects ARR to exceed $7 billion for the month of February, a shift of about two months. From 2027 it will guide revenue, pre-tax earnings, and capacity instead of ARR."
+          "note": "The company said it had guided to $7–9 billion by December and now expects ARR to exceed $7 billion for the month of February, a shift of about two months. From 2027 it will guide revenue, pre-tax earnings, and capacity instead of ARR."
         }
       ],
       "actual": {
@@ -307,7 +333,7 @@
       "revisions": [
         {
           "date": "2026-05-13",
-          "label": "$3.0\u20133.4 billion",
+          "label": "$3.0–3.4 billion",
           "low": 3000,
           "high": 3400,
           "periodEnd": "2026-12-31",
@@ -327,13 +353,13 @@
         },
         {
           "date": "2026-11-12",
-          "label": "Low end of $3.0\u20133.4 billion",
+          "label": "Low end of the $3.0–3.4 billion range",
           "low": 3000,
-          "high": 3000,
+          "high": 3400,
           "periodEnd": "2026-12-31",
           "source": "shl-q3-2026",
           "change": "cut",
-          "note": "Some third-party capacity moved into the first half of 2027. The company now expects revenue at the low end of the existing range. The $3.4 billion top of the range was not withdrawn as a range, but it is no longer the expectation."
+          "note": "The furnished November 12, 2026 letter says some third-party capacity moved into the first half of 2027 and the company now expects revenue at the low end of the existing $3.0–3.4 billion range. The top of the range was not withdrawn. A narrower $3.0–3.2 billion range was not in the furnished letter or release. No call transcript was furnished on EDGAR through November 24, 2026."
         }
       ],
       "actual": {
@@ -380,7 +406,7 @@
       "revisions": [
         {
           "date": "2026-11-12",
-          "label": "Previous range $20\u201325 billion",
+          "label": "Previous range $20–25 billion",
           "low": 20000,
           "high": 25000,
           "periodEnd": "2026-12-31",
@@ -396,7 +422,7 @@
           "periodEnd": "2026-12-31",
           "source": "shl-q3-2026",
           "change": "raised",
-          "note": "Above the $20\u201325 billion range, as the company invests in 2027 capacity at owned sites. This is capex guidance, not the separate $27 billion Meta agreement described in the Q1 2026 letter."
+          "note": "Above the $20–25 billion range, as the company invests in 2027 capacity at owned sites. This is capex guidance, not the separate $27 billion Meta agreement described in the Q1 2026 letter."
         }
       ],
       "actual": {
@@ -414,13 +440,13 @@
       "revisions": [
         {
           "date": "2026-11-12",
-          "label": "$40\u201345 billion",
+          "label": "$40–45 billion",
           "low": 40000,
           "high": 45000,
           "periodEnd": "2027-12-31",
           "source": "shl-q3-2026",
           "change": "initial",
-          "note": "Initial 2027 outlook. Sized for more than 1 GW of new capacity. The company expects to cover 75\u201385% through prepayments and asset-backed financing from investment-grade customers, plus the balance sheet."
+          "note": "Initial 2027 outlook. Sized for more than 1 GW of new capacity. The company expects to cover 75–85% through prepayments and asset-backed financing from investment-grade customers, plus the balance sheet."
         }
       ],
       "actual": null
@@ -433,7 +459,7 @@
       "revisions": [
         {
           "date": "2026-11-12",
-          "label": "$12\u201313 billion",
+          "label": "$12–13 billion",
           "low": 12000,
           "high": 13000,
           "periodEnd": "2027-12-31",
@@ -652,7 +678,7 @@
         "value": null,
         "asOf": "2026-11-12",
         "source": "shl-q3-2026",
-        "note": "Later letters do not state the megawatts in service at M\u00e4nts\u00e4l\u00e4."
+        "note": "Later letters do not state the megawatts in service at Mäntsälä."
       }
     },
     {
@@ -696,7 +722,7 @@
     },
     {
       "id": "iceland-10mw",
-      "title": "Keflav\u00edk 10 MW cluster",
+      "title": "Keflavík 10 MW cluster",
       "unit": "MW",
       "kind": "point",
       "revisions": [
@@ -781,6 +807,44 @@
           "source": "shl-q3-2026",
           "change": "initial",
           "note": "Stated with the 2027 outlook. No single year is the measurement period yet."
+        }
+      ],
+      "actual": null
+    },
+    {
+      "id": "prepay-2026",
+      "title": "Committed customer prepayments, 2026",
+      "unit": "USD millions",
+      "kind": "point",
+      "revisions": [
+        {
+          "date": "2026-11-12",
+          "label": "$10 billion",
+          "low": 10000,
+          "high": 10000,
+          "periodEnd": "2026-12-31",
+          "source": "shl-q3-2026",
+          "change": "initial",
+          "note": "The letter says the company expects $10 billion in committed customer prepayments in 2026. Deferred revenue on the balance sheet is the portion not yet recognized, not this commitment."
+        }
+      ],
+      "actual": null
+    },
+    {
+      "id": "prepay-2027",
+      "title": "Customer prepayments, 2027",
+      "unit": "USD millions",
+      "kind": "range",
+      "revisions": [
+        {
+          "date": "2026-11-12",
+          "label": "$17–20 billion",
+          "low": 17000,
+          "high": 20000,
+          "periodEnd": "2027-12-31",
+          "source": "shl-q3-2026",
+          "change": "initial",
+          "note": "The letter says the 2027 range is not a ceiling and depends on how capacity is allocated across contract types."
         }
       ],
       "actual": null

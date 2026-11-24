@@ -95,6 +95,13 @@ export type Scene = {
   platform: string | null;
 };
 
+export type MwSlot = {
+  value: number | null;
+  label: string;
+  source: string;
+  note: string;
+};
+
 export type DataCenter = {
   id: string;
   name: string;
@@ -103,6 +110,12 @@ export type DataCenter = {
   status: string;
   cloudRegions: string[];
   capacity: string;
+  /** Megawatts split by the company's own categories. Null means not disclosed. */
+  mw: {
+    contractedOrPlanned: MwSlot;
+    operational: MwSlot;
+    energized: MwSlot;
+  };
   dates: string;
   pin: { lat: number; lon: number; precision: string } | null;
   scenes: Scene[];
