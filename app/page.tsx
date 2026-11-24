@@ -1,3 +1,4 @@
+import { MarketProvider, MarketPrice } from "@/components/market-quote";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { DcfModel } from "@/components/dcf-model";
@@ -13,7 +14,7 @@ export default function HomePage() {
   const lastQuote = quotes.points.at(-1);
   const scored = guidance.items.map((item) => ({ item, score: scoreGuidance(item, guidance.asOf) }));
   return (
-    <div className="home">
+    <MarketProvider><div className="home">
       <section className="hero" aria-labelledby="overview-title">
         <span className="crosshair crosshair-tl" aria-hidden="true" /><span className="crosshair crosshair-tr" aria-hidden="true" />
         <span className="crosshair crosshair-bl" aria-hidden="true" /><span className="crosshair crosshair-br" aria-hidden="true" />
@@ -37,13 +38,13 @@ export default function HomePage() {
             <ResearchArt variant="orbit" figure="1" />
             <div className="feature-copy">
               <h2>NBIS.<br />The market view.</h2>
-              {lastQuote ? <>
+              <MarketPrice>{lastQuote ? <>
                 <div className="feature-value">${lastQuote.close.toFixed(2)}</div>
                 <p className="feature-note">Last close {lastQuote.date}. {quotes.sourceTitle}. Retrieved {quotes.retrievedAt}.</p>
               </> : <>
                 <span className="mb-3"><Badge tone="amber">Awaiting market data</Badge></span>
-                <p className="feature-note">No share price is stored yet. Explore the volatility model with your own price and assumptions.</p>
-              </>}
+                <p className="feature-note">The latest snapshot is unavailable. You can still enter a price in the volatility model.</p>
+              </>}</MarketPrice>
               <Link href="#short-term" className="pill-link">Explore the range <span aria-hidden="true">↗</span></Link>
             </div>
           </div>
@@ -113,12 +114,12 @@ export default function HomePage() {
         <ol className="feed-list">
           {feeds.feeds.map((feed, i) => <li key={feed.id} className="feed-row">
             <span className="feed-index">{String(i + 1).padStart(2, "0")}</span><span className="feed-name">{feed.label}</span>
-            <span className="feed-date">{feed.updatedAt ?? "Not yet available"}</span>
-            <span className="feed-note">{feed.id === "quote" && !feed.updatedAt ? "No price is stored. Market quotes will appear once a quote provider is connected." : feed.note}</span>
+            <span className="feed-date">{feed.updatedAt ?? (feed.id === "quote" ? "See market view" : "Not yet available")}</span>
+            <span className="feed-note">{feed.note}</span>
             {feed.sourceUrl ? <a href={feed.sourceUrl} aria-label={`Source for ${feed.label}`}>View ↗</a> : <span />}
           </li>)}
         </ol>
       </section>
-    </div>
+    </div></MarketProvider>
   );
 }

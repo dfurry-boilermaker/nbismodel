@@ -60,10 +60,10 @@
       "id": "quote",
       "label": "NBIS share price",
       "updatedAt": null,
-      "sourceUrl": "",
-      "cadence": "Weekday cron once a quote key is set",
-      "state": "empty",
-      "note": "No price is stored. Stooq's robots.txt disallows general crawlers. Nasdaq and Yahoo were not scraped. Set FINNHUB_API_KEY or ALPHAVANTAGE_API_KEY."
+      "sourceUrl": "https://finance.yahoo.com/quote/NBIS/",
+      "cadence": "Every 30 minutes during regular Nasdaq sessions",
+      "state": "live-capable",
+      "note": "Yahoo Finance regular-session trade. The market view shows the timestamp of the cached price."
     },
     {
       "id": "satellite",
