@@ -9,7 +9,10 @@ export const metadata: Metadata = {
   title: "Nebius model — NBIS guidance and reported results",
   description:
     "A public, sourced model of Nebius Group (NASDAQ: NBIS): reported financials, guidance versus actuals, data centers, and public prices.",
-  icons: { icon: [{ url: "/favicon.webp", type: "image/webp", sizes: "400x400" }] },
+  icons: {
+    icon: [{ url: "/favicon.webp?v=c2a724d53f39", type: "image/webp", sizes: "640x640" }],
+    apple: [{ url: "/apple-icon.png?v=c2a724d53f39", type: "image/png", sizes: "180x180" }],
+  },
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
