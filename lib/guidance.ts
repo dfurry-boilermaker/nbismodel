@@ -28,7 +28,7 @@ function compare(
   const floor = low ?? high;
   const cap = high ?? low;
   if (floor == null || cap == null) return "open";
-  if (value > cap * 1.02) return "ahead";
+  if (value > (floor === cap ? cap + Math.abs(cap) * 0.02 : cap)) return "ahead";
   if (value + 1e-9 >= floor) return "met";
   return "missed";
 }
@@ -53,11 +53,11 @@ export function scoreGuidance(item: GuidanceItem, asOf: string): {
   const actual = item.actual;
   const periodOver = rev.periodEnd != null && rev.periodEnd <= asOf;
   const interim =
-    actual?.value != null && rev.periodEnd != null && actual.asOf < rev.periodEnd && !periodOver;
+    actual?.value != null && rev.periodEnd != null && actual.asOf < rev.periodEnd;
   if (interim) {
     return {
-      status: "open",
-      basis: `Latest reported figure is ${actual?.note ?? "an interim actual"} It is not scored against a period that has not ended.`,
+      status: periodOver ? "undisclosed" : "open",
+      basis: periodOver ? "Only an interim figure is available for the completed period." : `Latest reported figure is ${actual?.note ?? "an interim actual"} It is not scored against a period that has not ended.`,
     };
   }
   if (actual == null || actual.value == null) {

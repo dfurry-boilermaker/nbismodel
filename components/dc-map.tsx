@@ -1,71 +1,59 @@
 "use client";
 
+import { useState } from "react";
 import type { DataCenter } from "@/lib/types";
 
-function stackedOffset(sites: DataCenter[], index: number): number {
-  const panel = sites;
-  const site = panel[index];
-  const pin = site.pin!;
-  let offset = 0;
-  for (let earlier = 0; earlier < index; earlier += 1) {
-    const other = panel[earlier].pin!;
-    const close = Math.abs(other.lat - pin.lat) < 1.2 && Math.abs(other.lon - pin.lon) < 4;
-    if (close) offset += 12;
-  }
-  return offset;
-}
-
-const PANELS = [
-  { id: "europe", title: "Europe and the North Atlantic", minLon: -30, maxLon: 40, minLat: 35, maxLat: 72 },
-  { id: "america", title: "North America", minLon: -125, maxLon: -70, minLat: 24, maxLat: 55 },
-];
+// Label anchors inside the disclosed region. These are never facility coordinates.
+const regionAnchors: Record<string, [number, number]> = {
+  "mantasala-2": [60.63, 25.27], "finland-310": [64, 26], "new-jersey": [40.1, -74.6],
+  uk: [54, -2], israel: [31.5, 35], alabama: [32.8, -86.8], oklahoma: [35.5, -97.5],
+  pennsylvania: [41, -77.7], "south-carolina": [33.8, -80.9], estonia: [58.7, 25.5],
+  alberta: [54, -115], india: [22, 79],
+};
 
 export function DcMap({ sites }: { sites: DataCenter[] }) {
-  const pinned = sites.filter((site) => site.pin);
+  const [selectedId, select] = useState(sites[0]?.id);
+  const selected = sites.find(site => site.id === selectedId);
+  if (!selected) return null;
+  // Paint the selected marker last so neighboring sites can always be inspected.
+  const ordered = [...sites.filter(site => site !== selected), selected];
   return (
-    <div className="grid gap-4 lg:grid-cols-2">
-      {PANELS.map((panel) => {
-        const inside = pinned.filter((site) => {
-          const pin = site.pin!;
-          return (
-            pin.lon >= panel.minLon &&
-            pin.lon <= panel.maxLon &&
-            pin.lat >= panel.minLat &&
-            pin.lat <= panel.maxLat
-          );
-        });
-        return (
-          <div key={panel.id} className="rounded-lg border border-line bg-panel p-3">
-            <h3 className="text-sm font-medium">{panel.title}</h3>
-            <p className="mb-2 text-xs text-muted">
-              Locator only. City pins are centroids.
-              {panel.id === "europe" ? " The amber pin is the Mäntsälä facility, not a city center." : ""}
-            </p>
-            <svg viewBox="0 0 320 200" className="h-auto w-full rounded bg-[#061725]">
-              <defs><pattern id={`map-grid-${panel.id}`} width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0H0V20" fill="none" stroke="#2d4454" strokeWidth="0.5" /></pattern></defs>
-              <rect width="320" height="200" fill={`url(#map-grid-${panel.id})`} />
-              {inside.map((site, index) => {
-                const pin = site.pin!;
-                const x = ((pin.lon - panel.minLon) / (panel.maxLon - panel.minLon)) * 300 + 10;
-                const y = ((panel.maxLat - pin.lat) / (panel.maxLat - panel.minLat)) * 180 + 10;
-                const facility = pin.precision.startsWith("Facility");
-                const labelY = y + index * 0 + stackedOffset(inside, index);
-                return (
-                  <g key={site.id}>
-                    <circle cx={x} cy={y} r={facility ? 5 : 3.5} fill={facility ? "#f4ca83" : "#c1ed86"} />
-                    {Math.abs(labelY - y) > 8 ? (
-                      <line x1={x} y1={y} x2={x + 8} y2={labelY} stroke="#91a6b9" strokeWidth="0.6" />
-                    ) : null}
-                    <text x={x + 8} y={labelY + 3} fill="#d6dce5" fontSize="9">
-                      {site.name}
-                    </text>
-                  </g>
-                );
-              })}
-            </svg>
-          </div>
-        );
-      })}
-    </div>
+    <section className="overflow-hidden rounded-xl border border-line bg-panel">
+      <div className="grid items-center gap-4 p-5 lg:grid-cols-[1fr_auto]">
+        <h2 className="text-2xl">Global data center footprint</h2>
+        <label className="flex flex-wrap items-center gap-2 text-sm">Explore a location
+          <select className="max-w-full rounded border border-line bg-background p-2" value={selectedId} onChange={event => select(event.target.value)}>
+            {sites.map(site => <option key={site.id} value={site.id}>{site.name}</option>)}
+          </select>
+        </label>
+      </div>
+      <svg viewBox="0 0 720 360" role="group" aria-label="World map of disclosed locations" className="block w-full bg-[#081a29]">
+        <image href="/world-land.svg" width="720" height="360" />
+        {ordered.map(site => {
+          const location = site.pin ? [site.pin.lat, site.pin.lon] : regionAnchors[site.id];
+          if (!location) return null;
+          const [lat, lon] = location;
+          const active = site === selected;
+          const color = site.pin?.precision.startsWith("Facility") ? "#f4ca83" : site.pin ? "#c1ed86" : "#a3d7d5";
+          return <g key={site.id} transform={`translate(${2 * (180 + lon)} ${2 * (90 - lat)})`}
+            role="button" tabIndex={0} aria-label={site.name} aria-pressed={active}
+            className="cursor-pointer" onClick={() => select(site.id)} onKeyDown={event => {
+              if (event.key === "Enter" || event.key === " ") { event.preventDefault(); select(site.id); }
+            }}>
+            <title>{site.name}</title>
+            <circle r="6" fill="transparent" />
+            {active && <circle r="7" stroke="white" fill="none" />}
+            <circle r="3" stroke={color} strokeWidth="1.2" fill={site.pin ? color : "#081a29"} />
+          </g>;
+        })}
+      </svg>
+      <div className="grid gap-4 border-t border-line p-5 sm:grid-cols-2">
+        <div><p className="text-xs text-muted">Gold · facility　 Green · city or town　 Open circle · disclosed area</p>
+          <p className="mt-2 text-xs text-muted">Nearby locations can overlap. Use the selector to inspect each entry. Basemap by Natural Earth.</p></div>
+        <div aria-live="polite"><a className="font-medium underline" href={`#${selected.id}`}>{selected.name} ↓</a>
+          <p className="mt-1 text-sm text-muted">{selected.pin?.precision ?? (regionAnchors[selected.id] ? "Approximate area marker for " + selected.place + ". Facility coordinates are unverified." : "Location coordinates unavailable.")}</p>
+          <p className="mt-1 text-sm">{selected.status}</p></div>
+      </div>
+    </section>
   );
 }

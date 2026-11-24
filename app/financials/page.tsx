@@ -1,3 +1,4 @@
+import { FinancialCharts } from "@/components/result-charts";
 import { MetricValue, SourceA } from "@/components/metric-value";
 import { financials } from "@/lib/load";
 import type { Metric } from "@/lib/types";
@@ -32,6 +33,8 @@ export default function FinancialsPage() {
           <SourceA source="edgar" sources={sources}>EDGAR, CIK {financials.cik}</SourceA>
         </p>
       </header>
+
+      <FinancialCharts />
 
       <div className="hidden overflow-x-auto rounded-xl border border-line md:block">
         <table className="w-full min-w-[860px] text-left text-sm">
