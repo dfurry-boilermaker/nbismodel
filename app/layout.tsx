@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { IBM_Plex_Mono, IBM_Plex_Sans } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import { Disclaimer, Footer, Header } from "@/components/site-chrome";
 import "./globals.css";
 
@@ -34,6 +35,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <Header />
         <main className="mx-auto min-h-[70vh] max-w-6xl px-4 py-8 sm:px-6">{children}</main>
         <Footer />
+        <Analytics />
       </body>
     </html>
   );
