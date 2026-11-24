@@ -1,3 +1,4 @@
+import { GuidanceChart } from "@/components/result-charts";
 import { Badge } from "@/components/ui/badge";
 import { SourceA } from "@/components/metric-value";
 import { guidance } from "@/lib/load";
@@ -32,6 +33,7 @@ export default function GuidancePage() {
                 <span className="text-xs text-muted">{item.unit}</span>
               </div>
               <p className="mt-2 text-sm text-muted">{score.basis}</p>
+              <GuidanceChart item={item} />
               {item.actual ? (
                 <p className="mt-2 text-sm">
                   Latest actual:{" "}
