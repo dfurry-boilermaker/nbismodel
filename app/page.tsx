@@ -2,133 +2,122 @@ import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { DcfModel } from "@/components/dcf-model";
 import { VolModel } from "@/components/vol-model";
-import { feeds, guidance, quotes } from "@/lib/load";
+import { Orbit, PixelWord, ResearchArt } from "@/components/research-art";
+import { centers, feeds, financials, guidance, quotes } from "@/lib/load";
 import { COMPANY_CASE, runDcf } from "@/lib/dcf";
 import { scoreGuidance, STATUS_TONE } from "@/lib/guidance";
 import { formatCompactUsd } from "@/lib/utils";
 
 export default function HomePage() {
   const dcf = runDcf(COMPANY_CASE);
-  const scored = guidance.items.map((item) => ({
-    item,
-    score: scoreGuidance(item, guidance.asOf),
-  }));
+  const lastQuote = quotes.points.at(-1);
+  const scored = guidance.items.map((item) => ({ item, score: scoreGuidance(item, guidance.asOf) }));
   return (
-    <div className="space-y-10">
-      <section>
-        <h1 className="text-3xl font-semibold tracking-tight text-accent sm:text-4xl">
-          What Nebius said it would do, and what it has reported.
-        </h1>
-        <p className="mt-3 max-w-3xl text-base leading-7 text-muted">
-          Nebius Group N.V. (NASDAQ: NBIS) files as a foreign private issuer, on Forms 20-F
-          and 6-K. This site keeps those figures, the guidance around them, and the public
-          prices of the products Nebius sells. Empty cells are empty because the number was
-          not in a source we could use. They are not estimates.
-        </p>
-      </section>
-
-      <section className="grid gap-4 lg:grid-cols-2">
-        <article className="rounded-xl border border-line bg-panel p-4">
-          <h2 className="text-lg font-medium">NBIS price</h2>
-          {quotes.points.length === 0 ? (
-            <p className="mt-3 text-sm leading-6 text-amber">
-              No share price is stored. A quote was not scraped from Yahoo, Nasdaq, or Stooq.
-              Stooq&apos;s robots.txt disallows general crawlers. Set FINNHUB_API_KEY or
-              ALPHAVANTAGE_API_KEY and run <span className="font-mono">scripts/fetch-quote.mjs</span>.
-            </p>
-          ) : (
-            <p className="mt-3 font-mono text-3xl">
-              {quotes.points.at(-1)?.close.toFixed(2)}
-              <span className="mt-1 block text-xs text-muted">
-                Last close {quotes.points.at(-1)?.date}, retrieved {quotes.retrievedAt}. {quotes.sourceTitle}
-              </span>
-            </p>
-          )}
-        </article>
-        <article className="rounded-xl border border-line bg-panel p-4">
-          <h2 className="text-lg font-medium">Long-term model, company case</h2>
-          {dcf.ok ? (
-            <p className="mt-3 font-mono text-3xl">
-              {formatCompactUsd(dcf.perShare)}
-              <span className="mt-1 block font-sans text-xs font-normal text-muted">
-                Per basic share, using guided 2026–2027 revenue and capex plus the assumptions
-                listed on the models page. Not a price target.
-              </span>
-            </p>
-          ) : (
-            <p className="mt-3 text-bad">{dcf.reason}</p>
-          )}
-          <Link href="/models" className="mt-3 inline-block text-sm">
-            Open the inputs and the math
-          </Link>
-        </article>
-      </section>
-
-      <section>
-        <h2 className="mb-3 text-lg font-medium">Short-term range</h2>
-        <VolModel
-          closes={quotes.points.map((point) => point.close)}
-          quoteNote={quotes.note}
-          quoteAsOf={quotes.retrievedAt}
-        />
-      </section>
-
-      <section>
-        <div className="mb-3 flex items-baseline justify-between gap-3">
-          <h2 className="text-lg font-medium">Guidance scorecard</h2>
-          <Link href="/guidance" className="text-sm">
-            History of each item
-          </Link>
-        </div>
-        <div className="overflow-x-auto rounded-xl border border-line">
-          <table className="w-full min-w-[680px] text-left text-sm">
-            <thead className="bg-panel text-xs uppercase tracking-wide text-muted">
-              <tr>
-                {["Item", "Latest target", "Status", "Why"].map((heading) => (
-                  <th key={heading} className="px-3 py-2 font-medium">{heading}</th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {scored.map(({ item, score }) => {
-                const latest = item.revisions.at(-1);
-                return (
-                  <tr key={item.id} className="border-t border-line/80">
-                    <td className="px-3 py-2">{item.title}</td>
-                    <td className="px-3 py-2 text-muted">{latest?.label}</td>
-                    <td className="px-3 py-2">
-                      <Badge tone={STATUS_TONE[score.status]}>{score.status}</Badge>
-                    </td>
-                    <td className="px-3 py-2 text-muted">{score.basis}</td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
+    <div className="home">
+      <section className="hero" aria-labelledby="overview-title">
+        <span className="crosshair crosshair-tl" aria-hidden="true" /><span className="crosshair crosshair-tr" aria-hidden="true" />
+        <span className="crosshair crosshair-bl" aria-hidden="true" /><span className="crosshair crosshair-br" aria-hidden="true" />
+        <Orbit />
+        <div className="eyebrow">/ An independent look at NASDAQ: NBIS</div>
+        <h1 id="overview-title" className="hero-heading">Behind the<br /><span>Nebius <PixelWord /></span></h1>
+        <p className="hero-description">What Nebius said it would do.<br />What the numbers actually say.<br />Explore the business, one source at a time.</p>
+        <div className="hero-meta">
+          <div className="hero-actions">
+            <Link className="pill-link" href="/financials">Explore the financials <span aria-hidden="true">↗</span></Link>
+            <Link className="pill-link" href="/models">Open the models <span aria-hidden="true">↗</span></Link>
+          </div>
+          <span className="eyebrow mb-0">Data as of {guidance.asOf} / Educational only</span>
         </div>
       </section>
 
-      <section>
-        <h2 className="mb-1 text-lg font-medium">Long-term summary</h2>
-        <p className="mb-3 text-sm text-muted">
-          The same company-case model as the card above. Change any input on the models page.
-        </p>
-        <DcfModel compact />
+      <section className="feature-grid" aria-label="Market and valuation overview">
+        <article>
+          <div className="section-label"><span>/ Market signal</span><span>01</span></div>
+          <div className="feature-body">
+            <ResearchArt variant="orbit" figure="1" />
+            <div className="feature-copy">
+              <h2>NBIS.<br />The market view.</h2>
+              {lastQuote ? <>
+                <div className="feature-value">${lastQuote.close.toFixed(2)}</div>
+                <p className="feature-note">Last close {lastQuote.date}. {quotes.sourceTitle}. Retrieved {quotes.retrievedAt}.</p>
+              </> : <>
+                <span className="mb-3"><Badge tone="amber">Awaiting market data</Badge></span>
+                <p className="feature-note">No share price is stored yet. Explore the volatility model with your own price and assumptions.</p>
+              </>}
+              <Link href="#short-term" className="pill-link">Explore the range <span aria-hidden="true">↗</span></Link>
+            </div>
+          </div>
+        </article>
+        <article>
+          <div className="section-label"><span>/ The company case</span><span>02</span></div>
+          <div className="feature-body">
+            <ResearchArt variant="wave" figure="2" />
+            <div className="feature-copy">
+              <h2>Beyond<br />the share price.</h2>
+              {dcf.ok ? <div className="feature-value">{formatCompactUsd(dcf.perShare)}</div> : <p className="text-bad">{dcf.reason}</p>}
+              <p className="feature-note">Modeled value per basic share. Guided revenue, explicit assumptions, and the math behind them. Not a price target.</p>
+              <Link href="/models" className="pill-link">Inspect the inputs <span aria-hidden="true">↗</span></Link>
+            </div>
+          </div>
+        </article>
       </section>
 
-      <section>
-        <h2 className="mb-3 text-lg font-medium">When each feed was last updated</h2>
-        <ul className="divide-y divide-line rounded-xl border border-line">
-          {feeds.feeds.map((feed) => (
-            <li key={feed.id} className="grid gap-1 px-3 py-3 sm:grid-cols-[180px_140px_1fr] sm:items-baseline">
-              <span className="font-medium">{feed.label}</span>
-              <span className="font-mono text-xs text-muted">{feed.updatedAt ?? "not yet"}</span>
-              <span className="text-sm text-muted">
-                {feed.note} {feed.sourceUrl ? <a href={feed.sourceUrl}>Source</a> : null}
-              </span>
-            </li>
-          ))}
-        </ul>
+      <section aria-label="Research coverage">
+        <div className="section-label">/ In the research</div>
+        <div className="status-strip">
+          <span>Reported quarters <strong>{financials.quarters.length}</strong></span>
+          <span>Guidance items <strong>{guidance.items.length}</strong></span>
+          <span>Data center sites <strong>{centers.sites.length}</strong></span>
+          <span>Public feeds <strong>{feeds.feeds.length}</strong></span>
+          <span>Every figure <strong>Source-linked</strong></span>
+        </div>
+      </section>
+
+      <section aria-labelledby="guidance-title">
+        <div className="section-heading"><h2 id="guidance-title">The scorecard</h2><sup>({scored.length})</sup><Link href="/guidance" className="text-link">Full history <span aria-hidden="true">↗</span></Link></div>
+        <div className="research-layout">
+          <aside className="research-aside">
+            <div className="section-label">/ Reading the signals</div>
+            <p>Company guidance, measured against reported results. Every revision is dated. Every status has a reason.</p>
+            <p>Missing numbers stay missing. We never fill the gaps with estimates.</p>
+            <div className="aside-links"><Link href="/guidance">[↗] Guidance history</Link><Link href="/methodology">[↗] How we score it</Link></div>
+          </aside>
+          <div className="overflow-x-auto scorecard">
+            <table className="w-full min-w-[720px] text-left text-sm">
+              <caption className="sr-only">Nebius guidance targets, current status, and scoring basis</caption>
+              <thead><tr>{["Item", "Latest target", "Status", "Basis"].map((heading) => <th scope="col" key={heading} className="px-3">{heading}</th>)}</tr></thead>
+              <tbody>{scored.map(({ item, score }) => <tr key={item.id} className="border-b border-line">
+                <td className="px-3">{item.title}</td><td className="px-3 text-muted">{item.revisions.at(-1)?.label}</td>
+                <td className="px-3"><Badge tone={STATUS_TONE[score.status]}>{score.status}</Badge></td><td className="px-3 text-xs leading-5 text-muted">{score.basis}</td>
+              </tr>)}</tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section id="short-term" aria-labelledby="range-title">
+        <div className="section-heading"><h2 id="range-title">Model the range</h2><sup>(01)</sup></div>
+        <div className="section-label"><span>/ Short term</span><span>Volatility, not a directional forecast</span></div>
+        <div className="pt-6"><VolModel closes={quotes.points.map((point) => point.close)} quoteNote={quotes.note} quoteAsOf={quotes.retrievedAt} /></div>
+      </section>
+
+      <section aria-labelledby="long-term-title">
+        <div className="section-heading"><h2 id="long-term-title">Take the long view</h2><sup>(02)</sup><Link href="/models" className="text-link">All inputs <span aria-hidden="true">↗</span></Link></div>
+        <div className="section-label"><span>/ Five-year discounted cash flow</span><span>Company case + editable assumptions</span></div>
+        <div className="pt-6"><DcfModel compact /></div>
+      </section>
+
+      <section aria-labelledby="feeds-title">
+        <div className="section-heading"><h2 id="feeds-title">At the source</h2><sup>({feeds.feeds.length})</sup></div>
+        <div className="section-label"><span>/ Public data feeds</span><span>Last retrieved / not a live feed</span></div>
+        <ol className="feed-list">
+          {feeds.feeds.map((feed, i) => <li key={feed.id} className="feed-row">
+            <span className="feed-index">{String(i + 1).padStart(2, "0")}</span><span className="feed-name">{feed.label}</span>
+            <span className="feed-date">{feed.updatedAt ?? "Not yet available"}</span>
+            <span className="feed-note">{feed.id === "quote" && !feed.updatedAt ? "No price is stored. Market quotes will appear once a quote provider is connected." : feed.note}</span>
+            {feed.sourceUrl ? <a href={feed.sourceUrl} aria-label={`Source for ${feed.label}`}>View ↗</a> : <span />}
+          </li>)}
+        </ol>
       </section>
     </div>
   );

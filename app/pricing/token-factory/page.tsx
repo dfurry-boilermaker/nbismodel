@@ -7,6 +7,7 @@ export default function TokenFactoryPage() {
   return (
     <div className="space-y-6">
       <header>
+        <div className="eyebrow">/ 04.2 / Token Factory</div>
         <h1 className="text-3xl font-semibold text-accent">Token Factory</h1>
         <p className="mt-3 text-sm text-muted">
           Retrieved {tokenFactory.retrievedAt} from{" "}

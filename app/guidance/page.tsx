@@ -9,6 +9,7 @@ export default function GuidancePage() {
   return (
     <div className="space-y-8">
       <header>
+        <div className="eyebrow">/ 02 / Company commitments</div>
         <h1 className="text-3xl font-semibold text-accent">Guidance tracker</h1>
         <p className="mt-3 max-w-3xl text-sm leading-6 text-muted">
           Each item is the company&apos;s own wording, dated, and linked. Status is computed

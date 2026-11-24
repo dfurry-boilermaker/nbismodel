@@ -8,6 +8,7 @@ export default function GpuPage() {
   return (
     <div className="space-y-6">
       <header>
+        <div className="eyebrow">/ 04.1 / AI Cloud</div>
         <h1 className="text-3xl font-semibold text-accent">GPU-hour list prices</h1>
         <p className="mt-3 text-sm text-muted">
           Retrieved {gpuPrices.retrievedAt} from{" "}

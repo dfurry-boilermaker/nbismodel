@@ -8,6 +8,7 @@ export default function ModelsPage() {
   return (
     <div className="space-y-12">
       <header>
+        <div className="eyebrow">/ 05 / The model lab</div>
         <h1 className="text-3xl font-semibold text-accent">Price models</h1>
         <p className="mt-3 max-w-3xl text-sm leading-6 text-muted">
           Both models show the inputs and the arithmetic. Nothing here is a price target or a

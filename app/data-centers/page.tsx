@@ -9,6 +9,7 @@ export default function DataCentersPage() {
   return (
     <div className="space-y-8">
       <header>
+        <div className="eyebrow">/ 03 / Infrastructure</div>
         <h1 className="text-3xl font-semibold text-accent">Data centers</h1>
         <p className="mt-3 max-w-3xl text-sm leading-6 text-muted">
           Sites named by Nebius in shareholder letters, the March 5, 2025 capacity post, or the

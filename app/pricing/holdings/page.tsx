@@ -7,6 +7,7 @@ export default function HoldingsPage() {
   return (
     <div className="space-y-6">
       <header>
+        <div className="eyebrow">/ 04.4 / Other businesses</div>
         <h1 className="text-3xl font-semibold text-accent">Other businesses and stakes</h1>
         <p className="mt-3 max-w-3xl text-sm leading-6 text-muted">
           Avride and TripleTen are consolidated. Toloka has been an equity stake since May 2025.

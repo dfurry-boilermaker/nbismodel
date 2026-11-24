@@ -27,6 +27,11 @@ const FIELDS: { key: keyof DcfInput; label: string; step: string; hint: string; 
 
 export function DcfModel({ compact = false }: { compact?: boolean }) {
   const [input, setInput] = useState<DcfInput>(COMPANY_CASE);
+  const [scenario, setScenario] = useState<"company" | "bear" | "bull" | null>("company");
+  function selectScenario(value: "company" | "bear" | "bull") {
+    setInput(preset(value));
+    setScenario(value);
+  }
   const result = useMemo(() => runDcf(input), [input]);
   const sensitivity = useMemo(() => {
     if (!result.ok) return [];
@@ -41,13 +46,13 @@ export function DcfModel({ compact = false }: { compact?: boolean }) {
   return (
     <div className="space-y-4">
       <div className="flex flex-wrap gap-2">
-        <Button type="button" size="sm" onClick={() => setInput(preset("company"))}>
+        <Button type="button" size="sm" variant={scenario === "company" ? "default" : "outline"} aria-pressed={scenario === "company"} onClick={() => selectScenario("company")}>
           Company case
         </Button>
-        <Button type="button" size="sm" variant="outline" onClick={() => setInput(preset("bear"))}>
+        <Button type="button" size="sm" variant={scenario === "bear" ? "default" : "outline"} aria-pressed={scenario === "bear"} onClick={() => selectScenario("bear")}>
           Bear
         </Button>
-        <Button type="button" size="sm" variant="outline" onClick={() => setInput(preset("bull"))}>
+        <Button type="button" size="sm" variant={scenario === "bull" ? "default" : "outline"} aria-pressed={scenario === "bull"} onClick={() => selectScenario("bull")}>
           Bull
         </Button>
       </div>
@@ -70,9 +75,10 @@ export function DcfModel({ compact = false }: { compact?: boolean }) {
                 type="number"
                 step={field.step}
                 value={input[field.key]}
-                onChange={(event) =>
-                  setInput({ ...input, [field.key]: Number(event.target.value) })
-                }
+                onChange={(event) => {
+                  setInput({ ...input, [field.key]: Number(event.target.value) });
+                  setScenario(null);
+                }}
               />
               <span className="mt-1 block text-xs text-muted">{field.hint}</span>
             </label>

@@ -7,7 +7,8 @@ export default function MethodologyPage() {
   const report = sourceOf("f20-2025");
   return (
     <div className="max-w-3xl space-y-6 text-sm leading-7">
-      <h1 className="text-3xl font-semibold text-accent">Methodology and sources</h1>
+      <div className="eyebrow">/ 06 / Research notes</div>
+        <h1 className="text-3xl font-semibold text-accent">Methodology and sources</h1>
       <p>
         Nebius Group N.V. is CIK 0001513845, file number 001-35173. It is a Dutch foreign
         private issuer. The periodic reports are Form 20-F, not Form 10-K. Quarterly results

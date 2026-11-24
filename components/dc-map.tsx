@@ -41,8 +41,9 @@ export function DcMap({ sites }: { sites: DataCenter[] }) {
               Locator only. City pins are centroids.
               {panel.id === "europe" ? " The amber pin is the Mäntsälä facility, not a city center." : ""}
             </p>
-            <svg viewBox="0 0 320 200" className="h-auto w-full rounded bg-[#0c1411]">
-              <rect width="320" height="200" fill="#0c1411" />
+            <svg viewBox="0 0 320 200" className="h-auto w-full rounded bg-[#061725]">
+              <defs><pattern id={`map-grid-${panel.id}`} width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0H0V20" fill="none" stroke="#2d4454" strokeWidth="0.5" /></pattern></defs>
+              <rect width="320" height="200" fill={`url(#map-grid-${panel.id})`} />
               {inside.map((site, index) => {
                 const pin = site.pin!;
                 const x = ((pin.lon - panel.minLon) / (panel.maxLon - panel.minLon)) * 300 + 10;
@@ -51,11 +52,11 @@ export function DcMap({ sites }: { sites: DataCenter[] }) {
                 const labelY = y + index * 0 + stackedOffset(inside, index);
                 return (
                   <g key={site.id}>
-                    <circle cx={x} cy={y} r={facility ? 5 : 3.5} fill={facility ? "#efd3a0" : "#8fd6ad"} />
+                    <circle cx={x} cy={y} r={facility ? 5 : 3.5} fill={facility ? "#f4ca83" : "#c1ed86"} />
                     {Math.abs(labelY - y) > 8 ? (
-                      <line x1={x} y1={y} x2={x + 8} y2={labelY} stroke="#9aafa3" strokeWidth="0.6" />
+                      <line x1={x} y1={y} x2={x + 8} y2={labelY} stroke="#91a6b9" strokeWidth="0.6" />
                     ) : null}
-                    <text x={x + 8} y={labelY + 3} fill="#e8f3ec" fontSize="9">
+                    <text x={x + 8} y={labelY + 3} fill="#d6dce5" fontSize="9">
                       {site.name}
                     </text>
                   </g>
