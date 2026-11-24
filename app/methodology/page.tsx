@@ -71,57 +71,51 @@ export default function MethodologyPage() {
         20 closes. The band is price × exp(±1.96 × volatility × sqrt(days / 252)), with zero
         drift. Implied volatility has no feed.
       </p>
-      <h2 className="text-lg font-medium text-foreground">Long-term model, version 2.0.0</h2>
+      <h2 className="text-lg font-medium text-foreground">Long-term model, version 2.1.0</h2>
       <p>
-        The prior model on this site was an unversioned five-year free-cash-flow sketch. On
-        the same November 2026 guidance it produced -$182.00 per basic share in the company
-        case, -$350.13 in the bear case, and $27.47 in the bull case. It subtracted all
-        capex, held a 40% margin, and put a Gordon terminal value on whatever free cash flow
-        was left. It did not split non-recurring revenue, did not depreciate servers over the
-        disclosed five-year life, and counted the convertible notes as debt without also
-        showing the shares they can become. Figures of $0, $92.74, $579.33, and $162.23 are
-        not what that code calculated.
+        Version 2.0.0 subtracted every dollar of growth capex and then kept a heavy capex
+        bill in the later years, so every case was negative: about -$285.77 bear, -$175.72
+        base, and -$50.13 bull. That failed a sense check against customer prepayments, a
+        53.2% AI-cloud EBITDA margin, and the $223.90 reference price on the August 2026
+        notes. Version 2.1.0 splits the bill. Growth capex is the cash spent to energize new
+        megawatts. Maintenance capex is the gross server-and-network base divided by the
+        disclosed five-year life, plus 15% of the 2026–27 budget depreciated over 15 years.
+        The 15% share and the 15-year life are assumptions. The five-year life is not.
+        After the fleet reaches its case cap, growth capex is zero and only maintenance remains.
       </p>
       <p>
-        Version 2.0.0 keeps free cash flow equal to EBITDA minus capex. Tax stays at zero
-        because the company has not guided a cash tax rate, so depreciation does not change
-        free cash flow. Depreciation is still computed. Servers and network equipment use the
-        five-year life disclosed in the November 12, 2026 financial statements. The
-        server-and-network share of capex is not disclosed; the model uses 85% and shows 70%
-        and 100% beside it. The other 15% is depreciated over 15 years, which is an assumption.
-        Opening gross plant is estimated by annualizing third-quarter depreciation of $354.7
-        million and multiplying by those lives.
+        2026 and 2027 revenue and the 2026–27 capex dollars are the company&apos;s ranges.
+        The bear case uses the low ends and the bull case uses the high revenue ends and the
+        low capex end. From 2028, revenue is the megawatts already energized times a rate,
+        plus half a year on megawatts added that year. The end-2026 fleet earns $8, $10, or
+        $12 million per megawatt-year. Megawatts added later earn $12, $20, or $25 million.
+        The $20 million and $25 million figures are the Q2 and Q3 2026 new-deal annual-contract-value
+        floors, used here as rates rather than as unknown amounts above those floors. The
+        lower legacy rates are estimates. Energized megawatts in 2026 were not restated in
+        November; the cases use 600, 800, and 1,000 MW. Additions stop at 4, 5, or 6 GW.
+        Five gigawatts is the company&apos;s year-end 2026 contracted-power target. Six is an
+        assumption that more power is contracted.
       </p>
       <p>
-        2026 in the forecast is only the rest of the year: the $3.0 billion and $27 billion
-        guides minus the nine months already reported. 2027 uses the outlook ranges. The bear
-        case takes the low revenue and the high capex. The base case takes the midpoints. The
-        bull case takes the high revenue and the low capex, then a lower capex path that the
-        company did not guide. It does not use the $3.4 billion top of the 2026 range, because
-        the letter says the company expects the low end. It also does not multiply the
-        disclosed new-deal price, above $25 million of annual contract value per megawatt, by
-        planned gigawatts. That product is far above the $12–13 billion revenue outlook.
+        Tax is not zero. Nebius has not guided a cash rate. The cases use 20%, 15%, and 12%
+        as a normalized rate after losses. Free cash flow is after-tax EBIT minus growth
+        capex. EBIT uses depreciation equal to that year&apos;s maintenance charge. If
+        maintenance free cash flow is positive, the terminal value is a Gordon growth value.
+        If it is not, the terminal value is a five-year harvest with no replacement spending.
+        Equity value subtracts opening carrying debt and adds unrestricted cash that the
+        funding gap did not spend. Future debt is not subtracted a second time, because the
+        capex it finances is already in free cash flow. Shares are the basic count plus the
+        pre-funded warrants, plus conversion shares in the share-settled bridge, plus any
+        residual equity issued at the case&apos;s issue price. The bear case issues that
+        residual at $100. The other cases use $223.90.
       </p>
       <p>
-        If replacement capex on the estimated gross base is larger than EBITDA, the terminal
-        value is a five-year run-off of exit EBITDA with no further capex. A Gordon growth
-        value is used only when maintenance free cash flow is positive. Equity value is
-        enterprise value minus carrying debt plus unrestricted cash. Restricted cash of
-        $1,215.5 million is not subtracted from debt. The October 2026 Citi facility is a
-        $3.5 billion commitment whose drawn amount was not disclosed, so it is not in the debt.
-        One bridge leaves the notes outstanding. The other removes their carrying value and
-        adds the shares at the initial conversion rates. The headline bear and base cases
-        leave the notes outstanding. The headline bull case share-settles them. The weighted
-        figure uses 25%, 50%, and 25%. Those weights are an assumption.
-      </p>
-      <p>
-        The residual funding need is capex minus EBITDA minus the stated 2027 coverage, after
-        unrestricted cash. It is already in free cash flow as capex, so it is not subtracted a
-        second time. Shares are added for that residual only if it would clear at the $223.90
-        reference price from the August 2026 notes. In the published cases that price is above
-        the model&apos;s per-share arithmetic, so no new shares are added. The result is negative
-        in every published case. It is not floored at zero, and it is not a statement that the
-        shares trade at zero. Cash flows are discounted from November 24, 2026.
+        Beside the cash-flow result, 2027 EBITDA and revenue are multiplied by trailing
+        EV/EBITDA and EV/revenue for CoreWeave and Oracle, dated in November 2026. A gap
+        wider than 50% is marked on the page. IREN is not in the set: publishers disagree
+        on whether its EBITDA is positive. The weights are 25%, 50%, and 25%. Nothing here
+        is a price target. A negative case is the arithmetic of its stated rates, margins,
+        capex, and discount rate.
       </p>
       <h2 className="text-lg font-medium text-foreground">Satellite images</h2>
       <p>

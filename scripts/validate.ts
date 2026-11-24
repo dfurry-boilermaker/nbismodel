@@ -41,17 +41,23 @@ if (!december || scoreGuidance(december, "2026-11-23").status !== "superseded") 
   throw new Error("December 2026 ARR should be superseded");
 }
 
-if (MODEL_VERSION !== "2.0.0") throw new Error(`model version ${MODEL_VERSION}`);
+if (MODEL_VERSION !== "2.1.0") throw new Error(`model version ${MODEL_VERSION}`);
 if (CONVERT_SHARES !== 68_112_588) throw new Error(`convert shares ${CONVERT_SHARES}`);
 if (BASIC_ECONOMIC_SHARES !== 313_968_341) throw new Error(`basic shares ${BASIC_ECONOMIC_SHARES}`);
 const base = runCase("base");
 const bear = runCase("bear");
 const bull = runCase("bull");
-if (!(base.bridges.none.perShare < 0 && bear.bridges.none.perShare < base.bridges.none.perShare && bull.bridges.all.perShare < 0)) {
-  throw new Error(`case signs ${bear.bridges.none.perShare} ${base.bridges.none.perShare} ${bull.bridges.all.perShare}`);
+const bearPs = bear.bridges.none.perShare;
+const basePs = base.bridges.none.perShare;
+const bullPs = bull.bridges.all.perShare;
+if (!(bearPs < basePs && basePs < 0 && bullPs > basePs)) {
+  throw new Error(`case order ${bearPs} ${basePs} ${bullPs}`);
+}
+if (bear.terminalMethod !== "harvest" || base.terminalMethod !== "gordon") {
+  throw new Error(`terminal ${bear.terminalMethod} ${base.terminalMethod}`);
 }
 const weighted = weightedValue([bear, base, bull]);
-if (!Number.isFinite(weighted) || weighted >= 0) throw new Error(`weighted ${weighted}`);
+if (!Number.isFinite(weighted)) throw new Error(`weighted ${weighted}`);
 const recurring = financials.quarters.find((quarter) => quarter.id === "2026-Q3")?.other.find((row) => row.label === "Recurring group revenue");
 if (!recurring || Math.abs((recurring.metric.value ?? 0) - 655.7) > 0.05) throw new Error("Q3 recurring revenue");
 const band = priceBand({ price: 100, annualVol: 0.8, horizonDays: 5, z: 1.96 });
