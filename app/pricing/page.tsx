@@ -29,6 +29,7 @@ export default function PricingPage() {
   return (
     <div className="space-y-6">
       <header>
+        <div className="eyebrow">/ 04 / Product economics</div>
         <h1 className="text-3xl font-semibold text-accent">Pricing and other revenue lines</h1>
         <p className="mt-3 max-w-3xl text-sm leading-6 text-muted">
           Snapshots live in data/pricing so a later refresh can show a trend. This version has
@@ -37,10 +38,12 @@ export default function PricingPage() {
         </p>
       </header>
       <div className="grid gap-3 sm:grid-cols-2">
-        {CARDS.map((card) => (
-          <Link key={card.href} href={card.href} className="rounded-xl border border-line bg-panel p-4 no-underline hover:border-accent/50">
-            <h2 className="text-lg font-medium text-foreground">{card.title}</h2>
+        {CARDS.map((card, index) => (
+          <Link key={card.href} href={card.href} className="pricing-card">
+            <span className="section-label">/ Product {String(index + 1).padStart(2, "0")}</span>
+            <h2 className="text-foreground">{card.title}</h2>
             <p className="mt-2 text-sm text-muted">{card.body}</p>
+            <span className="text-link">Explore the data <span aria-hidden="true">↗</span></span>
           </Link>
         ))}
       </div>

@@ -24,6 +24,7 @@ export default function OpenRouterPage() {
   return (
     <div className="space-y-6">
       <header>
+        <div className="eyebrow">/ 04.3 / OpenRouter</div>
         <h1 className="text-3xl font-semibold text-accent">OpenRouter</h1>
         <p className="mt-3 text-sm leading-6 text-muted">
           Retrieved {openRouter.retrievedAt}. Nebius is a provider on {models.length} models in

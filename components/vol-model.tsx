@@ -44,10 +44,9 @@ export function VolModel({
       </p>
       {closes.length < 20 ? (
         <p className="rounded-md border border-amber/40 bg-amber/10 p-3 text-sm text-amber">
-          Realized volatility needs at least 20 daily closes in data/market/quotes.json.
-          That file is empty until a quote API key is configured. You can type a price and
-          a volatility below to run the arithmetic. Typed values are not saved and are not
-          market data.
+          Realized volatility needs at least 20 daily closes. No market quotes are stored
+          yet. Enter a price and volatility below to explore a hypothetical range. Your
+          inputs are not saved and are not market data.
         </p>
       ) : (
         <p className="text-sm">

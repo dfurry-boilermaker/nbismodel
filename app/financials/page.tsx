@@ -18,6 +18,7 @@ export default function FinancialsPage() {
   return (
     <div className="space-y-8">
       <header>
+        <div className="eyebrow">/ 01 / Reported results</div>
         <h1 className="text-3xl font-semibold text-accent">Reported financials</h1>
         <p className="mt-3 max-w-3xl text-sm leading-6 text-muted">
           {financials.forms} Figures are USD millions. Capex from the cash-flow line
