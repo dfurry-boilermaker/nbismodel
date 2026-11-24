@@ -61,9 +61,10 @@ export default function MethodologyPage() {
       </p>
       <h2 className="text-lg font-medium text-foreground">Share price and the short-term band</h2>
       <p>
-        No NBIS quote is stored. Stooq&apos;s robots.txt disallows non-search crawlers, and
-        this site does not scrape Yahoo or Nasdaq. scripts/fetch-quote.mjs reads Finnhub or
-        Alpha Vantage when a key is present and writes daily closes. Realized volatility is
+        Yahoo Finance supplies the regular-session share price and completed daily closes.
+        A scheduled job refreshes the snapshot every half hour during Nasdaq sessions, including
+        a closing snapshot. A failed refresh leaves the previous snapshot and trade timestamp in place.
+        The optional Finnhub or Alpha Vantage daily-close file provides a fallback. Realized volatility is
         the sample standard deviation of log returns, annualized with sqrt(252), and it needs
         20 closes. The band is price × exp(±1.96 × volatility × sqrt(days / 252)), with zero
         drift. Implied volatility has no feed.

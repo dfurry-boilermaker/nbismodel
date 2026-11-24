@@ -1,3 +1,4 @@
+import { MarketProvider } from "@/components/market-quote";
 import { DcfModel } from "@/components/dcf-model";
 import { VolModel } from "@/components/vol-model";
 import { quotes } from "@/lib/load";
@@ -6,7 +7,7 @@ export const metadata = { title: "Price models — Nebius model" };
 
 export default function ModelsPage() {
   return (
-    <div className="space-y-12">
+    <MarketProvider><div className="space-y-12">
       <header>
         <div className="eyebrow">/ 05 / The model lab</div>
         <h1 className="text-3xl font-semibold text-accent">Price models</h1>
@@ -28,6 +29,6 @@ export default function ModelsPage() {
         <h2 className="text-xl font-medium">Long term: scenarios and a DCF</h2>
         <DcfModel />
       </section>
-    </div>
+    </div></MarketProvider>
   );
 }

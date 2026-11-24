@@ -85,3 +85,7 @@ The GitHub Action needs permission to push, and `FINNHUB_API_KEY` or `ALPHAVANTA
 The short-term band is a zero-drift lognormal range from realized or typed volatility. It does not use a stored price until the quote file has at least 20 closes.
 
 The long-term model is a five-year free-cash-flow forecast discounted from November 23, 2026, plus a Gordon terminal value. The company case uses the November 12, 2026 guidance for 2026 and 2027. Margin after 2026, later growth, the capex ratio after 2027, WACC, and terminal growth are labeled assumptions and can be edited in the browser. The math is on the models page. It is not a price target.
+
+### Half-hour NBIS quote
+
+The market-quote workflow reads Yahoo Finance with yahoo-finance2 during regular Nasdaq sessions and writes the last successful snapshot to `market-data/nbis.json` (branch `market-data`, file `nbis.json`). The site reads this public cache without a rebuild. The exchange calendar sets the session bounds, including shortened sessions. Scheduled Actions can run late. A closing run may collect the final regular-session quote in the half hour after the bell. Daily volatility uses completed daily bars. A failed refresh preserves the previous snapshot and its trade timestamp.
