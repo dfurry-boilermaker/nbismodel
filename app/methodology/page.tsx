@@ -46,9 +46,10 @@ export default function MethodologyPage() {
         show up in secondary transcripts. They were not in the shareholder-letter text
         extracted for this version, so they are not in the tracker. Actual 2025 capex of
         $4,066 million and revenue of $529.8 million are on the financials page, from the
-        earnings release. GPU counts, other than the company&apos;s own &quot;up to 60,000
-        H100-equivalent&quot; capacity remark about Finland, were not scored. Peer GPU prices
-        were not collected.
+        earnings release.         A third-party transcript of the November 12, 2026 call reports $3.0–3.2 billion.
+        That transcript was not filed with the SEC. The letter remains the filed source and
+        says the low end of $3.0–3.4 billion. Both are described below. GPU counts, other than the company&apos;s own
+        &quot;up to 60,000 H100-equivalent&quot; capacity remark about Finland, were not scored.
       </p>
       <h2 className="text-lg font-medium text-foreground">Prices</h2>
       <p>
@@ -59,55 +60,140 @@ export default function MethodologyPage() {
         page multiplies by one million for display. History files append a snapshot only when
         the fetch script is run again. One snapshot cannot show a trend.
       </p>
-      <h2 className="text-lg font-medium text-foreground">Share price and the short-term band</h2>
+      <h2 className="text-lg font-medium text-foreground">Educational use only</h2>
       <p>
-        Yahoo Finance supplies the regular-session share price and completed daily closes.
-        A scheduled job refreshes the snapshot every half hour during Nasdaq sessions, including
-        a closing snapshot. A failed refresh leaves the previous snapshot and trade timestamp in place.
-        The optional Finnhub or Alpha Vantage daily-close file provides a fallback. Realized volatility is
-        the sample standard deviation of log returns, annualized with sqrt(252), and it needs
-        20 closes. The band is price × exp(±1.96 × volatility × sqrt(days / 252)), with zero
-        drift. Implied volatility has no feed.
+        This model is an educational exercise in valuation arithmetic. It is not a price
+        target, a forecast, a rating, or investment advice, and it is not an offer to buy
+        or sell any security. The values follow from the stated assumptions. Many of those
+        assumptions are uncertain. Small changes move the result a lot. The authors may hold
+        positions in Nebius Group N.V. or related securities and may trade them without notice.
+        The site is not affiliated with Nebius Group N.V.
       </p>
-      <h2 className="text-lg font-medium text-foreground">Long-term model</h2>
+      <h2 className="text-lg font-medium text-foreground">Prices</h2>
       <p>
-        FCFF equals EBITDA minus tax minus capex. Tax is the tax rate times positive EBITDA,
-        because depreciation is not forecast; the default rate is zero, so the term is zero
-        until you change it. 2026 and 2027 revenue and capex start from the November 12, 2026
-        guidance. The 2027 revenue and capex midpoints are averages of the stated ranges, and
-        the page says so. Margin after 2026, growth after 2027, the later capex ratio, WACC,
-        and terminal growth are assumptions with amber badges. Cash flows sit on December 31
-        and are discounted from November 23, 2026 by actual days over 365. Terminal value is
-        next year&apos;s FCFF divided by WACC minus growth. Equity value subtracts debt minus
-        cash. The share count is the basic count on September 30, 2026, not a diluted count.
-        Convertible notes are in the debt number and are not also turned into shares.
+        Closing price entered manually as of the date shown; not live; may be out of date.
+        The reference close used beside the model is $87.31 as of 2026-11-24. It is not used
+        to compute the headline value. Peer share prices are not shown, because this site does
+        not copy a vendor&apos;s price table.
       </p>
+      <h2 className="text-lg font-medium text-foreground">Raw and floored values</h2>
+      <p>
+        Each case is shown floored at $0, beside the raw result. A negative raw value means
+        the projected cash flows do not cover the obligations and the investment under that
+        case. The weighted figure on the page is the weighted average of the floored values.
+        The weighted average of the raw values is shown next to it. The headline does not
+        clamp the terminal value. A memo shows the bear if that terminal value is clamped at zero.
+      </p>
+      <h2 className="text-lg font-medium text-foreground">Margin and capacity</h2>
+      <p>
+        The 2026 group guide is an adjusted EBITDA margin of about 40% (shareholder letter,
+        November 12, 2026), and that figure includes Avride and TripleTen. The AI-cloud segment
+        printed about 50% in the second quarter of 2026 and 53.2% in the third quarter. The
+        third-quarter print includes about $325 million of non-recurring partnership revenue.
+        The model&apos;s fourth-quarter 2026 margins are 29.1%, 35.3%, and 40%. For 2027 they are
+        36.4%, 45.4%, and 50.4%. From 2029 they are 40%, 50%, and 55%. 2028 is the midpoint
+        between 2027 and that steady state. These paths are estimates built from those prints.
+      </p>
+      <p>
+        2026 capex in the letter is about $27 billion. 2027 capex is $40–45 billion, sized for
+        more than 1 GW of new capacity. From 2028 the model uses $40, $35, and $31.5 million
+        per energized IT megawatt. Seventy percent of that is treated as servers and network,
+        refreshed after five years. The other 30% is shell and power, over 15 years. Third-party
+        benchmarks, not company figures, put a similar all-in cost near $35 million (Bernstein,
+        about November 2025), $37.9 million (Samaritan Research), and $40.3 million (Scotiabank,
+        via secondary reports).
+      </p>
+      <p>
+        The letter&apos;s payback is 1 year and 7 months for comparable one-to-three-year deals,
+        on a revenue basis, covering operating costs and capex, and excluding prepayments. The
+        letter does not define the capex inside that figure. The model&apos;s deal-level payback,
+        using the server-and-network slice and a contribution margin, is 33.6 months in the bear,
+        20.3 months in the base, and 14.8 months in the bull. The base is about 7% longer than
+        19 months. The fleet-wide all-in payback is longer because it includes utilization, the
+        group margin, and owned shell and power.
+      </p>
+      <h2 className="text-lg font-medium text-foreground">Financing and dilution</h2>
+      <p>
+        The company expects prepayments and asset-backed financing to cover 75–85% of 2027
+        capex. In the third quarter, prepayments on new deals covered more than 100% of the
+        associated capex.         The headline value does not depend on issuing new shares. Prepayments
+        enter free cash flow only as the change in deferred revenue. The opening
+        current deferred revenue is released from the fourth quarter of 2026 through
+        the third quarter of 2027. The opening non-current balance, $7,963.7 million,
+        is released evenly from the fourth quarter of 2027 through the third quarter
+        of 2031 in every case. New prepayments still use a case-specific recognition
+        length. A non-cash financing
+        component, estimated at 5% of the average deferred-revenue balance, is deducted because
+        the contract rates are on a revenue-recognition basis. Secured draws, coupons, and new
+        equity are in a separate panel. Convertible notes count as shares when the model value
+        times the conversion shares exceeds carrying value. The June 2029 and June 2031 notes
+        are treated as shares in every case. Restricted stock units are included. Options use
+        the treasury method at a $90.18 strike.
+      </p>
+      <h2 className="text-lg font-medium text-foreground">Customer concentration</h2>
+      <p>
+        In the third quarter of 2026, three customers were 33%, 22%, and 15% of revenue. One
+        customer was 75% of receivables. The filings do not name them. In the bear, 100 MW
+        tied to the slipped New Jersey tranches are idle for two quarters in 2028 and then
+        re-let at 80% of the case rate. That megawatt count is an estimate. From 2029, 15% of
+        bear revenue, the smallest of those three customers, is removed for a year and then
+        re-let at 80%. Lost revenue keeps 80% of its margin as a cost. The model does not
+        stress the 22% customer separately, and it does not model receivables or credit losses.
+      </p>
+      <h2 className="text-lg font-medium text-foreground">Letter and call</h2>
+      <p>
+        The shareholder letter and earnings release filed on November 12, 2026 say 2026 revenue
+        at the low end of $3.0–3.4 billion. On the earnings call the same day, a third-party
+        transcript reports $3.0–3.2 billion. No transcript was filed with the SEC. The model
+        does not force either range. Its 2026 engine is about $3.04 billion in the base. Its
+        2027 engine is about $13.14 billion, about 1.1% above the top of the $12–13 billion
+        outlook. A separate run that scales megawatts by 0.62 from 2027 is printed beside the
+        headline. It is not used to change the inputs. Annualized run-rate revenue above $7
+        billion moved from December 2026 to February 2027. The model does not use that run rate
+        as an input.
+      </p>
+      <h2 className="text-lg font-medium text-foreground">Megawatts</h2>
+      <p>
+        Contracted power was more than 4 GW on November 12, 2026, with 5 GW expected by year-end.
+        Connected power was last guided at 800 MW to 1 GW for year-end 2026 and was not restated
+        in the third-quarter letter. Active power, the only census, was about 170 MW at
+        December 31, 2025. The company has not said whether those figures are IT load or
+        facility load. The model path is energized IT megawatts. Billing starts two quarters
+        after energization.         The first three quarters of 2026, 315, 460, and 605 MW, are a
+        straight-line estimate from 170 MW to the base year-end path, not a disclosed census.
+        Base energized capacity in 2031 and 2032, 5,200 MW and 5,500 MW, is an estimate
+        and is not covered by a disclosed contract.
+      </p>
+      <h2 className="text-lg font-medium text-foreground">Weights</h2>
+      <p>
+        The weights are 35% bear, 45% base, and 20% bull. They are the authors&apos; judgment,
+        set with the help of AI tools, before the results were used to change them. They are
+        not a market probability. Each case is shown on its own.
+      </p>
+      <h2 className="text-lg font-medium text-foreground">Change log</h2>
+      <p>Earlier versions are not comparable with this one. They were replaced after review.</p>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>4.0.0, 2026-11-24. Rebuilt the valuation: financing-neutral cash flow with no share issuance in the headline; a megawatt, utilization, and cohort-price engine with a two-quarter billing lag; prepayments as working capital net of a non-cash financing component; servers and network at 70% of capex; deal payback set next to the disclosed 19 months; price and cost declines on the same start-year index; a customer-concentration stress in the bear; weights 35/45/20. Version 3.1.0, commit 7ba4a47, is superseded.</li>
+        <li>3.1.0, 2026-11-24, commit 7ba4a47. Moved share issuance out of the headline. Superseded by 4.0.0.</li>
+        <li>3.0.0, 2026-11-24, commit 9424660. Cohort engine and a financing projection. Superseded.</li>
+        <li>2.3.0, 2026-11-24, commit 99656b3. Recalibrated. Superseded.</li>
+        <li>2.2.0, 2026-11-24, commit 1073b1d. Recalibrated. Superseded.</li>
+        <li>2.1.0, 2026-11-24, commit 6e5a408. Rebuilt. Superseded.</li>
+        <li>2.0.0, 2026-11-24, commit 4656fb3. Q3 2026 figures sourced. Superseded.</li>
+      </ul>
       <h2 className="text-lg font-medium text-foreground">Satellite images</h2>
       <p>
-        The Mäntsälä frames are Copernicus Sentinel-2 L2A scenes, 10 m pixels, cropped to
-        about two kilometers around Moreenikatu 6. The address is the Finnish business
-        register entry for Nebius DC Oy. The coordinate is the OpenStreetMap way published
-        for that address. Image bytes are rendered from Microsoft Planetary Computer, which
-        mirrors the Copernicus archive, because a Copernicus Data Space download needs an
-        account. The scene id and acquisition time are the Sentinel product metadata. Cloud
-        cover is the scene-level percentage. The pictures are not a construction survey.
-      </p>
-      <h2 className="text-lg font-medium text-foreground">Adding a quarter or a guidance item</h2>
-      <p>
-        Edit data/financials.json or data/guidance.json. Keep the source id in the sources
-        map, with the URL and the document date. Run <span className="font-mono">npm run validate</span>.
-        The validator checks that the 2025 quarters still sum to the full-year totals and that
-        every source id used by a figure exists. Do not put a number in a cell you cannot link.
+        Images are 10 m crops of public Copernicus Sentinel-2 scenes. Contains modified
+        Copernicus Sentinel data 2024 and 2025, processed from the Microsoft Planetary Computer
+        mirror. Each frame on the data-centers page carries the same credit and its acquisition
+        date. Frames are refreshed at most monthly. They are not a construction survey.
       </p>
       <h2 className="text-lg font-medium text-foreground">Refresh jobs</h2>
       <p>
-        scripts/fetch-openrouter.mjs, fetch-token-factory.mjs, fetch-gpu-pricing.mjs, and
-        fetch-quote.mjs update the JSON. scripts/fetch_satellite.py searches Sentinel-2 and,
-        when GDAL is installed, writes a new crop. Vercel Cron calls /api/cron/[job]. On
-        Vercel the filesystem is read-only, so the route does not pretend to save. The
-        GitHub Action in .github/workflows/refresh-public-data.yml is what commits new
-        snapshots. CRON_SECRET, FINNHUB_API_KEY, ALPHAVANTAGE_API_KEY, CDSE_CLIENT_ID, and
-        CDSE_CLIENT_SECRET are optional and documented in .env.example.
+        scripts/fetch-openrouter.mjs, fetch-token-factory.mjs, and fetch-gpu-pricing.mjs update
+        public price JSON. scripts/fetch_satellite.py searches Sentinel-2. Share prices are typed
+        by hand. There is no quote feed. Figures from SEC filings are entered by hand. The site
+        does not request EDGAR automatically.
       </p>
     </div>
   );

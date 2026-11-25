@@ -1,3 +1,4 @@
+import { CapitalStructure } from "@/components/capital-structure";
 import { FinancialCharts } from "@/components/result-charts";
 import { MetricValue, SourceA } from "@/components/metric-value";
 import { financials } from "@/lib/load";
@@ -26,6 +27,9 @@ export default function FinancialsPage() {
           &quot;purchases of property and equipment and intangible assets&quot; is shown as an
           outflow. Every figure links to the document it was taken from. Where a later release
           recast the quarter, the later figure is shown and the first-reported figure sits under it.
+          Third-quarter 2026 revenue of $980.8 million includes $325.1 million of non-recurring
+          strategic-partnership revenue. Recurring group revenue for the quarter is $655.7 million,
+          which is the reported figure minus that amount.
         </p>
         <p className="mt-2 text-sm">
           <SourceA source="ir" sources={sources}>All releases on nebius.com/financials</SourceA>
@@ -157,6 +161,7 @@ export default function FinancialsPage() {
           </table>
         </div>
       </section>
+      <CapitalStructure />
     </div>
   );
 }

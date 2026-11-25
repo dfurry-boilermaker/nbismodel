@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { Input } from "@/components/ui/input";
-import { useMarketQuote } from "@/components/market-quote";
+import { REFERENCE_CLOSE } from "@/lib/dcf";
 import { priceBand, realizedVol } from "@/lib/vol";
 
 export function VolModel({
@@ -14,12 +14,10 @@ export function VolModel({
   quoteNote: string;
   quoteAsOf: string | null;
 }) {
-  const snapshot = useMarketQuote();
-  const closes = useMemo(() => snapshot?.points.map(point => point.close) ?? fallbackCloses, [snapshot, fallbackCloses]);
+  const closes = fallbackCloses;
   const realized = useMemo(() => realizedVol(closes), [closes]);
-  const last = closes.at(-1) ?? null;
   const [customPrice, setPrice] = useState<string | null>(null);
-  const price = customPrice ?? String(snapshot?.price ?? last ?? "");
+  const price = customPrice ?? String(REFERENCE_CLOSE.value);
   const [customVol, setVol] = useState<string | null>(null);
   const vol = customVol ?? String(realized ?? "");
   const [days, setDays] = useState("5");
@@ -45,19 +43,16 @@ export function VolModel({
       <p className="text-sm text-muted">
         A 95% band under a lognormal model with zero drift: price × exp(±1.96 × annual
         volatility × sqrt(days / 252)). Trading days use 252. This is not a directional
-        forecast. {snapshot ? "The starting price is the latest cached Yahoo Finance regular-session trade as of " + snapshot.asOf + "." : quoteNote}
+        forecast. The starting price is the hand-entered close of ${REFERENCE_CLOSE.value} as of {REFERENCE_CLOSE.asOf}. {REFERENCE_CLOSE.label} {quoteNote}
       </p>
       {closes.length < 20 ? (
         <p className="rounded-md border border-amber/40 bg-amber/10 p-3 text-sm text-amber">
-          Realized volatility needs at least 20 daily closes. No market quotes are stored
-          yet. Enter a price and volatility below to explore a hypothetical range. Your
-          inputs are not saved and are not market data.
+          Realized volatility needs at least 20 daily closes. None are stored. Type a
+          volatility below. Your inputs are not saved.
         </p>
       ) : (
         <p className="text-sm">
-          Realized volatility from {closes.length} closes
-          {!snapshot && quoteAsOf ? `, retrieved ${quoteAsOf}` : ""}: {realized ? `${(realized * 100).toFixed(1)}%` : "—"}.
-          Last close in the file: {last}.
+          Realized volatility from {closes.length} closes{quoteAsOf ? `, file dated ${quoteAsOf}` : ""}: {realized ? `${(realized * 100).toFixed(1)}%` : "—"}.
         </p>
       )}
       <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">

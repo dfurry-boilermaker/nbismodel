@@ -7,7 +7,6 @@ const JOBS: Record<string, [string, string]> = {
   openrouter: ["node", "scripts/fetch-openrouter.mjs"],
   "token-factory": ["node", "scripts/fetch-token-factory.mjs"],
   gpu: ["node", "scripts/fetch-gpu-pricing.mjs"],
-  quote: ["node", "scripts/fetch-quote.mjs"],
   satellite: ["python3", "scripts/fetch_satellite.py"],
 };
 

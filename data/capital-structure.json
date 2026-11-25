@@ -1,0 +1,282 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-09-30",
+  "retrievedAt": "2026-11-24",
+  "unit": "USD millions, except share counts, conversion rates, and per-share prices",
+  "sources": {
+    "fs-q3-2026": {
+      "id": "fs-q3-2026",
+      "url": "https://www.sec.gov/Archives/edgar/data/1513845/000110465926126238/nbis-ex99d2.htm",
+      "title": "Unaudited condensed consolidated financial statements, Exhibit 99.2 to Form 6-K",
+      "date": "2026-11-12"
+    },
+    "ofr-q3-2026": {
+      "id": "ofr-q3-2026",
+      "url": "https://www.sec.gov/Archives/edgar/data/1513845/000110465926126238/nbis-ex99d1.htm",
+      "title": "Operating and financial review, Exhibit 99.1 to Form 6-K",
+      "date": "2026-11-12"
+    },
+    "pr-q3-2026": {
+      "id": "pr-q3-2026",
+      "url": "https://www.sec.gov/Archives/edgar/data/1513845/000110465926126008/tm2629571d1_ex99-1.htm",
+      "title": "Q3 2026 earnings release, Exhibit 99.1 to Form 6-K",
+      "date": "2026-11-12"
+    },
+    "shl-q3-2026": {
+      "id": "shl-q3-2026",
+      "url": "https://www.sec.gov/Archives/edgar/data/1513845/000110465926126008/tm2629571d1_ex99-2.htm",
+      "title": "Q3 2026 shareholder letter, Exhibit 99.2 to Form 6-K",
+      "date": "2026-11-12"
+    },
+    "6k-jun-2025": {
+      "id": "6k-jun-2025",
+      "url": "https://www.sec.gov/Archives/edgar/data/1513845/000110465925055197/tm2516825d1_ex99-1.htm",
+      "title": "June 2025 convertible notes announcement, Exhibit 99.1 to Form 6-K",
+      "date": "2025-06-02"
+    },
+    "424b5-2025-11-12": {
+      "id": "424b5-2025-11-12",
+      "url": "https://www.sec.gov/Archives/edgar/data/1513845/000110465925110025/tm2530771-1_424b5.htm",
+      "title": "Prospectus supplement, Form 424B5, at-the-market program",
+      "date": "2025-11-12"
+    },
+    "6k-citi": {
+      "id": "6k-citi",
+      "url": "https://www.sec.gov/Archives/edgar/data/1513845/000110465926117978/tm2628078d1_ex99-1.htm",
+      "title": "Citi $3.5 billion facility announcement, Exhibit 99.1 to Form 6-K",
+      "date": "2026-10-22"
+    }
+  },
+  "shares": {
+    "outstanding": {
+      "value": 292902405,
+      "classA": 259597352,
+      "classB": 33305053,
+      "treasuryClassA": 29138539,
+      "source": "pr-q3-2026",
+      "note": "Issued and outstanding at September 30, 2026, excluding treasury. Not diluted for convertibles, warrants, or options."
+    },
+    "prefundedWarrants": {
+      "shares": 21065936,
+      "exercisePriceUsd": 0.0001,
+      "grossProceeds": 2000,
+      "issued": "2026-03-11",
+      "holder": "NVIDIA",
+      "source": "fs-q3-2026",
+      "note": "Included in basic earnings per share because the shares are issuable for little cash. Not part of the 292,902,405 outstanding count."
+    },
+    "weightedAverage": {
+      "period": "three months ended 2026-09-30",
+      "basic": 298010566,
+      "diluted": 298010566,
+      "source": "fs-q3-2026",
+      "note": "Diluted equals basic because the quarter was a loss from continuing operations. The if-converted convertible increment excluded as anti-dilutive was 66,620,774 weighted-average shares. Share-based awards excluded as anti-dilutive were 9,736,161."
+    }
+  },
+  "cash": {
+    "unrestricted": {
+      "value": 7425.6,
+      "source": "fs-q3-2026",
+      "note": "Cash and cash equivalents at September 30, 2026."
+    },
+    "restricted": {
+      "value": 1215.5,
+      "source": "fs-q3-2026",
+      "note": "Restricted cash and cash equivalents at September 30, 2026, from the cash-flow reconciliation. Combined with unrestricted cash this is $8,641.1 million. The term-loan collateral includes cash and restricted cash of $154.4 million at the borrowers; that amount sits inside this restricted balance and is not an extra pile of cash."
+    }
+  },
+  "deferredRevenue": {
+    "current": { "value": 1445.5, "source": "fs-q3-2026" },
+    "nonCurrent": { "value": 7963.7, "source": "fs-q3-2026" },
+    "note": "Customer prepayments not yet recognized as revenue. Cash EBITDA in the model subtracts this balance as it is recognized, because the cash is already in the September 30, 2026 cash balance. It is not subtracted a second time in the equity bridge."
+  },
+  "debtCarryingTotal": {
+    "value": 14162.8,
+    "current": 187.5,
+    "nonCurrent": 14003.3,
+    "source": "fs-q3-2026",
+    "note": "Carrying amount after debt discount and issuance costs. Principal column in the filing for the convertible notes is the accreted principal at maturity, not the original principal."
+  },
+  "notes": [
+    {
+      "id": "jun-2029",
+      "name": "2.00% convertible senior notes due June 2029",
+      "maturity": "2029-06-05",
+      "coupon": 0.02,
+      "effectiveRate": 0.0706,
+      "originalIssued": 500,
+      "originalOutstanding": 87.5,
+      "maturityPrincipal": 105.0,
+      "accretesTo": 1.2,
+      "conversionRatePerThousand": 19.4363,
+      "conversionPrice": 51.45,
+      "carrying": 91.2,
+      "fairValue": 402.0,
+      "source": "fs-q3-2026",
+      "rateSource": "6k-jun-2025",
+      "note": "Issued at $500 million. In August 2026 holders exchanged $400 million original principal for shares. Remaining original principal is $87.5 million, which accretes to 120% at maturity. Conversion rate is the June 2, 2025 rate and is applied to original principal, not accreted principal."
+    },
+    {
+      "id": "jun-2031",
+      "name": "3.00% convertible senior notes due June 2031",
+      "maturity": "2031-06-05",
+      "coupon": 0.03,
+      "effectiveRate": 0.0687,
+      "originalIssued": 500,
+      "originalOutstanding": 87.5,
+      "maturityPrincipal": 109.4,
+      "accretesTo": 1.25,
+      "conversionRatePerThousand": 19.4363,
+      "conversionPrice": 51.45,
+      "carrying": 89.8,
+      "fairValue": 403.7,
+      "source": "fs-q3-2026",
+      "rateSource": "6k-jun-2025",
+      "note": "Same exchange as the 2029 notes. Remaining original principal $87.5 million accretes to 125% ($109.375 million, shown as $109.4 million)."
+    },
+    {
+      "id": "sep-2030",
+      "name": "1.00% convertible senior notes due September 2030",
+      "maturity": "2030-09-15",
+      "coupon": 0.01,
+      "effectiveRate": 0.0415,
+      "originalIssued": 1581.25,
+      "originalOutstanding": 1581.25,
+      "maturityPrincipal": 1818.4,
+      "accretesTo": 1.15,
+      "conversionRatePerThousand": 7.2072,
+      "conversionPrice": 138.75,
+      "carrying": 1600.9,
+      "fairValue": 2886.9,
+      "source": "fs-q3-2026",
+      "rateSource": "424b5-2025-11-12",
+      "note": "Original principal $1,581.25 million including the initial purchasers' option. Accretes to 115% of original principal. Conversion rate from the November 12, 2025 prospectus supplement."
+    },
+    {
+      "id": "sep-2032",
+      "name": "2.75% convertible senior notes due September 2032",
+      "maturity": "2032-09-15",
+      "coupon": 0.0275,
+      "effectiveRate": 0.0488,
+      "originalIssued": 1581.25,
+      "originalOutstanding": 1581.25,
+      "maturityPrincipal": 1818.4,
+      "accretesTo": 1.15,
+      "conversionRatePerThousand": 7.2072,
+      "conversionPrice": 138.75,
+      "carrying": 1583.7,
+      "fairValue": 2934.8,
+      "source": "fs-q3-2026",
+      "rateSource": "424b5-2025-11-12",
+      "note": "Same conversion rate and 115% accretion as the September 2030 notes."
+    },
+    {
+      "id": "mar-2031",
+      "name": "1.25% convertible senior notes due March 2031",
+      "maturity": "2031-03-15",
+      "coupon": 0.0125,
+      "effectiveRate": 0.0498,
+      "originalIssued": 2587.5,
+      "originalOutstanding": 2587.5,
+      "maturityPrincipal": 3105.0,
+      "accretesTo": 1.2,
+      "conversionRatePerThousand": 5.4579,
+      "conversionPrice": 183.22,
+      "carrying": 2613.5,
+      "fairValue": 3835.7,
+      "source": "fs-q3-2026",
+      "rateSource": "fs-q3-2026",
+      "note": "Original principal is the maturity principal of $3,105.0 million divided by the 120% accretion stated for this series, $2,587.5 million. The filing rounds the issued total of this series, including the exercised greenshoe, as about $2.59 billion."
+    },
+    {
+      "id": "mar-2033",
+      "name": "2.625% convertible senior notes due March 2033",
+      "maturity": "2033-03-15",
+      "coupon": 0.02625,
+      "effectiveRate": 0.052,
+      "originalIssued": 1750,
+      "originalOutstanding": 1750,
+      "maturityPrincipal": 2100.0,
+      "accretesTo": 1.2,
+      "conversionRatePerThousand": 5.546,
+      "conversionPrice": 180.31,
+      "carrying": 1756.1,
+      "fairValue": 2702.4,
+      "source": "fs-q3-2026",
+      "rateSource": "fs-q3-2026",
+      "note": "Issued at $1.75 billion. The greenshoe for this series was not exercised. Accretes to 120%."
+    },
+    {
+      "id": "feb-2030",
+      "name": "0.50% convertible senior notes due February 2030",
+      "maturity": "2030-02-15",
+      "coupon": 0.005,
+      "effectiveRate": 0.0357,
+      "originalIssued": 3450,
+      "originalOutstanding": 3450,
+      "maturityPrincipal": 3795.0,
+      "accretesTo": 1.1,
+      "conversionRatePerThousand": 3.1902,
+      "conversionPrice": 313.46,
+      "referencePrice": 223.9,
+      "carrying": 3417.4,
+      "fairValue": 3453.8,
+      "source": "fs-q3-2026",
+      "rateSource": "fs-q3-2026",
+      "note": "Issued August 24, 2026, including the option. Accretes to 110% of original principal. Conversion price is a 40% premium to the $223.90 reference price. Settlement is cash, shares, or a combination, at the company's election. Convertible only in specified windows before the last two months."
+    },
+    {
+      "id": "feb-2034",
+      "name": "4.50% convertible senior notes due February 2034",
+      "maturity": "2034-02-15",
+      "coupon": 0.045,
+      "effectiveRate": 0.0716,
+      "originalIssued": 2300,
+      "originalOutstanding": 2300,
+      "maturityPrincipal": 2875.0,
+      "accretesTo": 1.25,
+      "conversionRatePerThousand": 3.0802,
+      "conversionPrice": 324.65,
+      "referencePrice": 223.9,
+      "carrying": 2277.1,
+      "fairValue": 2503.5,
+      "source": "fs-q3-2026",
+      "rateSource": "fs-q3-2026",
+      "note": "Issued August 24, 2026, including the option. Accretes to 125%. Conversion price is a 45% premium to the $223.90 reference price."
+    }
+  ],
+  "facilities": [
+    {
+      "id": "term-loan",
+      "name": "Senior secured term loan",
+      "closed": "2026-07-10",
+      "maturity": "2030-10-31",
+      "finalInstallment": "2030-10-15",
+      "originalPrincipal": 773.3,
+      "principalOutstanding": 751.8,
+      "carrying": 733.1,
+      "margin": 0.025,
+      "swappedSofr": 0.039,
+      "effectiveRate": 0.076,
+      "commitment": null,
+      "drawn": null,
+      "source": "fs-q3-2026",
+      "note": "Borrowers are Nebius Compute II, LLC and Nebius Compute II Oy. Coupon is one-month CME Term SOFR plus 2.50%. Swaps fix the SOFR leg at a weighted average of 3.9% through October 15, 2030, so the hedged cash coupon is about 6.4% before fees. The letter rounds the original principal to $775 million."
+    },
+    {
+      "id": "citi",
+      "name": "Citi senior secured facility",
+      "announced": "2026-10-22",
+      "commitment": 3500,
+      "drawn": null,
+      "principalOutstanding": null,
+      "carrying": null,
+      "margin": null,
+      "maturity": "364 days from October 22, 2026",
+      "initialMargin": 0.0275,
+      "maxMargin": 0.035,
+      "source": "6k-citi",
+      "note": "Not on the September 30 balance sheet. The release states the commitment, the 364-day tenor, and Term SOFR plus 2.75% initially, rising to as much as 3.50%. It does not state Term SOFR or the amount drawn. The model does not treat the undrawn commitment as debt outstanding."
+    }
+  ]
+}

@@ -4,10 +4,10 @@ import { SiteNav } from "@/components/site-nav";
 export function Disclaimer() {
   return (
     <p className="footer-disclaimer">
-      Informational and educational only. Not investment advice, a solicitation, or a
-      recommendation to buy or sell any security. Data may be delayed, incomplete, or wrong.
-      The authors may hold positions in securities mentioned here. This site shows no private
-      portfolio, holdings, or account information for anyone.
+      Educational use only. Not a price target, a forecast, a rating, or investment advice,
+      and not an offer to buy or sell any security. Prices are closing prices entered manually
+      as of the date shown; not live; may be out of date. The authors may hold positions in
+      securities mentioned here. Not affiliated with Nebius Group N.V.
     </p>
   );
 }
@@ -37,12 +37,13 @@ export function Footer() {
           <Link href="/" className="footer-title no-underline">Follow the fundamentals.</Link>
           <div className="footer-links">
             <Link href="/methodology">Methodology ↗</Link>
+            <Link href="/disclaimer">Disclaimer ↗</Link>
             <a href="https://nebius.com/financials">Investor relations ↗</a>
             <a href="https://github.com/dfurry-boilermaker/nbismodel">GitHub ↗</a>
           </div>
         </div>
         <Disclaimer />
-        <div className="footer-bottom">Independent research project / NASDAQ: NBIS / Not affiliated with Nebius Group</div>
+        <div className="footer-bottom">Independent research project / NASDAQ: NBIS / Not affiliated with Nebius Group N.V. Nebius is a trademark of its owner.</div>
       </div>
     </footer>
   );

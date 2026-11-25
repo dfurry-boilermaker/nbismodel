@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "retrievedAt": "2026-11-23",
+  "retrievedAt": "2026-11-24",
   "imageryNote": "Satellite crops are Copernicus Sentinel-2 L2A, 10 m multispectral pixels, rendered from the Microsoft Planetary Computer mirror of the Copernicus archive. Each frame is labeled with the scene acquisition time in the product metadata. Cloud cover is the scene-level figure, not a measurement inside the crop. Downloading pixels from the Copernicus Data Space Ecosystem itself needs CDSE credentials; the scheduled job searches CDSE and falls back to Planetary Computer for the image. Frames are not a construction survey.",
   "sources": {
     "pr-q3-2024": {
@@ -138,7 +138,7 @@
     "osm": {
       "id": "osm",
       "url": "https://www.openstreetmap.org/way/846760920",
-      "title": "OpenStreetMap way 846760920, Global DC OY / M\u00e4nts\u00e4l\u00e4",
+      "title": "OpenStreetMap way 846760920, Global DC OY / Mäntsälä",
       "date": "2026-11-23"
     },
     "edgar": {
@@ -170,20 +170,32 @@
       "url": "https://openrouter.ai/api/v1/models",
       "title": "OpenRouter models API",
       "date": "2026-11-23"
+    },
+    "424b5-2025-11-12": {
+      "id": "424b5-2025-11-12",
+      "url": "https://www.sec.gov/Archives/edgar/data/1513845/000110465925110025/tm2530771-1_424b5.htm",
+      "title": "Prospectus supplement filed November 12, 2025",
+      "date": "2025-11-12"
+    },
+    "fs-q3-2026": {
+      "id": "fs-q3-2026",
+      "url": "https://www.sec.gov/Archives/edgar/data/1513845/000110465926126238/nbis-ex99d2.htm",
+      "title": "Unaudited financial statements, Exhibit 99.2 to the November 12, 2026 Form 6-K",
+      "date": "2026-11-12"
     }
   },
   "sites": [
     {
       "id": "mantasala",
-      "name": "M\u00e4nts\u00e4l\u00e4",
-      "place": "M\u00e4nts\u00e4l\u00e4, Finland",
+      "name": "Mäntsälä",
+      "place": "Mäntsälä, Finland",
       "relationship": "Owned. Finnish registry name Nebius DC Oy, formerly Global DC Oy and Yandex Oy.",
       "status": "Serving. Cloud region eu-north1 is Finland.",
       "cloudRegions": [
         "eu-north1"
       ],
       "capacity": "Company target of about 75 MW contracted power for the expansion, by the end of 2025 or early 2026. Megawatts in service were not restated in the 2026 letters reviewed.",
-      "dates": "Expansion described October 31, 2024 and again August 7, 2025. A second M\u00e4nts\u00e4l\u00e4 site is named for 2027 deployment and has no separate footprint here.",
+      "dates": "Expansion described October 31, 2024 and again August 7, 2025. A second Mäntsälä site is named for 2027 deployment and has no separate footprint here.",
       "pin": {
         "lat": 60.629787,
         "lon": 25.264085,
@@ -227,12 +239,32 @@
         "shl-q2-2025",
         "shl-q3-2026"
       ],
-      "notes": "Sentinel-2 pixels are 10 m. The crops are about 2 km across. Roofs and new pads are visible; this is not a survey and not a measurement of megawatts."
+      "notes": "Sentinel-2 pixels are 10 m. The crops are about 2 km across. Roofs and new pads are visible; this is not a survey and not a measurement of megawatts.",
+      "mw": {
+        "contractedOrPlanned": {
+          "value": 75,
+          "label": "Contracted target, approximate",
+          "source": "shl-q2-2025",
+          "note": "About 75 MW contracted for the expansion. The October 31, 2024 release said the expansion would triple capacity to 75 MW."
+        },
+        "operational": {
+          "value": null,
+          "label": "Not disclosed",
+          "source": "shl-q3-2026",
+          "note": "Megawatts in service were not restated."
+        },
+        "energized": {
+          "value": null,
+          "label": "Not disclosed",
+          "source": "shl-q3-2026",
+          "note": "Energized or active megawatts at this site were not stated."
+        }
+      }
     },
     {
       "id": "mantasala-2",
-      "name": "Second M\u00e4nts\u00e4l\u00e4 site",
-      "place": "M\u00e4nts\u00e4l\u00e4, Finland",
+      "name": "Second Mäntsälä site",
+      "place": "Mäntsälä, Finland",
       "relationship": "Owned site named for future deployment. No separate address published in the sources reviewed.",
       "status": "Named for 2027. Not a separate live cloud region.",
       "cloudRegions": [],
@@ -243,7 +275,27 @@
       "sources": [
         "shl-q3-2026"
       ],
-      "notes": "Not pinned. A second marker on the town would invent a footprint."
+      "notes": "Not pinned. A second marker on the town would invent a footprint.",
+      "mw": {
+        "contractedOrPlanned": {
+          "value": null,
+          "label": "Not disclosed",
+          "source": "shl-q3-2026",
+          "note": "Named with Lappeenranta, Missouri, and Alabama as more than 3 GW at scale over 3 to 3.5 years. This site's own megawatts were not stated. Missouri's 1.1 GW is not subtracted here, because the letter did not give a remainder."
+        },
+        "operational": {
+          "value": null,
+          "label": "Not disclosed",
+          "source": "shl-q3-2026",
+          "note": "Not disclosed for this site."
+        },
+        "energized": {
+          "value": null,
+          "label": "Not disclosed",
+          "source": "shl-q3-2026",
+          "note": "Expected to deploy capacity in 2027. None described as energized."
+        }
+      }
     },
     {
       "id": "lappeenranta",
@@ -264,7 +316,27 @@
         "shl-q3-2026",
         "shl-q1-2026"
       ],
-      "notes": "No satellite image. A city image would not be the site."
+      "notes": "No satellite image. A city image would not be the site.",
+      "mw": {
+        "contractedOrPlanned": {
+          "value": null,
+          "label": "Not disclosed",
+          "source": "shl-q3-2026",
+          "note": "Part of the same more-than-3 GW group. Not tied to the May 13, 2026 Finland 310 MW announcement."
+        },
+        "operational": {
+          "value": null,
+          "label": "Not disclosed",
+          "source": "shl-q3-2026",
+          "note": "Not disclosed for this site."
+        },
+        "energized": {
+          "value": null,
+          "label": "Not disclosed",
+          "source": "shl-q3-2026",
+          "note": "Not disclosed for this site."
+        }
+      }
     },
     {
       "id": "finland-310",
@@ -280,12 +352,32 @@
       "sources": [
         "shl-q1-2026"
       ],
-      "notes": "Kept separate from Lappeenranta and the second M\u00e4nts\u00e4l\u00e4 site because the May letter did not name the city."
+      "notes": "Kept separate from Lappeenranta and the second Mäntsälä site because the May letter did not name the city.",
+      "mw": {
+        "contractedOrPlanned": {
+          "value": 310,
+          "label": "Planned, full deployment",
+          "source": "shl-q1-2026",
+          "note": "310 MW when fully deployed. The letter did not name the municipality, so this is not assigned to Lappeenranta or the second Mäntsälä site."
+        },
+        "operational": {
+          "value": null,
+          "label": "Not disclosed",
+          "source": "shl-q1-2026",
+          "note": "Not described as operating."
+        },
+        "energized": {
+          "value": null,
+          "label": "Not disclosed",
+          "source": "shl-q1-2026",
+          "note": "Not disclosed for this site."
+        }
+      }
     },
     {
       "id": "keflavik",
-      "name": "Keflav\u00edk",
-      "place": "Keflav\u00edk, Iceland",
+      "name": "Keflavík",
+      "place": "Keflavík, Iceland",
       "relationship": "Colocation with Verne.",
       "status": "Cloud region eu-north2 is Iceland and lists compute as available.",
       "cloudRegions": [
@@ -296,14 +388,34 @@
       "pin": {
         "lat": 63.999,
         "lon": -22.56,
-        "precision": "Town of Keflav\u00edk. The Verne campus footprint was not taken from a Nebius filing."
+        "precision": "Town of Keflavík. The Verne campus footprint was not taken from a Nebius filing."
       },
       "scenes": [],
       "sources": [
         "blog-nj",
         "regions"
       ],
-      "notes": "No satellite image, because the pin is the town, not the hall."
+      "notes": "No satellite image, because the pin is the town, not the hall.",
+      "mw": {
+        "contractedOrPlanned": {
+          "value": 10,
+          "label": "Announced cluster",
+          "source": "blog-nj",
+          "note": "10 MW cluster announced March 5, 2025."
+        },
+        "operational": {
+          "value": null,
+          "label": "Not disclosed",
+          "source": "regions",
+          "note": "Cloud region eu-north2 lists compute as available. That does not confirm 10 MW in service."
+        },
+        "energized": {
+          "value": null,
+          "label": "Not disclosed",
+          "source": "regions",
+          "note": "Energized megawatts were not stated."
+        }
+      }
     },
     {
       "id": "france",
@@ -328,7 +440,27 @@
         "regions",
         "shl-q2-2025"
       ],
-      "notes": ""
+      "notes": "",
+      "mw": {
+        "contractedOrPlanned": {
+          "value": null,
+          "label": "Not disclosed",
+          "source": "pr-q3-2024",
+          "note": "A 5 MW figure in secondary write-ups is not used."
+        },
+        "operational": {
+          "value": null,
+          "label": "Not disclosed",
+          "source": "regions",
+          "note": "Both France region codes list compute. Megawatts were not stated."
+        },
+        "energized": {
+          "value": null,
+          "label": "Not disclosed",
+          "source": "regions",
+          "note": "Not disclosed for this site."
+        }
+      }
     },
     {
       "id": "kansas-city",
@@ -352,25 +484,70 @@
         "shl-q2-2025",
         "regions"
       ],
-      "notes": "This is separate from the Independence, Missouri factory."
+      "notes": "This is separate from the Independence, Missouri factory.",
+      "mw": {
+        "contractedOrPlanned": {
+          "value": null,
+          "label": "Not disclosed",
+          "source": "shl-q2-2025",
+          "note": "Not disclosed for this site."
+        },
+        "operational": {
+          "value": null,
+          "label": "Not disclosed",
+          "source": "regions",
+          "note": "Region us-central1 is in service. Megawatts were not stated."
+        },
+        "energized": {
+          "value": null,
+          "label": "Not disclosed",
+          "source": "regions",
+          "note": "Not disclosed for this site."
+        }
+      }
     },
     {
       "id": "new-jersey",
-      "name": "New Jersey",
-      "place": "Vinefield, New Jersey, as named by the company",
-      "relationship": "Build with DataOne. The Q2 2025 letter calls it a new facility.",
-      "status": "Partial delivery. The November 12, 2026 letter says remaining tranches moved, with more than half of the Microsoft-contracted capacity expected by year-end 2026 and the rest in Q2 2027.",
+      "name": "Vineland, New Jersey",
+      "place": "Vineland, New Jersey",
+      "relationship": "Build with DataOne. The November 12, 2025 prospectus supplement says the Microsoft agreement is for dedicated capacity at the new data center in Vineland, New Jersey.",
+      "status": "Partial delivery. More than half of the Microsoft-contracted capacity is expected by year-end 2026, and the rest in the second quarter of 2027.",
       "cloudRegions": [],
-      "capacity": "Expandable up to 300 MW (March 5, 2025). As of August 7, 2025, 200 MW was contracted and in construction, of which 100 MW was planned for 2025.",
-      "dates": "See the guidance item. Instances were planned for fall 2025.",
-      "pin": null,
+      "capacity": "Expandable up to 300 MW (March 5, 2025). 200 MW contracted and in construction as of August 7, 2025. Microsoft contract value about $17.4 billion through 2031, or about $19.4 billion if Microsoft takes the additional services. Megawatts energized were not stated.",
+      "dates": "Prospectus supplement November 12, 2025: obligations commenced in early November 2025, tranches during 2025 and 2026. November 12, 2026 letter: remaining tranches moved, in part because temporary generation was retired ahead of Bloom fuel cells.",
+      "pin": {
+        "lat": 39.4862,
+        "lon": -75.0259,
+        "precision": "City centroid of Vineland, New Jersey, the municipality named in the November 12, 2025 prospectus supplement. Not a facility coordinate."
+      },
       "scenes": [],
       "sources": [
         "blog-nj",
         "shl-q2-2025",
-        "shl-q3-2026"
+        "shl-q3-2026",
+        "424b5-2025-11-12"
       ],
-      "notes": "Not pinned. The company spelling is Vinefield. A street address was not in the sources reviewed, and Vineland is a different name this site does not assume."
+      "notes": "The August 7, 2025 shareholder letter spelled the location Vinefield. The later prospectus says Vineland. This page uses Vineland and does not treat the two spellings as two sites.",
+      "mw": {
+        "contractedOrPlanned": {
+          "value": 200,
+          "label": "Contracted, as of August 7, 2025",
+          "source": "shl-q2-2025",
+          "note": "200 MW contracted and in construction on that date, expandable up to 300 MW in the March 5, 2025 post. The November 12, 2026 letter does not restate a megawatt total. It says more than half of the Microsoft-contracted capacity is expected by year-end 2026 and the rest in the second quarter of 2027. The half was not given in megawatts."
+        },
+        "operational": {
+          "value": null,
+          "label": "Partial, megawatts not stated",
+          "source": "shl-q3-2026",
+          "note": "Additional tranches were delivered in the third quarter and through November 2026. The megawatts in service were not stated."
+        },
+        "energized": {
+          "value": null,
+          "label": "Not disclosed",
+          "source": "shl-q3-2026",
+          "note": "Energized megawatts were not stated. Bloom generation was described as already online, without a megawatt figure."
+        }
+      }
     },
     {
       "id": "uk",
@@ -391,7 +568,27 @@
         "shl-q4-2025",
         "regions"
       ],
-      "notes": "Two region codes are listed. They are not mapped as two cities."
+      "notes": "Two region codes are listed. They are not mapped as two cities.",
+      "mw": {
+        "contractedOrPlanned": {
+          "value": null,
+          "label": "Not disclosed",
+          "source": "shl-q2-2025",
+          "note": "Not disclosed for this site."
+        },
+        "operational": {
+          "value": null,
+          "label": "Not disclosed",
+          "source": "regions",
+          "note": "Both UK region codes list compute."
+        },
+        "energized": {
+          "value": null,
+          "label": "Not disclosed",
+          "source": "regions",
+          "note": "Not disclosed for this site."
+        }
+      }
     },
     {
       "id": "israel",
@@ -411,7 +608,27 @@
         "shl-q4-2025",
         "regions"
       ],
-      "notes": ""
+      "notes": "",
+      "mw": {
+        "contractedOrPlanned": {
+          "value": null,
+          "label": "Not disclosed",
+          "source": "shl-q2-2025",
+          "note": "Not disclosed for this site."
+        },
+        "operational": {
+          "value": null,
+          "label": "Not disclosed",
+          "source": "regions",
+          "note": "Region me-west1 lists compute."
+        },
+        "energized": {
+          "value": null,
+          "label": "Not disclosed",
+          "source": "regions",
+          "note": "Not disclosed for this site."
+        }
+      }
     },
     {
       "id": "woodbury",
@@ -434,7 +651,27 @@
         "regions",
         "shl-q4-2025"
       ],
-      "notes": ""
+      "notes": "",
+      "mw": {
+        "contractedOrPlanned": {
+          "value": null,
+          "label": "Not disclosed",
+          "source": "regions",
+          "note": "Not disclosed for this site."
+        },
+        "operational": {
+          "value": null,
+          "label": "Not disclosed",
+          "source": "regions",
+          "note": "Region us-north1 is Woodbury and lists compute."
+        },
+        "energized": {
+          "value": null,
+          "label": "Not disclosed",
+          "source": "regions",
+          "note": "Not disclosed for this site."
+        }
+      }
     },
     {
       "id": "madrid",
@@ -457,7 +694,27 @@
         "regions",
         "shl-q3-2026"
       ],
-      "notes": ""
+      "notes": "",
+      "mw": {
+        "contractedOrPlanned": {
+          "value": null,
+          "label": "Not disclosed",
+          "source": "regions",
+          "note": "Not disclosed for this site."
+        },
+        "operational": {
+          "value": null,
+          "label": "Not disclosed",
+          "source": "regions",
+          "note": "Region eu-south1 lists compute."
+        },
+        "energized": {
+          "value": null,
+          "label": "Not disclosed",
+          "source": "regions",
+          "note": "Not disclosed for this site."
+        }
+      }
     },
     {
       "id": "independence",
@@ -478,7 +735,27 @@
         "shl-q1-2026",
         "shl-q3-2026"
       ],
-      "notes": ""
+      "notes": "",
+      "mw": {
+        "contractedOrPlanned": {
+          "value": 1100,
+          "label": "Under contract",
+          "source": "shl-q3-2026",
+          "note": "1.1 GW under contract after a 300 MW expansion. The May 13, 2026 letter described a 1.2 GW factory in Independence. The November letter does not repeat the city name in the 1.1 GW sentence; it is stored here because Independence is the Missouri factory named in May."
+        },
+        "operational": {
+          "value": null,
+          "label": "Not disclosed",
+          "source": "shl-q3-2026",
+          "note": "Expected to deploy capacity in 2027. Not described as operating."
+        },
+        "energized": {
+          "value": null,
+          "label": "Not disclosed",
+          "source": "shl-q3-2026",
+          "note": "Not disclosed for this site."
+        }
+      }
     },
     {
       "id": "alabama",
@@ -495,7 +772,27 @@
         "shl-q4-2025",
         "shl-q3-2026"
       ],
-      "notes": ""
+      "notes": "",
+      "mw": {
+        "contractedOrPlanned": {
+          "value": null,
+          "label": "Not disclosed",
+          "source": "shl-q3-2026",
+          "note": "Part of the more-than-3 GW owned group with Missouri, Lappeenranta, and the second Mäntsälä site."
+        },
+        "operational": {
+          "value": null,
+          "label": "Not disclosed",
+          "source": "shl-q3-2026",
+          "note": "Not disclosed for this site."
+        },
+        "energized": {
+          "value": null,
+          "label": "Not disclosed",
+          "source": "shl-q3-2026",
+          "note": "Not disclosed for this site."
+        }
+      }
     },
     {
       "id": "oklahoma",
@@ -512,7 +809,27 @@
         "shl-q4-2025",
         "shl-q3-2026"
       ],
-      "notes": ""
+      "notes": "",
+      "mw": {
+        "contractedOrPlanned": {
+          "value": null,
+          "label": "Not disclosed",
+          "source": "shl-q4-2025",
+          "note": "Not disclosed for this site."
+        },
+        "operational": {
+          "value": null,
+          "label": "Not disclosed",
+          "source": "shl-q4-2025",
+          "note": "Announced as a site. Not in the live regions list."
+        },
+        "energized": {
+          "value": null,
+          "label": "Not disclosed",
+          "source": "shl-q4-2025",
+          "note": "Not disclosed for this site."
+        }
+      }
     },
     {
       "id": "pennsylvania",
@@ -529,7 +846,27 @@
         "pr-q1-2026",
         "shl-q1-2026"
       ],
-      "notes": ""
+      "notes": "",
+      "mw": {
+        "contractedOrPlanned": {
+          "value": 1200,
+          "label": "Planned, up to",
+          "source": "shl-q1-2026",
+          "note": "Up to 1.2 GW, phases beginning in 2027. Municipality not named."
+        },
+        "operational": {
+          "value": null,
+          "label": "Not disclosed",
+          "source": "shl-q1-2026",
+          "note": "Not described as operating."
+        },
+        "energized": {
+          "value": null,
+          "label": "Not disclosed",
+          "source": "shl-q1-2026",
+          "note": "Not disclosed for this site."
+        }
+      }
     },
     {
       "id": "south-carolina",
@@ -545,7 +882,27 @@
       "sources": [
         "shl-q3-2026"
       ],
-      "notes": ""
+      "notes": "",
+      "mw": {
+        "contractedOrPlanned": {
+          "value": 50,
+          "label": "Colocation, expected online in 2027",
+          "source": "shl-q3-2026",
+          "note": "50 MW colocation, the eighth US site. City not named."
+        },
+        "operational": {
+          "value": null,
+          "label": "Not disclosed",
+          "source": "shl-q3-2026",
+          "note": "Not yet online."
+        },
+        "energized": {
+          "value": null,
+          "label": "Not disclosed",
+          "source": "shl-q3-2026",
+          "note": "Not disclosed for this site."
+        }
+      }
     },
     {
       "id": "estonia",
@@ -561,7 +918,27 @@
       "sources": [
         "shl-q3-2026"
       ],
-      "notes": "The map is a company graphic. City and megawatts were not in the prose that was reviewed."
+      "notes": "The map is a company graphic. City and megawatts were not in the prose that was reviewed.",
+      "mw": {
+        "contractedOrPlanned": {
+          "value": null,
+          "label": "Not disclosed",
+          "source": "shl-q3-2026",
+          "note": "Named on the capacity map only."
+        },
+        "operational": {
+          "value": null,
+          "label": "Not disclosed",
+          "source": "shl-q3-2026",
+          "note": "Not disclosed for this site."
+        },
+        "energized": {
+          "value": null,
+          "label": "Not disclosed",
+          "source": "shl-q3-2026",
+          "note": "Not disclosed for this site."
+        }
+      }
     },
     {
       "id": "alberta",
@@ -577,7 +954,27 @@
       "sources": [
         "shl-q3-2026"
       ],
-      "notes": ""
+      "notes": "",
+      "mw": {
+        "contractedOrPlanned": {
+          "value": 100,
+          "label": "Planned, site rights",
+          "source": "shl-q3-2026",
+          "note": "Exclusive site rights for a planned 100 MW multi-campus project, delivery targeted for 2027, with potential to scale to several hundred megawatts. The letter does not call the 100 MW contracted power."
+        },
+        "operational": {
+          "value": null,
+          "label": "Not disclosed",
+          "source": "shl-q3-2026",
+          "note": "Not disclosed for this site."
+        },
+        "energized": {
+          "value": null,
+          "label": "Not disclosed",
+          "source": "shl-q3-2026",
+          "note": "Not disclosed for this site."
+        }
+      }
     },
     {
       "id": "india",
@@ -593,7 +990,27 @@
       "sources": [
         "shl-q3-2026"
       ],
-      "notes": ""
+      "notes": "",
+      "mw": {
+        "contractedOrPlanned": {
+          "value": null,
+          "label": "Not disclosed",
+          "source": "shl-q3-2026",
+          "note": "Two colocations expected online in 2027. Megawatts were not stated."
+        },
+        "operational": {
+          "value": null,
+          "label": "Not disclosed",
+          "source": "shl-q3-2026",
+          "note": "Not disclosed for this site."
+        },
+        "energized": {
+          "value": null,
+          "label": "Not disclosed",
+          "source": "shl-q3-2026",
+          "note": "Not disclosed for this site."
+        }
+      }
     }
   ]
 }

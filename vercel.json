@@ -5,7 +5,6 @@
     { "path": "/api/cron/openrouter", "schedule": "0 6 * * *" },
     { "path": "/api/cron/token-factory", "schedule": "20 6 * * *" },
     { "path": "/api/cron/gpu", "schedule": "40 6 * * *" },
-    { "path": "/api/cron/quote", "schedule": "0 21 * * 1-5" },
-    { "path": "/api/cron/satellite", "schedule": "0 5 * * 1" }
+    { "path": "/api/cron/satellite", "schedule": "0 5 1 * *" }
   ]
 }
