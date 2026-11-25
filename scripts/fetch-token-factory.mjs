@@ -30,6 +30,7 @@ const models = raw.map((m) => ({
     deprecated: f.deprecated,
   })),
 }));
+if (!models.length || !models.some(m => m.flavors.length)) throw new Error("Empty catalog; preserving previous snapshot");
 let existing = { snapshots: [] };
 try {
   existing = JSON.parse(await readFile(OUT, "utf8"));
@@ -37,10 +38,8 @@ try {
   /* first */
 }
 const snapshots = existing.snapshots ?? [];
-const last = snapshots.at(-1);
-if (!last || JSON.stringify(last.models) !== JSON.stringify(models)) {
-  snapshots.push({ retrievedAt, models });
-}
+if (snapshots.at(-1)?.retrievedAt === retrievedAt) snapshots.pop();
+snapshots.push({ retrievedAt, models });
 const doc = {
   schemaVersion: 1,
   sourceUrl: SOURCE,

@@ -56,7 +56,9 @@ npm run fetch:satellite
 
 `fetch:satellite` needs `gdalwarp` (`apt install gdal-bin`). Share prices are typed by hand. There is no quote feed.
 
-The price scripts append a snapshot only when the parsed rows changed. OpenRouter keeps a price history on every run.
+Price scripts retain one observation per UTC day, including unchanged prices. The chart starts with the first stored observation; it does not backfill unknown historical rates.
+
+For public token volume, set the repository Actions secret `OPENROUTER_API_KEY` (an ordinary OpenRouter API key), then run the Refresh public data workflow. The usage fetcher collects the previous 90 days of daily public rankings, retaining up to 365 days locally. It stores no API key and makes no inference calls. Source: [OpenRouter rankings](https://openrouter.ai/rankings), CC BY 4.0. This is aggregate OpenRouter demand, not Nebius-specific traffic. Local refresh: `node scripts/fetch-openrouter-usage.mjs` with the key in the environment.
 
 Satellite scenes are Copernicus Sentinel-2 L2A. Search hits the public Planetary Computer STAC API and the Copernicus Data Space STAC API. Pixel download from Copernicus Data Space needs an account. `CDSE_CLIENT_ID` and `CDSE_CLIENT_SECRET` are reserved in `.env.example` and are not used yet. Crops are rendered from Planetary Computer, which mirrors the same archive. Each image is labeled with the scene acquisition time. Resolution is 10 meters.
 

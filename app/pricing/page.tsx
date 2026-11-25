@@ -1,3 +1,5 @@
+import { GpuCharts, FactoryCharts, RouterCharts, UsageCharts } from "@/components/pricing-dashboard";
+import { gpuPrices, tokenFactory, openRouter } from "@/lib/load";
 import Link from "next/link";
 
 export const metadata = { title: "Pricing — Nebius model" };
@@ -32,11 +34,19 @@ export default function PricingPage() {
         <div className="eyebrow">/ 04 / Product economics</div>
         <h1 className="text-3xl font-semibold text-accent">Pricing and other revenue lines</h1>
         <p className="mt-3 max-w-3xl text-sm leading-6 text-muted">
-          Snapshots live in data/pricing so a later refresh can show a trend. This version has
-          one clean snapshot, taken November 23, 2026. A single point is not a trend, and the
-          pages say so.
+          Explore observed price changes, public token demand, and catalog throughput. Charts show source snapshots and distinguish missing history from zero; a single observation is not a trend.
         </p>
       </header>
+      <section className="grid grid-cols-3 gap-2 text-xs">
+        {[["GPU",gpuPrices.retrievedAt],["Token Factory",tokenFactory.retrievedAt],["OpenRouter",openRouter.retrievedAt]].map(([label,date])=><div key={label} className="min-w-0 border border-line p-2"><p className="text-muted">{label}</p><p className="font-mono text-[11px]">{date?.slice(0,10)??"—"}</p></div>)}
+      </section>
+      <nav aria-label="Pricing data pages" className="flex flex-wrap gap-2 text-sm">
+        {CARDS.map(card=><Link key={card.href} href={card.href} className="border border-line px-3 py-2 text-muted hover:text-foreground">{card.title} ↗</Link>)}
+      </nav>
+      <UsageCharts />
+      <section className="space-y-3"><h2 className="text-xl">GPU economics</h2><GpuCharts /></section>
+      <section className="space-y-3"><h2 className="text-xl">Token Factory economics</h2><FactoryCharts /></section>
+      <section className="space-y-3"><h2 className="text-xl">OpenRouter economics</h2><RouterCharts /></section>
       <div className="grid gap-3 sm:grid-cols-2">
         {CARDS.map((card, index) => (
           <Link key={card.href} href={card.href} className="pricing-card">

@@ -67,7 +67,8 @@ try {
 } catch {
   /* first run */
 }
-const history = existing.history ?? [];
+const history = (existing.history ?? []).filter(s => s.retrievedAt.slice(0, 10) !== retrievedAt.slice(0, 10));
+if (!models.length) throw new Error("No Nebius endpoints retrieved; preserving previous snapshot");
 history.push({
   retrievedAt,
   modelCount: models.length,
