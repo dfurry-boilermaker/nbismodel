@@ -9,6 +9,7 @@ import {
   MODEL_VERSION,
   REFERENCE_CLOSE,
   allCases,
+  financingPanel,
   runCase,
   sideRuns,
   weightedRaw,
@@ -143,6 +144,23 @@ function claimsAt(value: number) {
     claims: carryingLeft + 733.1 + 28 + 1,
     shares: 313_968_341 + 5_493_478 + 1_700_676 + 1_700_676,
   };
+}
+
+// Every asset-backed draw is repaid in five equal annual installments, not
+// five percent-of-remaining-balance periods. Reconcile the rolling balance.
+for (const item of cases) {
+  const panel = financingPanel(item);
+  let balance = 0;
+  for (const row of panel.fundingRows) {
+    const expected = panel.fundingRows
+      .filter((prior) => prior.year < row.year && prior.year >= row.year - 5)
+      .reduce((sum, prior) => sum + prior.abfDraw / 5, 0);
+    if (Math.abs(row.abfAmort - expected) > 1e-6) throw new Error(`ABF amortization ${item.name} ${row.year}`);
+    balance += row.abfDraw - row.abfAmort;
+    if (Math.abs(balance - row.abfEnding) > 1e-6 || row.abfEnding < -1e-6) throw new Error("ABF balance");
+    if (row.endingCash < 2000 - 1e-6) throw new Error("cash floor");
+  }
+  if (Math.abs(panel.fundingRows.reduce((sum, row) => sum + row.equityDraw, 0) - panel.equity) > 1e-6) throw new Error("equity funding bridge");
 }
 
 const band = priceBand({ price: 100, annualVol: 0.8, horizonDays: 5, z: 1.96 });
