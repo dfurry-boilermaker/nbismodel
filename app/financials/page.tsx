@@ -18,7 +18,7 @@ const COLUMNS: { key: "revenue" | "adjustedEbitda" | "netIncome" | "capex" | "ca
 export default function FinancialsPage() {
   const sources = financials.sources;
   return (
-    <div className="space-y-8">
+    <div className="min-w-0 space-y-8">
       <header>
         <div className="eyebrow">/ 01 / Reported results</div>
         <h1 className="text-3xl font-semibold text-accent">Reported financials</h1>
@@ -40,7 +40,7 @@ export default function FinancialsPage() {
 
       <FinancialCharts />
 
-      <div className="hidden overflow-x-auto rounded-xl border border-line md:block">
+      <div className="hidden overflow-x-auto rounded-xl border border-line lg:block">
         <table className="w-full min-w-[860px] text-left text-sm">
           <thead className="bg-panel text-xs uppercase tracking-wide text-muted">
             <tr>
@@ -79,21 +79,35 @@ export default function FinancialsPage() {
         </table>
       </div>
 
-      <div className="space-y-3 md:hidden">
+      <section aria-label="Quarterly financial figures" className="space-y-3 lg:hidden">
         {financials.quarters.map((quarter) => (
           <article key={quarter.id} className="rounded-xl border border-line bg-panel p-3">
             <h2 className="font-medium">{quarter.label}</h2>
-            <dl className="mt-2 grid grid-cols-2 gap-2 text-sm">
+            <p className="mt-1 text-xs text-muted">Ended {quarter.periodEnd}</p>
+            <dl className="mt-3 grid grid-cols-2 gap-x-3 gap-y-4 text-sm">
               {COLUMNS.map((column) => (
-                <div key={column.key}>
+                <div key={column.key} className="min-w-0">
                   <dt className="text-xs text-muted">{column.label}</dt>
                   <dd className="font-mono"><MetricValue metric={quarter[column.key]} sources={sources} /></dd>
                 </div>
               ))}
+              <div className="min-w-0">
+                <dt className="text-xs text-muted">ARR</dt>
+                <dd className="font-mono"><MetricValue metric={quarter.arr} sources={sources} digits={0} /></dd>
+                {quarter.arr?.note ? <p className="text-[11px] text-muted">Floor, not an exact ARR.</p> : null}
+              </div>
+              <div className="min-w-0">
+                <dt className="text-xs text-muted">Current debt</dt>
+                <dd className="font-mono"><MetricValue metric={quarter.debtCurrent} sources={sources} /></dd>
+              </div>
+              <div className="min-w-0">
+                <dt className="text-xs text-muted">Long-term debt</dt>
+                <dd className="font-mono"><MetricValue metric={quarter.debtNonCurrent} sources={sources} /></dd>
+              </div>
             </dl>
           </article>
         ))}
-      </div>
+      </section>
 
       <section className="space-y-3">
         <h2 className="text-lg font-medium">Quarter notes, segments, and other disclosed lines</h2>
@@ -128,7 +142,7 @@ export default function FinancialsPage() {
           </SourceA>
           . Blank cells were not a clean number in that filing.
         </p>
-        <div className="mt-3 overflow-x-auto rounded-xl border border-line">
+        <div className="mt-3 hidden overflow-x-auto rounded-xl border border-line md:block">
           <table className="w-full min-w-[640px] text-left text-sm">
             <thead className="bg-panel text-xs uppercase tracking-wide text-muted">
               <tr>
@@ -159,6 +173,28 @@ export default function FinancialsPage() {
               ))}
             </tbody>
           </table>
+        </div>
+        <div className="mt-3 divide-y divide-line border border-line md:hidden">
+          {financials.annual.rows.map((row) => (
+            <article key={row.line} className="min-w-0 p-3">
+              <h3 className="text-sm font-medium leading-snug">{row.line}</h3>
+              <dl className="mt-3 grid grid-cols-3 gap-2">
+                {(["y2023", "y2024", "y2025"] as const).map((year) => (
+                  <div key={year} className="min-w-0">
+                    <dt className="mb-1 font-mono text-[11px] text-muted">{year.slice(1)}</dt>
+                    <dd className={`break-words font-mono text-xs tabular-nums sm:text-sm ${year === "y2025" ? "font-semibold" : ""}`}>
+                      {row[year] == null ? <span className="text-amber" aria-label="Not available">—</span> : (
+                        <SourceA source={financials.annual.source} sources={sources}>
+                          {formatNumber(row[year] as number, 1)}
+                        </SourceA>
+                      )}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+              {row.note ? <p className="mt-2 text-xs leading-relaxed text-muted">{row.note}</p> : null}
+            </article>
+          ))}
         </div>
       </section>
       <CapitalStructure />
