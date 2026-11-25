@@ -95,3 +95,31 @@ export const STATUS_TONE: Record<GuidanceStatus, "good" | "bad" | "amber" | "ope
   undisclosed: "amber",
   superseded: "neutral",
 };
+
+/** Display wording is independent of the existing scoring and regression tests. */
+export function guidanceStatusLabel(status: GuidanceStatus): string {
+  return status === "ahead" ? "beat" : status;
+}
+
+/** Current-year targets first, then upcoming years, then historical years newest first. */
+export function groupGuidance(items: GuidanceItem[], asOf: string): { year: number | null; title: string; items: GuidanceItem[] }[] {
+  const currentYear = Number(asOf.slice(0, 4));
+  const byYear = new Map<number | null, GuidanceItem[]>();
+  for (const item of items) {
+    const end = latestRevision(item).periodEnd;
+    const year = end ? Number(end.slice(0, 4)) : null;
+    byYear.set(year, [...(byYear.get(year) ?? []), item]);
+  }
+  const years = [...byYear.keys()].filter((year): year is number => year !== null);
+  const order = [
+    ...(byYear.has(currentYear) ? [currentYear] : []),
+    ...years.filter(year => year > currentYear).sort((a, b) => a - b),
+    ...(byYear.has(null) ? [null] : []),
+    ...years.filter(year => year < currentYear).sort((a, b) => b - a),
+  ];
+  return order.map(year => ({
+    year,
+    title: year === null ? "Ongoing guidance" : year > currentYear ? `${year} outlook` : `${year} guidance`,
+    items: byYear.get(year) ?? [],
+  }));
+}
