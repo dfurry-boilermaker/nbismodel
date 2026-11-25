@@ -60,10 +60,8 @@ try {
   /* first snapshot */
 }
 const snapshots = existing.snapshots ?? [];
-const last = snapshots.at(-1);
-if (!last || JSON.stringify(last.rows) !== JSON.stringify(rows)) {
-  snapshots.push({ retrievedAt, sourceUrl: SOURCE.replace(/\.md$/, ""), rows });
-}
+if (snapshots.at(-1)?.retrievedAt === retrievedAt) snapshots.pop();
+snapshots.push({ retrievedAt, sourceUrl: SOURCE.replace(/\.md$/, ""), rows });
 const doc = {
   schemaVersion: 1,
   sourceUrl: "https://docs.nebius.com/compute/resources/pricing",
