@@ -15,6 +15,7 @@ import {
   weightedRaw,
   weightedValue,
   PRICE_TARGET_DATE,
+  BEAR_FORWARD_EBITDA_MULTIPLE,
   twelveMonthPriceTarget,
 } from "../lib/dcf";
 import { priceBand } from "../lib/vol";
@@ -223,4 +224,11 @@ for (const target of forwardTargets) {
   if (Math.abs(target.equityIssued - issuance) > 1e-6) throw new Error("target financing window");
   if (Math.abs(target.cash - through2027.at(-1)!.endingCash) > 1e-6) throw new Error("target closing cash");
 }
+const [bearTarget, baseTarget, bullTarget] = forwardTargets;
+if (BEAR_FORWARD_EBITDA_MULTIPLE !== 7 || bearTarget.method !== "forward-ebitda") throw new Error("bear target methodology");
+if (Math.abs(bearTarget.targetEv - bearTarget.nextYearEbitda * 7) > 1e-6) throw new Error("bear EBITDA valuation");
+if (Math.abs(bearTarget.raw - (bearTarget.targetEv + bearTarget.cash + bearTarget.stakes - bearTarget.claims) / bearTarget.shares * 1e6) > 1e-6) throw new Error("bear equity bridge");
+if (!(bearTarget.dcfRaw < 0 && bearTarget.target > 0 && bearTarget.target < baseTarget.target && baseTarget.target < bullTarget.target)) throw new Error("target scenario ordering");
+if (Math.abs(bearTarget.target - 41.20) > 0.15) throw new Error(`bear target ${bearTarget.target}`);
+for (const t of [baseTarget, bullTarget]) if (t.method !== "forward-dcf" || t.raw !== t.dcfRaw) throw new Error("base/bull DCF changed");
 console.log("12-month targets", forwardTargets.map(({ name, target, raw }) => ({ name, target, raw })));
