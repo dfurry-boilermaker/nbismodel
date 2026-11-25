@@ -45,7 +45,8 @@ export default function HomePage() {
             <div className="mt-4 grid grid-cols-3 gap-2 border-t border-line pt-3">
               {targets.map(scenario => <div key={scenario.name} className="min-w-0"><div className="text-xs capitalize text-muted">{scenario.name}</div><div className="break-words font-mono text-lg">{dollars(scenario.target)}</div></div>)}
             </div>
-            <p className="mt-3 text-xs text-muted">Scenario-weighted target: {dollars(weightedTarget)}. Estimates as of {VALUATION_DATE}; not a live quote or guaranteed return.</p>
+            <p className="mt-3 text-xs text-muted">Bear: stressed going-concern EBITDA valuation. Base and bull: forward DCF. Blended scenario-weighted target: {dollars(weightedTarget)}. Estimates as of {VALUATION_DATE}; not a live quote or guaranteed return.</p>
+            <p className="mt-2 text-xs text-muted">Separate severe DCF distress stress test: {dollars(Math.max(0, targets[0].dcfRaw))} (raw {dollars(targets[0].dcfRaw)}). This is not the headline bear price target.</p>
             <Link href="/methodology#price-target" className="mt-3 inline-block text-sm underline text-muted">Target assumptions and limitations ↗</Link>
           </article>
         </div>
@@ -83,9 +84,9 @@ export default function HomePage() {
         <div className="section-label"><span>/ Long-term intrinsic value cross-check</span><span>DCF {MODEL_VERSION}</span></div>
         <div className="mt-3 flex flex-wrap items-baseline gap-x-5 gap-y-2">
           <span className="font-mono text-3xl">{dollars(weighted)}</span>
-          <span className="text-sm text-muted">Weighted present value per share · Bear {dollars(headlineValue(cases[0]))} / Base {dollars(headlineValue(cases[1]))} / Bull {dollars(headlineValue(cases[2]))}</span>
+          <span className="text-sm text-muted">Weighted present value per share · Severe bear stress {dollars(headlineValue(cases[0]))} / Base {dollars(headlineValue(cases[1]))} / Bull {dollars(headlineValue(cases[2]))}</span>
         </div>
-        <p className="mt-2 text-xs text-muted">Floored present-day DCF outputs, distinct from the forward 12-month target above. The DCF headline excludes future equity issuance. <Link href="/models" className="underline">Inspect the model ↗</Link></p>
+        <p className="mt-2 text-xs text-muted">Floored present-day DCF outputs, including the severe bear stress, distinct from the forward 12-month targets above. The DCF headline excludes future equity issuance. <Link href="/models" className="underline">Inspect the model ↗</Link></p>
       </section>
 
       <section aria-label="Research coverage">
