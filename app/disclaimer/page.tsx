@@ -5,10 +5,10 @@ export default function DisclaimerPage() {
     <div className="max-w-3xl space-y-4 text-sm leading-7">
       <div className="eyebrow">/ Disclaimer</div>
       <h1 className="text-3xl font-semibold text-accent">Disclaimer</h1>
-      <p className="text-xs text-muted">Last updated 2026-11-24.</p>
+      <p className="text-xs text-muted">Last updated 2026-11-25.</p>
       <p>
-        This site is an educational exercise in valuation arithmetic. It is not a price target,
-        a forecast, a rating, or investment advice, and it is not an offer or solicitation to
+        This site is an educational exercise in valuation arithmetic. Its illustrative price targets
+        and scenarios are uncertain, not guarantees, ratings, or investment advice. It is not an offer or solicitation to
         buy or sell any security. The values follow from the stated assumptions. Many of those
         assumptions are uncertain. Small changes move the result a lot.
       </p>
@@ -20,7 +20,7 @@ export default function DisclaimerPage() {
       </p>
       <p>
         Closing price entered manually as of the date shown; not live; may be out of date.
-        Every share price on this site is a closing price the authors typed in by hand. There
+        The reference market price is a closing price the authors typed in by hand. There
         is no live quote feed. Check a current source before relying on any price.
       </p>
       <p>
