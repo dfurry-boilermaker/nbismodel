@@ -1,3 +1,4 @@
+import { GpuCharts } from "@/components/pricing-dashboard";
 import { gpuPrices } from "@/lib/load";
 
 export const metadata = { title: "GPU prices — Nebius model" };
@@ -13,7 +14,7 @@ export default function GpuPage() {
         <p className="mt-3 text-sm text-muted">
           Retrieved {gpuPrices.retrievedAt} from{" "}
           <a href={gpuPrices.sourceUrl}>{gpuPrices.sourceTitle}</a>. Snapshots stored:{" "}
-          {gpuPrices.snapshots.length}. A trend chart needs a second, different snapshot.
+          {gpuPrices.snapshots.length}. Repeated daily observations show whether list rates changed.
         </p>
         <ul className="mt-3 list-disc space-y-1 pl-5 text-sm text-muted">
           {gpuPrices.notes.map((note) => (
@@ -21,6 +22,7 @@ export default function GpuPage() {
           ))}
         </ul>
       </header>
+      <GpuCharts />
       {gpuPrices.peers.length === 0 ? (
         <p className="rounded-md border border-amber/40 bg-amber/10 p-3 text-sm text-amber">
           Peer comparison is empty. CoreWeave, Lambda, and the hyperscalers were not scraped
