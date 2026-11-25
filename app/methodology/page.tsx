@@ -79,8 +79,8 @@ export default function MethodologyPage() {
       <h2 id="price-target" className="scroll-mt-24 text-lg font-medium text-foreground">12-month price target</h2>
       <p>
         The overview target is a separate forward valuation, not the present-day DCF headline.
-        The base case is the headline target; bear, bull and the existing subjective scenario-weighted
-        average are shown for context. The target date is one year after the DCF valuation date.
+        The base case is the headline target; bear, bull and the subjective blended scenario-weighted
+        average are shown for context. Base and bull use the forward DCF; the bear uses a stressed going-concern EBITDA multiple. The target date is one year after the DCF valuation date.
         Remaining enterprise value equals current modeled EV less the present value of cash flows
         dated through the target, compounded at the scenario WACC to that date, using the existing
         midyear cash-flow convention.
@@ -90,10 +90,21 @@ export default function MethodologyPage() {
         projected debt and other claims. It uses the FY2027 year-end financing snapshot as a proxy
         for November 2027, keeps the existing case&apos;s convertible classification, adds modeled
         equity issuance through that snapshot at the manually entered reference close, and recomputes
-        treasury-method option dilution. Negative equity values are floored at zero for display.
+        treasury-method option dilution. Negative equity values are floored at zero for display. The original bear DCF is retained as a separate severe financial-distress stress test.
         This is an illustrative approximation, not a fresh target-date balance sheet; subsequent
         financing, share issuance, asset values and market multiples may differ materially.
         The percentage change uses the dated reference close, not a live quote.
+      </p>
+      <p>
+        The 12-month bear price target assumes the company continues operating despite the existing
+        bear case&apos;s customer losses, capacity delays, high capital spending and projected financing dilution.
+        At the November 2027 target date, enterprise value is estimated at 7 times modeled FY2028
+        adjusted EBITDA, with the same projected cash, stakes, debt claims and diluted share count
+        used in the forward DCF bridge. The 7x multiple is an independent judgmental stress assumption,
+        not an observed peer average. EBITDA does not deduct replacement capital expenditure; this method
+        may overstate value if GPU economics deteriorate or financing becomes unavailable. The negative
+        raw forward DCF is retained for transparency, and the blended weighted price target combines
+        different valuation methods rather than representing a pure DCF expectation.
       </p>
       <h2 className="text-lg font-medium text-foreground">Raw and floored values</h2>
       <p>
