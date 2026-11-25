@@ -10,6 +10,7 @@ import {
   allCases,
   declineSensitivity,
   headlineValue,
+  marginCapexGrid,
   marketMultiple,
   peerCrossCheck,
   rawHeadline,
@@ -37,13 +38,14 @@ export function DcfModel({ compact = false }: { compact?: boolean }) {
   const market = useMemo(() => marketMultiple(result), [result]);
   const grid = useMemo(() => waccGrowthGrid(), []);
   const declines = useMemo(() => declineSensitivity(name), [name]);
+  const capexGrid = useMemo(() => marginCapexGrid(), []);
 
   return (
     <div className="space-y-4">
       <p className="text-sm text-muted">
         Model {MODEL_VERSION}, discounted from {VALUATION_DATE}. The close that day was {money(MARKET_PRICE)}.
-        2026 and 2027 revenue follow the company outlook. Later revenue is energized megawatts times
-        utilization times the contract rate. This is educational arithmetic, not a price target.
+        The headline is unlevered free cash flow on today&apos;s shares. It does not assume a future stock sale.
+        This is educational arithmetic, not a price target.
       </p>
       <details className="text-sm text-muted">
         <summary className="cursor-pointer">Unfloored arithmetic</summary>
@@ -101,26 +103,26 @@ export function DcfModel({ compact = false }: { compact?: boolean }) {
               detail={result.convertedNoteIds.length ? `Converted: ${result.convertedNoteIds.join(", ")}` : "No note is in the money at this value."}
             />
             <div className="rounded-lg border border-line p-3 text-sm">
-              <div className="font-medium">Against the close</div>
-              <div className="mt-1 font-mono text-lg">{money(MARKET_PRICE)}</div>
+              <div className="font-medium">Dilution panel, not the headline</div>
+              <div className="mt-1 font-mono text-lg">{money(result.dilution.perShareIfDiluted)}</div>
               <p className="mt-1 text-xs text-muted">
-                Raw value {money(bridge.perShareRaw)}. Equity issued {formatCompactUsd(result.equityIssued)} at {money(result.assumptions.issuePrice)}.
-                Interest over the explicit years {formatCompactUsd(result.interestTotal)}.
+                If the unfunded slice, {formatCompactUsd(result.dilution.equityCheck)}, were sold at {money(MARKET_PRICE)}, that would be {(result.dilution.sharesIfIssued / 1e6).toFixed(0)} million shares.
+                The headline does not issue them. Prepayments in the cash flows are {formatCompactUsd(result.dilution.prepayments)}. Secured draws, refinanced rather than repaid with equity, are {formatCompactUsd(result.dilution.debtDraws)}. Coupon on those draws, not deducted again, is {formatCompactUsd(result.dilution.interestMemo)}.
               </p>
             </div>
           </div>
           <p className="text-sm text-muted">
-            Cash flow deducts capex, interest on the term loan and on new secured draws, and tax at the Dutch 25.8% rate after depreciation and losses.
-            New secured draws fund {Math.round(result.assumptions.coverage * 100)}% of growth capex at the term loan&apos;s 6.4% hedged coupon.
-            A cash shortfall is filled by shares at the November 24 close, and those proceeds are the cash that covers the shortfall.
-            Opening cash is the starting balance. It is not spent a second time in the bridge.
-            Deferred revenue of {formatCompactUsd(result.deferredDrawn)} is removed from cash earnings as it is recognized.
+            Free cash flow is after the 2% stock-based-pay charge, tax at 25.8% on earnings after depreciation, capex, and maintenance.
+            Half of growth capex is treated as a prepayment: cash in when spent, then recognized over four years. That split of the 75–85% coverage is not in the filings.
+            Opening deferred revenue of {formatCompactUsd(result.deferredDrawn)} is removed as it is recognized. Today&apos;s debt and cash are applied once, at the end.
             {result.terminalMethod === "gordon"
-              ? " The terminal value reinvests at the discount rate, so growth does not earn a spread."
-              : " Steady-state cash flow does not cover replacement, so the terminal value is zero."}
+              ? ` Terminal growth earns ${Math.round(result.assumptions.spread * 100)} points of spread over the discount rate.`
+              : " Steady-state cash flow does not cover replacement, so the terminal value is zero. No extra debt is subtracted for that choice."}
             {result.tvShareOfEv == null
-              ? " Equity is negative before the floor, so terminal value is not shown as a share of equity."
-              : ` Terminal present value is ${(result.tvShareOfEv * 100).toFixed(0)}% of equity value.`}
+              ? " Enterprise value is not positive, so terminal value is not shown as a share of it."
+              : ` Terminal present value is ${(result.tvShareOfEv * 100).toFixed(0)}% of enterprise value.`}
+            {" "}Engine revenue is {formatCompactUsd(result.engineRevenue2026 * 1e6)} in 2026 against a guide of {formatCompactUsd(result.assumptions.revenueGuide2026 * 1e6)}, and {formatCompactUsd(result.engineRevenue2027 * 1e6)} in 2027 against {formatCompactUsd(result.assumptions.revenueGuide2027 * 1e6)}. 2028 is {formatCompactUsd(result.engineRevenue2028 * 1e6)} from the same formula.
+            Model payback is {result.paybackMonths.toFixed(0)} months. The letter&apos;s payback is {result.disclosedPaybackMonths} months, and the capex inside that figure is not defined.
           </p>
           <div className="overflow-x-auto">
             <table className="w-full min-w-[880px] text-left text-sm">
@@ -155,8 +157,8 @@ export function DcfModel({ compact = false }: { compact?: boolean }) {
           <div>
             <h3 className="mb-2 text-sm font-medium">Peer multiples, informational</h3>
             <p className="mb-2 text-sm text-muted">
-              Trailing multiples are applied to this case&apos;s 2027 EBITDA and discounted back, using this case&apos;s 2027 net debt.
-              The CoreWeave GAAP multiple is not applied to Nebius adjusted EBITDA. At the November 24 close, Nebius equity is about {formatCompactUsd(market.equity * 1e6)} and enterprise value about {formatCompactUsd(market.ev * 1e6)}, or {market.evToEbitda == null ? "n/a" : `${market.evToEbitda.toFixed(1)}x`} this case&apos;s 2027 EBITDA.
+              Trailing multiples as of November 24, 2026, applied to this case&apos;s 2027 EBITDA, discounted, and paired with September 30 carrying net debt. Informational only.
+              At the close, Nebius equity is about {formatCompactUsd(market.equity * 1e6)} and enterprise value about {formatCompactUsd(market.ev * 1e6)}, or {market.evToEbitda == null ? "n/a" : `${market.evToEbitda.toFixed(1)}x`} this case&apos;s 2027 EBITDA.
             </p>
             <div className="overflow-x-auto">
               <table className="w-full min-w-[720px] text-left text-sm">
@@ -205,6 +207,30 @@ export function DcfModel({ compact = false }: { compact?: boolean }) {
                     <td className="px-2 py-1">{Math.round(row.decline * 100)}%{row.decline === result.assumptions.costDecline ? " · case" : ""}</td>
                     <td className="px-2 py-1 text-right">{money(row.perShareRaw)}</td>
                     <td className="px-2 py-1 text-right">{money(row.perShare)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            <h3 className="mb-2 text-sm font-medium">Base margin against all-in capex per megawatt</h3>
+            <p className="mb-2 text-xs text-muted">
+              Raw value per share. The November 24 close was {money(MARKET_PRICE)}. The published base is 50% and $37.9 million.
+            </p>
+            <table className="mb-6 text-sm">
+              <thead className="text-xs text-muted">
+                <tr>
+                  <th className="px-2 py-1 text-left">Margin \ capex</th>
+                  {capexGrid[0].map((cell) => (
+                    <th key={cell.capex} className="px-2 py-1 text-right">${cell.capex}M</th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody className="font-mono">
+                {capexGrid.map((row) => (
+                  <tr key={row[0].margin}>
+                    <td className="px-2 py-1">{Math.round(row[0].margin * 1000) / 10}%</td>
+                    {row.map((cell) => (
+                      <td key={cell.capex} className="px-2 py-1 text-right">{money(cell.perShareRaw)}</td>
+                    ))}
                   </tr>
                 ))}
               </tbody>

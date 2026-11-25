@@ -84,7 +84,7 @@ The GitHub Action needs permission to push, and `FINNHUB_API_KEY` or `ALPHAVANTA
 
 The short-term band is a zero-drift lognormal range from realized or typed volatility. It does not use a stored price until the quote file has at least 20 closes.
 
-The long-term model is version 3.0.0. Displayed value per share is floored at zero, and the raw figure is shown beside it. Revenue after 2027 is energized megawatts times utilization times the contract rate. The published cases do not cut server cost per megawatt. It is not a price target.
+The long-term model is version 3.1.0. The headline is unlevered free cash flow on today's shares. Displayed value per share is floored at zero, and the raw figure is shown beside it. Revenue is energized megawatts times one realization curve times the contract rate, checked against the 2026 and 2027 guides. It is not a price target.
 
 ### Half-hour NBIS quote
 

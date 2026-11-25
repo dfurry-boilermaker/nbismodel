@@ -71,124 +71,114 @@ export default function MethodologyPage() {
         20 closes. The band is price × exp(±1.96 × volatility × sqrt(days / 252)), with zero
         drift. Implied volatility has no feed.
       </p>
-      <h2 className="text-lg font-medium text-foreground">Long-term model, version 3.0.0</h2>
+      <h2 className="text-lg font-medium text-foreground">Long-term model, version 3.1.0</h2>
       <p>
-        Version 2.3.0 showed a bear of $109.06, a base of $263.48, a bull of $368.10, and a
-        weighted figure of $251.03. Those figures depended on a 25% annual decline in replacement
-        cost and on a different revenue-smoothing setting in each case. Version 3.0.0 drops both.
-        The baseline cost decline is zero. Revenue after 2027 is energized megawatts times a
-        first-year utilization fraction times the contract rate. Displayed value per share is
-        floored at zero. The raw figure is on the model page. The close on November 24, 2026
-        was $87.31, from Yahoo Finance, StockAnalysis (S&P Global), and FinancialContent.
+        Version 3.0.0 showed a bear of −$7.85 raw ($0 shown), a base of −$10.29 raw ($0 shown),
+        a bull of $52.54, and a weighted figure of $3.01 raw ($10.51 shown). The bull&apos;s value
+        came from selling new shares at the $87.31 close. Version 3.1.0 does not do that.
+        The headline is unlevered free cash flow, discounted at the case rate, minus today&apos;s
+        debt, plus today&apos;s unrestricted cash and the equity stakes, divided by today&apos;s
+        diluted shares. Notes convert only when that value is above the note&apos;s conversion
+        price. A share is shown at zero when the raw figure is negative, and the raw figure
+        stays on the page. The close on November 24, 2026 was $87.31.
       </p>
       <p>
-        In the published cases the bear and the base are both $0 on the page. The raw figures
-        are about −$7.85 and −$10.29. The bull is about $52.54, raw and displayed, against the
-        $87.31 close. The weighted figure, at the 30/50/20 weights below, is about $10.51
-        displayed and about $3.01 raw. The base raw figure is below the bear raw figure.
-        At a $20 million rate and a 40% margin, extra megawatts do not cover $42.5 million of
-        all-in capex and the debt that funds them, so the larger build is worth less per share.
-        The floor makes both $0.
+        On this build the raw values are −$232.96 bear, $196.81 base, and $317.47 bull. Shown,
+        those are $0, $196.81, and $317.47. The 30/50/20 weighted figures are $92.01 raw and
+        $161.90 shown. The weights are the reviewers&apos; judgment from the prior round. They
+        are not management&apos;s probabilities. The base and the bull sit above the $87.31 close.
+        That is the arithmetic, not a target.
       </p>
       <p>
-        Server dollars per megawatt are held flat in the published cases. Nebius&apos;s own
-        annual contract value per megawatt rose, from $20–25 million in the second quarter of
-        2026 to more than $25 million in the third, so there is no disclosed series of falling
-        dollars per megawatt. NVIDIA&apos;s token-cost comparisons are a cost per unit of compute,
-        not a price per megawatt, and they are not used as the deflator. The sensitivity table
-        reruns the case at a 0%, 10%, 20%, and 25% decline. The same rate cuts the server cost
-        of a new megawatt, the server cost of a refresh, and the contract rate at the next
-        re-pricing. Shell and power cost does not decline. On that hardware slice, payback does
-        not shorten when the decline rises, because the price falls with the cost.
+        Revenue in every year is average energized megawatts times a contract rate times one
+        realization curve. The curve is 25% of the contract rate in 2026, 38% in 2027, then
+        50%, 62%, 75%, 88%, and 100% by 2032. It is the same in every case. Full-year engine
+        revenue is about $2.3 billion, $3.0 billion, and $3.7 billion in 2026, against guides
+        of $3.0 billion, $3.0 billion, and $3.2 billion. In 2027 it is about $9.3 billion,
+        $12.4 billion, and $14.7 billion, against $12 billion, $12.5 billion, and $13 billion.
+        Each of those is inside a quarter of its guide. 2028 is the next year of the same
+        formula, about $12.7 billion, $27.5 billion, and $31.9 billion. It is not a separate
+        switch from the guide to full contract value.
       </p>
       <p>
-        The third-quarter letter puts payback at 1 year and 7 months on comparable one-to-three-year
-        deals, covering operating costs and capex, on a revenue basis, and before any prepayment
-        benefit. The program capex implied by the 2027 midpoint, $42.5 billion for the more-than-1 GW
-        the outlook is sized for, is about $42.5 million per megawatt. Against a $25 million rate
-        and a 40% margin, cash payback is about 52 months, outside a ±50% band around 19 months.
-        The disclosed payback describes new deals whose prepayments covered the associated capex.
-        It is not the average of the 2027 program.
+        The furnished letter still describes the low end of a $3.0–3.4 billion 2026 range.
+        On the November 12, 2026 call, management said $3.0–3.2 billion. The bull uses the
+        call&apos;s high end. Annualized recurring revenue above $7 billion moved from December
+        2026 to February 2027. Pre-tax breakeven is guided for the fourth quarter of 2027.
       </p>
       <p>
-        The only disclosed active-power census is about 170 MW at December 31, 2025. Dividing the
-        annualized third-quarter recurring AI-cloud run-rate by that census gives about $15.26 million
-        per megawatt, and that quotient is used only on those 170 MW. It is not applied to the
-        800 MW connected-power guide. The guide was not restated in the third-quarter letter.
-        The letter says the remaining New Jersey tranches contracted with Microsoft move to the
-        second quarter of 2027. In the bear, that slipped tranche is treated as terminated for
-        late delivery, left idle through 2027, and re-let in 2028 at three quarters of the bear
-        rate. Microsoft and Meta cohorts are re-priced at 2031 and 2032. Three customers were
-        33%, 22%, and 15% of third-quarter revenue. The model does not drop that 70% as a block.
-        It stresses the slipped New Jersey capacity and the 2031–32 re-pricing.
+        Megawatts are not one number. Contracted power was more than 4 GW, with 5 GW expected
+        by year-end 2026. Connected power, last guided at 800 MW to 1 GW for year-end 2026,
+        was not restated in the third-quarter letter. Active power, the only census, was about
+        170 MW at December 31, 2025. The company has not said whether those figures are IT load
+        or facility load. The paths here are energized-megawatt assumptions that stop at 3 GW
+        in the bear and 5 GW in the base and the bull. The 170 MW census is the start of 2026,
+        not a price applied to the whole fleet. Dividing the annualized third-quarter recurring
+        run-rate by 170 MW gives about $15.26 million per megawatt. That reading is a check,
+        not the contract rate.
       </p>
       <p>
-        The 2026 margin is the guided 40% in every case. From 2027 the bear and the base stay
-        at 40%. The bull uses 50%, the second-quarter 2026 AI-cloud margin, and nothing higher.
-        The 53.2% third-quarter cloud margin is the segment print on revenue that includes about
-        $325 million of non-recurring partnership revenue. The margin on that revenue was not
-        disclosed, so 53.2% is not the ongoing margin. Stock-based pay is 2% of revenue, a
-        steady-state assumption. The nine-month cash charge was not in the extracted statements.
-        Tax is the Dutch statutory 25.8% after tax depreciation and after interest. Losses add
-        to a tax-loss balance that starts at zero. A separate net-operating-loss figure was not
-        in the extracted statements. New shares are issued at $87.31 when cash would otherwise
-        go negative, and the proceeds bring cash back to zero. Interest is the term loan&apos;s
-        6.4% hedged coupon on secured balances, plus the convertible coupons. Notes convert only
-        when the model&apos;s own raw value is above that note&apos;s conversion price. Opening
-        deferred revenue of $9.41 billion is removed from cash earnings as it is recognized,
-        because that cash is already in the September 30 balance. It is not subtracted again.
+        The contract rate is $20 million in the bear, the second-quarter floor, and $25 million
+        in the base and the bull, the third-quarter floor. The margin is 40% through 2027 in
+        every case, the group guide, which still carries Avride and TripleTen. From 2028 the
+        bear stays at 40%. The base steps to 50%, the second-quarter 2026 AI-cloud margin
+        stated on the call. The bull steps to 53.2%, the third-quarter AI-cloud print, which
+        includes about $325 million of non-recurring revenue. Stock-based pay is 2% of revenue,
+        subtracted from EBITDA, not a 2% haircut of EBITDA.
       </p>
       <p>
-        What the funding math includes: the convertible notes at maturity principal, the term
-        loan, new secured draws for 75%, 80%, or 85% of growth capex, interest, amortization,
-        and equity issued at the market price. What it does not include: draws on the undrawn
-        Citi commitment, future at-the-market sales beyond a cash shortfall, and a post-Series D
-        ClickHouse share count. Equity stakes are the year-end 2025 ClickHouse and Toloka
-        carrying amounts plus the $780.6 million nine-month 2026 revaluation gain. The gain is
-        not broken out by name in the earnings release, so applying it to the equity-securities
-        line is an assumption. Share-based awards excluded from diluted earnings, 9.74 million
-        shares, are added as shares. A split between RSUs and options was not in that footnote.
+        Payback in the third-quarter letter is 1 year and 7 months on comparable one-to-three-year
+        deals. It covers operating costs and capex, it is on a revenue basis, it ignores the
+        prepayment, and the letter assumes five-year depreciation. The letter does not say
+        whether that capex is the server stack, the owned shell, or the whole program. Against
+        EBITDA after the 2% stock-based-pay charge, the model&apos;s payback is about 67 months
+        in the bear, 38 months in the base, and 33 months in the bull. The gap is the undefined
+        scope. The page does not change capex until the model payback equals 19 months.
       </p>
       <p>
-        The 2026 letter range is $3.0–3.4 billion, and the letter says the company expects the
-        low end. A $3.0–3.2 billion call range was not furnished on EDGAR. Annualized recurring
-        revenue above $7 billion moved from December 2026 to February 2027. Pre-tax breakeven
-        is guided for the fourth quarter of 2027, after financing costs, on a five-year
-        depreciation life. The model&apos;s 2028 revenue is the megawatt engine, not that guide.
-        On the base path it is about $46 billion, which is what full contract rates on the
-        energized fleet produce. That is above the 2027 guide of about $12.5 billion. The gap
-        is the difference between a contract rate and recognized revenue during the ramp, and
-        the model does not add a separate smoothing factor to close it.
+        Capex in 2026 and 2027 is the guided dollar amount. From 2028, a new megawatt costs
+        $42.5 million in the bear, $37.9 million in the base, and $35 million in the bull.
+        $42.5 million is the 2027 midpoint divided by the more-than-1 GW that budget is sized
+        for, and it includes land and power for later years. $37.9 million is Samaritan
+        Research&apos;s GB200 figure. $35 million is the Bernstein figure cited in secondary
+        write-ups. Scotiabank&apos;s published figure is about $40.3 million. Servers and network
+        are 69% of that cost, in the Samaritan range and above Scotiabank&apos;s about 64%.
+        The old 85% share is not used. A server is refreshed when it is five years old, not
+        in the year it is installed. The margin-and-capex grid on the model page marks where
+        those choices sit against the $87.31 close.
       </p>
       <p>
-        Peer multiples are context. CoreWeave&apos;s 12.2x figure and Oracle&apos;s 12.41x figure
-        are trailing multiples, applied to this model&apos;s 2027 EBITDA, discounted to the
-        valuation date, and paired with the model&apos;s 2027 net debt. CoreWeave&apos;s 16.79x
-        GAAP multiple is not applied to Nebius adjusted EBITDA. At $87.31, Nebius equity on the
-        basic economic share count is about $27.4 billion. Adding September 30 carrying net debt
-        of about $6.7 billion puts enterprise value near $34.1 billion, about 7.0x the base
-        case&apos;s 2027 EBITDA. None of these multiples is a pass-fail test.
+        Three customers were 33%, 22%, and 15% of third-quarter revenue. In the bear, the 33%
+        customer provides no revenue in 2028 and, after that, is re-let at 75% of the bear
+        rate. The 22% and 15% customers are not given a separate switch. There is no Meta
+        megawatt cohort: a 120 MW figure was not in the filings used here. The New Jersey
+        letter still moves the remaining Microsoft tranches to the second quarter of 2027.
+        That timing is inside the energized path. It is not a second revenue haircut.
       </p>
       <p>
-        The weights are 30% bear, 50% base, and 20% bull. They are the weights used by the two
-        reviews of version 2.3.0. They are not management&apos;s probabilities and they are not
-        this site&apos;s estimate of a chance. Terminal growth is 2% in every case, and new
-        capital earns the discount rate, so the growth does not add a spread. In the bull, the
-        terminal present value is about 140% of equity value. In the bear and the base, equity
-        is negative before the floor, and the sensitivity table shows how that changes if server
-        cost and the re-pricing rate decline together.
+        Half of growth capex is modeled as a customer prepayment: cash arrives with the spend
+        and is recognized over the next four years. The other part of the 75–85% coverage is
+        secured debt at the term loan&apos;s 6.4% hedged coupon. That debt is refinanced, not
+        repaid by selling stock. The coupon is shown in the dilution panel and is not deducted
+        from free cash flow, because the cash flows are already discounted at 11% or 12%.
+        The slice the coverage does not fund is also only in that panel. Selling it at $87.31
+        would add shares. The headline share count does not include them. Opening deferred
+        revenue of $9.41 billion is removed as it is recognized, once. Equity stakes are the
+        year-end 2025 ClickHouse and Toloka carrying amounts plus the $780.6 million nine-month
+        revaluation gain, which the release does not split by name. The 9.74 million
+        anti-dilutive awards are added as shares. The Citi facility is still undrawn in the
+        model, because the draw was not disclosed.
       </p>
       <p>
-        From 2.3.0 to 3.0.0 the base moved from $263.48 to a raw −$10.29, shown as $0. The
-        pieces that do not add: removing the 25% cost decline and letting the contract rate
-        fall with it when a decline is used; replacing the per-case smoothing factor with
-        megawatts times utilization times rate; charging shell and power on megawatts added
-        after 2027 at the $42.5 million all-in cost implied by the 2027 midpoint; discounting
-        at 11% instead of 10%; taxing at 25.8% with depreciation and losses; charging 2%
-        stock-based pay; subtracting deferred revenue from cash earnings once; paying 6.4% on
-        new secured debt; issuing shares at $87.31 and crediting the proceeds; and settling
-        only notes that are in the money at the model&apos;s own value. Those choices were made
-        from the filings and the reviews. They were not set to land on a price.
+        A non-zero cost decline cuts the server price and the contract rate by the same factor
+        in every year from 2027, including the 2028–2031 megawatts inside the terminal value.
+        Facilities do not decline. On the server slice, payback does not change when the
+        decline changes. The published cases use a zero decline. Terminal growth is 2%. The
+        bear earns no spread over its 12% discount rate. The base and the bull earn 3 points
+        over 11%. From 3.0.0 to 3.1.0 the base moved from a raw −$10.29, produced by issuing
+        about $165 billion of stock, to a raw $197 on today&apos;s shares. The inputs behind
+        that move are the financing treatment, the realization curve, the 50% steady margin,
+        and the 69% server share on a $37.9 million build. They were not set to land on $87.31.
       </p>
       <h2 className="text-lg font-medium text-foreground">Satellite images</h2>
       <p>

@@ -13,10 +13,11 @@ export default function ModelsPage() {
         <h1 className="text-3xl font-semibold text-accent">Price models</h1>
         <p className="mt-3 max-w-3xl text-sm leading-6 text-muted">
           Both models show the inputs and the arithmetic. Nothing here is a price target or a
-          recommendation. Model 3.0.0 prices 2026 and 2027 from the company outlook and later
-          years from energized megawatts, utilization, and the contract rate. The baseline
-          does not cut server cost. A share is shown at zero if the arithmetic is negative,
-          and the raw figure is on the page. The November 24, 2026 close was $87.31.
+          recommendation. Model 3.1.0 values unlevered free cash flow on today&apos;s shares.
+          Revenue is energized megawatts times a realization curve times the contract rate.
+          The curve is checked against the 2026 and 2027 guides. A share is shown at zero if
+          the arithmetic is negative, and the raw figure is on the page. The November 24,
+          2026 close was $87.31.
         </p>
       </header>
       <section className="space-y-3">
