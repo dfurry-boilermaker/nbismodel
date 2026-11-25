@@ -249,6 +249,10 @@ export type YearRow = {
   sfc: number;
   cashTax: number;
   capexNet: number;
+  growthCapex: number;
+  replacementCapex: number;
+  computeCapex: number;
+  facilityCapex: number;
   dDr: number;
   fcff: number;
   pv: number;
@@ -514,6 +518,10 @@ export function runCase(name: CaseName, overrides: Partial<CaseInput> & { margin
       sfc,
       cashTax,
       capexNet: capexC,
+      growthCapex: growth,
+      replacementCapex: refresh,
+      computeCapex: comp,
+      facilityCapex: facx,
       dDr,
       fcff,
       pv: fcff / (1 + c.wacc) ** t,
@@ -646,7 +654,7 @@ export function financingPanel(result: ModelResult) {
   let interest = 0;
   let refinanced = 0;
   let corpTotal = 0;
-  const fundingRows: { year: number; abfDraw: number; abfAmort: number; abfEnding: number; corporateDraw: number; equityDraw: number; notePrincipal: number; endingCash: number }[] = [];
+  const fundingRows: { year: number; cashInterest: number; termLoanPrincipal: number; abfDraw: number; abfAmort: number; abfEnding: number; corporateDraw: number; equityDraw: number; notePrincipal: number; endingCash: number }[] = [];
   for (const row of result.rows) {
     const frac = row.year === 2026 ? 0.25 : 1;
     const coupon = notes.reduce((sum, note) => sum + note.coupon, 0) * frac;
@@ -687,7 +695,7 @@ export function financingPanel(result: ModelResult) {
       equityDraw = need;
       cash = MIN_CASH;
     }
-    fundingRows.push({ year: row.year, abfDraw, abfAmort, abfEnding: abf.reduce((sum, tranche) => sum + tranche.a, 0), corporateDraw, equityDraw, notePrincipal: refi, endingCash: cash });
+    fundingRows.push({ year: row.year, cashInterest: yearInterest, termLoanPrincipal: tlPay, abfDraw, abfAmort, abfEnding: abf.reduce((sum, tranche) => sum + tranche.a, 0), corporateDraw, equityDraw, notePrincipal: refi, endingCash: cash });
   }
   const price = REFERENCE_CLOSE.value;
   const newShares = price > 0 ? (equity / price) * 1e6 : Infinity;
@@ -698,3 +706,8 @@ export function financingPanel(result: ModelResult) {
 export const BASIC_ECONOMIC_SHARES = S_BASIC;
 export const DISCLOSED_PAYBACK_MONTHS = PAYBACK_DISCLOSED;
 export const COMPUTE_SHARE_OF_CAPEX = COMPUTE_SHARE;
+// Opening capital proxy used in the existing tax model, not reported net PP&E.
+export const OPENING_CAPITAL_PROXY = OPENING_TAX_BASE;
+export const COMPUTE_ASSET_LIFE = COMPUTE_LIFE;
+export const FACILITY_ASSET_LIFE = FAC_LIFE;
+export const MODEL_TAX_RATE = TAX;

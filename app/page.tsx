@@ -56,6 +56,7 @@ export default function HomePage() {
               <div className="feature-value">{dollars(weighted)}</div>
               <p className="feature-note">Model {MODEL_VERSION} weighted model output per share, floored. Bear {dollars(headlineValue(cases[0]))}, base {dollars(headlineValue(cases[1]))}, bull {dollars(headlineValue(cases[2]))}. Hand-entered close ${REFERENCE_CLOSE.value.toFixed(2)} as of {REFERENCE_CLOSE.asOf}. Not a price target. Raw figures are on the model page.</p>
               <Link href="/models" className="pill-link">Inspect the inputs <span aria-hidden="true">↗</span></Link>
+              <Link href="/models#capital-efficiency" className="pill-link">Capital efficiency <span aria-hidden="true">↗</span></Link>
             </div>
           </div>
         </article>
