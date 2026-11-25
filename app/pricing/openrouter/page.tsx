@@ -1,3 +1,4 @@
+import { RouterCharts, UsageCharts } from "@/components/pricing-dashboard";
 import { openRouter } from "@/lib/load";
 import { formatPerMillion } from "@/lib/utils";
 
@@ -35,11 +36,11 @@ export default function OpenRouterPage() {
             endpoints
           </a>{" "}
           payload. Prices below are converted from USD per token to USD per million tokens.
-          History points stored: {openRouter.history.length}. Latency and throughput were null
-          on every Nebius endpoint in this snapshot, so those columns say so instead of showing
-          a made-up speed.
+          History points stored: {openRouter.history.length}. Latency and throughput are shown only when reported by the endpoint.
         </p>
       </header>
+      <UsageCharts />
+      <RouterCharts />
       <div className="space-y-4">
         {models.map((model) => {
           const neb = model.nebius[0];
