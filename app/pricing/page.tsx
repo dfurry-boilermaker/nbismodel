@@ -40,6 +40,9 @@ export default function PricingPage() {
       <section className="grid grid-cols-3 gap-2 text-xs">
         {[["GPU",gpuPrices.retrievedAt],["Token Factory",tokenFactory.retrievedAt],["OpenRouter",openRouter.retrievedAt]].map(([label,date])=><div key={label} className="min-w-0 border border-line p-2"><p className="text-muted">{label}</p><p className="font-mono text-[11px]">{date?.slice(0,10)??"—"}</p></div>)}
       </section>
+      <nav aria-label="Pricing data pages" className="flex flex-wrap gap-2 text-sm">
+        {CARDS.map(card=><Link key={card.href} href={card.href} className="border border-line px-3 py-2 text-muted hover:text-foreground">{card.title} ↗</Link>)}
+      </nav>
       <UsageCharts />
       <section className="space-y-3"><h2 className="text-xl">GPU economics</h2><GpuCharts /></section>
       <section className="space-y-3"><h2 className="text-xl">Token Factory economics</h2><FactoryCharts /></section>
