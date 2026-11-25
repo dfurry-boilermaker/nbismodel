@@ -16,6 +16,7 @@ import {
   weightedValue,
 } from "../lib/dcf";
 import { priceBand } from "../lib/vol";
+import { GPU_CASES, gpuEconomics, historicalCapitalEfficiency, projectedCapitalEfficiency } from "../lib/capital-efficiency";
 
 const ids = new Set(Object.keys(financials.sources));
 function requireSource(id: string, where: string) {
@@ -187,3 +188,25 @@ console.log("validate ok", {
   side: [sides.guide.raw, sides.lag.raw, sides.sfc0, sides.sfc7],
   band,
 });
+
+const historicalEfficiency = historicalCapitalEfficiency(financials.quarters);
+if (historicalEfficiency.slice(0,7).some(r=>r.laggedProductivity!==null)) throw new Error("historical proxy requires eight quarters");
+const unit = gpuEconomics(GPU_CASES.base);
+if (Math.abs(unit.revenue-24528)>1e-6 || Math.abs(unit.depreciation-7200)>1e-6) throw new Error("GPU economics arithmetic");
+if (!(gpuEconomics({...GPU_CASES.base,utilization:.5}).roic<unit.roic)) throw new Error("GPU utilization sensitivity");
+for (const item of cases) {
+  for (const r of item.rows) {
+    if (Math.abs(r.growthCapex+r.replacementCapex-r.capexNet)>1e-6) throw new Error("growth/refresh capex tie-out");
+    if (Math.abs(r.computeCapex+r.facilityCapex-r.capexNet)>1e-6) throw new Error("compute/facility capex tie-out");
+  }
+  const p = projectedCapitalEfficiency(item.name);
+  const funding = financingPanel(item);
+  if (p.rows.length!==9 || p.rows[0].year!==2027 || p.rows[0].productivity!==null) throw new Error("capital efficiency year alignment");
+  if (Math.abs(p.rows.at(-1)!.shares-item.bridge.shares-funding.newShares)>1e-5) throw new Error("projected dilution reconciliation");
+  for (const r of p.rows) {
+    const f = funding.fundingRows.find(x=>x.year===r.year)!;
+    if (Math.abs(r.fcfe+f.cashInterest+f.termLoanPrincipal+f.notePrincipal+f.abfAmort-f.abfDraw-f.corporateDraw-r.fcff)>1e-6) throw new Error("FCFE debt flow reconciliation");
+    if (!Number.isFinite(r.fcfePerShare) || r.depreciation<0 || r.shares<=0 || r.roic===null || !Number.isFinite(r.roic)) throw new Error("invalid capital efficiency projection");
+  }
+}
+console.log("capital efficiency checks ok");
