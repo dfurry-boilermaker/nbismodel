@@ -39,9 +39,17 @@ export function DcfModel({ compact = false }: { compact?: boolean }) {
       <p className="text-sm text-muted">
         Model {MODEL_VERSION}, discounted from {VALUATION_DATE}. Guided revenue and capex are used for
         2026 and 2027. Later revenue is the energized fleet times a labeled revenue-per-megawatt rate.
-        After the build, capex is maintenance only. This is not a price target or a recommendation.
-        A negative figure is not floored at zero.
+        After the build, capex is maintenance only. Equity per share is shown at zero when the
+        arithmetic is negative, because a share has limited liability. This is not a price
+        target or a recommendation.
       </p>
+      <details className="text-sm text-muted">
+        <summary className="cursor-pointer">Unfloored arithmetic</summary>
+        <p className="mt-2">
+          Displayed value is max(0, equity / shares). In these three cases the floor does not
+          change the result: bear {money(results[0].bridges.none.perShareRaw)}, base {money(results[1].bridges.none.perShareRaw)}, bull {money(results[2].bridges.all.perShareRaw)}.
+        </p>
+      </details>
       <div className="grid gap-3 sm:grid-cols-4">
         {results.map((row) => (
           <button

@@ -71,45 +71,49 @@ export default function MethodologyPage() {
         20 closes. The band is price × exp(±1.96 × volatility × sqrt(days / 252)), with zero
         drift. Implied volatility has no feed.
       </p>
-      <h2 className="text-lg font-medium text-foreground">Long-term model, version 2.2.0</h2>
+      <h2 className="text-lg font-medium text-foreground">Long-term model, version 2.3.0</h2>
       <p>
-        Version 2.1.0 was −$232.41 bear, −$65.31 base, $933.48 bull, and $142.61 weighted.
-        The bull applied a $25 million rate on the way to 6 GW, so the terminal sat far
-        above a multiple of 2027 EBITDA. Version 2.2.0 keeps the same split between growth
-        capex and five-year maintenance. It changes the rates and the speed at which
-        recognized revenue approaches the megawatt ceiling.
+        Version 2.2.0 showed −$280.82 bear, −$45.95 base, $347.52 bull, and −$6.30 weighted.
+        A negative share price is not a finding. Equity has limited liability, so every
+        displayed per-share figure is floored at zero. In the published 2.3.0 cases the
+        floor does not bind. The unfloored arithmetic is the same as the figure on the page.
       </p>
       <p>
-        Recurring AI-cloud revenue in the third quarter of 2026 was $648.7 million. Times
-        four is $2,594.8 million. Active power was about 170 MW at the end of 2025, and the
-        connected-power guide for the end of 2026 was 800 MW to 1 GW. September 30, 2026 is
-        day 273, so a straight line from 170 MW to the 800 MW low end is 641 MW. Dividing
-        gives $4.05 million per MW-year. That is an estimate of recognized revenue on the
-        fleet then in service. It is not the new-deal contract value, which the letters put
-        above $20 million in the second quarter and above $25 million in the third. Legacy
-        megawatts earn $4.05 million in every case. Only megawatts added after 2026 earn the
-        contract rate, and each year the model recognizes part of the gap up to that ceiling
-        rather than the whole ceiling at once.
+        Replacement capex is no longer historical cost divided by five. Each year the model
+        refreshes one fifth of installed megawatts at a cost per megawatt that falls 25% a
+        year. Twenty-five percent is an assumption inside a 20–30% a year band. It is much
+        smaller than NVIDIA&apos;s February 16, 2026 statement that Blackwell Ultra can deliver
+        up to 35 times lower cost per million tokens than Hopper, and smaller than the
+        about 2 times FLOPS-per-dollar step NVIDIA shows for that same generation. Those
+        gains include software and rack scale, so they are not used as the capex deflator.
+        On the published cases, 2032 cash maintenance is about 10–11% of revenue. CoreWeave&apos;s
+        third-quarter 2026 adjusted EBITDA margin was 62%, and Oracle&apos;s trailing EBITDA
+        margin through August 2026 was about 53%. Both are still funding a growth build, so
+        their current capex intensity is not a maintenance benchmark. A steady-state share
+        of revenue around 10% is the check used here.
       </p>
       <p>
-        The 2026 group margin stays at the guided 40%, because nine months are already
-        reported. From 2027 the base uses the 53.2% AI-cloud adjusted EBITDA margin in the
-        November 12, 2026 shareholder letter, and fades to 49%. The four-point fade is for
-        power cost and for the group businesses that still lose money. It is not a return
-        to the older 40% group guide. The bull may rise from 53.2% to 55%, and no higher.
-        The bear uses 45% in 2027, the first-quarter 2026 core print, and 24% at the
-        terminal, the fourth-quarter 2025 core print. That 24% is the bottom of the
-        disclosed positive cloud-margin history. The bear issues residual equity at $111.95,
-        half the August 24, 2026 reference price of $223.90. The bull fleet stops at 5 GW,
-        the contracted-power target, not 6 GW.
+        Recurring AI-cloud revenue of $648.7 million, times four, is $2,594.8 million.
+        Divided by the only disclosed active-power census, about 170 MW at December 31, 2025,
+        that is $15.26 million per MW-year. The denominator is nine months old, so the
+        quotient overstates revenue per megawatt of what was actually online in the third
+        quarter. Dividing the same revenue by the 800 MW low end of the year-end 2026
+        connected-power guide gives $3.24 million. That understates the billing fleet,
+        because the guide is not a third-quarter census and later letters said some
+        colocation slipped into 2027. The old $4.05 million figure used an interpolated
+        641 MW and is not used. Legacy megawatts start at $15.26 million and converge
+        toward the case&apos;s contract rate as they rebill. New megawatts earn the contract
+        rate, $18 million in the bear, the $20 million Q2 floor in the base, and the $25
+        million Q3 floor in the bull.
       </p>
       <p>
-        Tax rates of 20%, 15%, and 12% are still labeled assumptions. Nebius has not guided
-        a cash rate. The bridge is unchanged: enterprise value, minus opening carrying debt,
-        plus unrestricted cash left after the funding gap. Future debt is not subtracted
-        again. The weights are 25%, 50%, and 25%. The page shows how many dollars of the
-        weighted figure come from each case. A gap wider than 50% versus a CoreWeave or
-        Oracle multiple is marked. Nothing here is a price target.
+        The base margin from 2027 remains 53.2%, fading to 49%. The bear holds 45%, the
+        low end of the 2026 cloud prints, rather than the 24% fourth-quarter 2025 trough,
+        because that trough does not pay for the guided build. The bear fleet stops at 4 GW,
+        2027 capex is $45 billion, and new equity is issued at half the August 2026
+        reference price. The bull fleet stops at 5 GW and the margin may reach 55%. The
+        weights are 25%, 50%, and 25%. A gap wider than 50% versus a CoreWeave or Oracle
+        multiple is marked. Nothing here is a price target.
       </p>
       <h2 className="text-lg font-medium text-foreground">Satellite images</h2>
       <p>

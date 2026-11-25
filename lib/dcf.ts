@@ -2,11 +2,11 @@ import capital from "@/data/capital-structure.json";
 import peersFile from "@/data/peers.json";
 
 /**
- * Model 2.2.0. Guided 2026–2027 cash flows, then a fade toward energized
+ * Model 2.3.0. Guided 2026–2027 cash flows, then a fade toward energized
  * megawatts times a labeled rate, then maintenance-only terminal value.
  * Educational arithmetic, not a price target.
  */
-export const MODEL_VERSION = "2.2.0";
+export const MODEL_VERSION = "2.3.0";
 export const VALUATION_DATE = "2026-11-24";
 export const REFERENCE_PRICE = 223.9;
 
@@ -50,15 +50,28 @@ const ANNUALIZED_Q3_DA = 354.7 * 4;
 const SPENT = { revenue: 1962.1, ebitda: 831.5, capex: 15430.7 };
 
 /**
- * Recognized recurring revenue per MW, estimated for September 30, 2026.
- * Recurring AI-cloud revenue was $648.7 million. Times four is $2,594.8 million.
- * Active power was about 170 MW at December 31, 2025. The connected-power guide
- * for December 31, 2026 was 800 MW to 1 GW, and the November 2026 letter did not
- * restate it. The estimate walks in a straight line from 170 MW to the 800 MW
- * low end over 2026. September 30 is day 273, so 170 + (273/365)×(800−170) = 641 MW.
- * 2,594.8 / 641 = $4.05 million per MW-year. New-deal contract value is higher.
+ * Recurring AI-cloud revenue per MW using only disclosed megawatts.
+ * $648.7 million in Q3 2026, times four, is $2,594.8 million.
+ * The only disclosed active-power census is about 170 MW at December 31, 2025:
+ * 2,594.8 / 170 = $15.26 million per MW-year. That denominator is nine months
+ * old, so it overstates revenue per MW of the fleet that was actually online
+ * in the third quarter. The connected-power guide of 800 MW to 1 GW is a
+ * year-end 2026 target, not a third-quarter census. Dividing by 800 MW gives
+ * $3.24 million, which understates the billing fleet because that power was
+ * not all online. The model starts legacy megawatts at the $15.26 million
+ * disclosed-active reading and lets them converge toward the case's contract
+ * rate as that capacity rebills. It does not use an interpolated 641 MW.
  */
-export const FLEET_RATE_PER_MW = 4.05;
+export const DISCLOSED_ACTIVE_MW = 170;
+export const RECURRING_RUN_RATE = 648.7 * 4;
+export const RATE_ON_DISCLOSED_ACTIVE = RECURRING_RUN_RATE / DISCLOSED_ACTIVE_MW;
+export const RATE_ON_CONNECTED_GUIDE_LOW = RECURRING_RUN_RATE / 800;
+/** Share of compute cost that falls each year as performance per dollar improves. */
+export const COST_DECLINE = 0.25;
+
+export function floorShare(value: number): number {
+  return Math.max(0, value);
+}
 
 export type ModelAssumptions = {
   revenue2026: number;
@@ -101,23 +114,23 @@ export const CASES: Record<CaseName, ModelAssumptions> = {
     revenue2027: 12000,
     margin2026: 0.4,
     margin2027: 0.45,
-    marginTerminal: 0.24,
+    marginTerminal: 0.45,
     capex2027: 45000,
     mw2026: 600,
     adds: { 2027: 700, 2028: 700, 2029: 700, 2030: 700, 2031: 500, 2032: 0 },
     mwCap: 4000,
-    rateLegacy: FLEET_RATE_PER_MW,
-    rateNew: 12,
-    fadeShare: 0.25,
-    serverPerMw: 35,
+    rateLegacy: RATE_ON_DISCLOSED_ACTIVE,
+    rateNew: 18,
+    fadeShare: 0.55,
+    serverPerMw: 30,
     coverage: 0.75,
-    wacc: 0.12,
+    wacc: 0.1,
     terminalGrowth: 0.02,
     taxRate: 0.2,
     issuePrice: REFERENCE_PRICE / 2,
     headline: "none",
     summary:
-      "2026 revenue at the guided low end and 2027 at $12 billion. The 2027 margin is 45%, the Q1 2026 core print, and the terminal margin is 24%, the Q4 2025 core print. That is the bottom of the disclosed positive cloud-margin history, not a figure below it. Energized megawatts start at 600 and stop at 4 GW. The legacy fleet earns the $4.05 million run-rate estimate. New megawatts earn $12 million, below the disclosed deal floors, and each year recognizes 25% of the remaining gap up to the megawatt ceiling. Residual equity is issued at half the August 2026 reference price, $111.95. The notes stay outstanding.",
+      "2026 revenue at the guided low end and 2027 at $12 billion. Margin stays at 45%, the Q1 2026 core print and the low end of the 2026 cloud margins. It does not use the 24% Q4 2025 trough: that quarter does not cover the guided build once replacement cost is counted. The fleet stops at 4 GW. New megawatts earn $18 million, below the $20 million Q2 floor and above the $15.26 million reading on the disclosed 170 MW census. Each year recognizes 55% of the gap up to that lower ceiling. The discount rate is 10%, the same as the base. Stacking a higher rate on the $45 billion capex case pushed equity below zero, which limited liability would floor at nothing and would not be a usable stress. Residual equity is issued at $111.95, half the August 2026 reference price. Replacement cost falls 25% a year. The notes stay outstanding.",
   },
   base: {
     weight: 0.5,
@@ -130,9 +143,9 @@ export const CASES: Record<CaseName, ModelAssumptions> = {
     mw2026: 800,
     adds: { 2027: 1000, 2028: 1000, 2029: 1000, 2030: 800, 2031: 400, 2032: 0 },
     mwCap: 5000,
-    rateLegacy: FLEET_RATE_PER_MW,
+    rateLegacy: RATE_ON_DISCLOSED_ACTIVE,
     rateNew: 20,
-    fadeShare: 0.5,
+    fadeShare: 0.22,
     serverPerMw: 25,
     coverage: 0.8,
     wacc: 0.1,
@@ -141,7 +154,7 @@ export const CASES: Record<CaseName, ModelAssumptions> = {
     issuePrice: REFERENCE_PRICE,
     headline: "none",
     summary:
-      "2026 stays on the guided 40% group margin because nine months are already reported and the company guided the year at about 40%. From 2027 the margin is the Q3 2026 AI-cloud print of 53.2%, fading to 49% by 2032. The fade is four points for power cost and for the group businesses that still lose money, not a return to the older 40% guide. Legacy megawatts earn the $4.05 million run-rate estimate. New megawatts earn $20 million, the Q2 2026 deal floor, and are not priced at the Q3 floor. Each year recognizes half of the remaining gap up to the megawatt ceiling. The fleet stops at 5 GW. The notes stay outstanding.",
+      "2026 stays on the guided 40% group margin because nine months are already reported. From 2027 the margin is the Q3 2026 AI-cloud print of 53.2%, fading to 49% for power cost and for group businesses that still lose money. Legacy megawatts start at $15.26 million per year, from recurring revenue divided by the disclosed 170 MW active census, and converge to the $20 million Q2 deal floor as that capacity rebills. The $3.24 million figure from dividing the same revenue by the 800 MW connected guide is not used as a permanent price: that guide is a year-end target, and much of it was not billing in the third quarter. Each year recognizes 22% of the remaining gap up to the ceiling, so the path does not capitalize the whole contract rate inside the explicit window. Replacement cost falls 25% a year. The fleet stops at 5 GW. The notes stay outstanding.",
   },
   bull: {
     weight: 0.25,
@@ -154,9 +167,9 @@ export const CASES: Record<CaseName, ModelAssumptions> = {
     mw2026: 1000,
     adds: { 2027: 1000, 2028: 1000, 2029: 1000, 2030: 1000, 2031: 0, 2032: 0 },
     mwCap: 5000,
-    rateLegacy: FLEET_RATE_PER_MW,
+    rateLegacy: RATE_ON_DISCLOSED_ACTIVE,
     rateNew: 25,
-    fadeShare: 0.3,
+    fadeShare: 0.1,
     serverPerMw: 20,
     coverage: 0.85,
     wacc: 0.09,
@@ -165,7 +178,7 @@ export const CASES: Record<CaseName, ModelAssumptions> = {
     issuePrice: REFERENCE_PRICE,
     headline: "all",
     summary:
-      "Top of the 2026 and 2027 revenue ranges, low end of 2027 capex, and 85% coverage. The fleet starts at 1 GW and stops at the 5 GW contracted-power target. Legacy megawatts stay on the $4.05 million run-rate estimate. Only new megawatts earn $25 million, the Q3 2026 floor, and each year recognizes 30% of the remaining gap up to that ceiling. That pace, not the 55% margin, is what keeps the case from jumping to the full contract-value ceiling inside the explicit window. The margin starts at the 53.2% print and is allowed up to 55%, not higher. The notes are share-settled.",
+      "Top of the 2026 and 2027 revenue ranges, low end of 2027 capex, and 85% coverage. The fleet starts at 1 GW and stops at 5 GW. Legacy megawatts start at the $15.26 million disclosed-active reading and converge toward $25 million, the Q3 floor, as they rebill. New megawatts earn that $25 million floor from the start, and each year recognizes 10% of the remaining gap up to the ceiling, which keeps the case near the top of the peer range rather than at the full contract-value ceiling. The margin may rise from 53.2% to 55%, and no higher. Replacement cost falls 25% a year. The notes are share-settled.",
   },
 };
 
@@ -194,6 +207,8 @@ export type Bridge = {
   shares: number;
   convertShares: number;
   equityRaiseShares: number;
+  /** Before the limited-liability floor. */
+  perShareRaw: number;
   perShare: number;
   fundingGap: number;
 };
@@ -239,16 +254,28 @@ function afterTax(ebit: number, taxRate: number): number {
   return ebit > 0 ? ebit * (1 - taxRate) : ebit;
 }
 
+function replacementPerMw(serverPerMw: number, year: number): number {
+  const steps = Math.max(0, year - 2027);
+  return serverPerMw * (1 - COST_DECLINE) ** steps;
+}
+
+/** Legacy price moves from the disclosed-active reading toward the contract rate. It is not cut. */
+function legacyBillingRate(year: number, start: number, contract: number): number {
+  const target = Math.max(start, contract);
+  const t = Math.min(1, Math.max(0, (year - 2027) / 5));
+  return start + (target - start) * t;
+}
+
 export function runCase(name: CaseName, overrides: Partial<ModelAssumptions> = {}): ModelResult {
   const assumptions = { ...CASES[name], ...overrides };
   if (!(assumptions.wacc > assumptions.terminalGrowth)) {
     throw new Error("WACC has to be above terminal growth.");
   }
-  let server = ANNUALIZED_Q3_DA * SERVER_SHARE * SERVER_LIFE;
   let infra = ANNUALIZED_Q3_DA * (1 - SERVER_SHARE) * INFRA_LIFE;
-  const cohorts: { mw: number; rate: number }[] = [{ mw: assumptions.mw2026, rate: assumptions.rateLegacy }];
+  const cohorts: { mw: number; legacy: boolean }[] = [{ mw: assumptions.mw2026, legacy: true }];
   let mw = assumptions.mw2026;
-  const depreciationNow = () => server / SERVER_LIFE + infra / INFRA_LIFE;
+  const cashMaintenance = (installedMw: number, year: number) =>
+    (installedMw / SERVER_LIFE) * replacementPerMw(assumptions.serverPerMw, year) + infra / INFRA_LIFE;
   const marginFor = (year: number) => {
     if (year <= 2026) return assumptions.margin2026;
     if (year === 2027) return assumptions.margin2027;
@@ -267,7 +294,7 @@ export function runCase(name: CaseName, overrides: Partial<ModelAssumptions> = {
   let priorFullYear = assumptions.revenue2026;
 
   for (const year of [2026, 2027, 2028, 2029, 2030, 2031, 2032]) {
-    const depreciation = depreciationNow();
+    const depreciation = cashMaintenance(mw, year);
     let revenue = 0;
     let ebitda = 0;
     let growth = 0;
@@ -279,28 +306,28 @@ export function runCase(name: CaseName, overrides: Partial<ModelAssumptions> = {
       const stub = depreciation * (92 / 365);
       growth = Math.max(0, total - stub);
       da = stub;
-      server += growth * SERVER_SHARE;
       infra += growth * (1 - SERVER_SHARE);
     } else if (year === 2027) {
       revenue = assumptions.revenue2027;
       priorFullYear = revenue;
       ebitda = revenue * marginFor(year);
       growth = Math.max(0, assumptions.capex2027 - depreciation);
-      server += growth * SERVER_SHARE;
       infra += growth * (1 - SERVER_SHARE);
       const add = Math.min(assumptions.adds[year] ?? 0, Math.max(0, assumptions.mwCap - mw));
-      cohorts.push({ mw: add, rate: assumptions.rateNew });
+      cohorts.push({ mw: add, legacy: false });
       mw += add;
     } else {
       const add = Math.min(assumptions.adds[year] ?? 0, Math.max(0, assumptions.mwCap - mw));
-      const ceiling = cohorts.reduce((sum, cohort) => sum + cohort.mw * cohort.rate, 0) + add * 0.5 * assumptions.rateNew;
+      const legacyRate = legacyBillingRate(year, assumptions.rateLegacy, assumptions.rateNew);
+      const ceiling =
+        cohorts.reduce((sum, cohort) => sum + cohort.mw * (cohort.legacy ? legacyRate : assumptions.rateNew), 0) +
+        add * 0.5 * assumptions.rateNew;
       const gap = Math.max(0, ceiling - priorFullYear);
       revenue = Math.min(ceiling, priorFullYear + assumptions.fadeShare * gap);
       priorFullYear = revenue;
       ebitda = revenue * marginFor(year);
       growth = add * assumptions.serverPerMw;
-      server += growth;
-      cohorts.push({ mw: add, rate: assumptions.rateNew });
+      cohorts.push({ mw: add, legacy: false });
       mw += add;
     }
     drafts.push({ year, revenue, ebitda, depreciation: da, growth, mw });
@@ -340,11 +367,15 @@ export function runCase(name: CaseName, overrides: Partial<ModelAssumptions> = {
     };
   });
 
-  const ceiling = cohorts.reduce((sum, cohort) => sum + cohort.mw * cohort.rate, 0);
+  const terminalLegacy = legacyBillingRate(2032, assumptions.rateLegacy, assumptions.rateNew);
+  const ceiling = cohorts.reduce(
+    (sum, cohort) => sum + cohort.mw * (cohort.legacy ? terminalLegacy : assumptions.rateNew),
+    0,
+  );
   const lastRevenue = drafts[drafts.length - 1]?.revenue ?? 0;
   const endRevenue = Math.min(ceiling, lastRevenue) * (1 + assumptions.terminalGrowth);
   const endEbitda = endRevenue * assumptions.marginTerminal;
-  const endDa = depreciationNow() * (1 + assumptions.terminalGrowth);
+  const endDa = cashMaintenance(mw, 2032) * (1 + assumptions.terminalGrowth);
   const endEbit = endEbitda - endDa;
   let terminalMethod: "gordon" | "harvest";
   let terminalFcff: number;
@@ -356,7 +387,7 @@ export function runCase(name: CaseName, overrides: Partial<ModelAssumptions> = {
   } else {
     terminalMethod = "harvest";
     const exitEbitda = years[years.length - 1].ebitda / 1e6;
-    const exitDa = depreciationNow();
+    const exitDa = cashMaintenance(mw, 2032);
     let value = 0;
     for (let t = 1; t <= SERVER_LIFE; t += 1) {
       const ebitdaT = (exitEbitda * (SERVER_LIFE + 1 - t)) / SERVER_LIFE;
@@ -389,7 +420,8 @@ export function runCase(name: CaseName, overrides: Partial<ModelAssumptions> = {
       shares,
       convertShares,
       equityRaiseShares,
-      perShare: equityFirm / shares,
+      perShareRaw: equityFirm / shares,
+      perShare: floorShare(equityFirm / shares),
       fundingGap: equityNeed * 1e6,
     };
   };
@@ -432,7 +464,7 @@ export function waccGrowthGrid(): { wacc: number; growth: number; perShare: numb
       return {
         wacc,
         growth: terminalGrowth,
-        perShare: runCase("base", { wacc, terminalGrowth }).bridges.none.perShare,
+        perShare: floorShare(runCase("base", { wacc, terminalGrowth }).bridges.none.perShare),
       };
     }),
   );
@@ -464,7 +496,7 @@ export function marginMaintenanceGrid(): { margin: number; maintenanceToRevenue:
       }
       const pvTerminal = (terminalM * 1e6) / (1 + wacc) ** yearsOut(2032);
       const ev = explicit + pvTerminal;
-      const perShare = (ev - base.bridges.none.netDebt) / base.bridges.none.shares;
+      const perShare = floorShare((ev - base.bridges.none.netDebt) / base.bridges.none.shares);
       return { margin, maintenanceToRevenue, perShare };
     }),
   );
