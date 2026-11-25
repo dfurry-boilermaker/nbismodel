@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "sourceUrl": "https://openrouter.ai/api/v1/models",
   "endpointsUrlTemplate": "https://openrouter.ai/api/v1/models/{id}/endpoints",
-  "retrievedAt": "2026-11-23T18:57:57.620Z",
+  "retrievedAt": "2026-11-25T17:40:51.540Z",
   "note": "Prompt and completion prices are USD per token, as returned by OpenRouter. Latency and throughput are included only when the endpoint payload has them. History stores Nebius prompt and completion prices so the page can show a trend once more than one snapshot exists.",
   "models": [
     {
@@ -27,30 +27,30 @@
       ],
       "otherProviders": [
         {
-          "provider": "Wafer",
-          "name": "Wafer | deepseek/deepseek-v4-flash-20260731",
-          "tag": "wafer/us",
-          "quantization": "nvfp4",
+          "provider": "Baidu",
+          "name": "Baidu | deepseek/deepseek-v4-flash-20260731",
+          "tag": "baidu/fp8",
+          "quantization": "fp8",
           "contextLength": 1048576,
-          "promptPerToken": 4.34e-8,
-          "completionPerToken": 3e-7,
-          "cacheReadPerToken": 3.5e-8,
-          "discount": 0,
+          "promptPerToken": 4.532e-8,
+          "completionPerToken": 1.3596e-7,
+          "cacheReadPerToken": 1.442e-9,
+          "discount": 0.897,
           "latencyLast30m": null,
           "throughputLast30m": null,
           "uptimeLast1d": 100,
           "status": 0
         },
         {
-          "provider": "Baidu",
-          "name": "Baidu | deepseek/deepseek-v4-flash-20260731",
-          "tag": "baidu/fp8",
-          "quantization": "fp8",
+          "provider": "Wafer",
+          "name": "Wafer | deepseek/deepseek-v4-flash-20260731",
+          "tag": "wafer/us",
+          "quantization": "nvfp4",
           "contextLength": 1048576,
-          "promptPerToken": 4.4e-8,
-          "completionPerToken": 1.32e-7,
-          "cacheReadPerToken": 1.4e-9,
-          "discount": 0.9,
+          "promptPerToken": 4.56e-8,
+          "completionPerToken": 3e-7,
+          "cacheReadPerToken": 3.5e-8,
+          "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
           "uptimeLast1d": 100,
@@ -113,7 +113,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 99.30555555555556,
+          "uptimeLast1d": 98.95833333333334,
           "status": 0
         },
         {
@@ -203,7 +203,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 98.95833333333334,
+          "uptimeLast1d": 90.06944444444444,
           "status": 0
         },
         {
@@ -218,7 +218,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 99.93055555555556,
+          "uptimeLast1d": 99.86111111111111,
           "status": 0
         },
         {
@@ -263,7 +263,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 98.68055555555556,
+          "uptimeLast1d": 100,
           "status": 0
         },
         {
@@ -278,7 +278,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 98.24191279887482,
+          "uptimeLast1d": 98.11846689895471,
           "status": 0
         },
         {
@@ -293,7 +293,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 99.412915851272,
+          "uptimeLast1d": 98.87323943661971,
           "status": 0
         },
         {
@@ -308,7 +308,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 98.9769820971867,
+          "uptimeLast1d": 99.56140350877193,
           "status": 0
         },
         {
@@ -353,7 +353,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 99.8546511627907,
+          "uptimeLast1d": 99.37282229965156,
           "status": 0
         },
         {
@@ -368,7 +368,7 @@
           "discount": 0.05,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 99.86101459346769,
+          "uptimeLast1d": 100,
           "status": 0
         },
         {
@@ -380,21 +380,6 @@
           "promptPerToken": 4.4e-7,
           "completionPerToken": 0.00000132,
           "cacheReadPerToken": 4.4e-8,
-          "discount": 0,
-          "latencyLast30m": null,
-          "throughputLast30m": null,
-          "uptimeLast1d": 100,
-          "status": 0
-        },
-        {
-          "provider": "PrimeIntellect",
-          "name": "PrimeIntellect | deepseek/deepseek-v4-flash-20260731",
-          "tag": "primeintellect/fp4",
-          "quantization": "fp4",
-          "contextLength": 1048576,
-          "promptPerToken": 4.4e-7,
-          "completionPerToken": 0.00000132,
-          "cacheReadPerToken": 1.4e-8,
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
@@ -419,7 +404,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 99.43117178612059,
+          "uptimeLast1d": 99.81965734896303,
           "status": 0
         }
       ],
@@ -436,7 +421,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 99.23611111111111,
+          "uptimeLast1d": 100,
           "status": 0
         },
         {
@@ -452,21 +437,6 @@
           "latencyLast30m": null,
           "throughputLast30m": null,
           "uptimeLast1d": 100,
-          "status": 0
-        },
-        {
-          "provider": "Baidu",
-          "name": "Baidu | deepseek/deepseek-v4-pro-20260813",
-          "tag": "baidu/fp8",
-          "quantization": "fp8",
-          "contextLength": 1048576,
-          "promptPerToken": 1.32e-7,
-          "completionPerToken": 3.96e-7,
-          "cacheReadPerToken": 4.2e-9,
-          "discount": 0.9,
-          "latencyLast30m": null,
-          "throughputLast30m": null,
-          "uptimeLast1d": 99.72222222222223,
           "status": 0
         },
         {
@@ -496,7 +466,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 100,
+          "uptimeLast1d": 99.32170542635659,
           "status": 0
         },
         {
@@ -511,7 +481,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 99.16666666666667,
+          "uptimeLast1d": 88,
           "status": 0
         },
         {
@@ -541,7 +511,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 100,
+          "uptimeLast1d": 95.55555555555556,
           "status": 0
         },
         {
@@ -556,7 +526,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 100,
+          "uptimeLast1d": 52.054794520547944,
           "status": 0
         },
         {
@@ -571,7 +541,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 96.09375,
+          "uptimeLast1d": 95.69471624266144,
           "status": 0
         },
         {
@@ -586,7 +556,7 @@
           "discount": 0.05,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 99.71202303815694,
+          "uptimeLast1d": 100,
           "status": 0
         },
         {
@@ -601,7 +571,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 98.52320675105484,
+          "uptimeLast1d": 99.75186104218362,
           "status": 0
         },
         {
@@ -616,7 +586,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 98.88501742160278,
+          "uptimeLast1d": 98.19444444444444,
           "status": 0
         },
         {
@@ -631,7 +601,22 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 98.96142433234422,
+          "uptimeLast1d": 99.45553539019963,
+          "status": 0
+        },
+        {
+          "provider": "Baidu",
+          "name": "Baidu | deepseek/deepseek-v4-pro-20260813",
+          "tag": "baidu/fp8",
+          "quantization": "fp8",
+          "contextLength": 1048576,
+          "promptPerToken": 0.00000132,
+          "completionPerToken": 0.00000396,
+          "cacheReadPerToken": 4.2e-8,
+          "discount": 0,
+          "latencyLast30m": null,
+          "throughputLast30m": null,
+          "uptimeLast1d": 99.16666666666667,
           "status": 0
         },
         {
@@ -646,7 +631,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 98.17490494296578,
+          "uptimeLast1d": 99.69879518072288,
           "status": 0
         },
         {
@@ -661,7 +646,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 100,
+          "uptimeLast1d": 96.35599159074982,
           "status": 0
         },
         {
@@ -721,7 +706,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 57.25190839694656,
+          "uptimeLast1d": 55.437100213219615,
           "status": 0
         },
         {
@@ -736,7 +721,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 99.41902687000727,
+          "uptimeLast1d": 100,
           "status": 0
         }
       ]
@@ -768,13 +753,13 @@
           "tag": "baidu/fp8",
           "quantization": "fp8",
           "contextLength": 1048576,
-          "promptPerToken": 4.98e-8,
-          "completionPerToken": 1.992e-7,
-          "cacheReadPerToken": 9.96e-10,
-          "discount": 0.834,
+          "promptPerToken": 5.07e-8,
+          "completionPerToken": 2.028e-7,
+          "cacheReadPerToken": 1.014e-9,
+          "discount": 0.831,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 99.93055555555556,
+          "uptimeLast1d": 100,
           "status": 0
         },
         {
@@ -798,9 +783,9 @@
           "tag": "open-inference/fp4",
           "quantization": "fp4",
           "contextLength": 1048576,
-          "promptPerToken": 7.2e-8,
-          "completionPerToken": 7.5e-7,
-          "cacheReadPerToken": 2.4e-8,
+          "promptPerToken": 5.2e-8,
+          "completionPerToken": 9.5e-7,
+          "cacheReadPerToken": 9e-9,
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
@@ -834,7 +819,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 100,
+          "uptimeLast1d": 99.92947813822285,
           "status": 0
         },
         {
@@ -879,7 +864,7 @@
           "discount": 0.3,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 98.95833333333334,
+          "uptimeLast1d": 100,
           "status": 0
         },
         {
@@ -934,7 +919,7 @@
           "quantization": "fp8",
           "contextLength": 1048576,
           "promptPerToken": 1.3e-7,
-          "completionPerToken": 6.5e-7,
+          "completionPerToken": 5.9e-7,
           "cacheReadPerToken": 2e-9,
           "discount": 0,
           "latencyLast30m": null,
@@ -984,7 +969,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 98.16643159379407,
+          "uptimeLast1d": 97.80918727915194,
           "status": 0
         },
         {
@@ -1074,7 +1059,7 @@
           "discount": 0.3,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 100,
+          "uptimeLast1d": 98.33333333333333,
           "status": 0
         },
         {
@@ -1085,11 +1070,11 @@
           "contextLength": 1048576,
           "promptPerToken": 2.125e-7,
           "completionPerToken": 7.5e-7,
-          "cacheReadPerToken": 7e-8,
+          "cacheReadPerToken": 7.5e-8,
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 99.39393939393939,
+          "uptimeLast1d": 100,
           "status": 0
         },
         {
@@ -1123,6 +1108,21 @@
           "status": 0
         },
         {
+          "provider": "Featherless",
+          "name": "Featherless | deepseek/deepseek-v4.1-flash-20260910",
+          "tag": "featherless/fp8",
+          "quantization": "fp8",
+          "contextLength": 262144,
+          "promptPerToken": 3e-7,
+          "completionPerToken": 0.0000012,
+          "cacheReadPerToken": 3e-8,
+          "discount": 0,
+          "latencyLast30m": null,
+          "throughputLast30m": null,
+          "uptimeLast1d": 98.72881355932203,
+          "status": 0
+        },
+        {
           "provider": "Google",
           "name": "Google | deepseek/deepseek-v4.1-flash-20260910",
           "tag": "google-vertex/global",
@@ -1134,7 +1134,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 99.92248062015504,
+          "uptimeLast1d": 100,
           "status": 0
         },
         {
@@ -1179,7 +1179,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 99.79166666666667,
+          "uptimeLast1d": 100,
           "status": 0
         },
         {
@@ -1224,7 +1224,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 98.75,
+          "uptimeLast1d": 99.93055555555556,
           "status": 0
         },
         {
@@ -1258,6 +1258,21 @@
           "status": 0
         },
         {
+          "provider": "Together",
+          "name": "Together | deepseek/deepseek-v4.1-flash-20260910",
+          "tag": "together/us",
+          "quantization": "unknown",
+          "contextLength": 1048576,
+          "promptPerToken": 3.75e-7,
+          "completionPerToken": 0.0000015,
+          "cacheReadPerToken": 7.5e-9,
+          "discount": 0,
+          "latencyLast30m": null,
+          "throughputLast30m": null,
+          "uptimeLast1d": 100,
+          "status": 0
+        },
+        {
           "provider": "Parasail",
           "name": "Parasail | deepseek/deepseek-v4.1-flash-20260910",
           "tag": "parasail/fast",
@@ -1269,7 +1284,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 98.86524822695036,
+          "uptimeLast1d": 100,
           "status": 0
         },
         {
@@ -1331,28 +1346,13 @@
           "tag": "particle-ai/us/flex",
           "quantization": "unknown",
           "contextLength": 1048576,
-          "promptPerToken": 2.5e-8,
+          "promptPerToken": 3.5e-8,
           "completionPerToken": 4.5e-7,
-          "cacheReadPerToken": 1e-9,
+          "cacheReadPerToken": 3e-9,
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 99.93055555555556,
-          "status": 0
-        },
-        {
-          "provider": "Tenstorrent",
-          "name": "Tenstorrent | deepseek/deepseek-v4.1-flash-20261017",
-          "tag": "tenstorrent/fp8",
-          "quantization": "fp8",
-          "contextLength": 1048576,
-          "promptPerToken": 3e-8,
-          "completionPerToken": 2e-7,
-          "cacheReadPerToken": 1e-9,
-          "discount": 0,
-          "latencyLast30m": null,
-          "throughputLast30m": null,
-          "uptimeLast1d": 97.72036474164135,
+          "uptimeLast1d": 100,
           "status": 0
         },
         {
@@ -1382,8 +1382,8 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 100,
-          "status": 0
+          "uptimeLast1d": 64.87006737247353,
+          "status": -5
         },
         {
           "provider": "Sail Research",
@@ -1397,8 +1397,8 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 100,
-          "status": 0
+          "uptimeLast1d": 99.26362297496318,
+          "status": -5
         },
         {
           "provider": "Ambient",
@@ -1409,6 +1409,21 @@
           "promptPerToken": 4.5e-8,
           "completionPerToken": 2.5e-7,
           "cacheReadPerToken": 2.5e-9,
+          "discount": 0,
+          "latencyLast30m": null,
+          "throughputLast30m": null,
+          "uptimeLast1d": 92.40947075208913,
+          "status": 0
+        },
+        {
+          "provider": "OpenInference",
+          "name": "OpenInference | deepseek/deepseek-v4.1-flash-20261017",
+          "tag": "open-inference/fp4",
+          "quantization": "fp4",
+          "contextLength": 1048576,
+          "promptPerToken": 4.7e-8,
+          "completionPerToken": 9.5e-7,
+          "cacheReadPerToken": 3.7e-9,
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
@@ -1427,7 +1442,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 99.58333333333333,
+          "uptimeLast1d": 98.19318971507992,
           "status": 0
         },
         {
@@ -1438,22 +1453,7 @@
           "contextLength": 1048576,
           "promptPerToken": 5e-8,
           "completionPerToken": 9e-7,
-          "cacheReadPerToken": 2e-9,
-          "discount": 0,
-          "latencyLast30m": null,
-          "throughputLast30m": null,
-          "uptimeLast1d": 100,
-          "status": 0
-        },
-        {
-          "provider": "OpenInference",
-          "name": "OpenInference | deepseek/deepseek-v4.1-flash-20261017",
-          "tag": "open-inference/fp4",
-          "quantization": "fp4",
-          "contextLength": 1048576,
-          "promptPerToken": 5e-8,
-          "completionPerToken": 9e-7,
-          "cacheReadPerToken": 2e-9,
+          "cacheReadPerToken": 3e-9,
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
@@ -1481,9 +1481,9 @@
           "tag": "wafer/mxfp4",
           "quantization": "mxfp4",
           "contextLength": 1048576,
-          "promptPerToken": 6.6e-8,
+          "promptPerToken": 7e-8,
           "completionPerToken": 5e-7,
-          "cacheReadPerToken": 6.5e-9,
+          "cacheReadPerToken": 6.9e-9,
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
@@ -1491,18 +1491,33 @@
           "status": 0
         },
         {
-          "provider": "PrimeIntellect",
-          "name": "PrimeIntellect | deepseek/deepseek-v4.1-flash-20261017",
-          "tag": "primeintellect",
-          "quantization": "unknown",
+          "provider": "Pareto Inference",
+          "name": "Pareto Inference | deepseek/deepseek-v4.1-flash-20261017",
+          "tag": "pareto-inference/fp8",
+          "quantization": "fp8",
           "contextLength": 1048576,
           "promptPerToken": 7.5e-8,
-          "completionPerToken": 7e-7,
-          "cacheReadPerToken": 7e-9,
+          "completionPerToken": 3e-7,
+          "cacheReadPerToken": 1.5e-9,
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 99.93055555555556,
+          "uptimeLast1d": 100,
+          "status": 0
+        },
+        {
+          "provider": "Cloudflare",
+          "name": "Cloudflare | deepseek/deepseek-v4.1-flash-20261017",
+          "tag": "cloudflare",
+          "quantization": "unknown",
+          "contextLength": 1048576,
+          "promptPerToken": 7.5e-8,
+          "completionPerToken": 3e-7,
+          "cacheReadPerToken": 3e-9,
+          "discount": 0,
+          "latencyLast30m": null,
+          "throughputLast30m": null,
+          "uptimeLast1d": 99.86111111111111,
           "status": 0
         },
         {
@@ -1566,6 +1581,21 @@
           "status": 0
         },
         {
+          "provider": "StreamLake",
+          "name": "StreamLake | deepseek/deepseek-v4.1-flash-20261017",
+          "tag": "streamlake/fp8",
+          "quantization": "fp8",
+          "contextLength": 1024000,
+          "promptPerToken": 9e-8,
+          "completionPerToken": 3.6e-7,
+          "cacheReadPerToken": 1.8e-9,
+          "discount": 0.7,
+          "latencyLast30m": null,
+          "throughputLast30m": null,
+          "uptimeLast1d": 100,
+          "status": 0
+        },
+        {
           "provider": "Alibaba",
           "name": "Alibaba | deepseek/deepseek-v4.1-flash-20261017",
           "tag": "alibaba",
@@ -1592,7 +1622,7 @@
           "discount": 0.651,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 99.64639321074965,
+          "uptimeLast1d": 99.92325402916347,
           "status": 0
         },
         {
@@ -1611,6 +1641,21 @@
           "status": 0
         },
         {
+          "provider": "ModelRun",
+          "name": "ModelRun | deepseek/deepseek-v4.1-flash-20261017",
+          "tag": "modelrun/fp4",
+          "quantization": "fp4",
+          "contextLength": 1048576,
+          "promptPerToken": 1e-7,
+          "completionPerToken": 5e-7,
+          "cacheReadPerToken": 3e-9,
+          "discount": 0,
+          "latencyLast30m": null,
+          "throughputLast30m": null,
+          "uptimeLast1d": 100,
+          "status": 0
+        },
+        {
           "provider": "Inceptron",
           "name": "Inceptron | deepseek/deepseek-v4.1-flash-20261017",
           "tag": "inceptron/fp4",
@@ -1622,37 +1667,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 99.29078014184397,
-          "status": 0
-        },
-        {
-          "provider": "Cloudflare",
-          "name": "Cloudflare | deepseek/deepseek-v4.1-flash-20261017",
-          "tag": "cloudflare",
-          "quantization": "unknown",
-          "contextLength": 1048576,
-          "promptPerToken": 1e-7,
-          "completionPerToken": 6e-7,
-          "cacheReadPerToken": 3e-9,
-          "discount": 0,
-          "latencyLast30m": null,
-          "throughputLast30m": null,
-          "uptimeLast1d": 100,
-          "status": 0
-        },
-        {
-          "provider": "StreamLake",
-          "name": "StreamLake | deepseek/deepseek-v4.1-flash-20261017",
-          "tag": "streamlake/fp8",
-          "quantization": "fp8",
-          "contextLength": 1024000,
-          "promptPerToken": 1.11e-7,
-          "completionPerToken": 4.44e-7,
-          "cacheReadPerToken": 2.22e-9,
-          "discount": 0.63,
-          "latencyLast30m": null,
-          "throughputLast30m": null,
-          "uptimeLast1d": 100,
+          "uptimeLast1d": 99.44095038434662,
           "status": 0
         },
         {
@@ -1697,7 +1712,22 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 100,
+          "uptimeLast1d": 99.79166666666667,
+          "status": 0
+        },
+        {
+          "provider": "Tenstorrent",
+          "name": "Tenstorrent | deepseek/deepseek-v4.1-flash-20261017",
+          "tag": "tenstorrent/fp8",
+          "quantization": "fp8",
+          "contextLength": 1048576,
+          "promptPerToken": 1.2e-7,
+          "completionPerToken": 8e-7,
+          "cacheReadPerToken": 4e-9,
+          "discount": 0,
+          "latencyLast30m": null,
+          "throughputLast30m": null,
+          "uptimeLast1d": 98.53658536585365,
           "status": 0
         },
         {
@@ -1712,7 +1742,7 @@
           "discount": 0.51,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 100,
+          "uptimeLast1d": 99.30555555555556,
           "status": 0
         },
         {
@@ -1727,7 +1757,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 93.5042735042735,
+          "uptimeLast1d": 92.91808873720136,
           "status": 0
         },
         {
@@ -1742,7 +1772,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 100,
+          "uptimeLast1d": 99.93055555555556,
           "status": 0
         },
         {
@@ -1757,7 +1787,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 100,
+          "uptimeLast1d": 96.38888888888889,
           "status": 0
         },
         {
@@ -1791,14 +1821,14 @@
           "status": 0
         },
         {
-          "provider": "ModelRun",
-          "name": "ModelRun | deepseek/deepseek-v4.1-flash-20261017",
-          "tag": "modelrun/fp4",
-          "quantization": "fp4",
+          "provider": "PrimeIntellect",
+          "name": "PrimeIntellect | deepseek/deepseek-v4.1-flash-20261017",
+          "tag": "primeintellect",
+          "quantization": "unknown",
           "contextLength": 1048576,
-          "promptPerToken": 1.7e-7,
-          "completionPerToken": 6.7e-7,
-          "cacheReadPerToken": 6e-9,
+          "promptPerToken": 1.75e-7,
+          "completionPerToken": 7e-7,
+          "cacheReadPerToken": 7e-9,
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
@@ -1832,7 +1862,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 100,
+          "uptimeLast1d": 99.93055555555556,
           "status": 0
         },
         {
@@ -1851,6 +1881,21 @@
           "status": 0
         },
         {
+          "provider": "Featherless",
+          "name": "Featherless | deepseek/deepseek-v4.1-flash-20261017",
+          "tag": "featherless/fp8",
+          "quantization": "fp8",
+          "contextLength": 262144,
+          "promptPerToken": 2.25e-7,
+          "completionPerToken": 9e-7,
+          "cacheReadPerToken": 6e-9,
+          "discount": 0,
+          "latencyLast30m": null,
+          "throughputLast30m": null,
+          "uptimeLast1d": 98.57954545454545,
+          "status": 0
+        },
+        {
           "provider": "PrimaLabs",
           "name": "PrimaLabs | deepseek/deepseek-v4.1-flash-20261017",
           "tag": "primalabs",
@@ -1862,7 +1907,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 100,
+          "uptimeLast1d": 99.07502569373074,
           "status": 0
         },
         {
@@ -1874,6 +1919,21 @@
           "promptPerToken": 2.5e-7,
           "completionPerToken": 0.000001,
           "cacheReadPerToken": 5e-9,
+          "discount": 0,
+          "latencyLast30m": null,
+          "throughputLast30m": null,
+          "uptimeLast1d": 100,
+          "status": 0
+        },
+        {
+          "provider": "Krea",
+          "name": "Krea | deepseek/deepseek-v4.1-flash-20261017",
+          "tag": "krea/fp8",
+          "quantization": "fp8",
+          "contextLength": 1048576,
+          "promptPerToken": 2.9e-7,
+          "completionPerToken": 0.00000116,
+          "cacheReadPerToken": 6.8e-9,
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
@@ -1952,7 +2012,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 98.35831548893648,
+          "uptimeLast1d": 99.86111111111111,
           "status": 0
         },
         {
@@ -2027,7 +2087,22 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 98.75,
+          "uptimeLast1d": 100,
+          "status": 0
+        },
+        {
+          "provider": "Together",
+          "name": "Together | deepseek/deepseek-v4.1-flash-20261017",
+          "tag": "together/us",
+          "quantization": "unknown",
+          "contextLength": 1048576,
+          "promptPerToken": 3.75e-7,
+          "completionPerToken": 0.0000015,
+          "cacheReadPerToken": 7.5e-9,
+          "discount": 0,
+          "latencyLast30m": null,
+          "throughputLast30m": null,
+          "uptimeLast1d": 99.65181058495823,
           "status": 0
         },
         {
@@ -2042,7 +2117,22 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 100,
+          "uptimeLast1d": 99.72222222222223,
+          "status": 0
+        },
+        {
+          "provider": "Together",
+          "name": "Together | deepseek/deepseek-v4.1-flash-20261017",
+          "tag": "together/fast",
+          "quantization": "unknown",
+          "contextLength": 1048576,
+          "promptPerToken": 6e-7,
+          "completionPerToken": 0.0000024,
+          "cacheReadPerToken": 1.2e-8,
+          "discount": 0,
+          "latencyLast30m": null,
+          "throughputLast30m": null,
+          "uptimeLast1d": 98.1283422459893,
           "status": 0
         },
         {
@@ -2093,7 +2183,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 99.72222222222223,
+          "uptimeLast1d": 99.86111111111111,
           "status": 0
         }
       ],
@@ -2110,7 +2200,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 99.25925925925925,
+          "uptimeLast1d": 100,
           "status": 0
         },
         {
@@ -2125,7 +2215,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 99.78401727861771,
+          "uptimeLast1d": 100,
           "status": 0
         },
         {
@@ -2140,7 +2230,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 98.51274787535411,
+          "uptimeLast1d": 97.76817854571634,
           "status": 0
         },
         {
@@ -2155,7 +2245,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 98.47009735744089,
+          "uptimeLast1d": 99.79166666666667,
           "status": 0
         },
         {
@@ -2170,7 +2260,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 99.63369963369964,
+          "uptimeLast1d": 99.31972789115646,
           "status": 0
         }
       ]
@@ -2191,7 +2281,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 97.43589743589743,
+          "uptimeLast1d": 99.65397923875432,
           "status": 0
         }
       ],
@@ -2208,7 +2298,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 98.9935956084172,
+          "uptimeLast1d": 99.7545008183306,
           "status": 0
         },
         {
@@ -2223,7 +2313,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 99.67023907666942,
+          "uptimeLast1d": 99.92922859164898,
           "status": 0
         },
         {
@@ -2280,18 +2370,33 @@
       ],
       "otherProviders": [
         {
-          "provider": "StreamLake",
-          "name": "StreamLake | minimax/minimax-m3.1-flash-20261019",
-          "tag": "streamlake/fp8",
-          "quantization": "fp8",
-          "contextLength": 1000000,
-          "promptPerToken": 1.35e-7,
-          "completionPerToken": 5.4e-7,
-          "cacheReadPerToken": 1.35e-8,
-          "discount": 0.1,
+          "provider": "Inferact vLLM",
+          "name": "Inferact vLLM | minimax/minimax-m3.1-flash-20261019",
+          "tag": "inferact-vllm/nvfp4",
+          "quantization": "nvfp4",
+          "contextLength": 1048576,
+          "promptPerToken": 7.5e-8,
+          "completionPerToken": 3e-7,
+          "cacheReadPerToken": 7.5e-9,
+          "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 98.79518072289156,
+          "uptimeLast1d": 100,
+          "status": 0
+        },
+        {
+          "provider": "Makora",
+          "name": "Makora | minimax/minimax-m3.1-flash-20261019",
+          "tag": "makora/fp4",
+          "quantization": "fp4",
+          "contextLength": 1048576,
+          "promptPerToken": 1e-7,
+          "completionPerToken": 4e-7,
+          "cacheReadPerToken": 2.5e-8,
+          "discount": 0,
+          "latencyLast30m": null,
+          "throughputLast30m": null,
+          "uptimeLast1d": 99.60536700868192,
           "status": 0
         },
         {
@@ -2306,22 +2411,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 99.92987377279103,
-          "status": 0
-        },
-        {
-          "provider": "Makora",
-          "name": "Makora | minimax/minimax-m3.1-flash-20261019",
-          "tag": "makora/fp4",
-          "quantization": "fp4",
-          "contextLength": 1048576,
-          "promptPerToken": 1.49e-7,
-          "completionPerToken": 5.9e-7,
-          "cacheReadPerToken": 1.49e-8,
-          "discount": 0,
-          "latencyLast30m": null,
-          "throughputLast30m": null,
-          "uptimeLast1d": 100,
+          "uptimeLast1d": 99.9298245614035,
           "status": 0
         },
         {
@@ -2336,7 +2426,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 94.55197132616487,
+          "uptimeLast1d": 91.18055555555556,
           "status": 0
         },
         {
@@ -2351,7 +2441,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 99.5475113122172,
+          "uptimeLast1d": 86.95652173913044,
           "status": 0
         },
         {
@@ -2411,7 +2501,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 98.51590106007068,
+          "uptimeLast1d": 100,
           "status": 0
         },
         {
@@ -2434,21 +2524,6 @@
           "name": "Together | minimax/minimax-m3.1-flash-20261019",
           "tag": "together",
           "quantization": "unknown",
-          "contextLength": 1048576,
-          "promptPerToken": 1.5e-7,
-          "completionPerToken": 6e-7,
-          "cacheReadPerToken": 1.5e-8,
-          "discount": 0,
-          "latencyLast30m": null,
-          "throughputLast30m": null,
-          "uptimeLast1d": 100,
-          "status": 0
-        },
-        {
-          "provider": "Inferact vLLM",
-          "name": "Inferact vLLM | minimax/minimax-m3.1-flash-20261019",
-          "tag": "inferact-vllm/nvfp4",
-          "quantization": "nvfp4",
           "contextLength": 1048576,
           "promptPerToken": 1.5e-7,
           "completionPerToken": 6e-7,
@@ -2509,7 +2584,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 100,
+          "uptimeLast1d": 99.66996699669967,
           "status": 0
         },
         {
@@ -2535,7 +2610,7 @@
           "contextLength": 1048576,
           "promptPerToken": 2.45e-7,
           "completionPerToken": 0.00001575,
-          "cacheReadPerToken": 2.14e-7,
+          "cacheReadPerToken": 2.24e-7,
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
@@ -2550,11 +2625,26 @@
           "contextLength": 1048576,
           "promptPerToken": 2.45e-7,
           "completionPerToken": 0.00001575,
-          "cacheReadPerToken": 2.14e-7,
+          "cacheReadPerToken": 2.24e-7,
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
           "uptimeLast1d": 100,
+          "status": 0
+        },
+        {
+          "provider": "KT",
+          "name": "KT | moonshotai/kimi-k3-20260715",
+          "tag": "kt",
+          "quantization": "unknown",
+          "contextLength": 1048576,
+          "promptPerToken": 2.5e-7,
+          "completionPerToken": 0.000009,
+          "cacheReadPerToken": 1e-7,
+          "discount": 0,
+          "latencyLast30m": null,
+          "throughputLast30m": null,
+          "uptimeLast1d": 99.822695035461,
           "status": 0
         },
         {
@@ -2588,21 +2678,6 @@
           "status": 0
         },
         {
-          "provider": "KT",
-          "name": "KT | moonshotai/kimi-k3-20260715",
-          "tag": "kt",
-          "quantization": "unknown",
-          "contextLength": 1048576,
-          "promptPerToken": 4.5e-7,
-          "completionPerToken": 0.000015,
-          "cacheReadPerToken": 3e-7,
-          "discount": 0,
-          "latencyLast30m": null,
-          "throughputLast30m": null,
-          "uptimeLast1d": 99.65753424657534,
-          "status": 0
-        },
-        {
           "provider": "InferenceNet",
           "name": "InferenceNet | moonshotai/kimi-k3-20260715",
           "tag": "inference-net/us/fast",
@@ -2610,7 +2685,7 @@
           "contextLength": 1048576,
           "promptPerToken": 4.5e-7,
           "completionPerToken": 0.000018,
-          "cacheReadPerToken": 3.63e-7,
+          "cacheReadPerToken": 4e-7,
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
@@ -2625,7 +2700,7 @@
           "contextLength": 1048576,
           "promptPerToken": 4.5e-7,
           "completionPerToken": 0.000018,
-          "cacheReadPerToken": 3.63e-7,
+          "cacheReadPerToken": 4e-7,
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
@@ -2644,7 +2719,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 100,
+          "uptimeLast1d": 99.90791896869244,
           "status": 0
         },
         {
@@ -2659,7 +2734,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 100,
+          "uptimeLast1d": 97.82608695652173,
           "status": 0
         },
         {
@@ -2704,7 +2779,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 99.42938659058488,
+          "uptimeLast1d": 100,
           "status": 0
         },
         {
@@ -2719,22 +2794,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 99.72144846796658,
-          "status": 0
-        },
-        {
-          "provider": "Alibaba",
-          "name": "Alibaba | moonshotai/kimi-k3-20260715",
-          "tag": "alibaba",
-          "quantization": "unknown",
-          "contextLength": 1000000,
-          "promptPerToken": 0.000003,
-          "completionPerToken": 0.000015,
-          "cacheReadPerToken": 3e-7,
-          "discount": 0,
-          "latencyLast30m": null,
-          "throughputLast30m": null,
-          "uptimeLast1d": 98.35680751173709,
+          "uptimeLast1d": 100,
           "status": 0
         },
         {
@@ -2749,7 +2809,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 99.33554817275747,
+          "uptimeLast1d": 100,
           "status": 0
         },
         {
@@ -2779,7 +2839,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 99.85724482512491,
+          "uptimeLast1d": 99.79123173277662,
           "status": 0
         },
         {
@@ -2794,7 +2854,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 99.89451476793249,
+          "uptimeLast1d": 99.3607305936073,
           "status": 0
         },
         {
@@ -2839,7 +2899,22 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 99.77037887485649,
+          "uptimeLast1d": 90.58641975308642,
+          "status": 0
+        },
+        {
+          "provider": "Alibaba",
+          "name": "Alibaba | moonshotai/kimi-k3-20260715",
+          "tag": "alibaba",
+          "quantization": "unknown",
+          "contextLength": 1000000,
+          "promptPerToken": 0.00000345,
+          "completionPerToken": 0.00001725,
+          "cacheReadPerToken": 3.45e-7,
+          "discount": 0,
+          "latencyLast30m": null,
+          "throughputLast30m": null,
+          "uptimeLast1d": 100,
           "status": 0
         },
         {
@@ -2854,7 +2929,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 98.49624060150376,
+          "uptimeLast1d": 100,
           "status": 0
         },
         {
@@ -2884,8 +2959,8 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 99.8533724340176,
-          "status": -2
+          "uptimeLast1d": 97.97297297297297,
+          "status": 0
         }
       ]
     },
@@ -2922,7 +2997,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 85.43417366946778,
+          "uptimeLast1d": 92.26361031518626,
           "status": 0
         },
         {
@@ -2952,7 +3027,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 100,
+          "uptimeLast1d": 98.54227405247813,
           "status": 0
         },
         {
@@ -2976,13 +3051,28 @@
           "tag": "morph/fp8",
           "quantization": "fp8",
           "contextLength": 1048576,
-          "promptPerToken": 0.000001375,
-          "completionPerToken": 0.000009,
-          "cacheReadPerToken": 1.72e-7,
+          "promptPerToken": 0.000001306,
+          "completionPerToken": 0.00000855,
+          "cacheReadPerToken": 1.63e-7,
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 99.92663242846662,
+          "uptimeLast1d": 100,
+          "status": 0
+        },
+        {
+          "provider": "Pareto Inference",
+          "name": "Pareto Inference | moonshotai/kimi-k3.1-pro-20261023",
+          "tag": "pareto-inference/mxfp4",
+          "quantization": "mxfp4",
+          "contextLength": 1048576,
+          "promptPerToken": 0.0000014,
+          "completionPerToken": 0.000007,
+          "cacheReadPerToken": 1.4e-7,
+          "discount": 0,
+          "latencyLast30m": null,
+          "throughputLast30m": null,
+          "uptimeLast1d": 100,
           "status": 0
         },
         {
@@ -3012,22 +3102,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 99.87893462469734,
-          "status": 0
-        },
-        {
-          "provider": "Io Net",
-          "name": "Io Net | moonshotai/kimi-k3.1-pro-20261023",
-          "tag": "io-net/fp4",
-          "quantization": "fp4",
-          "contextLength": 1048320,
-          "promptPerToken": 0.0000018,
-          "completionPerToken": 0.000009,
-          "cacheReadPerToken": 1.8e-7,
-          "discount": 0,
-          "latencyLast30m": null,
-          "throughputLast30m": null,
-          "uptimeLast1d": 100,
+          "uptimeLast1d": 98.125,
           "status": 0
         },
         {
@@ -3053,7 +3128,7 @@
           "contextLength": 1048576,
           "promptPerToken": 0.0000018,
           "completionPerToken": 0.000009,
-          "cacheReadPerToken": 1.98e-7,
+          "cacheReadPerToken": 2.17e-7,
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
@@ -3068,7 +3143,7 @@
           "contextLength": 1048576,
           "promptPerToken": 0.0000018,
           "completionPerToken": 0.000009,
-          "cacheReadPerToken": 1.98e-7,
+          "cacheReadPerToken": 2.17e-7,
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
@@ -3087,7 +3162,7 @@
           "discount": 0.05,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 100,
+          "uptimeLast1d": 99.78617248752673,
           "status": 0
         },
         {
@@ -3117,7 +3192,22 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 99.6012759170654,
+          "uptimeLast1d": 98.49564528899447,
+          "status": 0
+        },
+        {
+          "provider": "Doubleword",
+          "name": "Doubleword | moonshotai/kimi-k3.1-pro-20261023",
+          "tag": "doubleword/mxfp4",
+          "quantization": "mxfp4",
+          "contextLength": 1048576,
+          "promptPerToken": 0.000002,
+          "completionPerToken": 0.00001,
+          "cacheReadPerToken": 2e-7,
+          "discount": 0,
+          "latencyLast30m": null,
+          "throughputLast30m": null,
+          "uptimeLast1d": 98.23529411764706,
           "status": 0
         },
         {
@@ -3132,7 +3222,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 100,
+          "uptimeLast1d": 80.72100313479625,
           "status": 0
         },
         {
@@ -3162,7 +3252,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 99.62602842183995,
+          "uptimeLast1d": 99.93045897079277,
           "status": 0
         },
         {
@@ -3170,21 +3260,6 @@
           "name": "Parasail | moonshotai/kimi-k3.1-pro-20261023",
           "tag": "parasail/fp4",
           "quantization": "fp4",
-          "contextLength": 1048576,
-          "promptPerToken": 0.000002,
-          "completionPerToken": 0.00001,
-          "cacheReadPerToken": 2e-7,
-          "discount": 0,
-          "latencyLast30m": null,
-          "throughputLast30m": null,
-          "uptimeLast1d": 98.44192634560906,
-          "status": 0
-        },
-        {
-          "provider": "Alibaba",
-          "name": "Alibaba | moonshotai/kimi-k3.1-pro-20261023",
-          "tag": "alibaba",
-          "quantization": "unknown",
           "contextLength": 1048576,
           "promptPerToken": 0.000002,
           "completionPerToken": 0.00001,
@@ -3207,7 +3282,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 100,
+          "uptimeLast1d": 99.9267935578331,
           "status": 0
         },
         {
@@ -3222,7 +3297,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 99.90689013035382,
+          "uptimeLast1d": 93.10722100656456,
           "status": 0
         },
         {
@@ -3241,6 +3316,21 @@
           "status": 0
         },
         {
+          "provider": "Alibaba",
+          "name": "Alibaba | moonshotai/kimi-k3.1-pro-20261023",
+          "tag": "alibaba",
+          "quantization": "unknown",
+          "contextLength": 1048576,
+          "promptPerToken": 0.0000023,
+          "completionPerToken": 0.0000115,
+          "cacheReadPerToken": 2.3e-7,
+          "discount": 0,
+          "latencyLast30m": null,
+          "throughputLast30m": null,
+          "uptimeLast1d": 100,
+          "status": 0
+        },
+        {
           "provider": "Fireworks",
           "name": "Fireworks | moonshotai/kimi-k3.1-pro-20261023",
           "tag": "fireworks/us",
@@ -3252,7 +3342,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 100,
+          "uptimeLast1d": 99.8389694041868,
           "status": 0
         },
         {
@@ -3286,18 +3376,18 @@
           "status": 0
         },
         {
-          "provider": "Alibaba",
-          "name": "Alibaba | moonshotai/kimi-k3.1-pro-20261023",
-          "tag": "alibaba/prime",
-          "quantization": "unknown",
-          "contextLength": 1048576,
-          "promptPerToken": 0.000004,
-          "completionPerToken": 0.00002,
-          "cacheReadPerToken": 2e-7,
+          "provider": "Io Net",
+          "name": "Io Net | moonshotai/kimi-k3.1-pro-20261023",
+          "tag": "io-net/fp4",
+          "quantization": "fp4",
+          "contextLength": 1048320,
+          "promptPerToken": 0.0000028,
+          "completionPerToken": 0.000012,
+          "cacheReadPerToken": 2.8e-7,
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 100,
+          "uptimeLast1d": 99.84732824427482,
           "status": 0
         },
         {
@@ -3312,7 +3402,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 89.05472636815921,
+          "uptimeLast1d": 99.61685823754789,
           "status": 0
         },
         {
@@ -3327,7 +3417,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 99.66329966329967,
+          "uptimeLast1d": 100,
           "status": 0
         },
         {
@@ -3342,7 +3432,22 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 67.64705882352942,
+          "uptimeLast1d": 100,
+          "status": 0
+        },
+        {
+          "provider": "Alibaba",
+          "name": "Alibaba | moonshotai/kimi-k3.1-pro-20261023",
+          "tag": "alibaba/prime",
+          "quantization": "unknown",
+          "contextLength": 1048576,
+          "promptPerToken": 0.0000046,
+          "completionPerToken": 0.000023,
+          "cacheReadPerToken": 2.3e-7,
+          "discount": 0,
+          "latencyLast30m": null,
+          "throughputLast30m": null,
+          "uptimeLast1d": 100,
           "status": 0
         }
       ]
@@ -3424,7 +3529,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 100,
+          "uptimeLast1d": 99.54170485792851,
           "status": 0
         },
         {
@@ -3454,7 +3559,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 99.92260061919505,
+          "uptimeLast1d": 99.3916349809886,
           "status": 0
         },
         {
@@ -3469,7 +3574,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 98.67617107942974,
+          "uptimeLast1d": 99.24098671726756,
           "status": 0
         },
         {
@@ -3514,7 +3619,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 99.90942028985508,
+          "uptimeLast1d": 98.96825396825398,
           "status": 0
         },
         {
@@ -3553,13 +3658,13 @@
           "tag": "io-net/nvfp4",
           "quantization": "nvfp4",
           "contextLength": 262144,
-          "promptPerToken": 5.1e-7,
-          "completionPerToken": 0.00000153,
-          "cacheReadPerToken": 1.02e-7,
+          "promptPerToken": 0.000001,
+          "completionPerToken": 0.000003,
+          "cacheReadPerToken": 2.2e-7,
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 100,
+          "uptimeLast1d": 96.66136724960255,
           "status": 0
         }
       ]
@@ -3580,7 +3685,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 99.88700564971752,
+          "uptimeLast1d": 100,
           "status": 0
         }
       ],
@@ -3597,7 +3702,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 99.86101459346769,
+          "uptimeLast1d": 100,
           "status": 0
         },
         {
@@ -3612,7 +3717,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 99.8896247240618,
+          "uptimeLast1d": 100,
           "status": 0
         },
         {
@@ -3627,7 +3732,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 98.88888888888889,
+          "uptimeLast1d": 95.41666666666667,
           "status": 0
         },
         {
@@ -3642,7 +3747,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 97.36111111111111,
+          "uptimeLast1d": 94.65277777777777,
           "status": 0
         },
         {
@@ -3657,7 +3762,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 96.76724137931035,
+          "uptimeLast1d": 99.93055555555556,
           "status": 0
         },
         {
@@ -3702,7 +3807,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 99.45054945054946,
+          "uptimeLast1d": 100,
           "status": 0
         },
         {
@@ -3762,7 +3867,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 99.81818181818181,
+          "uptimeLast1d": 100,
           "status": 0
         },
         {
@@ -3777,7 +3882,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 99.54954954954955,
+          "uptimeLast1d": 99.76133651551312,
           "status": 0
         },
         {
@@ -3822,7 +3927,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 100,
+          "uptimeLast1d": 99.77460555972952,
           "status": 0
         },
         {
@@ -3852,8 +3957,8 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 98.38369641602249,
-          "status": 0
+          "uptimeLast1d": 97.24770642201835,
+          "status": -2
         },
         {
           "provider": "Groq",
@@ -3867,7 +3972,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 99.65277777777779,
+          "uptimeLast1d": 99.93055555555556,
           "status": 0
         },
         {
@@ -3882,7 +3987,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 98.68852459016394,
+          "uptimeLast1d": 100,
           "status": 0
         },
         {
@@ -3891,13 +3996,13 @@
           "tag": "primeintellect/fp4",
           "quantization": "fp4",
           "contextLength": 131072,
-          "promptPerToken": 3.41e-7,
-          "completionPerToken": 7.31e-7,
-          "cacheReadPerToken": 3.07e-7,
+          "promptPerToken": 3.36e-7,
+          "completionPerToken": 7.19e-7,
+          "cacheReadPerToken": 3.02e-7,
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 99.68203497615262,
+          "uptimeLast1d": 99.0625,
           "status": 0
         },
         {
@@ -3933,7 +4038,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 97.63888888888889,
+          "uptimeLast1d": 97.5,
           "status": 0
         }
       ],
@@ -3950,7 +4055,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 98.77521613832853,
+          "uptimeLast1d": 99.23504867872045,
           "status": 0
         }
       ]
@@ -3971,7 +4076,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 97.42339832869081,
+          "uptimeLast1d": 99.86091794158554,
           "status": 0
         }
       ],
@@ -3988,7 +4093,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 99.84038308060654,
+          "uptimeLast1d": 100,
           "status": 0
         },
         {
@@ -4003,7 +4108,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 99.93055555555556,
+          "uptimeLast1d": 100,
           "status": 0
         },
         {
@@ -4018,7 +4123,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 99.86111111111111,
+          "uptimeLast1d": 100,
           "status": 0
         },
         {
@@ -4033,7 +4138,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 99.86111111111111,
+          "uptimeLast1d": 99.93055555555556,
           "status": 0
         },
         {
@@ -4052,6 +4157,21 @@
           "status": 0
         },
         {
+          "provider": "Wafer",
+          "name": "Wafer | qwen/qwen3.8-27b-20260814",
+          "tag": "wafer/fp8",
+          "quantization": "fp8",
+          "contextLength": 262144,
+          "promptPerToken": 6e-8,
+          "completionPerToken": 0.00000196,
+          "cacheReadPerToken": 5.9e-8,
+          "discount": 0,
+          "latencyLast30m": null,
+          "throughputLast30m": null,
+          "uptimeLast1d": 100,
+          "status": 0
+        },
+        {
           "provider": "Pearl Research",
           "name": "Pearl Research | qwen/qwen3.8-27b-20260814",
           "tag": "pearl-research/fp8",
@@ -4063,7 +4183,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 98.1103552532124,
+          "uptimeLast1d": 98.40277777777777,
           "status": 0
         },
         {
@@ -4078,7 +4198,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 98.01699716713881,
+          "uptimeLast1d": 100,
           "status": 0
         },
         {
@@ -4093,7 +4213,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 100,
+          "uptimeLast1d": 99.92947813822285,
           "status": 0
         },
         {
@@ -4108,7 +4228,7 @@
           "discount": 0.25,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 100,
+          "uptimeLast1d": 99.86111111111111,
           "status": 0
         },
         {
@@ -4123,7 +4243,7 @@
           "discount": 0.65,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 100,
+          "uptimeLast1d": 99.92636229749633,
           "status": 0
         },
         {
@@ -4153,7 +4273,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 97.33530717986677,
+          "uptimeLast1d": 94.93055555555556,
           "status": 0
         },
         {
@@ -4168,7 +4288,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 98.67688022284122,
+          "uptimeLast1d": 100,
           "status": 0
         },
         {
@@ -4183,22 +4303,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 97.58694109297375,
-          "status": 0
-        },
-        {
-          "provider": "Novita",
-          "name": "Novita | qwen/qwen3.8-27b-20260814",
-          "tag": "novita",
-          "quantization": "unknown",
-          "contextLength": 1000000,
-          "promptPerToken": 4.2e-7,
-          "completionPerToken": 0.000003,
-          "cacheReadPerToken": 8.5e-8,
-          "discount": 0,
-          "latencyLast30m": null,
-          "throughputLast30m": null,
-          "uptimeLast1d": 100,
+          "uptimeLast1d": 99.04200442151806,
           "status": 0
         },
         {
@@ -4326,7 +4431,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 99.65317919075144,
+          "uptimeLast1d": 99.56140350877193,
           "status": 0
         },
         {
@@ -4392,8 +4497,8 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 99.69325153374233,
-          "status": 0
+          "uptimeLast1d": 97.03703703703704,
+          "status": -2
         }
       ],
       "otherProviders": [
@@ -4409,7 +4514,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": null,
+          "uptimeLast1d": 99.68944099378882,
           "status": 0
         },
         {
@@ -4424,7 +4529,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 99.93006993006993,
+          "uptimeLast1d": 99.86101459346769,
           "status": 0
         },
         {
@@ -4439,7 +4544,7 @@
           "discount": 0.05,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 99.84905660377359,
+          "uptimeLast1d": 99.64362081254454,
           "status": 0
         },
         {
@@ -4454,7 +4559,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 100,
+          "uptimeLast1d": 99.31102362204724,
           "status": 0
         },
         {
@@ -4469,7 +4574,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 99.89939637826963,
+          "uptimeLast1d": 100,
           "status": 0
         },
         {
@@ -4484,7 +4589,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 99.8109640831758,
+          "uptimeLast1d": 100,
           "status": 0
         },
         {
@@ -4499,7 +4604,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 95.59859154929578,
+          "uptimeLast1d": 99.86111111111111,
           "status": 0
         }
       ]
@@ -4520,7 +4625,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 100,
+          "uptimeLast1d": 99.82222222222222,
           "status": 0
         }
       ],
@@ -4538,21 +4643,6 @@
           "latencyLast30m": null,
           "throughputLast30m": null,
           "uptimeLast1d": 99.93055555555556,
-          "status": 0
-        },
-        {
-          "provider": "Baidu",
-          "name": "Baidu | z-ai/glm-5.2-20260616",
-          "tag": "baidu/fp8",
-          "quantization": "fp8",
-          "contextLength": 1048576,
-          "promptPerToken": 1.89e-7,
-          "completionPerToken": 5.94e-7,
-          "cacheReadPerToken": 3.51e-8,
-          "discount": 0.865,
-          "latencyLast30m": null,
-          "throughputLast30m": null,
-          "uptimeLast1d": 100,
           "status": 0
         },
         {
@@ -4598,22 +4688,7 @@
           "latencyLast30m": null,
           "throughputLast30m": null,
           "uptimeLast1d": 100,
-          "status": 0
-        },
-        {
-          "provider": "StreamLake",
-          "name": "StreamLake | z-ai/glm-5.2-20260616",
-          "tag": "streamlake/fp8",
-          "quantization": "fp8",
-          "contextLength": 1024000,
-          "promptPerToken": 5.6e-7,
-          "completionPerToken": 0.00000176,
-          "cacheReadPerToken": 1.04e-7,
-          "discount": 0.6,
-          "latencyLast30m": null,
-          "throughputLast30m": null,
-          "uptimeLast1d": 99.79166666666667,
-          "status": 0
+          "status": -2
         },
         {
           "provider": "DeepInfra",
@@ -4627,7 +4702,7 @@
           "discount": 0.25,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 99.71387696709584,
+          "uptimeLast1d": 99.92892679459844,
           "status": 0
         },
         {
@@ -4642,8 +4717,23 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 97.58745476477684,
-          "status": -2
+          "uptimeLast1d": 85.78947368421052,
+          "status": 0
+        },
+        {
+          "provider": "StreamLake",
+          "name": "StreamLake | z-ai/glm-5.2-20260616",
+          "tag": "streamlake/fp8",
+          "quantization": "fp8",
+          "contextLength": 1024000,
+          "promptPerToken": 6.1306e-7,
+          "completionPerToken": 0.00000192676,
+          "cacheReadPerToken": 1.13854e-7,
+          "discount": 0.5621,
+          "latencyLast30m": null,
+          "throughputLast30m": null,
+          "uptimeLast1d": 100,
+          "status": 0
         },
         {
           "provider": "CoreWeave",
@@ -4657,7 +4747,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 98.88888888888889,
+          "uptimeLast1d": 98.68055555555556,
           "status": 0
         },
         {
@@ -4672,7 +4762,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 99.93036211699165,
+          "uptimeLast1d": 99.93045897079277,
           "status": 0
         },
         {
@@ -4717,7 +4807,7 @@
           "discount": 0.45,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 100,
+          "uptimeLast1d": 98.57464366091523,
           "status": 0
         },
         {
@@ -4732,7 +4822,7 @@
           "discount": 0.25,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 98.89502762430939,
+          "uptimeLast1d": 99.1636798088411,
           "status": 0
         },
         {
@@ -4766,6 +4856,21 @@
           "status": 0
         },
         {
+          "provider": "Featherless",
+          "name": "Featherless | z-ai/glm-5.2-20260616",
+          "tag": "featherless",
+          "quantization": "unknown",
+          "contextLength": 262144,
+          "promptPerToken": 0.0000014,
+          "completionPerToken": 0.0000044,
+          "cacheReadPerToken": 2.6e-7,
+          "discount": 0,
+          "latencyLast30m": null,
+          "throughputLast30m": null,
+          "uptimeLast1d": 98.27586206896551,
+          "status": 0
+        },
+        {
           "provider": "Mistral",
           "name": "Mistral | z-ai/glm-5.2-20260616",
           "tag": "mistral/zdr",
@@ -4777,7 +4882,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 100,
+          "uptimeLast1d": 99.2503748125937,
           "status": 0
         },
         {
@@ -4801,6 +4906,21 @@
           "tag": "together",
           "quantization": "unknown",
           "contextLength": 1048575,
+          "promptPerToken": 0.0000014,
+          "completionPerToken": 0.0000044,
+          "cacheReadPerToken": 2.6e-7,
+          "discount": 0,
+          "latencyLast30m": null,
+          "throughputLast30m": null,
+          "uptimeLast1d": 100,
+          "status": 0
+        },
+        {
+          "provider": "Baidu",
+          "name": "Baidu | z-ai/glm-5.2-20260616",
+          "tag": "baidu/fp8",
+          "quantization": "fp8",
+          "contextLength": 1048576,
           "promptPerToken": 0.0000014,
           "completionPerToken": 0.0000044,
           "cacheReadPerToken": 2.6e-7,
@@ -4852,7 +4972,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 99.46808510638297,
+          "uptimeLast1d": 100,
           "status": 0
         },
         {
@@ -4867,7 +4987,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 99.31093884582258,
+          "uptimeLast1d": 99.34162399414777,
           "status": 0
         },
         {
@@ -4882,7 +5002,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 99.92892679459844,
+          "uptimeLast1d": 100,
           "status": 0
         },
         {
@@ -4897,7 +5017,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 100,
+          "uptimeLast1d": 98.72611464968153,
           "status": 0
         },
         {
@@ -4924,21 +5044,6 @@
           "promptPerToken": 0.0000021,
           "completionPerToken": 0.0000066,
           "cacheReadPerToken": 2.1e-7,
-          "discount": 0,
-          "latencyLast30m": null,
-          "throughputLast30m": null,
-          "uptimeLast1d": 100,
-          "status": 0
-        },
-        {
-          "provider": "Baidu",
-          "name": "Baidu | z-ai/glm-5.2-20260616",
-          "tag": "baidu/fast",
-          "quantization": "fp4",
-          "contextLength": 1048576,
-          "promptPerToken": 0.00000225,
-          "completionPerToken": 0.00000788,
-          "cacheReadPerToken": 5.6e-7,
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
@@ -5010,7 +5115,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 99.85119047619048,
+          "uptimeLast1d": 100,
           "status": 0
         },
         {
@@ -5070,7 +5175,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 99.65957446808511,
+          "uptimeLast1d": 97.72468714448237,
           "status": 0
         },
         {
@@ -5085,7 +5190,7 @@
           "discount": 0.375,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 100,
+          "uptimeLast1d": 96.22641509433963,
           "status": 0
         },
         {
@@ -5100,7 +5205,22 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 100,
+          "uptimeLast1d": 99.72222222222223,
+          "status": 0
+        },
+        {
+          "provider": "Cloudflare",
+          "name": "Cloudflare | z-ai/glm-5.3-20260816",
+          "tag": "cloudflare",
+          "quantization": "unknown",
+          "contextLength": 1048576,
+          "promptPerToken": 5.6e-7,
+          "completionPerToken": 0.00000176,
+          "cacheReadPerToken": 1.04e-7,
+          "discount": 0,
+          "latencyLast30m": null,
+          "throughputLast30m": null,
+          "uptimeLast1d": 99.86111111111111,
           "status": 0
         },
         {
@@ -5130,7 +5250,22 @@
           "discount": 0.375,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 96.61016949152543,
+          "uptimeLast1d": 99.14611005692599,
+          "status": 0
+        },
+        {
+          "provider": "Doubleword",
+          "name": "Doubleword | z-ai/glm-5.3-20260816",
+          "tag": "doubleword/nvfp4",
+          "quantization": "nvfp4",
+          "contextLength": 1048576,
+          "promptPerToken": 6e-7,
+          "completionPerToken": 0.0000024,
+          "cacheReadPerToken": 3e-7,
+          "discount": 0,
+          "latencyLast30m": null,
+          "throughputLast30m": null,
+          "uptimeLast1d": 100,
           "status": 0
         },
         {
@@ -5145,7 +5280,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 100,
+          "uptimeLast1d": 99.92927864214994,
           "status": 0
         },
         {
@@ -5175,7 +5310,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 100,
+          "uptimeLast1d": 99.92383853769992,
           "status": 0
         },
         {
@@ -5190,22 +5325,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 99.89106753812636,
-          "status": 0
-        },
-        {
-          "provider": "Cloudflare",
-          "name": "Cloudflare | z-ai/glm-5.3-20260816",
-          "tag": "cloudflare",
-          "quantization": "unknown",
-          "contextLength": 1048576,
-          "promptPerToken": 7e-7,
-          "completionPerToken": 0.0000022,
-          "cacheReadPerToken": 1.3e-7,
-          "discount": 0,
-          "latencyLast30m": null,
-          "throughputLast30m": null,
-          "uptimeLast1d": 100,
+          "uptimeLast1d": 99.91532599491956,
           "status": 0
         },
         {
@@ -5220,7 +5340,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 98.85222381635582,
+          "uptimeLast1d": 98.94366197183099,
           "status": 0
         },
         {
@@ -5235,7 +5355,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 100,
+          "uptimeLast1d": 99.79064898813678,
           "status": 0
         },
         {
@@ -5254,33 +5374,18 @@
           "status": 0
         },
         {
-          "provider": "Morph",
-          "name": "Morph | z-ai/glm-5.3-20260816",
-          "tag": "morph/fp8",
-          "quantization": "fp8",
-          "contextLength": 1048576,
-          "promptPerToken": 0.00000102,
-          "completionPerToken": 0.000004761,
-          "cacheReadPerToken": 2.07e-7,
-          "discount": 0,
-          "latencyLast30m": null,
-          "throughputLast30m": null,
-          "uptimeLast1d": 100,
-          "status": 0
-        },
-        {
           "provider": "Inceptron",
           "name": "Inceptron | z-ai/glm-5.3-20260816",
           "tag": "inceptron/fp4",
           "quantization": "fp4",
           "contextLength": 1048576,
-          "promptPerToken": 0.00000105,
+          "promptPerToken": 0.000001,
           "completionPerToken": 0.0000035,
-          "cacheReadPerToken": 1.171e-7,
+          "cacheReadPerToken": 1.295e-7,
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 100,
+          "uptimeLast1d": 99.93055555555556,
           "status": 0
         },
         {
@@ -5295,22 +5400,37 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
+          "uptimeLast1d": 99.48717948717949,
+          "status": 0
+        },
+        {
+          "provider": "Morph",
+          "name": "Morph | z-ai/glm-5.3-20260816",
+          "tag": "morph/fp8",
+          "quantization": "fp8",
+          "contextLength": 1048576,
+          "promptPerToken": 0.000001087,
+          "completionPerToken": 0.000005072,
+          "cacheReadPerToken": 2.2e-7,
+          "discount": 0,
+          "latencyLast30m": null,
+          "throughputLast30m": null,
           "uptimeLast1d": 100,
           "status": 0
         },
         {
-          "provider": "Featherless",
-          "name": "Featherless | z-ai/glm-5.3-20260816",
-          "tag": "featherless",
+          "provider": "River",
+          "name": "River | z-ai/glm-5.3-20260816",
+          "tag": "river",
           "quantization": "unknown",
-          "contextLength": 262144,
+          "contextLength": 1048576,
           "promptPerToken": 0.00000112,
           "completionPerToken": 0.00000352,
           "cacheReadPerToken": 2.08e-7,
-          "discount": 0.2,
+          "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 96.92307692307692,
+          "uptimeLast1d": 100,
           "status": 0
         },
         {
@@ -5329,21 +5449,6 @@
           "status": 0
         },
         {
-          "provider": "Doubleword",
-          "name": "Doubleword | z-ai/glm-5.3-20260816",
-          "tag": "doubleword/nvfp4",
-          "quantization": "nvfp4",
-          "contextLength": 1048576,
-          "promptPerToken": 0.00000125,
-          "completionPerToken": 0.000005,
-          "cacheReadPerToken": 1.25e-7,
-          "discount": 0,
-          "latencyLast30m": null,
-          "throughputLast30m": null,
-          "uptimeLast1d": 98.22064056939502,
-          "status": 0
-        },
-        {
           "provider": "Friendli",
           "name": "Friendli | z-ai/glm-5.3-20260816",
           "tag": "friendli",
@@ -5356,6 +5461,21 @@
           "latencyLast30m": null,
           "throughputLast30m": null,
           "uptimeLast1d": 100,
+          "status": 0
+        },
+        {
+          "provider": "Featherless",
+          "name": "Featherless | z-ai/glm-5.3-20260816",
+          "tag": "featherless",
+          "quantization": "unknown",
+          "contextLength": 262144,
+          "promptPerToken": 0.0000014,
+          "completionPerToken": 0.0000044,
+          "cacheReadPerToken": 2.6e-7,
+          "discount": 0,
+          "latencyLast30m": null,
+          "throughputLast30m": null,
+          "uptimeLast1d": 98.71794871794873,
           "status": 0
         },
         {
@@ -5385,22 +5505,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 99.92063492063492,
-          "status": 0
-        },
-        {
-          "provider": "Baidu",
-          "name": "Baidu | z-ai/glm-5.3-20260816",
-          "tag": "baidu/fp8",
-          "quantization": "fp8",
-          "contextLength": 1048576,
-          "promptPerToken": 0.0000014,
-          "completionPerToken": 0.0000044,
-          "cacheReadPerToken": 2.6e-7,
-          "discount": 0,
-          "latencyLast30m": null,
-          "throughputLast30m": null,
-          "uptimeLast1d": null,
+          "uptimeLast1d": 98.92933618843684,
           "status": 0
         },
         {
@@ -5445,7 +5550,7 @@
           "discount": 0.2,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 99.3103448275862,
+          "uptimeLast1d": 98.81656804733728,
           "status": 0
         },
         {
@@ -5475,7 +5580,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 98.98843930635837,
+          "uptimeLast1d": 100,
           "status": 0
         },
         {
@@ -5520,7 +5625,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 100,
+          "uptimeLast1d": 99.9084249084249,
           "status": 0
         },
         {
@@ -5550,7 +5655,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 100,
+          "uptimeLast1d": 99.7808619430241,
           "status": 0
         },
         {
@@ -5565,7 +5670,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 99.72826086956522,
+          "uptimeLast1d": 98.53951890034365,
           "status": 0
         },
         {
@@ -5599,6 +5704,21 @@
           "status": 0
         },
         {
+          "provider": "Together",
+          "name": "Together | z-ai/glm-5.3-20260816",
+          "tag": "together/us",
+          "quantization": "unknown",
+          "contextLength": 1048575,
+          "promptPerToken": 0.00000175,
+          "completionPerToken": 0.0000055,
+          "cacheReadPerToken": 3.25e-7,
+          "discount": 0,
+          "latencyLast30m": null,
+          "throughputLast30m": null,
+          "uptimeLast1d": 100,
+          "status": 0
+        },
+        {
           "provider": "Parasail",
           "name": "Parasail | z-ai/glm-5.3-20260816",
           "tag": "parasail/fast",
@@ -5610,7 +5730,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 99.89071038251366,
+          "uptimeLast1d": 100,
           "status": 0
         },
         {
@@ -5640,7 +5760,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 100,
+          "uptimeLast1d": 99.49127906976744,
           "status": 0
         },
         {
@@ -5691,7 +5811,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 100,
+          "uptimeLast1d": 99.16666666666667,
           "status": 0
         }
       ],
@@ -5702,14 +5822,29 @@
           "tag": "relace/fp4",
           "quantization": "fp4",
           "contextLength": 1048576,
-          "promptPerToken": 3.99e-8,
-          "completionPerToken": 7.4e-8,
+          "promptPerToken": 3.56e-8,
+          "completionPerToken": 8.15e-8,
           "cacheReadPerToken": 3e-8,
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 98.40277777777777,
+          "uptimeLast1d": 97.01388888888889,
           "status": -2
+        },
+        {
+          "provider": "Pareto Inference",
+          "name": "Pareto Inference | z-ai/glm-5.3-flash-20260826",
+          "tag": "pareto-inference/nvfp4",
+          "quantization": "nvfp4",
+          "contextLength": 1048576,
+          "promptPerToken": 3.75e-8,
+          "completionPerToken": 1.25e-7,
+          "cacheReadPerToken": 7.5e-9,
+          "discount": 0,
+          "latencyLast30m": null,
+          "throughputLast30m": null,
+          "uptimeLast1d": 100,
+          "status": 0
         },
         {
           "provider": "Wafer",
@@ -5733,7 +5868,7 @@
           "quantization": "fp4",
           "contextLength": 1048576,
           "promptPerToken": 5e-8,
-          "completionPerToken": 4.5e-7,
+          "completionPerToken": 5e-7,
           "cacheReadPerToken": 2.5e-8,
           "discount": 0,
           "latencyLast30m": null,
@@ -5753,7 +5888,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 99.24953095684803,
+          "uptimeLast1d": 98.79154078549848,
           "status": 0
         },
         {
@@ -5783,8 +5918,8 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 98.46153846153847,
-          "status": 0
+          "uptimeLast1d": 85.3133769878391,
+          "status": -2
         },
         {
           "provider": "Tenstorrent",
@@ -5798,7 +5933,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 100,
+          "uptimeLast1d": 99.93055555555556,
           "status": 0
         },
         {
@@ -5813,7 +5948,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 99.86111111111111,
+          "uptimeLast1d": 100,
           "status": 0
         },
         {
@@ -5828,7 +5963,7 @@
           "discount": 0.44,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 99.79166666666667,
+          "uptimeLast1d": 100,
           "status": 0
         },
         {
@@ -5843,7 +5978,7 @@
           "discount": 0.41,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 98.68055555555556,
+          "uptimeLast1d": 99.93055555555556,
           "status": 0
         },
         {
@@ -5873,7 +6008,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 97.30603448275862,
+          "uptimeLast1d": 100,
           "status": 0
         },
         {
@@ -5903,7 +6038,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 100,
+          "uptimeLast1d": 99.93055555555556,
           "status": 0
         },
         {
@@ -5937,6 +6072,21 @@
           "status": 0
         },
         {
+          "provider": "Morph",
+          "name": "Morph | z-ai/glm-5.3-flash-20260826",
+          "tag": "morph/fp8",
+          "quantization": "fp8",
+          "contextLength": 1048576,
+          "promptPerToken": 1.16e-7,
+          "completionPerToken": 3.35e-7,
+          "cacheReadPerToken": 5.8e-8,
+          "discount": 0,
+          "latencyLast30m": null,
+          "throughputLast30m": null,
+          "uptimeLast1d": 100,
+          "status": 0
+        },
+        {
           "provider": "Reka",
           "name": "Reka | z-ai/glm-5.3-flash-20260826",
           "tag": "reka",
@@ -5948,7 +6098,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 99.86091794158554,
+          "uptimeLast1d": 100,
           "status": 0
         },
         {
@@ -5963,7 +6113,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 98.95833333333334,
+          "uptimeLast1d": 99.16666666666667,
           "status": 0
         },
         {
@@ -5978,22 +6128,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 99.86091794158554,
-          "status": 0
-        },
-        {
-          "provider": "Morph",
-          "name": "Morph | z-ai/glm-5.3-flash-20260826",
-          "tag": "morph/fp8",
-          "quantization": "fp8",
-          "contextLength": 1048576,
-          "promptPerToken": 1.24e-7,
-          "completionPerToken": 3.56e-7,
-          "cacheReadPerToken": 6.2e-8,
-          "discount": 0,
-          "latencyLast30m": null,
-          "throughputLast30m": null,
-          "uptimeLast1d": 100,
+          "uptimeLast1d": 98.0295566502463,
           "status": 0
         },
         {
@@ -6038,7 +6173,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 99.77728285077951,
+          "uptimeLast1d": 96.72131147540983,
           "status": 0
         },
         {
@@ -6113,7 +6248,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 99.79166666666667,
+          "uptimeLast1d": 100,
           "status": 0
         },
         {
@@ -6158,7 +6293,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 98.75,
+          "uptimeLast1d": 100,
           "status": 0
         },
         {
@@ -6207,21 +6342,6 @@
           "status": 0
         },
         {
-          "provider": "Inceptron",
-          "name": "Inceptron | z-ai/glm-5.3-flash-20260826",
-          "tag": "inceptron/fp8",
-          "quantization": "fp8",
-          "contextLength": 1048576,
-          "promptPerToken": 1.7e-7,
-          "completionPerToken": 5e-7,
-          "cacheReadPerToken": 6e-8,
-          "discount": 0,
-          "latencyLast30m": null,
-          "throughputLast30m": null,
-          "uptimeLast1d": 99.58333333333333,
-          "status": 0
-        },
-        {
           "provider": "Sail Research",
           "name": "Sail Research | z-ai/glm-5.3-flash-20260826",
           "tag": "sail-research/us",
@@ -6252,6 +6372,36 @@
           "status": 0
         },
         {
+          "provider": "Inceptron",
+          "name": "Inceptron | z-ai/glm-5.3-flash-20260826",
+          "tag": "inceptron/fp8",
+          "quantization": "fp8",
+          "contextLength": 1048576,
+          "promptPerToken": 1.85e-7,
+          "completionPerToken": 5e-7,
+          "cacheReadPerToken": 7e-8,
+          "discount": 0,
+          "latencyLast30m": null,
+          "throughputLast30m": null,
+          "uptimeLast1d": 100,
+          "status": 0
+        },
+        {
+          "provider": "Together",
+          "name": "Together | z-ai/glm-5.3-flash-20260826",
+          "tag": "together/us",
+          "quantization": "unknown",
+          "contextLength": 1048575,
+          "promptPerToken": 1.875e-7,
+          "completionPerToken": 6.25e-7,
+          "cacheReadPerToken": 3.75e-8,
+          "discount": 0,
+          "latencyLast30m": null,
+          "throughputLast30m": null,
+          "uptimeLast1d": 100,
+          "status": 0
+        },
+        {
           "provider": "Parasail",
           "name": "Parasail | z-ai/glm-5.3-flash-20260826",
           "tag": "parasail/fast",
@@ -6263,7 +6413,7 @@
           "discount": 0,
           "latencyLast30m": null,
           "throughputLast30m": null,
-          "uptimeLast1d": 98.49029475197699,
+          "uptimeLast1d": 100,
           "status": 0
         },
         {
@@ -6287,6 +6437,112 @@
   "history": [
     {
       "retrievedAt": "2026-11-23T18:57:57.620Z",
+      "modelCount": 20,
+      "prices": [
+        {
+          "id": "deepseek/deepseek-v4-flash-0731",
+          "promptPerToken": 1.4e-7,
+          "completionPerToken": 2.8e-7
+        },
+        {
+          "id": "deepseek/deepseek-v4-pro-0813",
+          "promptPerToken": 0.00000132,
+          "completionPerToken": 0.00000396
+        },
+        {
+          "id": "deepseek/deepseek-v4.1-flash",
+          "promptPerToken": 2.4e-7,
+          "completionPerToken": 9.6e-7
+        },
+        {
+          "id": "deepseek/deepseek-v4.1-flash-1017",
+          "promptPerToken": 1.8e-7,
+          "completionPerToken": 7.2e-7
+        },
+        {
+          "id": "google/gemma-3-27b-it",
+          "promptPerToken": 1e-7,
+          "completionPerToken": 3e-7
+        },
+        {
+          "id": "meta/muse-spark-open",
+          "promptPerToken": 0.00000125,
+          "completionPerToken": 0.00000425
+        },
+        {
+          "id": "minimax/minimax-m3.1-flash",
+          "promptPerToken": 1.5e-7,
+          "completionPerToken": 6e-7
+        },
+        {
+          "id": "moonshotai/kimi-k3",
+          "promptPerToken": 0.000003,
+          "completionPerToken": 0.000015
+        },
+        {
+          "id": "moonshotai/kimi-k3.1-pro",
+          "promptPerToken": 0.000002,
+          "completionPerToken": 0.00001
+        },
+        {
+          "id": "nousresearch/hermes-4-405b",
+          "promptPerToken": 0.000001,
+          "completionPerToken": 0.000003
+        },
+        {
+          "id": "nvidia/nemotron-3-nano-30b-a3b",
+          "promptPerToken": 6e-8,
+          "completionPerToken": 2.4e-7
+        },
+        {
+          "id": "nvidia/nemotron-3.5-super-vl",
+          "promptPerToken": 3e-7,
+          "completionPerToken": 9e-7
+        },
+        {
+          "id": "openai/gpt-oss-120b",
+          "promptPerToken": 1.5e-7,
+          "completionPerToken": 6e-7
+        },
+        {
+          "id": "qwen/qwen3-30b-a3b-instruct-2507",
+          "promptPerToken": 1e-7,
+          "completionPerToken": 3e-7
+        },
+        {
+          "id": "qwen/qwen3.8-27b",
+          "promptPerToken": 4.5e-7,
+          "completionPerToken": 0.000003
+        },
+        {
+          "id": "reflection/beam-1.0-501b-a23b",
+          "promptPerToken": 2.5e-7,
+          "completionPerToken": 0.000001
+        },
+        {
+          "id": "thinkingmachines/inkling-2-small",
+          "promptPerToken": 3e-7,
+          "completionPerToken": 0.000001
+        },
+        {
+          "id": "z-ai/glm-5.2",
+          "promptPerToken": 0.0000014,
+          "completionPerToken": 0.0000044
+        },
+        {
+          "id": "z-ai/glm-5.3",
+          "promptPerToken": 0.0000014,
+          "completionPerToken": 0.0000044
+        },
+        {
+          "id": "z-ai/glm-5.3-flash",
+          "promptPerToken": 1.5e-7,
+          "completionPerToken": 5e-7
+        }
+      ]
+    },
+    {
+      "retrievedAt": "2026-11-25T17:40:51.540Z",
       "modelCount": 20,
       "prices": [
         {

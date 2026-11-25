@@ -138,7 +138,7 @@
     "osm": {
       "id": "osm",
       "url": "https://www.openstreetmap.org/way/846760920",
-      "title": "OpenStreetMap way 846760920, Global DC OY / Mäntsälä",
+      "title": "OpenStreetMap way 846760920, Global DC OY / M\u00e4nts\u00e4l\u00e4",
       "date": "2026-11-23"
     },
     "edgar": {
@@ -187,15 +187,15 @@
   "sites": [
     {
       "id": "mantasala",
-      "name": "Mäntsälä",
-      "place": "Mäntsälä, Finland",
+      "name": "M\u00e4nts\u00e4l\u00e4",
+      "place": "M\u00e4nts\u00e4l\u00e4, Finland",
       "relationship": "Owned. Finnish registry name Nebius DC Oy, formerly Global DC Oy and Yandex Oy.",
       "status": "Serving. Cloud region eu-north1 is Finland.",
       "cloudRegions": [
         "eu-north1"
       ],
       "capacity": "Company target of about 75 MW contracted power for the expansion, by the end of 2025 or early 2026. Megawatts in service were not restated in the 2026 letters reviewed.",
-      "dates": "Expansion described October 31, 2024 and again August 7, 2025. A second Mäntsälä site is named for 2027 deployment and has no separate footprint here.",
+      "dates": "Expansion described October 31, 2024 and again August 7, 2025. A second M\u00e4nts\u00e4l\u00e4 site is named for 2027 deployment and has no separate footprint here.",
       "pin": {
         "lat": 60.629787,
         "lon": 25.264085,
@@ -229,6 +229,13 @@
           "cloudCoverPct": 0.000743,
           "itemId": "S2B_MSIL2A_20261020T094029_R036_T35VMH_20261020T120754",
           "platform": "sentinel-2b"
+        },
+        {
+          "file": "/satellites/mantasala-2026-11-06.jpg",
+          "acquiredAt": "2026-11-06T09:41:21.024000Z",
+          "cloudCoverPct": 14.906235,
+          "itemId": "S2A_MSIL2A_20261106T094121_R036_T35VMH_20261106T143053",
+          "platform": "Sentinel-2A"
         }
       ],
       "sources": [
@@ -263,8 +270,8 @@
     },
     {
       "id": "mantasala-2",
-      "name": "Second Mäntsälä site",
-      "place": "Mäntsälä, Finland",
+      "name": "Second M\u00e4nts\u00e4l\u00e4 site",
+      "place": "M\u00e4nts\u00e4l\u00e4, Finland",
       "relationship": "Owned site named for future deployment. No separate address published in the sources reviewed.",
       "status": "Named for 2027. Not a separate live cloud region.",
       "cloudRegions": [],
@@ -352,13 +359,13 @@
       "sources": [
         "shl-q1-2026"
       ],
-      "notes": "Kept separate from Lappeenranta and the second Mäntsälä site because the May letter did not name the city.",
+      "notes": "Kept separate from Lappeenranta and the second M\u00e4nts\u00e4l\u00e4 site because the May letter did not name the city.",
       "mw": {
         "contractedOrPlanned": {
           "value": 310,
           "label": "Planned, full deployment",
           "source": "shl-q1-2026",
-          "note": "310 MW when fully deployed. The letter did not name the municipality, so this is not assigned to Lappeenranta or the second Mäntsälä site."
+          "note": "310 MW when fully deployed. The letter did not name the municipality, so this is not assigned to Lappeenranta or the second M\u00e4nts\u00e4l\u00e4 site."
         },
         "operational": {
           "value": null,
@@ -376,8 +383,8 @@
     },
     {
       "id": "keflavik",
-      "name": "Keflavík",
-      "place": "Keflavík, Iceland",
+      "name": "Keflav\u00edk",
+      "place": "Keflav\u00edk, Iceland",
       "relationship": "Colocation with Verne.",
       "status": "Cloud region eu-north2 is Iceland and lists compute as available.",
       "cloudRegions": [
@@ -388,7 +395,7 @@
       "pin": {
         "lat": 63.999,
         "lon": -22.56,
-        "precision": "Town of Keflavík. The Verne campus footprint was not taken from a Nebius filing."
+        "precision": "Town of Keflav\u00edk. The Verne campus footprint was not taken from a Nebius filing."
       },
       "scenes": [],
       "sources": [
@@ -778,7 +785,7 @@
           "value": null,
           "label": "Not disclosed",
           "source": "shl-q3-2026",
-          "note": "Part of the more-than-3 GW owned group with Missouri, Lappeenranta, and the second Mäntsälä site."
+          "note": "Part of the more-than-3 GW owned group with Missouri, Lappeenranta, and the second M\u00e4nts\u00e4l\u00e4 site."
         },
         "operational": {
           "value": null,
