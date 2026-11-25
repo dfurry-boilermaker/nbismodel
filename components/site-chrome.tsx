@@ -4,8 +4,8 @@ import { SiteNav } from "@/components/site-nav";
 export function Disclaimer() {
   return (
     <p className="footer-disclaimer">
-      Educational use only. Not a price target, a forecast, a rating, or investment advice,
-      and not an offer to buy or sell any security. Prices are closing prices entered manually
+      Educational use only. Illustrative price targets and model scenarios are uncertain, not guarantees,
+      ratings, investment advice, or offers to buy or sell any security. Prices are closing prices entered manually
       as of the date shown; not live; may be out of date. The authors may hold positions in
       securities mentioned here. Not affiliated with Nebius Group N.V.
     </p>
