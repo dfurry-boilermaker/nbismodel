@@ -719,6 +719,12 @@ export const MODEL_TAX_RATE = TAX;
  */
 export const PRICE_TARGET_DATE = `${Number(VALUATION_DATE.slice(0, 4)) + 1}${VALUATION_DATE.slice(4)}`;
 
+/** Judgmental stressed going-concern multiple on next-year adjusted EBITDA.
+ * Not a peer-calibrated multiple or a recovery value. The original DCF remains
+ * visible separately as a severe financial-distress stress test.
+ */
+export const BEAR_FORWARD_EBITDA_MULTIPLE = 7;
+
 export function twelveMonthPriceTarget(result: ModelResult) {
   const targetYear = Number(PRICE_TARGET_DATE.slice(0, 4));
   const elapsed = daysBetween(PRICE_TARGET_DATE) / 365;
@@ -737,6 +743,12 @@ export function twelveMonthPriceTarget(result: ModelResult) {
   const newShares = equityIssued / REFERENCE_CLOSE.value * 1e6;
   // Keep the existing case's convertible treatment; recompute option dilution.
   const shareBase = result.bridge.shares - result.bridge.options + newShares;
-  const { v, opt } = perShare(equity, shareBase);
-  return { name: result.name, weight: result.weight, target: floorShare(v), raw: v, forwardEv, claims, cash: snapshot.endingCash, shares: shareBase + opt, equityIssued };
+  const dcf = perShare(equity, shareBase);
+  const nextYearEbitda = result.rows.find(row => row.year === targetYear + 1)!.ebitda;
+  const method = result.name === "bear" ? "forward-ebitda" : "forward-dcf";
+  // The 12-month bear is a stressed going-concern market scenario, not a
+  // solvency guarantee. Keep the DCF's raw negative result for disclosure.
+  const targetEv = method === "forward-ebitda" ? nextYearEbitda * BEAR_FORWARD_EBITDA_MULTIPLE : forwardEv;
+  const { v, opt } = perShare(targetEv + snapshot.endingCash + stakes - claims, shareBase);
+  return { name: result.name, weight: result.weight, method, target: floorShare(v), raw: v, dcfRaw: dcf.v, forwardEv, targetEv, nextYearEbitda, stakes, claims, cash: snapshot.endingCash, shares: shareBase + opt, equityIssued };
 }
