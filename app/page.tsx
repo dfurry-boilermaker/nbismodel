@@ -5,7 +5,7 @@ import { VolModel } from "@/components/vol-model";
 import { Orbit, PixelWord, ResearchArt } from "@/components/research-art";
 import { centers, feeds, financials, guidance, quotes } from "@/lib/load";
 import { MODEL_VERSION, REFERENCE_CLOSE, allCases, headlineValue, weightedValue } from "@/lib/dcf";
-import { scoreGuidance, STATUS_TONE } from "@/lib/guidance";
+import { scoreGuidance, STATUS_TONE, groupGuidance, guidanceStatusLabel } from "@/lib/guidance";
 
 function dollars(value: number): string {
   const sign = value < 0 ? "-" : "";
@@ -15,7 +15,7 @@ function dollars(value: number): string {
 export default function HomePage() {
   const cases = allCases();
   const weighted = weightedValue(cases);
-  const scored = guidance.items.map((item) => ({ item, score: scoreGuidance(item, guidance.asOf) }));
+  const scored = groupGuidance(guidance.items, guidance.asOf).flatMap(group => group.items.map((item) => ({ item, score: scoreGuidance(item, guidance.asOf) })));
   return (
     <div className="home">
       <section className="hero" aria-labelledby="overview-title">
@@ -87,7 +87,7 @@ export default function HomePage() {
               <thead><tr>{["Item", "Latest target", "Status", "Basis"].map((heading) => <th scope="col" key={heading} className="px-3">{heading}</th>)}</tr></thead>
               <tbody>{scored.map(({ item, score }) => <tr key={item.id} className="border-b border-line">
                 <td className="px-3">{item.title}</td><td className="px-3 text-muted">{item.revisions.at(-1)?.label}</td>
-                <td className="px-3"><Badge tone={STATUS_TONE[score.status]}>{score.status}</Badge></td><td className="px-3 text-xs leading-5 text-muted">{score.basis}</td>
+                <td className="px-3"><Badge tone={STATUS_TONE[score.status]}>{guidanceStatusLabel(score.status)}</Badge></td><td className="px-3 text-xs leading-5 text-muted">{score.basis}</td>
               </tr>)}</tbody>
             </table>
           </div>

@@ -1,6 +1,6 @@
 import { readFileSync } from "node:fs";
 import { financials, guidance } from "../lib/load";
-import { scoreGuidance } from "../lib/guidance";
+import { scoreGuidance, groupGuidance, guidanceStatusLabel } from "../lib/guidance";
 import {
   BASIC_ECONOMIC_SHARES,
   CASES,
@@ -45,6 +45,10 @@ const arr = guidance.items.find((item) => item.id === "arr-ye-2025");
 if (!arr || scoreGuidance(arr, "2026-11-23").status !== "ahead") {
   throw new Error("Year-end 2025 ARR should score ahead");
 }
+if (guidanceStatusLabel("ahead") !== "beat") throw new Error("Beat display label");
+const grouped = groupGuidance(guidance.items, "2026-11-25");
+if (grouped[0]?.year !== 2026 || grouped.at(-1)?.year !== 2025) throw new Error("Current-year-first guidance ordering");
+if (grouped.flatMap(group => group.items).length !== guidance.items.length) throw new Error("Missing grouped guidance items");
 const active = guidance.items.find((item) => item.id === "active-power-2025");
 if (!active || scoreGuidance(active, "2026-11-23").status !== "ahead") {
   throw new Error("Active power should score ahead");

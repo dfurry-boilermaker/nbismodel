@@ -33,7 +33,7 @@ export default function MethodologyPage() {
         The score uses only the latest revision. If that revision replaces the target, the
         status is superseded. If the company moved the schedule and the new date has not
         arrived, the status is behind. If the period has ended and the actual is above the
-        top of the range, or more than 2% above a point target, the status is ahead. Inside
+        top of the range, or more than 2% above a point target, the status is beat. Inside
         the range, or at or above a minimum, is met. Below the floor is missed. If the period
         ended and no number was disclosed, the status is undisclosed. Otherwise it is open,
         including when the only actual is a year-to-date figure and the year is not over.
