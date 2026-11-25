@@ -71,51 +71,45 @@ export default function MethodologyPage() {
         20 closes. The band is price × exp(±1.96 × volatility × sqrt(days / 252)), with zero
         drift. Implied volatility has no feed.
       </p>
-      <h2 className="text-lg font-medium text-foreground">Long-term model, version 2.1.0</h2>
+      <h2 className="text-lg font-medium text-foreground">Long-term model, version 2.2.0</h2>
       <p>
-        Version 2.0.0 subtracted every dollar of growth capex and then kept a heavy capex
-        bill in the later years, so every case was negative: about -$285.77 bear, -$175.72
-        base, and -$50.13 bull. That failed a sense check against customer prepayments, a
-        53.2% AI-cloud EBITDA margin, and the $223.90 reference price on the August 2026
-        notes. Version 2.1.0 splits the bill. Growth capex is the cash spent to energize new
-        megawatts. Maintenance capex is the gross server-and-network base divided by the
-        disclosed five-year life, plus 15% of the 2026–27 budget depreciated over 15 years.
-        The 15% share and the 15-year life are assumptions. The five-year life is not.
-        After the fleet reaches its case cap, growth capex is zero and only maintenance remains.
+        Version 2.1.0 was −$232.41 bear, −$65.31 base, $933.48 bull, and $142.61 weighted.
+        The bull applied a $25 million rate on the way to 6 GW, so the terminal sat far
+        above a multiple of 2027 EBITDA. Version 2.2.0 keeps the same split between growth
+        capex and five-year maintenance. It changes the rates and the speed at which
+        recognized revenue approaches the megawatt ceiling.
       </p>
       <p>
-        2026 and 2027 revenue and the 2026–27 capex dollars are the company&apos;s ranges.
-        The bear case uses the low ends and the bull case uses the high revenue ends and the
-        low capex end. From 2028, revenue is the megawatts already energized times a rate,
-        plus half a year on megawatts added that year. The end-2026 fleet earns $8, $10, or
-        $12 million per megawatt-year. Megawatts added later earn $12, $20, or $25 million.
-        The $20 million and $25 million figures are the Q2 and Q3 2026 new-deal annual-contract-value
-        floors, used here as rates rather than as unknown amounts above those floors. The
-        lower legacy rates are estimates. Energized megawatts in 2026 were not restated in
-        November; the cases use 600, 800, and 1,000 MW. Additions stop at 4, 5, or 6 GW.
-        Five gigawatts is the company&apos;s year-end 2026 contracted-power target. Six is an
-        assumption that more power is contracted.
+        Recurring AI-cloud revenue in the third quarter of 2026 was $648.7 million. Times
+        four is $2,594.8 million. Active power was about 170 MW at the end of 2025, and the
+        connected-power guide for the end of 2026 was 800 MW to 1 GW. September 30, 2026 is
+        day 273, so a straight line from 170 MW to the 800 MW low end is 641 MW. Dividing
+        gives $4.05 million per MW-year. That is an estimate of recognized revenue on the
+        fleet then in service. It is not the new-deal contract value, which the letters put
+        above $20 million in the second quarter and above $25 million in the third. Legacy
+        megawatts earn $4.05 million in every case. Only megawatts added after 2026 earn the
+        contract rate, and each year the model recognizes part of the gap up to that ceiling
+        rather than the whole ceiling at once.
       </p>
       <p>
-        Tax is not zero. Nebius has not guided a cash rate. The cases use 20%, 15%, and 12%
-        as a normalized rate after losses. Free cash flow is after-tax EBIT minus growth
-        capex. EBIT uses depreciation equal to that year&apos;s maintenance charge. If
-        maintenance free cash flow is positive, the terminal value is a Gordon growth value.
-        If it is not, the terminal value is a five-year harvest with no replacement spending.
-        Equity value subtracts opening carrying debt and adds unrestricted cash that the
-        funding gap did not spend. Future debt is not subtracted a second time, because the
-        capex it finances is already in free cash flow. Shares are the basic count plus the
-        pre-funded warrants, plus conversion shares in the share-settled bridge, plus any
-        residual equity issued at the case&apos;s issue price. The bear case issues that
-        residual at $100. The other cases use $223.90.
+        The 2026 group margin stays at the guided 40%, because nine months are already
+        reported. From 2027 the base uses the 53.2% AI-cloud adjusted EBITDA margin in the
+        November 12, 2026 shareholder letter, and fades to 49%. The four-point fade is for
+        power cost and for the group businesses that still lose money. It is not a return
+        to the older 40% group guide. The bull may rise from 53.2% to 55%, and no higher.
+        The bear uses 45% in 2027, the first-quarter 2026 core print, and 24% at the
+        terminal, the fourth-quarter 2025 core print. That 24% is the bottom of the
+        disclosed positive cloud-margin history. The bear issues residual equity at $111.95,
+        half the August 24, 2026 reference price of $223.90. The bull fleet stops at 5 GW,
+        the contracted-power target, not 6 GW.
       </p>
       <p>
-        Beside the cash-flow result, 2027 EBITDA and revenue are multiplied by trailing
-        EV/EBITDA and EV/revenue for CoreWeave and Oracle, dated in November 2026. A gap
-        wider than 50% is marked on the page. IREN is not in the set: publishers disagree
-        on whether its EBITDA is positive. The weights are 25%, 50%, and 25%. Nothing here
-        is a price target. A negative case is the arithmetic of its stated rates, margins,
-        capex, and discount rate.
+        Tax rates of 20%, 15%, and 12% are still labeled assumptions. Nebius has not guided
+        a cash rate. The bridge is unchanged: enterprise value, minus opening carrying debt,
+        plus unrestricted cash left after the funding gap. Future debt is not subtracted
+        again. The weights are 25%, 50%, and 25%. The page shows how many dollars of the
+        weighted figure come from each case. A gap wider than 50% versus a CoreWeave or
+        Oracle multiple is marked. Nothing here is a price target.
       </p>
       <h2 className="text-lg font-medium text-foreground">Satellite images</h2>
       <p>

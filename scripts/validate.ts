@@ -41,7 +41,7 @@ if (!december || scoreGuidance(december, "2026-11-23").status !== "superseded") 
   throw new Error("December 2026 ARR should be superseded");
 }
 
-if (MODEL_VERSION !== "2.1.0") throw new Error(`model version ${MODEL_VERSION}`);
+if (MODEL_VERSION !== "2.2.0") throw new Error(`model version ${MODEL_VERSION}`);
 if (CONVERT_SHARES !== 68_112_588) throw new Error(`convert shares ${CONVERT_SHARES}`);
 if (BASIC_ECONOMIC_SHARES !== 313_968_341) throw new Error(`basic shares ${BASIC_ECONOMIC_SHARES}`);
 const base = runCase("base");
@@ -50,11 +50,17 @@ const bull = runCase("bull");
 const bearPs = bear.bridges.none.perShare;
 const basePs = base.bridges.none.perShare;
 const bullPs = bull.bridges.all.perShare;
-if (!(bearPs < basePs && basePs < 0 && bullPs > basePs)) {
+if (!(bearPs < basePs && basePs < bullPs)) {
   throw new Error(`case order ${bearPs} ${basePs} ${bullPs}`);
 }
-if (bear.terminalMethod !== "harvest" || base.terminalMethod !== "gordon") {
-  throw new Error(`terminal ${bear.terminalMethod} ${base.terminalMethod}`);
+if (base.assumptions.margin2027 !== 0.532 || base.assumptions.marginTerminal > 0.5 || base.assumptions.marginTerminal < 0.48) {
+  throw new Error("base margin is not anchored to the Q3 cloud print with a modest fade");
+}
+if (bull.assumptions.mwCap !== 5000 || bull.assumptions.rateNew > 25 || bull.assumptions.marginTerminal > 0.55) {
+  throw new Error("bull cap, price, or margin is outside the stated bound");
+}
+if (bear.assumptions.marginTerminal < 0.24 || Math.abs(bear.assumptions.issuePrice - 111.95) > 0.01) {
+  throw new Error("bear margin floor or issue price drifted");
 }
 const weighted = weightedValue([bear, base, bull]);
 if (!Number.isFinite(weighted)) throw new Error(`weighted ${weighted}`);

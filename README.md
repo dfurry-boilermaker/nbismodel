@@ -84,7 +84,7 @@ The GitHub Action needs permission to push, and `FINNHUB_API_KEY` or `ALPHAVANTA
 
 The short-term band is a zero-drift lognormal range from realized or typed volatility. It does not use a stored price until the quote file has at least 20 closes.
 
-The long-term model is version 2.1.0. It discounts the rest of 2026 through 2032 from November 24, 2026. 2026 and 2027 start from the November 12, 2026 outlook. Later revenue is energized megawatts times a labeled rate. After the build, capex is maintenance only. Bear, base, and bull are on the models page, with a 25/50/25 weighted figure that is an assumption. Convertible notes are shown both as debt and as shares. Peer EV/EBITDA and EV/revenue sit beside the cash-flow result. It is not a price target.
+The long-term model is version 2.2.0. It discounts the rest of 2026 through 2032 from November 24, 2026. The base margin from 2027 is the disclosed 53.2% AI-cloud margin, with a fade to 49%. Legacy megawatts earn an estimated $4.05 million a year. The bull fleet stops at 5 GW. Bear, base, and bull are on the models page, with a 25/50/25 weighted figure that is an assumption. It is not a price target.
 
 ### Half-hour NBIS quote
 

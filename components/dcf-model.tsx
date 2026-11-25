@@ -60,7 +60,9 @@ export function DcfModel({ compact = false }: { compact?: boolean }) {
         <div className="rounded-lg border border-line bg-panel p-3">
           <div className="text-xs uppercase tracking-wide text-muted">Weighted</div>
           <div className="mt-1 font-mono text-xl">{money(weighted)}</div>
-          <div className="text-xs text-muted">25 / 50 / 25, an assumption</div>
+          <div className="text-xs text-muted">
+            25 / 50 / 25. Bear {money(results[0].assumptions.weight * headlineValue(results[0]))}, base {money(results[1].assumptions.weight * headlineValue(results[1]))}, bull {money(results[2].assumptions.weight * headlineValue(results[2]))}.
+          </div>
         </div>
       </div>
       {compact ? (
