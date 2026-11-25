@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import capital from "@/data/capital-structure.json";
 import { conversionShares } from "@/lib/dcf";
 import { SourceA } from "@/components/metric-value";
@@ -20,7 +21,7 @@ export function CapitalStructure() {
         {capital.shares.prefundedWarrants.shares.toLocaleString("en-US")} NVIDIA pre-funded warrants,
         {" "}{basic.toLocaleString("en-US")} in total.
       </p>
-      <div className="overflow-x-auto rounded-xl border border-line">
+      <div className="hidden overflow-x-auto rounded-xl border border-line lg:block">
         <table className="w-full min-w-[960px] text-left text-sm">
           <thead className="bg-panel text-xs uppercase tracking-wide text-muted">
             <tr>
@@ -66,6 +67,37 @@ export function CapitalStructure() {
           </tbody>
         </table>
       </div>
+      <div className="space-y-3 lg:hidden">
+        {capital.notes.map((note) => (
+          <article key={note.id} className="min-w-0 border border-line bg-panel p-3">
+            <h3 className="text-sm font-medium"><SourceA source={note.source} sources={sources}>{note.name}</SourceA></h3>
+            <dl className="mt-3 grid grid-cols-2 gap-x-3 gap-y-4">
+              <CapitalField label="Original principal left">{formatNumber(note.originalOutstanding, 1)}</CapitalField>
+              <CapitalField label="Coupon">{(note.coupon * 100).toFixed(2)}%</CapitalField>
+              <CapitalField label="Conversion rate"><SourceA source={note.rateSource} sources={sources}>{note.conversionRatePerThousand} / $1,000</SourceA></CapitalField>
+              <CapitalField label="Conversion price">${note.conversionPrice.toFixed(2)}</CapitalField>
+              <CapitalField label="Maturity principal">{formatNumber(note.maturityPrincipal, 1)}</CapitalField>
+              <CapitalField label="Carrying value">{formatNumber(note.carrying, 1)}</CapitalField>
+              <CapitalField label="Fair value">{formatNumber(note.fairValue, 1)}</CapitalField>
+            </dl>
+            {note.note ? <p className="mt-3 border-t border-line pt-3 text-xs leading-relaxed text-muted">{note.note}</p> : null}
+          </article>
+        ))}
+        {capital.facilities.map((facility) => (
+          <article key={facility.id} className="min-w-0 border border-line bg-panel p-3">
+            <h3 className="text-sm font-medium"><SourceA source={facility.source} sources={sources}>{facility.name}</SourceA></h3>
+            <dl className="mt-3 grid grid-cols-2 gap-x-3 gap-y-4">
+              <CapitalField label="Principal outstanding">{facility.principalOutstanding == null ? "—" : formatNumber(facility.principalOutstanding, 1)}</CapitalField>
+              <CapitalField label="Rate">{facility.margin == null ? "See note" : `SOFR+${(facility.margin * 100).toFixed(2)}%`}</CapitalField>
+              <CapitalField label="Commitment">{facility.commitment ? formatNumber(facility.commitment, 1) : "—"}</CapitalField>
+              <CapitalField label="Carrying value">{facility.carrying == null ? "Not on the Sept 30 sheet" : formatNumber(facility.carrying, 1)}</CapitalField>
+              <CapitalField label="Conversion">Not convertible</CapitalField>
+              <CapitalField label="Draw status">{facility.drawn == null && facility.commitment ? "Drawn amount not disclosed" : "—"}</CapitalField>
+            </dl>
+            {facility.note ? <p className="mt-3 border-t border-line pt-3 text-xs leading-relaxed text-muted">{facility.note}</p> : null}
+          </article>
+        ))}
+      </div>
       <p className="text-sm text-muted">
         Unrestricted cash{" "}
         <SourceA source={capital.cash.unrestricted.source} sources={sources}>
@@ -79,4 +111,8 @@ export function CapitalStructure() {
       </p>
     </section>
   );
+}
+
+function CapitalField({ label, children }: { label: string; children: ReactNode }) {
+  return <div className="min-w-0"><dt className="mb-1 text-xs text-muted">{label}</dt><dd className="break-words font-mono text-xs leading-relaxed tabular-nums sm:text-sm">{children}</dd></div>;
 }
