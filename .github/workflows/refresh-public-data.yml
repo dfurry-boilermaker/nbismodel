@@ -18,6 +18,11 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run fetch:prices
+      - name: Refresh public token usage
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+        run: node scripts/fetch-openrouter-usage.mjs
+        continue-on-error: true
       - run: sudo apt-get update && sudo apt-get install -y gdal-bin
       - run: npm run fetch:satellite
       - name: Commit snapshots
