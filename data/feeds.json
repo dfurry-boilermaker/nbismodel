@@ -57,20 +57,11 @@
       "note": "USD on-demand and preemptible rates. Reserved rates were not on the page."
     },
     {
-      "id": "quote",
-      "label": "NBIS share price",
-      "updatedAt": null,
-      "sourceUrl": "https://finance.yahoo.com/quote/NBIS/",
-      "cadence": "Every 30 minutes during regular Nasdaq sessions",
-      "state": "live-capable",
-      "note": "Yahoo Finance regular-session trade. The market view shows the timestamp of the cached price."
-    },
-    {
       "id": "satellite",
       "label": "Sentinel-2 scenes",
       "updatedAt": "2026-11-23",
       "sourceUrl": "https://planetarycomputer.microsoft.com/api/stac/v1/search",
-      "cadence": "Weekly cron",
+      "cadence": "Monthly",
       "state": "snapshot",
       "note": "Four cloud-screened scenes for M\u00e4nts\u00e4l\u00e4. Other sites have no facility coordinate, so they have no image."
     }

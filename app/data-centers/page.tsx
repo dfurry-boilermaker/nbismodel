@@ -82,7 +82,7 @@ export default function DataCentersPage() {
                   <figcaption className="mt-2 text-xs leading-5 text-muted">
                     Acquired {scene.acquiredAt}. Scene {scene.itemId}. Platform {scene.platform}.
                     Scene cloud cover {scene.cloudCoverPct == null ? "not reported" : `${scene.cloudCoverPct.toFixed(2)}%`}.
-                    10 m pixels. Copernicus Sentinel-2 via Planetary Computer.
+                    10 m pixels. Contains modified Copernicus Sentinel data {scene.acquiredAt.slice(0, 4)}. Processed from the Microsoft Planetary Computer mirror of the Copernicus archive.
                   </figcaption>
                 </figure>
               ))}

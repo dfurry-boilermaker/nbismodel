@@ -1,11 +1,10 @@
-import { MarketProvider, MarketPrice } from "@/components/market-quote";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { DcfModel } from "@/components/dcf-model";
 import { VolModel } from "@/components/vol-model";
 import { Orbit, PixelWord, ResearchArt } from "@/components/research-art";
 import { centers, feeds, financials, guidance, quotes } from "@/lib/load";
-import { MODEL_VERSION, allCases, headlineValue, weightedValue } from "@/lib/dcf";
+import { MODEL_VERSION, REFERENCE_CLOSE, allCases, headlineValue, weightedValue } from "@/lib/dcf";
 import { scoreGuidance, STATUS_TONE } from "@/lib/guidance";
 
 function dollars(value: number): string {
@@ -16,10 +15,9 @@ function dollars(value: number): string {
 export default function HomePage() {
   const cases = allCases();
   const weighted = weightedValue(cases);
-  const lastQuote = quotes.points.at(-1);
   const scored = guidance.items.map((item) => ({ item, score: scoreGuidance(item, guidance.asOf) }));
   return (
-    <MarketProvider><div className="home">
+    <div className="home">
       <section className="hero" aria-labelledby="overview-title">
         <span className="crosshair crosshair-tl" aria-hidden="true" /><span className="crosshair crosshair-tr" aria-hidden="true" />
         <span className="crosshair crosshair-bl" aria-hidden="true" /><span className="crosshair crosshair-br" aria-hidden="true" />
@@ -43,13 +41,8 @@ export default function HomePage() {
             <ResearchArt variant="orbit" figure="1" />
             <div className="feature-copy">
               <h2>NBIS.<br />The market view.</h2>
-              <MarketPrice>{lastQuote ? <>
-                <div className="feature-value">${lastQuote.close.toFixed(2)}</div>
-                <p className="feature-note">Last close {lastQuote.date}. {quotes.sourceTitle}. Retrieved {quotes.retrievedAt}.</p>
-              </> : <>
-                <span className="mb-3"><Badge tone="amber">Awaiting market data</Badge></span>
-                <p className="feature-note">The latest snapshot is unavailable. You can still enter a price in the volatility model.</p>
-              </>}</MarketPrice>
+              <div className="feature-value">${REFERENCE_CLOSE.value.toFixed(2)}</div>
+              <p className="feature-note">{REFERENCE_CLOSE.label}</p>
               <Link href="#short-term" className="pill-link">Explore the range <span aria-hidden="true">↗</span></Link>
             </div>
           </div>
@@ -61,7 +54,7 @@ export default function HomePage() {
             <div className="feature-copy">
               <h2>Beyond<br />the share price.</h2>
               <div className="feature-value">{dollars(weighted)}</div>
-              <p className="feature-note">Model {MODEL_VERSION} weighted arithmetic per share. Bear {dollars(headlineValue(cases[0]))}, base {dollars(headlineValue(cases[1]))}, bull {dollars(headlineValue(cases[2]))}. The November 24, 2026 close was $87.31. Not a price target. A share is shown at zero if the arithmetic is negative, and the raw figure is on the model page.</p>
+              <p className="feature-note">Model {MODEL_VERSION} weighted model output per share, floored. Bear {dollars(headlineValue(cases[0]))}, base {dollars(headlineValue(cases[1]))}, bull {dollars(headlineValue(cases[2]))}. Hand-entered close ${REFERENCE_CLOSE.value.toFixed(2)} as of {REFERENCE_CLOSE.asOf}. Not a price target. Raw figures are on the model page.</p>
               <Link href="/models" className="pill-link">Inspect the inputs <span aria-hidden="true">↗</span></Link>
             </div>
           </div>
@@ -125,6 +118,6 @@ export default function HomePage() {
           </li>)}
         </ol>
       </section>
-    </div></MarketProvider>
+    </div>
   );
 }

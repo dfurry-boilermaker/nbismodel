@@ -1,36 +1,4 @@
 {
   "asOf": "2026-11-24",
-  "note": "Trailing multiples refreshed to the November 24, 2026 close. They are context, not a price target. EBITDA definitions differ.",
-  "peers": [
-    {
-      "id": "crwv",
-      "name": "CoreWeave",
-      "ticker": "CRWV",
-      "asOf": "2026-11-24",
-      "price": 42.61,
-      "evMillions": 85690,
-      "revenueLtmMillions": 9890,
-      "ebitdaLtmMillions": 5200,
-      "evToRevenue": 8.65,
-      "evToEbitda": 16.43,
-      "source": "https://stockanalysis.com/stocks/crwv/statistics/",
-      "sourceTitle": "StockAnalysis, S&P Global Market Intelligence, November 24, 2026",
-      "definition": "Enterprise value $85.69 billion, EBITDA $5.20 billion, revenue $9.89 billion, close $42.61. This replaces the earlier 12.2x figure on a rounded $7.3 billion EBITDA and the November 15 GuruFocus page, which used a $53.13 share price."
-    },
-    {
-      "id": "orcl",
-      "name": "Oracle",
-      "ticker": "ORCL",
-      "asOf": "2026-11-24",
-      "price": 109.5,
-      "evMillions": 470963,
-      "revenueLtmMillions": 71780,
-      "ebitdaLtmMillions": 37947,
-      "evToRevenue": 6.56,
-      "evToEbitda": 12.41,
-      "source": "https://www.gurufocus.com/term/enterprise-value-to-ebitda/ORCL",
-      "sourceTitle": "GuruFocus EV/EBITDA, close from EODData",
-      "definition": "GuruFocus on November 24, 2026: enterprise value $470,963 million over EBITDA of $37,947 million for the twelve months ended August 2026. EV/revenue uses that enterprise value and TTM revenue of $71.78 billion. The close that day was $109.50 on EODData. GuruFocus's own page shows $110.30."
-    }
-  ]
+  "note": "Peer share prices and vendor enterprise-value tables are not published. A multiple is shown only when it can be rebuilt from a hand-entered close and the peer's own filings. None are entered in this version."
 }

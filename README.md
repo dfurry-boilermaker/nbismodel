@@ -51,13 +51,12 @@ Append to `items` in `data/guidance.json`. A revision needs a date, a label, `lo
 
 ```bash
 npm run fetch:prices
-npm run fetch:quote
 npm run fetch:satellite
 ```
 
-`fetch:quote` needs `FINNHUB_API_KEY` or `ALPHAVANTAGE_API_KEY`. `fetch:satellite` needs `gdalwarp` (`apt install gdal-bin`).
+`fetch:satellite` needs `gdalwarp` (`apt install gdal-bin`). Share prices are typed by hand. There is no quote feed.
 
-The price scripts append a snapshot only when the parsed rows changed. OpenRouter keeps a price history on every run. Quote fetching does not call Yahoo, Nasdaq, or Stooq. Stooq's robots.txt disallows general crawlers.
+The price scripts append a snapshot only when the parsed rows changed. OpenRouter keeps a price history on every run.
 
 Satellite scenes are Copernicus Sentinel-2 L2A. Search hits the public Planetary Computer STAC API and the Copernicus Data Space STAC API. Pixel download from Copernicus Data Space needs an account. `CDSE_CLIENT_ID` and `CDSE_CLIENT_SECRET` are reserved in `.env.example` and are not used yet. Crops are rendered from Planetary Computer, which mirrors the same archive. Each image is labeled with the scene acquisition time. Resolution is 10 meters.
 
@@ -72,20 +71,20 @@ Copy `.env.example` to `.env.local` for local keys. `.env.local` is gitignored.
 The domain is already registered at an outside registrar. Vercel hosts the app.
 
 1. Push this repository to the Git host Vercel should watch.
-2. Import the repository in Vercel. Framework preset: Next.js. No environment variables are required for the first deploy. Add `CRON_SECRET` if you want cron authentication, and a quote key if the GitHub Action should commit closes.
+2. Import the repository in Vercel. Framework preset: Next.js. No environment variables are required for the first deploy. Add `CRON_SECRET` if you want cron authentication.
 3. Deploy. The production build is `npm run build`.
 4. In the Vercel project, open Domains and add `nbismodel.com` and `www.nbismodel.com`. Vercel shows the DNS records to create.
 5. At the registrar, add those records. Vercel currently asks for an `A` record on the apex and a `CNAME` from `www` to `cname.vercel-dns.com`. Use the values on the Vercel screen if they differ from any example you have seen elsewhere.
 6. Wait until Vercel reports the domain as valid and the certificate is issued. Avoid a registrar proxy that blocks the HTTP challenge Vercel uses for the certificate.
 
-The GitHub Action needs permission to push, and `FINNHUB_API_KEY` or `ALPHAVANTAGE_API_KEY` as a repository secret if closes should be committed.
+The GitHub Action needs permission to push.
 
 ## Models
 
-The short-term band is a zero-drift lognormal range from realized or typed volatility. It does not use a stored price until the quote file has at least 20 closes.
+The short-term band is a zero-drift lognormal range. The starting price is the hand-entered close of $87.31 as of 2026-11-24. Volatility is typed. This is not a directional forecast.
 
-The long-term model is version 3.1.0. The headline is unlevered free cash flow on today's shares. Displayed value per share is floored at zero, and the raw figure is shown beside it. Revenue is energized megawatts times one realization curve times the contract rate, checked against the 2026 and 2027 guides. It is not a price target.
+The long-term model is version 4.0.0. The headline is unlevered free cash flow on today's shares. Displayed value per share is floored at zero, and the raw figure is shown beside it. It is not a price target.
 
-### Half-hour NBIS quote
+### Hand-entered close
 
-The market-quote workflow reads Yahoo Finance with yahoo-finance2 during regular Nasdaq sessions and writes the last successful snapshot to `market-data/nbis.json` (branch `market-data`, file `nbis.json`). The site reads this public cache without a rebuild. The exchange calendar sets the session bounds, including shortened sessions. Scheduled Actions can run late. A closing run may collect the final regular-session quote in the half hour after the bell. Daily volatility uses completed daily bars. A failed refresh preserves the previous snapshot and its trade timestamp.
+The $87.31 figure is a closing price entered by hand as of 2026-11-24. It is not live and it is not fetched.

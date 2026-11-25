@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
-import { Analytics } from "@vercel/analytics/next";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Footer, Header } from "@/components/site-chrome";
 import "./globals.css";
 
@@ -10,8 +8,8 @@ export const metadata: Metadata = {
   description:
     "A public, sourced model of Nebius Group (NASDAQ: NBIS): reported financials, guidance versus actuals, data centers, and public prices.",
   icons: {
-    icon: [{ url: "/favicon.webp?v=c2a724d53f39", type: "image/webp", sizes: "640x640" }],
-    apple: [{ url: "/apple-icon.png?v=c2a724d53f39", type: "image/png", sizes: "180x180" }],
+    icon: [{ url: "/favicon.png", type: "image/png", sizes: "64x64" }],
+    apple: [{ url: "/apple-icon.png", type: "image/png", sizes: "180x180" }],
   },
 };
 
@@ -23,8 +21,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <Header />
         <main id="main-content" className="site-width app-main">{children}</main>
         <Footer />
-        <Analytics />
-        <SpeedInsights />
       </body>
     </html>
   );

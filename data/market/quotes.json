@@ -6,5 +6,5 @@
   "sourceTitle": null,
   "currency": "USD",
   "points": [],
-  "note": "Empty on purpose. Run scripts/fetch-quote.mjs after setting FINNHUB_API_KEY or ALPHAVANTAGE_API_KEY. The short-term model also accepts manual inputs, which are not stored as market data."
+  "note": "No stored daily closes. The short-term band starts from the hand-entered close and a typed volatility."
 }
