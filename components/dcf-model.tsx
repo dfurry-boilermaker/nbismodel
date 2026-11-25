@@ -38,6 +38,10 @@ export function DcfModel({ compact = false }: { compact?: boolean }) {
   const marginGrid = useMemo(() => marginCapexGrid(), []);
   const rateGrid = useMemo(() => waccGrowthGrid(), []);
   const declineGrid = useMemo(() => priceCostGrid(), []);
+  const contributions = results.map((item) => ({ name: item.name, value: item.weight * headlineValue(item) }));
+  const bullShare = weighted > 0 ? contributions[2].value / weighted : 0;
+  const noBull = (contributions[0].value + contributions[1].value) / (results[0].weight + results[1].weight);
+  const maxFlow = Math.max(1, ...result.rows.flatMap((row) => [Math.abs(row.fcff), row.revenue, row.capexNet]));
 
   return (
     <div className="space-y-4">
@@ -61,6 +65,19 @@ export function DcfModel({ compact = false }: { compact?: boolean }) {
       </div>
       {compact ? <p className="text-sm text-muted">{result.name}: raw {money(result.bridge.perShareRaw)}, shown {money(result.bridge.perShare)}.</p> : (
         <>
+          <section className="rounded-lg border border-line bg-panel p-4 space-y-3">
+            <h3 className="font-medium">What drives the weighted value?</h3>
+            <div className="grid gap-3 sm:grid-cols-3">
+              <Stat label="Bull contribution" value={money(contributions[2].value)} />
+              <Stat label="Weighted value from bull" value={`${(bullShare * 100).toFixed(1)}%`} />
+              <Stat label="Excluding bull, reweighted" value={money(noBull)} />
+            </div>
+            <div className="flex h-3 overflow-hidden rounded bg-background" role="img" aria-label={contributions.map((item) => `${item.name}: ${money(item.value)}`).join(", ")}>
+              {contributions.map((item, index) => <div key={item.name} className={["bg-muted", "bg-sky-500", "bg-accent"][index]} style={{ width: `${weighted > 0 ? item.value / weighted * 100 : 0}%` }} />)}
+            </div>
+            <div className="flex flex-wrap gap-4 text-xs text-muted">{contributions.map((item) => <span key={item.name}>{item.name}: {money(item.value)} / share</span>)}</div>
+            <p className="text-xs text-muted">The contributions use the published subjective weights and floored outcomes. The no-bull illustration redistributes its weight proportionally across the remaining cases; it is not a new forecast.</p>
+          </section>
           <div className="flex flex-wrap gap-2">
             {(["bear", "base", "bull"] as const).map((caseName) => (
               <Button key={caseName} type="button" size="sm" variant={name === caseName ? "default" : "outline"} aria-pressed={name === caseName} onClick={() => setName(caseName)}>{caseName}</Button>
@@ -95,6 +112,34 @@ export function DcfModel({ compact = false }: { compact?: boolean }) {
               If that equity were sold at the hand-entered close of {money(panel.price)} as of {REFERENCE_CLOSE.asOf}, the illustrative figure is {money(panel.vPost)}. The headline does not use that sale.
             </p>
           </div>
+          <section className="space-y-3 rounded-lg border border-line p-4">
+            <h3 className="font-medium">Cash-flow trajectory · {name}</h3>
+            <p className="text-xs text-muted">USD millions; 2026 is Q4 only. Common scale, zero at the center. Revenue (blue), capex outlay (amber), free cash flow (accent; negative extends left).</p>
+            <div className="space-y-2">
+              {result.rows.map((row) => <div key={row.year} className="grid grid-cols-[3rem_1fr] items-center gap-2">
+                <span className="text-xs font-mono">{row.year}</span>
+                <div className="relative space-y-1 border-line">
+                  <div className="absolute inset-y-0 left-1/2 border-l border-line" />
+                  {[[row.revenue, "bg-sky-500", "Revenue"], [row.capexNet, "bg-amber-500", "Capex"], [row.fcff, "bg-accent", "FCFF"]].map(([value, color, label]) => {
+                    const amount = Number(value);
+                    const width = Math.abs(amount) / maxFlow * 50;
+                    return <div key={String(label)} className="relative h-2" role="img" aria-label={`${row.year} ${label}: ${formatCompactUsd(amount * 1e6)}`} title={`${label}: ${formatCompactUsd(amount * 1e6)}`}><div className={`absolute h-full rounded-sm ${color}`} style={{ left: `${amount < 0 ? 50 - width : 50}%`, width: `${width}%` }} /></div>;
+                  })}
+                </div>
+              </div>)}
+            </div>
+            <p className="text-xs text-muted">Explicit-period present value {formatCompactUsd(result.pvExplicit * 1e6)} · terminal present value {formatCompactUsd(result.pvTerminal * 1e6)}. A positive terminal value can offset negative earlier cash flows.</p>
+          </section>
+          <section className="space-y-2">
+            <h3 className="font-medium">Annual financing requirements · {name}</h3>
+            <p className="text-xs text-muted">Illustrative financing overlay, separate from the headline. Debt amortization is straight-line over five years after each asset-backed draw. All amounts USD.</p>
+            <div className="overflow-x-auto">
+              <table className="w-full min-w-[760px] text-left text-sm">
+                <thead className="text-xs uppercase text-muted"><tr>{["Year", "Asset debt draw", "Asset repayment", "Asset debt end", "Corporate draw", "Equity draw", "Notes due", "Cash end"].map((label) => <th key={label} className="border-b border-line px-2 py-2">{label}</th>)}</tr></thead>
+                <tbody className="font-mono text-xs">{panel.fundingRows.map((row) => <tr key={row.year} className="border-b border-line/70"><td className="px-2 py-2">{row.year}</td>{[row.abfDraw, row.abfAmort, row.abfEnding, row.corporateDraw, row.equityDraw, row.notePrincipal, row.endingCash].map((value, i) => <td key={i} className="px-2 py-2">{formatCompactUsd(value * 1e6)}</td>)}</tr>)}</tbody>
+              </table>
+            </div>
+          </section>
           <div className="overflow-x-auto">
             <table className="w-full min-w-[880px] text-left text-sm">
               <thead className="text-xs uppercase tracking-wide text-muted">
