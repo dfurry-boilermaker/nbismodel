@@ -85,7 +85,7 @@ The GitHub Action needs permission to push.
 
 The short-term band is a zero-drift lognormal range. The starting price is the hand-entered close of $87.31 as of 2026-11-24. Volatility is typed. This is not a directional forecast.
 
-The long-term model is version 4.0.0. The headline is unlevered free cash flow on today's shares. Displayed value per share is floored at zero, and the raw figure is shown beside it. It is not a price target.
+The long-term model is version 4.0.0. The headline is unlevered free cash flow on today's shares. Displayed value per share is floored at zero, and the raw figure is shown beside it. It is not a price target. The overview separately shows a 12-month forward DCF price scenario with a FY2027 financing snapshot proxy, including modeled equity issuance through that date. See the methodology page for assumptions and limitations.
 
 ### Hand-entered close
 
