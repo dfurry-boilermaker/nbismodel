@@ -61,7 +61,7 @@ export default function HomePage() {
             <div className="feature-copy">
               <h2>Beyond<br />the share price.</h2>
               <div className="feature-value">{dollars(weighted)}</div>
-              <p className="feature-note">Model {MODEL_VERSION} weighted arithmetic per share. Bear {dollars(headlineValue(cases[0]))}, base {dollars(headlineValue(cases[1]))}, bull {dollars(headlineValue(cases[2]))}. Not a price target. A share is shown at zero if the arithmetic is negative.</p>
+              <p className="feature-note">Model {MODEL_VERSION} weighted arithmetic per share. Bear {dollars(headlineValue(cases[0]))}, base {dollars(headlineValue(cases[1]))}, bull {dollars(headlineValue(cases[2]))}. The November 24, 2026 close was $87.31. Not a price target. A share is shown at zero if the arithmetic is negative.</p>
               <Link href="/models" className="pill-link">Inspect the inputs <span aria-hidden="true">↗</span></Link>
             </div>
           </div>

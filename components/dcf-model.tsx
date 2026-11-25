@@ -1,18 +1,21 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
   CASES,
+  MARKET_PRICE,
   MODEL_VERSION,
   VALUATION_DATE,
   allCases,
+  declineSensitivity,
   headlineValue,
-  marginMaintenanceGrid,
+  marketMultiple,
   peerCrossCheck,
+  rawHeadline,
   runCase,
   waccGrowthGrid,
+  weightedRaw,
   weightedValue,
   type CaseName,
 } from "@/lib/dcf";
@@ -26,28 +29,27 @@ function money(value: number): string {
 export function DcfModel({ compact = false }: { compact?: boolean }) {
   const results = useMemo(() => allCases(), []);
   const weighted = useMemo(() => weightedValue(results), [results]);
+  const weightedUnfloored = useMemo(() => weightedRaw(results), [results]);
   const [name, setName] = useState<CaseName>("base");
   const result = useMemo(() => runCase(name), [name]);
-  const bridge = result.bridges[result.headline];
+  const bridge = result.bridges.none;
   const peers = useMemo(() => peerCrossCheck(result), [result]);
+  const market = useMemo(() => marketMultiple(result), [result]);
   const grid = useMemo(() => waccGrowthGrid(), []);
-  const marginGrid = useMemo(() => marginMaintenanceGrid(), []);
-  const flagged = peers.some((peer) => peer.divergesFromDcf);
+  const declines = useMemo(() => declineSensitivity(name), [name]);
 
   return (
     <div className="space-y-4">
       <p className="text-sm text-muted">
-        Model {MODEL_VERSION}, discounted from {VALUATION_DATE}. Guided revenue and capex are used for
-        2026 and 2027. Later revenue is the energized fleet times a labeled revenue-per-megawatt rate.
-        After the build, capex is maintenance only. Equity per share is shown at zero when the
-        arithmetic is negative, because a share has limited liability. This is not a price
-        target or a recommendation.
+        Model {MODEL_VERSION}, discounted from {VALUATION_DATE}. The close that day was {money(MARKET_PRICE)}.
+        2026 and 2027 revenue follow the company outlook. Later revenue is energized megawatts times
+        utilization times the contract rate. This is educational arithmetic, not a price target.
       </p>
       <details className="text-sm text-muted">
         <summary className="cursor-pointer">Unfloored arithmetic</summary>
         <p className="mt-2">
-          Displayed value is max(0, equity / shares). In these three cases the floor does not
-          change the result: bear {money(results[0].bridges.none.perShareRaw)}, base {money(results[1].bridges.none.perShareRaw)}, bull {money(results[2].bridges.all.perShareRaw)}.
+          Displayed value is max(0, equity / shares). Raw values: bear {money(rawHeadline(results[0]))}, base {money(rawHeadline(results[1]))}, bull {money(rawHeadline(results[2]))}.
+          The weighted raw figure is {money(weightedUnfloored)}. The close on {VALUATION_DATE} was {money(MARKET_PRICE)}.
         </p>
       </details>
       <div className="grid gap-3 sm:grid-cols-4">
@@ -62,14 +64,16 @@ export function DcfModel({ compact = false }: { compact?: boolean }) {
               {row.name} · {Math.round(CASES[row.name].weight * 100)}%
             </div>
             <div className="mt-1 font-mono text-xl">{money(headlineValue(row))}</div>
-            <div className="text-xs text-muted">{row.headline === "all" ? "Notes share-settled" : "Notes outstanding"}</div>
+            <div className="text-xs text-muted">
+              Raw {money(rawHeadline(row))}. Close {money(MARKET_PRICE)}.
+            </div>
           </button>
         ))}
         <div className="rounded-lg border border-line bg-panel p-3">
           <div className="text-xs uppercase tracking-wide text-muted">Weighted</div>
           <div className="mt-1 font-mono text-xl">{money(weighted)}</div>
           <div className="text-xs text-muted">
-            25 / 50 / 25. Bear {money(results[0].assumptions.weight * headlineValue(results[0]))}, base {money(results[1].assumptions.weight * headlineValue(results[1]))}, bull {money(results[2].assumptions.weight * headlineValue(results[2]))}.
+            30 / 50 / 20, the reviewers&apos; weights, not a company weight. Bear {money(results[0].assumptions.weight * headlineValue(results[0]))}, base {money(results[1].assumptions.weight * headlineValue(results[1]))}, bull {money(results[2].assumptions.weight * headlineValue(results[2]))}.
           </div>
         </div>
       </div>
@@ -91,21 +95,32 @@ export function DcfModel({ compact = false }: { compact?: boolean }) {
             <Stat label="Per share" value={money(bridge.perShare)} />
           </div>
           <div className="grid gap-3 sm:grid-cols-2">
-            <BridgeCard title="Notes outstanding" value={result.bridges.none} />
-            <BridgeCard title="All notes share-settled" value={result.bridges.all} />
+            <BridgeCard
+              title="Note-by-note settlement"
+              value={bridge}
+              detail={result.convertedNoteIds.length ? `Converted: ${result.convertedNoteIds.join(", ")}` : "No note is in the money at this value."}
+            />
+            <div className="rounded-lg border border-line p-3 text-sm">
+              <div className="font-medium">Against the close</div>
+              <div className="mt-1 font-mono text-lg">{money(MARKET_PRICE)}</div>
+              <p className="mt-1 text-xs text-muted">
+                Raw value {money(bridge.perShareRaw)}. Equity issued {formatCompactUsd(result.equityIssued)} at {money(result.assumptions.issuePrice)}.
+                Interest over the explicit years {formatCompactUsd(result.interestTotal)}.
+              </p>
+            </div>
           </div>
           <p className="text-sm text-muted">
-            Free cash flow is after-tax EBIT minus growth capex. Depreciation equals maintenance
-            capex: servers and network gear over the disclosed five-year life, and the other 15%
-            of the 2026–27 budget over 15 years, which is an assumption. New capex starts
-            depreciating the next year. Tax is {Math.round(result.assumptions.taxRate * 100)}% in
-            this case, a normalized rate after losses. Nebius has not guided a cash tax rate.
-            The terminal method is {result.terminalMethod === "gordon"
-              ? "Gordon growth on maintenance-only free cash flow."
-              : "a five-year harvest with no replacement capex, because maintenance exceeds EBITDA. Replacing assets forever at a loss is not assumed."}
-            {" "}Equity value is enterprise value minus opening carrying debt plus the unrestricted
-            cash still left after the funding gap. Future borrowings are not subtracted again.
-            Residual equity of {formatCompactUsd(bridge.fundingGap)} is issued at ${result.assumptions.issuePrice.toFixed(2)}.
+            Cash flow deducts capex, interest on the term loan and on new secured draws, and tax at the Dutch 25.8% rate after depreciation and losses.
+            New secured draws fund {Math.round(result.assumptions.coverage * 100)}% of growth capex at the term loan&apos;s 6.4% hedged coupon.
+            A cash shortfall is filled by shares at the November 24 close, and those proceeds are the cash that covers the shortfall.
+            Opening cash is the starting balance. It is not spent a second time in the bridge.
+            Deferred revenue of {formatCompactUsd(result.deferredDrawn)} is removed from cash earnings as it is recognized.
+            {result.terminalMethod === "gordon"
+              ? " The terminal value reinvests at the discount rate, so growth does not earn a spread."
+              : " Steady-state cash flow does not cover replacement, so the terminal value is zero."}
+            {result.tvShareOfEv == null
+              ? " Equity is negative before the floor, so terminal value is not shown as a share of equity."
+              : ` Terminal present value is ${(result.tvShareOfEv * 100).toFixed(0)}% of equity value.`}
           </p>
           <div className="overflow-x-auto">
             <table className="w-full min-w-[880px] text-left text-sm">
@@ -138,19 +153,16 @@ export function DcfModel({ compact = false }: { compact?: boolean }) {
             </table>
           </div>
           <div>
-            <h3 className="mb-2 text-sm font-medium">Peer multiples on this case&apos;s 2027 figures</h3>
-            {flagged ? (
-              <p className="mb-2 text-sm text-amber">
-                At least one multiple implies a per-share figure more than 50% away from this
-                case&apos;s discounted cash flow. The cash-flow result deducts growth capex. A
-                multiple on next year&apos;s EBITDA does not.
-              </p>
-            ) : null}
+            <h3 className="mb-2 text-sm font-medium">Peer multiples, informational</h3>
+            <p className="mb-2 text-sm text-muted">
+              Trailing multiples are applied to this case&apos;s 2027 EBITDA and discounted back, using this case&apos;s 2027 net debt.
+              The CoreWeave GAAP multiple is not applied to Nebius adjusted EBITDA. At the November 24 close, Nebius equity is about {formatCompactUsd(market.equity * 1e6)} and enterprise value about {formatCompactUsd(market.ev * 1e6)}, or {market.evToEbitda == null ? "n/a" : `${market.evToEbitda.toFixed(1)}x`} this case&apos;s 2027 EBITDA.
+            </p>
             <div className="overflow-x-auto">
               <table className="w-full min-w-[720px] text-left text-sm">
                 <thead className="text-xs uppercase tracking-wide text-muted">
                   <tr>
-                    {["Peer", "As of", "EV/EBITDA", "EV/revenue", "Per share on EBITDA", "Per share on revenue", "Vs DCF"].map((heading) => (
+                    {["Peer", "As of", "EV/EBITDA", "EV/revenue", "Per share on EBITDA", "Per share on revenue", "Use"].map((heading) => (
                       <th key={heading} className="px-2 py-1 font-medium">{heading}</th>
                     ))}
                   </tr>
@@ -167,7 +179,7 @@ export function DcfModel({ compact = false }: { compact?: boolean }) {
                       <td className="px-2 py-2 font-mono">{peer.evToRevenue ?? "—"}</td>
                       <td className="px-2 py-2 font-mono">{peer.perShareOnEbitda == null ? "—" : money(peer.perShareOnEbitda)}</td>
                       <td className="px-2 py-2 font-mono">{peer.perShareOnRevenue == null ? "—" : money(peer.perShareOnRevenue)}</td>
-                      <td className="px-2 py-2">{peer.divergesFromDcf ? <Badge tone="amber">Over 50%</Badge> : <Badge tone="good">Within 50%</Badge>}</td>
+                      <td className="px-2 py-2">{peer.applied ? "Shown" : "Not applied"}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -175,6 +187,28 @@ export function DcfModel({ compact = false }: { compact?: boolean }) {
             </div>
           </div>
           <div>
+            <h3 className="mb-2 text-sm font-medium">Cost and price decline, this case</h3>
+            <p className="mb-2 text-xs text-muted">
+              The same rate cuts server capex on new megawatts, server refresh capex, and the contract rate at the next re-pricing. The published cases use zero.
+            </p>
+            <table className="mb-6 text-sm">
+              <thead className="text-xs text-muted">
+                <tr>
+                  <th className="px-2 py-1 text-left">Decline</th>
+                  <th className="px-2 py-1 text-right">Raw</th>
+                  <th className="px-2 py-1 text-right">Shown</th>
+                </tr>
+              </thead>
+              <tbody className="font-mono">
+                {declines.map((row) => (
+                  <tr key={row.decline}>
+                    <td className="px-2 py-1">{Math.round(row.decline * 100)}%{row.decline === result.assumptions.costDecline ? " · case" : ""}</td>
+                    <td className="px-2 py-1 text-right">{money(row.perShareRaw)}</td>
+                    <td className="px-2 py-1 text-right">{money(row.perShare)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
             <h3 className="mb-2 text-sm font-medium">Base case at other discount rates and terminal growth</h3>
             <table className="text-sm">
               <thead className="text-xs text-muted">
@@ -188,34 +222,7 @@ export function DcfModel({ compact = false }: { compact?: boolean }) {
                   <tr key={row[0].wacc}>
                     <td className="px-2 py-1">{Math.round(row[0].wacc * 100)}%</td>
                     {row.map((cell) => (
-                      <td key={cell.growth} className="px-2 py-1 text-right">{cell.perShare == null ? "—" : money(cell.perShare)}</td>
-                    ))}
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          <div>
-            <h3 className="mb-2 text-sm font-medium">Base terminal margin against maintenance as a share of revenue</h3>
-            <p className="mb-2 text-xs text-muted">
-              The explicit years stay at the base case. Only the terminal value is rebuilt. The
-              model&apos;s own maintenance cost is about 29% of 2032 revenue.
-            </p>
-            <table className="text-sm">
-              <thead className="text-xs text-muted">
-                <tr>
-                  <th className="px-2 py-1 text-left">Margin \ maintenance</th>
-                  {marginGrid[0].map((cell) => (
-                    <th key={cell.maintenanceToRevenue} className="px-2 py-1 text-right">{Math.round(cell.maintenanceToRevenue * 100)}%</th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody className="font-mono">
-                {marginGrid.map((row) => (
-                  <tr key={row[0].margin}>
-                    <td className="px-2 py-1">{Math.round(row[0].margin * 100)}%</td>
-                    {row.map((cell) => (
-                      <td key={cell.maintenanceToRevenue} className="px-2 py-1 text-right">{money(cell.perShare)}</td>
+                      <td key={cell.growth} className="px-2 py-1 text-right">{cell.perShareRaw == null ? "—" : money(cell.perShareRaw)}</td>
                     ))}
                   </tr>
                 ))}
@@ -240,18 +247,20 @@ function Stat({ label, value }: { label: string; value: string }) {
 function BridgeCard({
   title,
   value,
+  detail,
 }: {
   title: string;
-  value: { perShare: number; equityFirm: number; netDebt: number; shares: number; convertShares: number; fundingGap: number };
+  value: { perShare: number; perShareRaw: number; equityFirm: number; netDebt: number; shares: number; convertShares: number; fundingGap: number };
+  detail: string;
 }) {
   return (
     <div className="rounded-lg border border-line p-3 text-sm">
       <div className="font-medium">{title}</div>
       <div className="mt-1 font-mono text-lg">{money(value.perShare)}</div>
       <p className="mt-1 text-xs text-muted">
-        Equity {formatCompactUsd(value.equityFirm)} · net debt {formatCompactUsd(value.netDebt)} ·{" "}
+        Raw {money(value.perShareRaw)}. Equity {formatCompactUsd(value.equityFirm)} · horizon net debt {formatCompactUsd(value.netDebt)} ·{" "}
         {(value.shares / 1e6).toFixed(1)} million shares
-        {value.convertShares ? `, including ${(value.convertShares / 1e6).toFixed(1)} million conversion shares` : ""}.
+        {value.convertShares ? `, including ${(value.convertShares / 1e6).toFixed(1)} million conversion shares` : ""}. {detail}
       </p>
     </div>
   );

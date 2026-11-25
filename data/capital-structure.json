@@ -88,7 +88,7 @@
   "deferredRevenue": {
     "current": { "value": 1445.5, "source": "fs-q3-2026" },
     "nonCurrent": { "value": 7963.7, "source": "fs-q3-2026" },
-    "note": "Customer prepayments not yet recognized as revenue. The model does not subtract this liability and also count the related future revenue."
+    "note": "Customer prepayments not yet recognized as revenue. Cash EBITDA in the model subtracts this balance as it is recognized, because the cash is already in the September 30, 2026 cash balance. It is not subtracted a second time in the equity bridge."
   },
   "debtCarryingTotal": {
     "value": 14162.8,

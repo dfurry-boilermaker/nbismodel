@@ -13,11 +13,10 @@ export default function ModelsPage() {
         <h1 className="text-3xl font-semibold text-accent">Price models</h1>
         <p className="mt-3 max-w-3xl text-sm leading-6 text-muted">
           Both models show the inputs and the arithmetic. Nothing here is a price target or a
-          recommendation. Model 2.3.0 uses the 53.2% third-quarter AI-cloud margin in
-          the base case. Legacy megawatts start at $15.26 million a year, from recurring
-          revenue divided by the disclosed 170 MW active census, and converge toward
-          contract rates. Replacement cost falls 25% a year. A share is shown at zero if
-          the arithmetic is negative.
+          recommendation. Model 3.0.0 prices 2026 and 2027 from the company outlook and later
+          years from energized megawatts, utilization, and the contract rate. The baseline
+          does not cut server cost. A share is shown at zero if the arithmetic is negative,
+          and the raw figure is on the page. The November 24, 2026 close was $87.31.
         </p>
       </header>
       <section className="space-y-3">

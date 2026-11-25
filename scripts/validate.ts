@@ -1,7 +1,21 @@
 import { readFileSync } from "node:fs";
 import { financials, guidance } from "../lib/load";
 import { scoreGuidance } from "../lib/guidance";
-import { BASIC_ECONOMIC_SHARES, CONVERT_SHARES, MODEL_VERSION, runCase, weightedValue } from "../lib/dcf";
+import {
+  BASIC_ECONOMIC_SHARES,
+  CONVERT_SHARES,
+  DEFERRED_REVENUE,
+  DISCLOSED_ACTIVE_MW,
+  DISCLOSED_PAYBACK_MONTHS,
+  MARKET_PRICE,
+  MODEL_VERSION,
+  TAX_RATE,
+  declineSensitivity,
+  hardwarePaybackMonths,
+  runCase,
+  waccGrowthGrid,
+  weightedValue,
+} from "../lib/dcf";
 import { priceBand } from "../lib/vol";
 
 const ids = new Set(Object.keys(financials.sources));
@@ -41,28 +55,47 @@ if (!december || scoreGuidance(december, "2026-11-23").status !== "superseded") 
   throw new Error("December 2026 ARR should be superseded");
 }
 
-if (MODEL_VERSION !== "2.3.0") throw new Error(`model version ${MODEL_VERSION}`);
+if (MODEL_VERSION !== "3.0.0") throw new Error(`model version ${MODEL_VERSION}`);
 if (CONVERT_SHARES !== 68_112_588) throw new Error(`convert shares ${CONVERT_SHARES}`);
 if (BASIC_ECONOMIC_SHARES !== 313_968_341) throw new Error(`basic shares ${BASIC_ECONOMIC_SHARES}`);
+if (MARKET_PRICE !== 87.31 || TAX_RATE !== 0.258 || DISCLOSED_ACTIVE_MW !== 170) {
+  throw new Error("sourced price, tax rate, or active-power census drifted");
+}
+if (DISCLOSED_PAYBACK_MONTHS !== 19) throw new Error("payback source drifted");
 const base = runCase("base");
 const bear = runCase("bear");
 const bull = runCase("bull");
-const bearPs = bear.bridges.none.perShare;
-const basePs = base.bridges.none.perShare;
-const bullPs = bull.bridges.all.perShare;
-if (!(bearPs > 0 && bearPs < basePs && basePs < bullPs)) {
-  throw new Error(`case order ${bearPs} ${basePs} ${bullPs}`);
+if ("fadeShare" in base.assumptions || base.assumptions.costDecline !== 0) {
+  throw new Error("fade or a non-zero baseline cost decline is still in the case");
 }
-if (basePs < 218 * 0.7 || basePs > 308 * 1.3) {
-  throw new Error(`base ${basePs} is outside 30% of the peer range`);
+if (bear.assumptions.discount !== 0.12 || bear.assumptions.margin !== 0.4 || bear.assumptions.mwCap !== 3000) {
+  throw new Error("bear stress inputs drifted");
 }
-if (bullPs < 286) throw new Error(`bull ${bullPs} is below the top peer multiple`);
-const lastBase = base.years.at(-1);
-if (!lastBase || lastBase.maintenanceCapex / lastBase.revenue < 0.05 || lastBase.maintenanceCapex / lastBase.revenue > 0.15) {
-  throw new Error("base maintenance is not a modest share of revenue");
+if (bear.assumptions.issuePrice !== MARKET_PRICE) throw new Error("equity is not issued at the market price");
+for (let i = 0; i < base.years.length; i += 1) {
+  const revenue = [bear, base, bull].map((result) => result.years[i].revenue);
+  const ebitda = [bear, base, bull].map((result) => result.years[i].ebitda);
+  if (revenue[0] > revenue[1] + 1 || revenue[1] > revenue[2] + 1) throw new Error(`revenue order ${base.years[i].label}`);
+  if (ebitda[0] > ebitda[1] + 1 || ebitda[1] > ebitda[2] + 1) throw new Error(`ebitda order ${base.years[i].label}`);
 }
-if (base.assumptions.margin2027 !== 0.532 || bear.assumptions.marginTerminal < 0.24) {
-  throw new Error("margin anchors drifted");
+const shown = [bear, base, bull].map((result) => result.bridges.none.perShare);
+if (shown[0] > shown[1] + 0.001 || shown[1] > shown[2] + 0.001) throw new Error(`floored value order ${shown.join(",")}`);
+for (const result of [bear, base, bull]) {
+  if (Math.abs(result.bridges.none.perShare - Math.max(0, result.bridges.none.perShareRaw)) > 1e-6) {
+    throw new Error("floor is not max(0, raw)");
+  }
+}
+if (Math.abs(base.deferredDrawn / 1e6 - DEFERRED_REVENUE) > 1) throw new Error(`deferred draw ${base.deferredDrawn}`);
+const declines = declineSensitivity("base");
+if (declines.map((row) => row.decline).join(",") !== "0,0.1,0.2,0.25") throw new Error("decline grid");
+const paybackFlat = hardwarePaybackMonths(36.125, 20, 0.4);
+const paybackDown = hardwarePaybackMonths(36.125 * 0.75 ** 5, 20 * 0.75 ** 5, 0.4);
+if (!Number.isFinite(base.paybackMonths) || Math.abs(paybackFlat - paybackDown) > 0.01) {
+  throw new Error("hardware payback is not invariant when cost and price decline together");
+}
+const gridPoint = waccGrowthGrid().flat().find((cell) => cell.wacc === 0.11 && cell.growth === 0.02);
+if (!gridPoint || gridPoint.perShareRaw == null || Math.abs(gridPoint.perShareRaw - base.bridges.none.perShareRaw) > 0.01) {
+  throw new Error("sensitivity grid misses the base case");
 }
 const weighted = weightedValue([bear, base, bull]);
 if (!Number.isFinite(weighted)) throw new Error(`weighted ${weighted}`);
@@ -78,9 +111,11 @@ if (!h100 || h100.priceUsd !== 4.5) throw new Error(`H100 price ${h100?.priceUsd
 console.log("validate ok", {
   version: MODEL_VERSION,
   bear: bear.bridges.none.perShare,
+  bearRaw: bear.bridges.none.perShareRaw,
   base: base.bridges.none.perShare,
-  baseConverted: base.bridges.all.perShare,
-  bull: bull.bridges.all.perShare,
+  baseRaw: base.bridges.none.perShareRaw,
+  bull: bull.bridges.none.perShare,
+  bullRaw: bull.bridges.none.perShareRaw,
   weighted,
   band,
 });
