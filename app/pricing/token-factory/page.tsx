@@ -1,3 +1,4 @@
+import { FactoryCharts } from "@/components/pricing-dashboard";
 import { tokenFactory } from "@/lib/load";
 
 export const metadata = { title: "Token Factory — Nebius model" };
@@ -20,6 +21,7 @@ export default function TokenFactoryPage() {
           ))}
         </ul>
       </header>
+      <FactoryCharts />
       <div className="overflow-x-auto rounded-xl border border-line">
         <table className="w-full min-w-[860px] text-left text-sm">
           <thead className="bg-panel text-xs uppercase tracking-wide text-muted">
