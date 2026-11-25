@@ -1,7 +1,9 @@
 import { DcfModel } from "@/components/dcf-model";
 import { VolModel } from "@/components/vol-model";
 import { REFERENCE_CLOSE } from "@/lib/dcf";
-import { quotes } from "@/lib/load";
+import { financials, quotes } from "@/lib/load";
+import { CapitalEfficiency } from "@/components/capital-efficiency";
+import { historicalCapitalEfficiency } from "@/lib/capital-efficiency";
 
 export const metadata = { title: "Price models — Nebius model" };
 
@@ -17,6 +19,10 @@ export default function ModelsPage() {
           shares. {REFERENCE_CLOSE.label}
         </p>
       </header>
+      <section id="capital-efficiency" className="space-y-3 scroll-mt-20">
+        <h2 className="text-xl font-medium">Capital efficiency and GPU economics</h2>
+        <CapitalEfficiency history={historicalCapitalEfficiency(financials.quarters)} />
+      </section>
       <section className="space-y-3">
         <h2 className="text-xl font-medium">Short term: a volatility band</h2>
         <VolModel
