@@ -639,13 +639,14 @@ export function financingPanel(result: ModelResult) {
   const conv = new Set(result.bridge.converted);
   let notes = NOTES.filter((note) => !conv.has(note.id)).map((note) => ({ ...note }));
   let tl = TERM_LOAN_PRINCIPAL;
-  const abf: { y: number; a: number }[] = [];
+  const abf: { y: number; a: number; original: number }[] = [];
   let corp = 0;
   let cash = CASH;
   let equity = 0;
   let interest = 0;
   let refinanced = 0;
   let corpTotal = 0;
+  const fundingRows: { year: number; abfDraw: number; abfAmort: number; abfEnding: number; corporateDraw: number; equityDraw: number; notePrincipal: number; endingCash: number }[] = [];
   for (const row of result.rows) {
     const frac = row.year === 2026 ? 0.25 : 1;
     const coupon = notes.reduce((sum, note) => sum + note.coupon, 0) * frac;
@@ -661,32 +662,37 @@ export function financingPanel(result: ModelResult) {
     const tlPay = row.year >= 2027 ? Math.min(tl, (TERM_LOAN_PRINCIPAL / 4) * frac) : 0;
     tl -= tlPay;
     let abfAmort = 0;
-    const next: { y: number; a: number }[] = [];
+    const next: typeof abf = [];
     for (const tranche of abf) {
-      const pay = row.year > tranche.y ? Math.min((tranche.a / 5) * frac, tranche.a) : 0;
+      const pay = row.year > tranche.y ? Math.min((tranche.original / 5) * frac, tranche.a) : 0;
       abfAmort += pay;
-      next.push({ y: tranche.y, a: tranche.a - pay });
+      if (tranche.a - pay > 1e-8) next.push({ ...tranche, a: tranche.a - pay });
     }
     const abfDraw = row.year >= 2027 ? c.abf_share * row.capexNet : 0;
-    next.push({ y: row.year, a: abfDraw });
+    if (abfDraw > 0) next.push({ y: row.year, a: abfDraw, original: abfDraw });
     abf.length = 0;
     abf.push(...next);
     cash += row.fcff - yearInterest - refi - tlPay - abfAmort + abfDraw;
+    let corporateDraw = 0;
+    let equityDraw = 0;
     if (cash < MIN_CASH) {
       let need = MIN_CASH - cash;
       const cap = Math.max(0, LEV_CAP * Math.max(row.ebitda, 0) * (1 / frac) - (abf.reduce((sum, tranche) => sum + tranche.a, 0) + corp + tl + notes.reduce((sum, note) => sum + note.principal, 0)));
       const draw = Math.min(need, cap);
       corp += draw;
+      corporateDraw = draw;
       corpTotal += draw;
       need -= draw;
       equity += need;
+      equityDraw = need;
       cash = MIN_CASH;
     }
+    fundingRows.push({ year: row.year, abfDraw, abfAmort, abfEnding: abf.reduce((sum, tranche) => sum + tranche.a, 0), corporateDraw, equityDraw, notePrincipal: refi, endingCash: cash });
   }
   const price = REFERENCE_CLOSE.value;
   const newShares = price > 0 ? (equity / price) * 1e6 : Infinity;
   const vPost = (result.bridge.equityValue + equity) / (result.bridge.shares + newShares) * 1e6;
-  return { equity, interest, refinanced, corpTotal, newShares, vPost, price };
+  return { equity, interest, refinanced, corpTotal, newShares, vPost, price, fundingRows };
 }
 
 export const BASIC_ECONOMIC_SHARES = S_BASIC;
