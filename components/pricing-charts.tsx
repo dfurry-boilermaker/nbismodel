@@ -19,7 +19,7 @@ export function HistoryChart({ title, series, unit, note, money = false }: { tit
   const maximum = Math.max(1e-12, ...observed.map(p => p.value));
   const start = points.length ? Date.parse(points[0].date) : 0;
   const span = Math.max(1, end-start);
-  const x = (d:string) => 12 + (Date.parse(d)-start)/span*296;
+  const x = (d:string) => 48 + (Date.parse(d)-start)/span*260;
   const y = (v:number) => 106-v/maximum*94;
   const fmt = (v:number) => (money ? "$" : "")+number(v);
   const change = first && last && observed.length > 1 && first.value !== 0 ? (last.value/first.value-1)*100 : null;
@@ -35,7 +35,7 @@ export function HistoryChart({ title, series, unit, note, money = false }: { tit
       <div className="flex flex-wrap items-baseline justify-between gap-2"><div><div className="font-mono text-2xl text-foreground">{fmt(last.value)}</div><p className="text-xs text-muted">Latest observed · {last.date.slice(0,10)}</p></div><div className="text-xs text-muted">{change === null ? "No change calculated" : `${change>0?"+":""}${change.toFixed(1)}% in window`}</div></div>
       {observed.length > 1 ? <>
         <svg viewBox="0 0 320 118" className="block w-full" role="img" aria-label={`${active?.label}: ${observed.length} observations; latest ${fmt(last.value)}`}>
-          {[0,.5,1].map(f=><line key={f} x1="12" x2="308" y1={y(maximum*f)} y2={y(maximum*f)} stroke="var(--line)" strokeWidth=".7"/>)}
+          {[0,.5,1].map(f=><g key={f}><line x1="48" x2="308" y1={y(maximum*f)} y2={y(maximum*f)} stroke="var(--line)" strokeWidth=".7"/><text x="43" y={y(maximum*f)+3} textAnchor="end" fontSize="8" fill="var(--muted)">{new Intl.NumberFormat("en-US",{notation:"compact",maximumFractionDigits:2}).format(maximum*f)}</text></g>)}
           {points.map((p,i)=>{const previous=points[i-1];return previous && previous.value!==null && p.value!==null ? <line key={p.date} x1={x(previous.date)} y1={y(previous.value)} x2={x(p.date)} y2={y(p.value)} stroke="var(--cyan)" strokeWidth="1.8"/> : null})}
           {observed.map(p=><circle key={p.date} cx={x(p.date)} cy={y(p.value)} r={focused?.date===p.date?3:1.6} fill="var(--cyan)"/>)}
         </svg>
