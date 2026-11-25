@@ -189,5 +189,5 @@ function Stat({ label, value }: { label: string; value: string }) {
 }
 
 function Grid({ title, note, children }: { title: string; note?: string; children: ReactNode }) {
-  return <div><h3 className="mb-2 text-sm font-medium">{title}</h3>{note ? <p className="mb-2 text-xs text-muted">{note}</p> : null}{children}</div>;
+  return <div className="min-w-0"><h3 className="mb-2 text-sm font-medium">{title}</h3>{note ? <p className="mb-2 text-xs text-muted">{note}</p> : null}<div className="max-w-full overflow-x-auto" role="region" aria-label={title} tabIndex={0}>{children}</div></div>;
 }
