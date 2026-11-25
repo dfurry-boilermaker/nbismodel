@@ -711,3 +711,32 @@ export const OPENING_CAPITAL_PROXY = OPENING_TAX_BASE;
 export const COMPUTE_ASSET_LIFE = COMPUTE_LIFE;
 export const FACILITY_ASSET_LIFE = FAC_LIFE;
 export const MODEL_TAX_RATE = TAX;
+
+
+/** Separate 12-month price scenario, not the present-value DCF headline.
+ * Uses the model's midyear cash-flow timing and FY2027 closing financing
+ * snapshot as a proxy for the November 2027 target-date balance sheet.
+ */
+export const PRICE_TARGET_DATE = `${Number(VALUATION_DATE.slice(0, 4)) + 1}${VALUATION_DATE.slice(4)}`;
+
+export function twelveMonthPriceTarget(result: ModelResult) {
+  const targetYear = Number(PRICE_TARGET_DATE.slice(0, 4));
+  const elapsed = daysBetween(PRICE_TARGET_DATE) / 365;
+  const interimPv = result.rows.filter(row => row.t <= elapsed).reduce((sum, row) => sum + row.pv, 0);
+  const forwardEv = (result.ev - interimPv) * (1 + result.wacc) ** elapsed;
+  const funding = financingPanel(result).fundingRows.filter(row => row.year <= targetYear);
+  const snapshot = funding[funding.length - 1];
+  const equityIssued = funding.reduce((sum, row) => sum + row.equityDraw, 0);
+  const corporateDebt = funding.reduce((sum, row) => sum + row.corporateDraw, 0);
+  const termRepayments = funding.reduce((sum, row) => sum + row.termLoanPrincipal, 0);
+  const converted = new Set(result.bridge.converted);
+  const maturedCarrying = NOTES.filter(note => !converted.has(note.id) && Number(note.maturity.slice(0, 4)) <= targetYear).reduce((sum, note) => sum + note.carrying, 0);
+  const claims = result.bridge.claims - TERM_LOAN + Math.max(0, TERM_LOAN_PRINCIPAL - termRepayments) - maturedCarrying + corporateDebt + snapshot.abfEnding;
+  const stakes = result.name === "bear" ? 1064.9 : 1603.9;
+  const equity = forwardEv + snapshot.endingCash + stakes - claims;
+  const newShares = equityIssued / REFERENCE_CLOSE.value * 1e6;
+  // Keep the existing case's convertible treatment; recompute option dilution.
+  const shareBase = result.bridge.shares - result.bridge.options + newShares;
+  const { v, opt } = perShare(equity, shareBase);
+  return { name: result.name, weight: result.weight, target: floorShare(v), raw: v, forwardEv, claims, cash: snapshot.endingCash, shares: shareBase + opt, equityIssued };
+}

@@ -62,8 +62,8 @@ export default function MethodologyPage() {
       </p>
       <h2 className="text-lg font-medium text-foreground">Educational use only</h2>
       <p>
-        This model is an educational exercise in valuation arithmetic. It is not a price
-        target, a forecast, a rating, or investment advice, and it is not an offer to buy
+        The models are educational exercises in valuation arithmetic. The overview includes an illustrative
+        12-month price target, not a guarantee, rating, or investment advice, and the site is not an offer to buy
         or sell any security. The values follow from the stated assumptions. Many of those
         assumptions are uncertain. Small changes move the result a lot. The authors may hold
         positions in Nebius Group N.V. or related securities and may trade them without notice.
@@ -75,6 +75,25 @@ export default function MethodologyPage() {
         The reference close used beside the model is $87.31 as of 2026-11-24. It is not used
         to compute the headline value. Peer share prices are not shown, because this site does
         not copy a vendor&apos;s price table.
+      </p>
+      <h2 id="price-target" className="scroll-mt-24 text-lg font-medium text-foreground">12-month price target</h2>
+      <p>
+        The overview target is a separate forward valuation, not the present-day DCF headline.
+        The base case is the headline target; bear, bull and the existing subjective scenario-weighted
+        average are shown for context. The target date is one year after the DCF valuation date.
+        Remaining enterprise value equals current modeled EV less the present value of cash flows
+        dated through the target, compounded at the scenario WACC to that date, using the existing
+        midyear cash-flow convention.
+      </p>
+      <p>
+        The model then adds projected cash and unchanged non-core stake values and deducts
+        projected debt and other claims. It uses the FY2027 year-end financing snapshot as a proxy
+        for November 2027, keeps the existing case&apos;s convertible classification, adds modeled
+        equity issuance through that snapshot at the manually entered reference close, and recomputes
+        treasury-method option dilution. Negative equity values are floored at zero for display.
+        This is an illustrative approximation, not a fresh target-date balance sheet; subsequent
+        financing, share issuance, asset values and market multiples may differ materially.
+        The percentage change uses the dated reference close, not a live quote.
       </p>
       <h2 className="text-lg font-medium text-foreground">Raw and floored values</h2>
       <p>

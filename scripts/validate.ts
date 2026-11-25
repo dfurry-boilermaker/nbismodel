@@ -14,6 +14,8 @@ import {
   sideRuns,
   weightedRaw,
   weightedValue,
+  PRICE_TARGET_DATE,
+  twelveMonthPriceTarget,
 } from "../lib/dcf";
 import { priceBand } from "../lib/vol";
 import { GPU_CASES, gpuEconomics, historicalCapitalEfficiency, projectedCapitalEfficiency } from "../lib/capital-efficiency";
@@ -210,3 +212,15 @@ for (const item of cases) {
   }
 }
 console.log("capital efficiency checks ok");
+
+if (PRICE_TARGET_DATE !== "2027-11-24") throw new Error("12-month target date");
+const forwardTargets = cases.map(twelveMonthPriceTarget);
+for (const target of forwardTargets) {
+  if (!Number.isFinite(target.raw) || target.target !== Math.max(0, target.raw) || target.shares <= 0) throw new Error("invalid forward price target");
+  const original = cases.find(item => item.name === target.name)!;
+  const through2027 = financingPanel(original).fundingRows.filter(row => row.year <= 2027);
+  const issuance = through2027.reduce((sum, row) => sum + row.equityDraw, 0);
+  if (Math.abs(target.equityIssued - issuance) > 1e-6) throw new Error("target financing window");
+  if (Math.abs(target.cash - through2027.at(-1)!.endingCash) > 1e-6) throw new Error("target closing cash");
+}
+console.log("12-month targets", forwardTargets.map(({ name, target, raw }) => ({ name, target, raw })));
