@@ -16,7 +16,7 @@ export default function DataCentersPage() {
           November 12, 2025 prospectus supplement, or the live AI Cloud regions document.
           Each site splits megawatts into contracted or planned, operational, and energized.
           A blank cell means that category was not disclosed for that site. Secondary catalogs
-          are not used.
+          are not used. Site-level planned figures may overlap portfolio announcements (for example Finland's unnamed 310 MW project); do not sum them into operational or contracted fleet capacity. Regional map pins are not necessarily verified facility coordinates.
         </p>
         <p className="mt-3 rounded-md border border-amber/40 bg-amber/10 p-3 text-sm text-amber">
           {centers.imageryNote}
