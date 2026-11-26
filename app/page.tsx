@@ -82,7 +82,7 @@ export default function HomePage() {
 
       <section className="min-w-0 border border-line p-4 sm:p-6" aria-label="Price target assumptions">
         <div className="section-label">/ Price target audit · USD billions except share price and multiples</div>
-        <p className="mt-2 text-sm text-muted">Current CoreWeave comparable: {PEER_MULTIPLE.toFixed(1)}× FY2027 consensus EBITDA, using November 25 market capitalization and September 30 filing debt and cash. The applied multiples are judgments, not company guidance or live peer quotes. FY2028 is a model forecast; there is no company FY2028 revenue guide. The base assumes a major acceleration in monetization; this is the primary upside risk in the model.</p>
+        <p className="mt-2 text-sm text-muted">Current CoreWeave comparable: {PEER_MULTIPLE.toFixed(1)}× FY2027 consensus EBITDA, using November 25 market capitalization and September 30 filing debt and cash. The applied multiples are judgments, not company guidance or live peer quotes. FY2028 is a model forecast; there is no company FY2028 revenue guide. The base assumes a major acceleration in monetization; this is a major risk to the upside thesis.</p>
         <div className="mt-4 overflow-x-auto">
           <table className="w-full min-w-[560px] text-left text-sm">
             <thead><tr>{["Assumption", "Bear", "Base", "Bull"].map(x => <th key={x} className="p-2">{x}</th>)}</tr></thead>
