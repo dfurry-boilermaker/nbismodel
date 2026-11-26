@@ -109,7 +109,7 @@ export default function MethodologyPage() {
       </p>
       <p>
         The letter&apos;s payback is 1 year and 7 months for comparable one-to-three-year deals,
-        on a revenue basis, covering operating costs and capex, and excluding prepayments. This is not directly comparable with the model's compute-only contribution-margin calculation; the company figure covers opex and capex on a revenue basis. The model&apos;s deal-level payback,
+        on a revenue basis, covering operating costs and capex, and excluding prepayments. This is not directly comparable with the model&apos;s compute-only contribution-margin calculation; the company figure covers opex and capex on a revenue basis. The model&apos;s deal-level payback,
         using the server-and-network slice and a contribution margin, is 33.6 months in the bear,
         20.3 months in the base, and 14.8 months in the bull. The base is about 7% longer than
         19 months. The fleet-wide all-in payback is longer because it includes utilization, the
