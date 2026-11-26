@@ -73,8 +73,7 @@ export default function MethodologyPage() {
       <p>
         Closing price entered manually as of the date shown; not live; may be out of date.
         The reference close used beside the model is $87.31 as of 2026-11-24. It is not used
-        to compute the headline value. Peer share prices are not shown, because this site does
-        not copy a vendor&apos;s price table.
+        to compute the headline value. The overview uses a separately reconstructed, dated CoreWeave comparable.
       </p>
       <h2 id="price-target" className="scroll-mt-24 text-lg font-medium text-foreground">12-month price target</h2>
       <p>All three November 2027 targets use the same formula: modeled FY2028 adjusted EBITDA times a scenario enterprise-value multiple, plus projected unrestricted cash and non-core stakes, less debt and other claims, divided by economic diluted shares. The base is the headline; weights of 35%, 45% and 20% are subjective, not measured probabilities. The forward DCF remains an independent check, not the headline method.</p>
@@ -110,8 +109,7 @@ export default function MethodologyPage() {
       </p>
       <p>
         The letter&apos;s payback is 1 year and 7 months for comparable one-to-three-year deals,
-        on a revenue basis, covering operating costs and capex, and excluding prepayments. The
-        letter does not define the capex inside that figure. The model&apos;s deal-level payback,
+        on a revenue basis, covering operating costs and capex, and excluding prepayments. This is not directly comparable with the model's compute-only contribution-margin calculation; the company figure covers opex and capex on a revenue basis. The model&apos;s deal-level payback,
         using the server-and-network slice and a contribution margin, is 33.6 months in the bear,
         20.3 months in the base, and 14.8 months in the bull. The base is about 7% longer than
         19 months. The fleet-wide all-in payback is longer because it includes utilization, the
@@ -121,7 +119,7 @@ export default function MethodologyPage() {
       <p>
         The company expects prepayments and asset-backed financing to cover 75–85% of 2027
         capex. In the third quarter, prepayments on new deals covered more than 100% of the
-        associated capex.         The headline value does not depend on issuing new shares. Prepayments
+        associated capex.         The present-value DCF headline does not depend on issuing new shares; the separate 12-month target does. Prepayments
         enter free cash flow only as the change in deferred revenue. The opening
         current deferred revenue is released from the fourth quarter of 2026 through
         the third quarter of 2027. The opening non-current balance, $7,963.7 million,
@@ -151,9 +149,7 @@ export default function MethodologyPage() {
         at the low end of $3.0–3.4 billion. On the earnings call the same day, a third-party
         transcript reports $3.0–3.2 billion. No transcript was filed with the SEC. The model
         does not force either range. Its 2026 engine is about $3.04 billion in the base. Its
-        2027 engine is about $13.14 billion, about 1.1% above the top of the $12–13 billion
-        outlook. A separate run that scales megawatts by 0.62 from 2027 is printed beside the
-        headline. It is not used to change the inputs. Annualized run-rate revenue above $7
+        2027 engine is about $12.48 billion after a 5% commissioning/availability haircut, within the $12–13 billion preliminary outlook. A lower-capacity sensitivity scales the megawatt path by 0.62 from 2027; it is not the base case. Annualized run-rate revenue above $7
         billion moved from December 2026 to February 2027. The model does not use that run rate
         as an input.
       </p>
@@ -197,8 +193,7 @@ export default function MethodologyPage() {
       <h2 className="text-lg font-medium text-foreground">Refresh jobs</h2>
       <p>
         scripts/fetch-openrouter.mjs, fetch-token-factory.mjs, and fetch-gpu-pricing.mjs update
-        public price JSON. scripts/fetch_satellite.py searches Sentinel-2. Share prices are typed
-        by hand. There is no quote feed. Figures from SEC filings are entered by hand. The site
+        public price JSON. scripts/fetch_satellite.py searches Sentinel-2. Daily closes are manually recorded in a dated snapshot; no live quote feed is configured. Figures from SEC filings are entered by hand. The site
         does not request EDGAR automatically.
       </p>
     </div>
