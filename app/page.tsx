@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { DcfModel } from "@/components/dcf-model";
 import { VolModel } from "@/components/vol-model";
+import { Orbit, PixelWord } from "@/components/research-art";
 import { centers, feeds, financials, guidance, quotes } from "@/lib/load";
 import { MODEL_VERSION, MARKET_CLOSE, PEER_MULTIPLE, STREET_BENCHMARK, VALUATION_DATE, PRICE_TARGET_DATE, allCases, headlineValue, weightedValue, twelveMonthPriceTarget } from "@/lib/dcf";
 import { scoreGuidance, STATUS_TONE, groupGuidance, guidanceStatusLabel } from "@/lib/guidance";
@@ -26,10 +27,12 @@ export default function HomePage() {
       <section className="hero min-w-0 space-y-6" aria-labelledby="overview-title">
         <span className="crosshair crosshair-tl" aria-hidden="true" /><span className="crosshair crosshair-tr" aria-hidden="true" />
         <span className="crosshair crosshair-bl" aria-hidden="true" /><span className="crosshair crosshair-br" aria-hidden="true" />
+        <Orbit />
         <div className="eyebrow mb-0">/ NBIS · Independent investment research</div>
+        <h1 id="overview-title" className="hero-heading">Behind the<br /><span>Nebius <PixelWord /></span></h1>
         <div className="grid min-w-0 items-start gap-6 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)]">
           <div className="min-w-0 space-y-4">
-            <h1 id="overview-title">Demand is not the constraint; delivery is.</h1>
+            <h2 className="text-2xl sm:text-3xl">Demand is not the constraint; delivery is.</h2>
             <p className="text-lg leading-relaxed text-muted">Investment thesis: AI compute demand, rising contract economics and customer-funded capacity underpin a positive absolute-return view. The debate is whether Nebius can commission power on schedule and finance growth without eroding per-share returns.</p>
             <div className="hero-actions">
               <Link className="pill-link" href="/models">Explore the valuation <span aria-hidden="true">↗</span></Link>
