@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { Input } from "@/components/ui/input";
-import { REFERENCE_CLOSE } from "@/lib/dcf";
+import { MARKET_CLOSE } from "@/lib/dcf";
 import { priceBand, realizedVol } from "@/lib/vol";
 
 export function VolModel({
@@ -17,7 +17,7 @@ export function VolModel({
   const closes = fallbackCloses;
   const realized = useMemo(() => realizedVol(closes), [closes]);
   const [customPrice, setPrice] = useState<string | null>(null);
-  const price = customPrice ?? String(REFERENCE_CLOSE.value);
+  const price = customPrice ?? String(MARKET_CLOSE.value);
   const [customVol, setVol] = useState<string | null>(null);
   const vol = customVol ?? String(realized ?? "");
   const [days, setDays] = useState("5");
@@ -43,11 +43,11 @@ export function VolModel({
       <p className="text-sm text-muted">
         A 95% band under a lognormal model with zero drift: price × exp(±1.96 × annual
         volatility × sqrt(days / 252)). Trading days use 252. This is not a directional
-        forecast. The starting price is the hand-entered close of ${REFERENCE_CLOSE.value} as of {REFERENCE_CLOSE.asOf}. {REFERENCE_CLOSE.label} {quoteNote}
+        forecast. The starting price is the dated market close of ${MARKET_CLOSE.value} as of {MARKET_CLOSE.asOf}. {quoteNote} <a className="underline" href={MARKET_CLOSE.source}>Market source</a>.
       </p>
       {closes.length < 20 ? (
         <p className="rounded-md border border-amber/40 bg-amber/10 p-3 text-sm text-amber">
-          Realized volatility needs at least 20 daily closes. None are stored. Type a
+          Realized volatility needs at least 20 daily closes. Type a
           volatility below. Your inputs are not saved.
         </p>
       ) : (
