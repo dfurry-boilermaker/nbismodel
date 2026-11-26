@@ -77,35 +77,10 @@ export default function MethodologyPage() {
         not copy a vendor&apos;s price table.
       </p>
       <h2 id="price-target" className="scroll-mt-24 text-lg font-medium text-foreground">12-month price target</h2>
-      <p>
-        The overview target is a separate forward valuation, not the present-day DCF headline.
-        The base case is the headline target; bear, bull and the subjective blended scenario-weighted
-        average are shown for context. Base and bull use the forward DCF; the bear uses a stressed going-concern EBITDA multiple. The target date is one year after the DCF valuation date.
-        Remaining enterprise value equals current modeled EV less the present value of cash flows
-        dated through the target, compounded at the scenario WACC to that date, using the existing
-        midyear cash-flow convention.
-      </p>
-      <p>
-        The model then adds projected cash and unchanged non-core stake values and deducts
-        projected debt and other claims. It uses the FY2027 year-end financing snapshot as a proxy
-        for November 2027, keeps the existing case&apos;s convertible classification, adds modeled
-        equity issuance through that snapshot at the manually entered reference close, and recomputes
-        treasury-method option dilution. Negative equity values are floored at zero for display. The original bear DCF is retained as a separate severe financial-distress stress test.
-        This is an illustrative approximation, not a fresh target-date balance sheet; subsequent
-        financing, share issuance, asset values and market multiples may differ materially.
-        The percentage change uses the dated reference close, not a live quote.
-      </p>
-      <p>
-        The 12-month bear price target assumes the company continues operating despite the existing
-        bear case&apos;s customer losses, capacity delays, high capital spending and projected financing dilution.
-        At the November 2027 target date, enterprise value is estimated at 7 times modeled FY2028
-        adjusted EBITDA, with the same projected cash, stakes, debt claims and diluted share count
-        used in the forward DCF bridge. The 7x multiple is an independent judgmental stress assumption,
-        not an observed peer average. EBITDA does not deduct replacement capital expenditure; this method
-        may overstate value if GPU economics deteriorate or financing becomes unavailable. The negative
-        raw forward DCF is retained for transparency, and the blended weighted price target combines
-        different valuation methods rather than representing a pure DCF expectation.
-      </p>
+      <p>All three November 2027 targets use the same formula: modeled FY2028 adjusted EBITDA times a scenario enterprise-value multiple, plus projected unrestricted cash and non-core stakes, less debt and other claims, divided by economic diluted shares. The base is the headline; weights of 35%, 45% and 20% are subjective, not measured probabilities. The forward DCF remains an independent check, not the headline method.</p>
+      <p>Comparable anchor: CoreWeave on November 25, 2026, $23.67B market cap (<a href="https://stockanalysis.com/stocks/crwv/statistics/" className="underline">market source</a>), $46.873B reported carrying debt, $0.649B finance leases, $4.122B unrestricted cash and $0.062B securities (<a href="https://www.sec.gov/Archives/edgar/data/1769628/000176962826000461/coreweave3q26earningspress.htm" className="underline">Q3 SEC filing</a>), divided by $17.221B FY2027 consensus EBITDA (<a href="https://www.marketscreener.com/quote/stock/COREWEAVE-INC-185380761/finances/" className="underline">consensus source</a>): approximately 3.9×. Operating leases and restricted cash excluded; differing accounting and timing limit comparability. Consensus is not guidance. Bear 4× approximates this depressed peer valuation; base 4.5× allows a modest execution premium, bull 6× assumes durable growth and a rerating. These multiples are model judgments, not observed future valuations.</p>
+      <p>The base applies a 5% FY2027 revenue commissioning/availability haircut to bring the cohort engine into the preliminary $12–13B revenue outlook. Bear and bull are outside that range by design. FY2028 revenue remains a bottom-up capacity/price model, not a management forecast: rapid monetization of previously installed capacity drives the step-up. The overview shows 20% lower EBITDA and a one-turn lower multiple as separate fixed-financing sensitivities.</p>
+      <p>The FY2027 year-end financing snapshot proxies November 2027. No further note conversion is assumed before the snapshot; economic if-converted classification is solved at the target value using carrying claims, not the present-day DCF. This is not a prediction of legal conversion timing or settlement. Equity issuance is priced at the November 25 close of $84.99 less a judgmental 20% bear, 10% base, or 0% bull discount. The present-value DCF retains its November 24 reference and separate financing panel. Negative equity is floored at zero; no arbitrary positive floor is imposed. EBITDA excludes GPU refresh, so multiples can overstate value when replacement capex is high. The model is not a fresh balance sheet, and excludes undrawn facilities and unverified subsequent financing.</p>
       <h2 className="text-lg font-medium text-foreground">Raw and floored values</h2>
       <p>
         Each case is shown floored at $0, beside the raw result. A negative raw value means
@@ -203,7 +178,8 @@ export default function MethodologyPage() {
       <h2 className="text-lg font-medium text-foreground">Change log</h2>
       <p>Earlier versions are not comparable with this one. They were replaced after review.</p>
       <ul className="list-disc space-y-2 pl-5">
-        <li>4.0.0, 2026-11-24. Rebuilt the valuation: financing-neutral cash flow with no share issuance in the headline; a megawatt, utilization, and cohort-price engine with a two-quarter billing lag; prepayments as working capital net of a non-cash financing component; servers and network at 70% of capex; deal payback set next to the disclosed 19 months; price and cost declines on the same start-year index; a customer-concentration stress in the bear; weights 35/45/20. Version 3.1.0, commit 7ba4a47, is superseded.</li>
+        <li>4.1.0, 2026-11-26. Calibrated base FY2027 revenue, standardized the 12-month target using a reconstructed peer multiple, added target-specific financing and conversion assumptions and sensitivities.</li>
+         <li>4.0.0, 2026-11-24. Rebuilt the valuation: financing-neutral cash flow with no share issuance in the headline; a megawatt, utilization, and cohort-price engine with a two-quarter billing lag; prepayments as working capital net of a non-cash financing component; servers and network at 70% of capex; deal payback set next to the disclosed 19 months; price and cost declines on the same start-year index; a customer-concentration stress in the bear; weights 35/45/20. Version 3.1.0, commit 7ba4a47, is superseded.</li>
         <li>3.1.0, 2026-11-24, commit 7ba4a47. Moved share issuance out of the headline. Superseded by 4.0.0.</li>
         <li>3.0.0, 2026-11-24, commit 9424660. Cohort engine and a financing projection. Superseded.</li>
         <li>2.3.0, 2026-11-24, commit 99656b3. Recalibrated. Superseded.</li>
