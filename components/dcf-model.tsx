@@ -91,16 +91,16 @@ export function DcfModel({ compact = false }: { compact?: boolean }) {
           <p className="text-sm text-muted">
             Raw {money(result.bridge.perShareRaw)}. If the terminal value is clamped at zero, the raw figure is {money(result.clampedRaw)}.
             Shares {result.bridge.shares.toLocaleString("en-US")}. Notes treated as shares: {result.bridge.converted.join(", ") || "none"}.
-            Deal payback {result.payback.deal.toFixed(1)} months, against the disclosed 19 months. The capex inside those 19 months is not defined in the letter.
+            Deal payback {result.payback.deal.toFixed(1)} months, against the disclosed 19 months. The company measure covers opex and capex on a revenue basis; the modeled compute-only payback is not directly comparable.
             Full-year engine revenue is {formatCompactUsd(result.fy2026 * 1e6)} in 2026 and {formatCompactUsd(result.fy2027 * 1e6)} in 2027. 2028 is {formatCompactUsd(result.fy2028 * 1e6)}.
           </p>
           <div className="grid gap-3 sm:grid-cols-3">
-            <Stat label="Guide-consistent run" value={money(sides.guide.raw)} />
+            <Stat label="Lower-capacity sensitivity" value={money(sides.guide.raw)} />
             <Stat label="Three-quarter lag" value={money(sides.lag.raw)} />
             <Stat label="Accretion at 0% / 7%" value={`${money(sides.sfc0)} / ${money(sides.sfc7)}`} />
           </div>
           <p className="text-xs text-muted">
-            The guide-consistent run scales the megawatt path by 0.62 from 2027 (${sides.guide.fy27.toFixed(0)} million in 2027, ${sides.guide.fy28.toFixed(0)} million in 2028).
+            The lower-capacity sensitivity scales the megawatt path by 0.62 from 2027 (${sides.guide.fy27.toFixed(0)} million in 2027, ${sides.guide.fy28.toFixed(0)} million in 2028).
             The three-quarter lag is ${sides.lag.fy27.toFixed(0)} million in 2027. Accretion at 0% and 7% uses the same base inputs. These runs sit beside the headline. They are not used to change the inputs.
             Base energized megawatts in 2031 and 2032 are an estimate, and they are not covered by a disclosed contract.
           </p>
