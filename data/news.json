@@ -1,0 +1,258 @@
+{
+  "asOf": "2026-11-26",
+  "items": [
+    {
+      "id": "openrouter-888b",
+      "date": "2026-11-26",
+      "dateLabel": "Data through Nov 25, 2026",
+      "category": "Inference telemetry",
+      "status": "Social lead / independently corroborated",
+      "impact": "Positive",
+      "title": "Token Factory reaches 888.2 billion daily OpenRouter tokens",
+      "summary": "X researcher @MarcelLarsen_ highlighted a record day. Independent Vantage analytics show 888.2B tokens on November 25, a 726.2B seven-day daily average versus 221.5B over 30 days, and 2.4% daily token share. Vantage estimates $89.7K of daily OpenRouter-attributable gross billings, not Nebius reported revenue.",
+      "why": "This is a measurable leading indicator of managed inference adoption and capacity monetization. The seven-day average is about 3.3× the 30-day average.",
+      "watch": "Check whether growth persists beyond promotions and concentrated DeepSeek traffic. Cached input discounts, model mix, revenue sharing and GPU cost mean tokens alone do not establish margins or total Token Factory revenue.",
+      "sources": [
+        {
+          "label": "X researcher profile · Marcel Larsen",
+          "url": "https://x.com/MarcelLarsen_"
+        },
+        {
+          "label": "Indexed social commentary",
+          "url": "https://www.sotwe.com/MarcelLarsen_?lang=id"
+        },
+        {
+          "label": "Vantage OpenRouter provider data",
+          "url": "https://routers.vantage.sh/providers/nebius?pricing=cache"
+        }
+      ]
+    },
+    {
+      "id": "openrouter-kimi-mix",
+      "date": "2026-11-26",
+      "dateLabel": "Data through Nov 25, 2026",
+      "category": "Inference telemetry",
+      "status": "Social lead / independent estimate",
+      "impact": "Positive",
+      "title": "Kimi K3.1 Pro drives disproportionate estimated inference billings",
+      "summary": "A November 24 social commentary item highlighted Kimi traffic growth. Vantage estimates 104.7B daily Kimi K3.1 Pro tokens on November 25 and $46.2K in gross billings, around 52% of estimated Nebius OpenRouter billings despite only around 12% of allocated tokens.",
+      "why": "Higher-value model mix can matter more than raw token volume. This is a concrete reason to track model-level effective prices and traffic mix.",
+      "watch": "Estimates depend on model allocation and cache assumptions; no audited revenue or margin data. Watch persistence of premium traffic and routing share.",
+      "sources": [
+        {
+          "label": "Social commentary syndication · Nov 24",
+          "url": "https://www.kucoin.com/news/insight/NBIS/6b059dc6e284a300073fcd66"
+        },
+        {
+          "label": "Vantage model economics",
+          "url": "https://routers.vantage.sh/providers/nebius?pricing=cache"
+        },
+        {
+          "label": "OpenRouter Kimi model",
+          "url": "https://openrouter.ai/moonshotai/kimi-k3.1-pro"
+        }
+      ]
+    },
+    {
+      "id": "glm-routing-availability",
+      "date": "2026-11-24",
+      "category": "Inference telemetry",
+      "status": "Independent tracker / unconfirmed cause",
+      "impact": "Mixed",
+      "title": "OpenRouter model availability is not uniformly expanding",
+      "summary": "NBIS Tracker recorded that Nebius was no longer listed for GLM 5.3 Flash on OpenRouter on November 24, alongside an unavailable Token Factory post-training service. These are tracker observations rather than company-confirmed outages or contract losses.",
+      "why": "Rapid traffic growth can coexist with capacity constraints or routing changes. Reliability and breadth of model availability matter for enterprise retention.",
+      "watch": "Check current listings and status before interpreting duration or cause; a delisting is not evidence of customer churn.",
+      "sources": [
+        {
+          "label": "NBIS Tracker · November 24 log",
+          "url": "https://nbistracker.com/log/2026-11-24"
+        },
+        {
+          "label": "OpenRouter model catalog",
+          "url": "https://openrouter.ai/models"
+        }
+      ]
+    },
+    {
+      "id": "databricks-isolation",
+      "date": "2026-11-24",
+      "dateLabel": "Coverage · Nov 24, 2026",
+      "category": "Customer signal",
+      "status": "Reported / inferred",
+      "impact": "Positive",
+      "title": "Databricks co-founder flags a potential neocloud security moat",
+      "summary": "Patrick Wendell said only one neocloud had met a sufficiently robust isolation bar to potentially run Databricks customer workloads. Nebius had separately disclosed that Databricks selected its AI Cloud for demanding AI R&D after an evaluation.",
+      "quote": "robust enough isolation",
+      "attribution": "Patrick Wendell, Databricks co-founder, on X (as quoted by TIKR)",
+      "why": "A stringent tenant-isolation and physical-security review could differentiate Nebius from commodity GPU rental and support regulated enterprise adoption.",
+      "watch": "Wendell did not identify the provider in the post. The link to Nebius is an inference; live customer workloads, revenue and exclusivity remain unconfirmed.",
+      "sources": [
+        {
+          "label": "Original X post (may require login)",
+          "url": "https://x.com/pwendell/status/2124574208122593527"
+        },
+        {
+          "label": "TIKR reporting · Nov 24",
+          "url": "https://www.tikr.com/blog/databricks-co-founder-says-just-one-neocloud-has-robust-enough-isolation-my-guess-its-probably-not-coreweave?tlnk=yf-261124-wcppqc25"
+        },
+        {
+          "label": "Nebius shareholder letter · Nov 12",
+          "url": "https://www.sec.gov/Archives/edgar/data/1513845/000110465926126008/tm2629571d1_ex99-2.htm"
+        }
+      ]
+    },
+    {
+      "id": "physical-ai",
+      "date": "2026-11-18",
+      "category": "Product & ecosystem",
+      "status": "Company announcement",
+      "impact": "Positive",
+      "title": "Physical AI ecosystem expands beyond model training",
+      "summary": "Nebius announced five Physical AI Awards winners across modeling, perception, simulation, robotics deployment and data tooling. The program received 363 applications and provides compute credits to winners.",
+      "why": "Robotics and industrial AI can broaden demand for simulation, training and inference on the same platform.",
+      "watch": "Credits and awards are not booked revenue; track conversion to paid usage.",
+      "sources": [
+        {
+          "label": "Nebius announcement",
+          "url": "https://nebius.com/blog/posts/physical-ai-awards-2026-winners"
+        }
+      ]
+    },
+    {
+      "id": "rubin-mlperf",
+      "date": "2026-11-16",
+      "category": "Technical moat",
+      "status": "Company post / published benchmark",
+      "impact": "Positive",
+      "title": "Nebius demonstrates rack-scale Vera Rubin training performance",
+      "summary": "Nebius announced MLPerf Training v6.1 results on X, reporting first place on rack-scale Rubin in its pre-training and post-training comparisons. NVIDIA independently lists Nebius among benchmark participants, and the company identifies published MLCommons result entries.",
+      "why": "Early hardware and software optimization could improve performance per dollar and accelerate deployment readiness for demanding enterprise AI customers.",
+      "watch": "Benchmarks are configuration- and workload-specific, not proof of general superiority, production utilization or margins. CoreWeave and other peers also submitted results.",
+      "sources": [
+        {
+          "label": "Archived X announcement",
+          "url": "https://grossretention.com/on-x/nebius-and-coreweave-post-fastest-mlperf-a94d28"
+        },
+        {
+          "label": "Nebius results and methodology",
+          "url": "https://nebius.com/blog/posts/mlperf-training-v6-1-results"
+        },
+        {
+          "label": "MLCommons training benchmark",
+          "url": "https://mlcommons.org/benchmarks/training/"
+        },
+        {
+          "label": "NVIDIA benchmark commentary",
+          "url": "https://blogs.nvidia.com/blog/mlperf-training-endpoints-vera-rubin/"
+        }
+      ]
+    },
+    {
+      "id": "datadog-integration-signal",
+      "date": "2026-11-12",
+      "category": "Customer signal",
+      "status": "Public documentation / company disclosure",
+      "impact": "Positive",
+      "title": "Datadog integration documentation provides a customer-discovery research lead",
+      "summary": "Nebius maintains a public Datadog integration page describing AI Cloud log forwarding. Its November 12 shareholder letter separately disclosed Datadog selected Nebius for AI cloud deployment. The documentation is a distinct technical integration, not proof of procurement by itself.",
+      "why": "Partner directories and technical documentation can reveal ecosystem relationships worth monitoring before financial disclosure.",
+      "watch": "Do not infer contract timing or value from documentation alone; look for customer-side statements and paid deployments.",
+      "sources": [
+        {
+          "label": "Nebius Datadog integration",
+          "url": "https://nebius.com/partners/datadog"
+        },
+        {
+          "label": "Q3 shareholder letter",
+          "url": "https://www.sec.gov/Archives/edgar/data/1513845/000110465926126008/tm2629571d1_ex99-2.htm"
+        }
+      ]
+    },
+    {
+      "id": "enterprise-q3",
+      "date": "2026-11-12",
+      "category": "Customer signal",
+      "status": "Company disclosure",
+      "impact": "Positive",
+      "title": "Databricks, Datadog and Snowflake join enterprise customer expansion",
+      "summary": "Nebius disclosed new multi-year relationships with enterprise data and AI platforms in its Q3 shareholder letter, including Databricks and Datadog.",
+      "why": "A wider customer base may improve demand diversification beyond major hyperscalers.",
+      "watch": "Individual contract economics and realized revenue have not been quantified in this disclosure.",
+      "sources": [
+        {
+          "label": "SEC shareholder letter",
+          "url": "https://www.sec.gov/Archives/edgar/data/1513845/000110465926126008/tm2629571d1_ex99-2.htm"
+        }
+      ]
+    },
+    {
+      "id": "q3-execution",
+      "date": "2026-11-12",
+      "category": "Earnings & capacity",
+      "status": "Company outlook",
+      "impact": "Mixed",
+      "title": "FY2027 revenue outlook rises in scale, but delivery remains the test",
+      "summary": "Nebius outlined preliminary FY2027 revenue of $12–13 billion and shifted its greater-than-$7 billion ARR milestone to February 2027. Some Microsoft capacity deliveries are expected in Q2 2027.",
+      "why": "The outlook supports rapid growth, while the schedule revisions highlight the difference between demand, contracted power and billable capacity.",
+      "watch": "Track February ARR, remaining Microsoft delivery and capital required to bridge any delays.",
+      "sources": [
+        {
+          "label": "SEC shareholder letter",
+          "url": "https://www.sec.gov/Archives/edgar/data/1513845/000110465926126008/tm2629571d1_ex99-2.htm"
+        }
+      ]
+    },
+    {
+      "id": "citi-facility",
+      "date": "2026-10-22",
+      "category": "Financing",
+      "status": "Company announcement",
+      "impact": "Mixed",
+      "title": "Citi provides $3.5 billion secured financing facility",
+      "summary": "The facility has a 364-day maturity and initially carries interest at Term SOFR plus 2.75 percentage points, with step-ups and other adjustments.",
+      "why": "Additional liquidity supports procurement and construction, but short maturity adds refinancing exposure.",
+      "watch": "Monitor refinancing terms, drawdowns and leverage; the facility is not equity or free cash flow.",
+      "sources": [
+        {
+          "label": "Nebius press release",
+          "url": "https://nebius.com/newsroom/nebius-secures-3-5-billion-financing-facility-with-citi"
+        }
+      ]
+    },
+    {
+      "id": "inferize",
+      "date": "2026-10-01",
+      "category": "Product & ecosystem",
+      "status": "Company announcement",
+      "impact": "Positive",
+      "title": "Inferize acquisition strengthens production inference",
+      "summary": "Nebius announced its acquisition of Inferize to expand the production inference capabilities of Token Factory.",
+      "why": "Software and managed inference may deepen customer relationships and capture more of the AI serving stack.",
+      "watch": "Monitor integration, realized usage and inference profitability.",
+      "sources": [
+        {
+          "label": "Nebius press release",
+          "url": "https://nebius.com/newsroom/nebius-acquires-inferize-to-strengthen-nebius-token-factorys-production-inference-stack"
+        }
+      ]
+    },
+    {
+      "id": "palantir",
+      "date": "2026-09-08",
+      "category": "Partnership",
+      "status": "Company announcement",
+      "impact": "Positive",
+      "title": "Palantir names Nebius preferred sovereign AI infrastructure partner",
+      "summary": "The announced partnership aims to bring Nebius compute and inference endpoints into Palantir's enterprise environment following integration.",
+      "why": "This could create a distribution channel to security-sensitive customers requiring control of compute, models and data.",
+      "watch": "Preferred does not mean exclusive. No minimum spend or incremental contract value was disclosed.",
+      "sources": [
+        {
+          "label": "Joint partnership announcement",
+          "url": "https://nebius.com/newsroom/palantir-and-nebius-partner-to-deliver-a-complete-sovereign-ai-stack-to-palantir-customers"
+        }
+      ]
+    }
+  ]
+}
