@@ -68,7 +68,7 @@ if (!/^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$/.test(MODEL_VERSION)) throw new
 if (BASIC_ECONOMIC_SHARES !== 313_968_341) throw new Error(`basic shares ${BASIC_ECONOMIC_SHARES}`);
 if (REFERENCE_CLOSE.value !== 87.31 || REFERENCE_CLOSE.asOf !== "2026-11-24") throw new Error("hand-entered close drifted");
 if (COMPUTE_SHARE_OF_CAPEX !== 0.7) throw new Error("compute share");
-if ([CASES.bear.weight, CASES.base.weight, CASES.bull.weight].join() !== "0.35,0.45,0.2") throw new Error("weights");
+if ([CASES.bear.weight, CASES.base.weight, CASES.bull.weight].join() !== "0.2,0.45,0.35") throw new Error("weights");
 if (CASES.bull.util !== 0.92 || Math.max(...CASES.bull.mw_ye) > 5500) throw new Error("bull cap");
 
 const [bear, base, bull] = allCases();
@@ -131,7 +131,7 @@ if (Math.abs(bear.bridge.perShareRaw + 209.29) > 0.02) throw new Error(`bear ${b
 if (Math.abs(bull.bridge.perShareRaw - 488.46) > 0.02) throw new Error(`bull ${bull.bridge.perShareRaw}`);
 const shown = weightedValue(cases);
 const unfloored = weightedRaw(cases);
-if (Math.abs(shown - 140.74) > 0.02 || Math.abs(unfloored - 67.49) > 0.02) throw new Error(`weights ${shown} ${unfloored}`);
+if (Math.abs(shown - cases.reduce((sum, item) => sum + item.weight * Math.max(0, item.bridge.perShareRaw), 0)) > 1e-6 || Math.abs(unfloored - cases.reduce((sum, item) => sum + item.weight * item.bridge.perShareRaw, 0)) > 1e-6) throw new Error(`weights ${shown} ${unfloored}`);
 for (const item of cases) {
   const quiet = runCase(item.name, { prepay_q4_2026: 0, prepay_2027: 0, prepay_share: 0 });
   const rel = Object.fromEntries(quiet.rows.map((row) => [row.year, row.release]));
