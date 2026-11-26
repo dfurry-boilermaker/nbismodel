@@ -3,7 +3,7 @@ import { Badge } from "@/components/ui/badge";
 import { DcfModel } from "@/components/dcf-model";
 import { VolModel } from "@/components/vol-model";
 import { centers, feeds, financials, guidance, quotes } from "@/lib/load";
-import { MODEL_VERSION, REFERENCE_CLOSE, VALUATION_DATE, PRICE_TARGET_DATE, allCases, headlineValue, weightedValue, twelveMonthPriceTarget } from "@/lib/dcf";
+import { MODEL_VERSION, MARKET_CLOSE, PEER_MULTIPLE, VALUATION_DATE, PRICE_TARGET_DATE, allCases, headlineValue, weightedValue, twelveMonthPriceTarget } from "@/lib/dcf";
 import { scoreGuidance, STATUS_TONE, groupGuidance, guidanceStatusLabel } from "@/lib/guidance";
 
 function dollars(value: number): string {
@@ -16,7 +16,7 @@ export default function HomePage() {
   const weighted = weightedValue(cases);
   const targets = cases.map(twelveMonthPriceTarget);
   const baseTarget = targets[1];
-  const targetReturn = (baseTarget.target / REFERENCE_CLOSE.value - 1) * 100;
+  const targetReturn = (baseTarget.target / MARKET_CLOSE.value - 1) * 100;
   const weightedTarget = targets.reduce((sum, scenario) => sum + scenario.weight * scenario.target, 0);
   const scored = groupGuidance(guidance.items, guidance.asOf).flatMap(group => group.items.map((item) => ({ item, score: scoreGuidance(item, guidance.asOf) })));
   return (
@@ -39,14 +39,14 @@ export default function HomePage() {
             <div className="mt-4 break-words font-mono text-5xl tracking-tight text-foreground sm:text-6xl">{dollars(baseTarget.target)}</div>
             <p className={`mt-2 font-mono text-lg ${targetReturn >= 0 ? "text-good" : "text-bad"}`}>{targetReturn >= 0 ? "+" : ""}{targetReturn.toFixed(1)}% implied price change</p>
             <dl className="mt-4 grid grid-cols-2 gap-3 border-t border-line pt-4 text-sm">
-              <div><dt className="text-xs text-muted">Reference close · {REFERENCE_CLOSE.asOf}</dt><dd className="font-mono">${REFERENCE_CLOSE.value.toFixed(2)}</dd></div>
+              <div><dt className="text-xs text-muted">Market close · {MARKET_CLOSE.asOf}</dt><dd className="font-mono">${MARKET_CLOSE.value.toFixed(2)}</dd></div>
               <div><dt className="text-xs text-muted">Target date</dt><dd className="font-mono">{PRICE_TARGET_DATE}</dd></div>
             </dl>
             <div className="mt-4 grid grid-cols-3 gap-2 border-t border-line pt-3">
               {targets.map(scenario => <div key={scenario.name} className="min-w-0"><div className="text-xs capitalize text-muted">{scenario.name}</div><div className="break-words font-mono text-lg">{dollars(scenario.target)}</div></div>)}
             </div>
-            <p className="mt-3 text-xs text-muted">Bear: stressed going-concern EBITDA valuation. Base and bull: forward DCF. Blended scenario-weighted target: {dollars(weightedTarget)}. Estimates as of {VALUATION_DATE}; not a live quote or guaranteed return.</p>
-            <p className="mt-2 text-xs text-muted">Separate severe DCF distress stress test: {dollars(Math.max(0, targets[0].dcfRaw))} (raw {dollars(targets[0].dcfRaw)}). This is not the headline bear price target.</p>
+            <p className="mt-3 text-xs text-muted">All cases use FY2028 adjusted EBITDA × scenario EV/EBITDA, with modeled cash, debt and dilution. Blended scenario-weighted target: {dollars(weightedTarget)}. DCF dated {VALUATION_DATE}; market reference dated {MARKET_CLOSE.asOf}; not a live quote or guaranteed return.</p>
+            <p className="mt-2 text-xs text-muted">Separate forward DCF distress stress test: {dollars(Math.max(0, targets[0].dcfRaw))} (raw {dollars(targets[0].dcfRaw)}). This is not the headline bear price target.</p>
             <Link href="/methodology#price-target" className="mt-3 inline-block text-sm underline text-muted">Target assumptions and limitations ↗</Link>
           </article>
         </div>
@@ -78,6 +78,33 @@ export default function HomePage() {
           <strong className="text-foreground">What could break the thesis:</strong> delayed commissioning, weaker utilization or GPU pricing, customer concentration and $40–45B of expected 2027 CapEx requiring more debt or dilution. The &gt;$7B ARR milestone already shifted to February 2027. Reassess if capacity and cash generation fail to follow spending.
           <p className="mt-2 text-xs">Company outlook from the November 12, 2026 shareholder letter; see the <Link href="/guidance" className="underline">source-linked guidance</Link>. Thesis and price scenarios are independent, AI-assisted research, not company guidance.</p>
         </div>
+      </section>
+
+      <section className="min-w-0 border border-line p-4 sm:p-6" aria-label="Price target assumptions">
+        <div className="section-label">/ Price target audit · USD billions except share price and multiples</div>
+        <p className="mt-2 text-sm text-muted">Current CoreWeave comparable: {PEER_MULTIPLE.toFixed(1)}× FY2027 consensus EBITDA, using November 25 market capitalization and September 30 filing debt and cash. The applied multiples are judgments, not company guidance or live peer quotes. FY2028 is a model forecast; there is no company FY2028 revenue guide.</p>
+        <div className="mt-4 overflow-x-auto">
+          <table className="w-full min-w-[560px] text-left text-sm">
+            <thead><tr>{["Assumption", "Bear", "Base", "Bull"].map(x => <th key={x} className="p-2">{x}</th>)}</tr></thead>
+            <tbody>{[
+              ["FY2027 revenue", ...cases.map(x => dollars(x.fy2027 / 1000))],
+              ["FY2028 revenue", ...cases.map(x => dollars(x.fy2028 / 1000))],
+              ["FY2028 adj. EBITDA", ...targets.map(x => (x.nextYearEbitda / 1000).toFixed(1))],
+              ["EV / adj. EBITDA", ...targets.map(x => x.multiple.toFixed(1) + "×")],
+              ["Target EV", ...targets.map(x => (x.targetEv / 1000).toFixed(1))],
+              ["Debt and other claims", ...targets.map(x => (x.claims / 1000).toFixed(1))],
+              ["New equity raised through 2027", ...targets.map(x => (x.equityIssued / 1000).toFixed(1))],
+              ["Assumed issue price / share", ...targets.map(x => dollars(x.issuePrice))],
+              ["Target economic shares (M)", ...targets.map(x => (x.shares / 1e6).toFixed(0))],
+              ["Target cash + stakes", ...targets.map(x => ((x.cash + x.stakes) / 1000).toFixed(1))],
+              ["12-month target / share", ...targets.map(x => dollars(x.target))],
+              ["If EBITDA 20% lower / share", ...targets.map(x => dollars(x.lowerEbitdaTarget))],
+              ["If multiple 1× lower / share", ...targets.map(x => dollars(x.lowerMultipleTarget))],
+              ["Forward DCF cross-check / share (raw)", ...targets.map(x => dollars(x.dcfRaw))],
+            ].map(([label, ...values]) => <tr key={label} className="border-t border-line"><th scope="row" className="p-2 font-normal text-muted">{label}</th>{values.map((v,i) => <td key={i} className="p-2 font-mono">{v}</td>)}</tr>)}</tbody>
+          </table>
+        </div>
+        <p className="mt-3 text-xs text-muted">Sensitivities hold the financing snapshot fixed; actual financing needs may worsen with lower EBITDA. EBITDA ignores GPU replacement capex. See <Link href="/methodology#price-target" className="underline">sources, model inputs and limitations</Link>.</p>
       </section>
 
       <section className="min-w-0 border border-line p-4 sm:p-6" aria-label="Present value cross-check">
