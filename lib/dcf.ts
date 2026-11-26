@@ -1,7 +1,7 @@
 import capital from "@/data/capital-structure.json";
 
 /** Model 4.0.0. Educational valuation arithmetic. Not a price target, forecast, rating, or recommendation. */
-export const MODEL_VERSION = "4.2.0";
+export const MODEL_VERSION = "4.3.0";
 export const MARKET_CLOSE = { value: 84.99, asOf: "2026-11-25", source: "https://markets.ft.markitdigital.com/data/equities/tearsheet/historical?s=NBIS%3ANSQ" };
 export const VALUATION_DATE = "2026-11-24";
 /** Hand-entered close. Used only in the dilution panel, grids, and the bridge tie-out. Not in the headline path. */
@@ -123,7 +123,7 @@ const bearConc: Conc = {
 
 export const CASES: Record<CaseName, CaseInput> = {
   bear: {
-    weight: 0.35,
+    weight: 0.20,
     mw_ye: [650, 1450, 1600, 1750, 1800, 1800, 1800, 1800, 1800, 1800],
     lag_q: 2,
     util: 0.85,
@@ -179,7 +179,7 @@ export const CASES: Record<CaseName, CaseInput> = {
     conc: null,
   },
   bull: {
-    weight: 0.2,
+    weight: 0.35,
     mw_ye: [850, 1900, 3100, 4300, 5500, 5500, 5500, 5500, 5500, 5500],
     lag_q: 2,
     util: 0.92,
@@ -738,12 +738,13 @@ export const PEER_ANCHOR = {
 };
 export const PEER_MULTIPLE = (PEER_ANCHOR.marketCap + PEER_ANCHOR.debt + PEER_ANCHOR.financeLeases - PEER_ANCHOR.cash - PEER_ANCHOR.securities) / PEER_ANCHOR.fy2027Ebitda;
 // Independent research inputs, benchmarked against reported sell-side practice.
+// FY2028 upside assumes faster monetization of already planned capacity as enterprise inference broadens; no incremental Palantir contract revenue is booked.
 // Average revenue-eligible MW excludes noncommissioned capacity; utilization is
 // applied once. ACV is a modeled full-utilization yield, not reported fleet yield.
 export const TARGET_ASSUMPTIONS = {
   bear: { multiple: 5.5, issueDiscount: 0.20, mw27: 520, mw28: 950, utilization: 0.85, yieldPerMw: 22, margin27: 0.43, margin28: 0.50, prepay: 17000, abfShare: 0.38 },
-  base: { multiple: 6, issueDiscount: 0.10, mw27: 550, mw28: 1000, utilization: 0.92, yieldPerMw: 25, margin27: 0.55, margin28: 0.60, prepay: 18500, abfShare: 0.40 },
-  bull: { multiple: 8, issueDiscount: 0, mw27: 620, mw28: 1350, utilization: 0.92, yieldPerMw: 27.5, margin27: 0.60, margin28: 0.65, prepay: 20000, abfShare: 0.40 },
+  base: { multiple: 6, issueDiscount: 0.10, mw27: 550, mw28: 1100, utilization: 0.92, yieldPerMw: 25, margin27: 0.55, margin28: 0.60, prepay: 18500, abfShare: 0.40 },
+  bull: { multiple: 8, issueDiscount: 0, mw27: 620, mw28: 1450, utilization: 0.92, yieldPerMw: 27.5, margin27: 0.60, margin28: 0.65, prepay: 20000, abfShare: 0.40 },
 };
 export const STREET_BENCHMARK = {
   asOf: "2026-11-13", target: 144, bear: 70, bull: 400, rating: "Equal-weight",
