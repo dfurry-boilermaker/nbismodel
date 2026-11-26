@@ -15,7 +15,7 @@ import {
   weightedRaw,
   weightedValue,
   PRICE_TARGET_DATE,
-  TARGET_ASSUMPTIONS, PEER_MULTIPLE, MARKET_CLOSE,
+  TARGET_ASSUMPTIONS, PEER_MULTIPLE, MARKET_CLOSE, sellSideCase,
   twelveMonthPriceTarget,
 } from "../lib/dcf";
 import { priceBand, realizedVol } from "../lib/vol";
@@ -62,7 +62,7 @@ if (!december || scoreGuidance(december, "2026-11-23").status !== "superseded") 
   throw new Error("December 2026 ARR should be superseded");
 }
 
-if (MODEL_VERSION !== "4.1.0") throw new Error(`model version ${MODEL_VERSION}`);
+if (MODEL_VERSION !== "4.2.0") throw new Error(`model version ${MODEL_VERSION}`);
 if (BASIC_ECONOMIC_SHARES !== 313_968_341) throw new Error(`basic shares ${BASIC_ECONOMIC_SHARES}`);
 if (REFERENCE_CLOSE.value !== 87.31 || REFERENCE_CLOSE.asOf !== "2026-11-24") throw new Error("hand-entered close drifted");
 if (COMPUTE_SHARE_OF_CAPEX !== 0.7) throw new Error("compute share");
@@ -220,7 +220,9 @@ if (PRICE_TARGET_DATE !== "2027-11-24") throw new Error("12-month target date");
 const forwardTargets = cases.map(twelveMonthPriceTarget);
 for (const target of forwardTargets) {
   if (!Number.isFinite(target.raw) || target.target !== Math.max(0, target.raw) || target.shares <= 0) throw new Error("invalid forward price target");
-  const original = cases.find(item => item.name === target.name)!;
+  const original = sellSideCase(target.name);
+  const a = TARGET_ASSUMPTIONS[target.name];
+  if (Math.abs(target.fy2028 - (a.mw28 * a.utilization * a.yieldPerMw + 40)) > 1e-6 || Math.abs(target.nextYearEbitda - target.fy2028 * a.margin28) > 1e-6) throw new Error("sell-side capacity/revenue/EBITDA identity");
   const through2027 = financingPanel(original, []).fundingRows.filter(row => row.year <= 2027);
   const issuance = through2027.reduce((sum, row) => sum + row.equityDraw, 0);
   if (Math.abs(target.equityIssued - issuance) > 1e-6) throw new Error("target financing window");
@@ -234,5 +236,6 @@ for (const target of forwardTargets) {
   if (target.lowerEbitdaTarget > target.target || target.lowerMultipleTarget > target.target) throw new Error("target sensitivity");
   if (target.issuePrice !== MARKET_CLOSE.value * (1 - TARGET_ASSUMPTIONS[target.name].issueDiscount)) throw new Error("target issue price");
 }
+if (baseTarget.fy2027 < 12000 || baseTarget.fy2027 > 13000 || baseTarget.multiple !== 6) throw new Error("research base guidance/valuation");
 if (!(bearTarget.dcfRaw < 0 && bearTarget.target > 0 && bearTarget.target < baseTarget.target && baseTarget.target < bullTarget.target)) throw new Error("target scenario ordering");
 console.log("12-month targets", forwardTargets.map(({ name, target, raw }) => ({ name, target, raw })));
