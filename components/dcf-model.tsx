@@ -60,7 +60,7 @@ export function DcfModel({ compact = false }: { compact?: boolean }) {
         <div className="rounded-lg border border-line bg-panel p-3">
           <div className="text-xs uppercase tracking-wide text-muted">Weighted</div>
           <div className="mt-1 font-mono text-xl">{money(weighted)}</div>
-          <div className="text-xs text-muted">35 / 45 / 20, the authors&apos; judgment. Raw weighted {money(rawWeighted)}.</div>
+          <div className="text-xs text-muted">{[CASES.bear.weight, CASES.base.weight, CASES.bull.weight].map(w => Math.round(w * 100)).join(" / ")}, the authors&apos; judgment. Raw weighted {money(rawWeighted)}.</div>
         </div>
       </div>
       {compact ? <p className="text-sm text-muted">{result.name}: raw {money(result.bridge.perShareRaw)}, shown {money(result.bridge.perShare)}.</p> : (
