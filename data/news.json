@@ -2,6 +2,79 @@
   "asOf": "2026-11-26",
   "items": [
     {
+      "id": "openrouter-888b",
+      "date": "2026-11-26",
+      "dateLabel": "Data through Nov 25, 2026",
+      "category": "Inference telemetry",
+      "status": "Social lead / independently corroborated",
+      "impact": "Positive",
+      "title": "Token Factory reaches 888.2 billion daily OpenRouter tokens",
+      "summary": "X researcher @MarcelLarsen_ highlighted a record day. Independent Vantage analytics show 888.2B tokens on November 25, a 726.2B seven-day daily average versus 221.5B over 30 days, and 2.4% daily token share. Vantage estimates $89.7K of daily OpenRouter-attributable gross billings, not Nebius reported revenue.",
+      "why": "This is a measurable leading indicator of managed inference adoption and capacity monetization. The seven-day average is about 3.3× the 30-day average.",
+      "watch": "Check whether growth persists beyond promotions and concentrated DeepSeek traffic. Cached input discounts, model mix, revenue sharing and GPU cost mean tokens alone do not establish margins or total Token Factory revenue.",
+      "sources": [
+        {
+          "label": "X researcher profile · Marcel Larsen",
+          "url": "https://x.com/MarcelLarsen_"
+        },
+        {
+          "label": "Indexed social commentary",
+          "url": "https://www.sotwe.com/MarcelLarsen_?lang=id"
+        },
+        {
+          "label": "Vantage OpenRouter provider data",
+          "url": "https://routers.vantage.sh/providers/nebius?pricing=cache"
+        }
+      ]
+    },
+    {
+      "id": "openrouter-kimi-mix",
+      "date": "2026-11-26",
+      "dateLabel": "Data through Nov 25, 2026",
+      "category": "Inference telemetry",
+      "status": "Social lead / independent estimate",
+      "impact": "Positive",
+      "title": "Kimi K3.1 Pro drives disproportionate estimated inference billings",
+      "summary": "A November 24 social commentary item highlighted Kimi traffic growth. Vantage estimates 104.7B daily Kimi K3.1 Pro tokens on November 25 and $46.2K in gross billings, around 52% of estimated Nebius OpenRouter billings despite only around 12% of allocated tokens.",
+      "why": "Higher-value model mix can matter more than raw token volume. This is a concrete reason to track model-level effective prices and traffic mix.",
+      "watch": "Estimates depend on model allocation and cache assumptions; no audited revenue or margin data. Watch persistence of premium traffic and routing share.",
+      "sources": [
+        {
+          "label": "Social commentary syndication · Nov 24",
+          "url": "https://www.kucoin.com/news/insight/NBIS/6b059dc6e284a300073fcd66"
+        },
+        {
+          "label": "Vantage model economics",
+          "url": "https://routers.vantage.sh/providers/nebius?pricing=cache"
+        },
+        {
+          "label": "OpenRouter Kimi model",
+          "url": "https://openrouter.ai/moonshotai/kimi-k3.1-pro"
+        }
+      ]
+    },
+    {
+      "id": "glm-routing-availability",
+      "date": "2026-11-24",
+      "category": "Inference telemetry",
+      "status": "Independent tracker / unconfirmed cause",
+      "impact": "Mixed",
+      "title": "OpenRouter model availability is not uniformly expanding",
+      "summary": "NBIS Tracker recorded that Nebius was no longer listed for GLM 5.3 Flash on OpenRouter on November 24, alongside an unavailable Token Factory post-training service. These are tracker observations rather than company-confirmed outages or contract losses.",
+      "why": "Rapid traffic growth can coexist with capacity constraints or routing changes. Reliability and breadth of model availability matter for enterprise retention.",
+      "watch": "Check current listings and status before interpreting duration or cause; a delisting is not evidence of customer churn.",
+      "sources": [
+        {
+          "label": "NBIS Tracker · November 24 log",
+          "url": "https://nbistracker.com/log/2026-11-24"
+        },
+        {
+          "label": "OpenRouter model catalog",
+          "url": "https://openrouter.ai/models"
+        }
+      ]
+    },
+    {
       "id": "databricks-isolation",
       "date": "2026-11-24",
       "dateLabel": "Coverage · Nov 24, 2026",
@@ -43,6 +116,56 @@
         {
           "label": "Nebius announcement",
           "url": "https://nebius.com/blog/posts/physical-ai-awards-2026-winners"
+        }
+      ]
+    },
+    {
+      "id": "rubin-mlperf",
+      "date": "2026-11-16",
+      "category": "Technical moat",
+      "status": "Company post / published benchmark",
+      "impact": "Positive",
+      "title": "Nebius demonstrates rack-scale Vera Rubin training performance",
+      "summary": "Nebius announced MLPerf Training v6.1 results on X, reporting first place on rack-scale Rubin in its pre-training and post-training comparisons. NVIDIA independently lists Nebius among benchmark participants, and the company identifies published MLCommons result entries.",
+      "why": "Early hardware and software optimization could improve performance per dollar and accelerate deployment readiness for demanding enterprise AI customers.",
+      "watch": "Benchmarks are configuration- and workload-specific, not proof of general superiority, production utilization or margins. CoreWeave and other peers also submitted results.",
+      "sources": [
+        {
+          "label": "Archived X announcement",
+          "url": "https://grossretention.com/on-x/nebius-and-coreweave-post-fastest-mlperf-a94d28"
+        },
+        {
+          "label": "Nebius results and methodology",
+          "url": "https://nebius.com/blog/posts/mlperf-training-v6-1-results"
+        },
+        {
+          "label": "MLCommons training benchmark",
+          "url": "https://mlcommons.org/benchmarks/training/"
+        },
+        {
+          "label": "NVIDIA benchmark commentary",
+          "url": "https://blogs.nvidia.com/blog/mlperf-training-endpoints-vera-rubin/"
+        }
+      ]
+    },
+    {
+      "id": "datadog-integration-signal",
+      "date": "2026-11-12",
+      "category": "Customer signal",
+      "status": "Public documentation / company disclosure",
+      "impact": "Positive",
+      "title": "Datadog integration documentation provides a customer-discovery research lead",
+      "summary": "Nebius maintains a public Datadog integration page describing AI Cloud log forwarding. Its November 12 shareholder letter separately disclosed Datadog selected Nebius for AI cloud deployment. The documentation is a distinct technical integration, not proof of procurement by itself.",
+      "why": "Partner directories and technical documentation can reveal ecosystem relationships worth monitoring before financial disclosure.",
+      "watch": "Do not infer contract timing or value from documentation alone; look for customer-side statements and paid deployments.",
+      "sources": [
+        {
+          "label": "Nebius Datadog integration",
+          "url": "https://nebius.com/partners/datadog"
+        },
+        {
+          "label": "Q3 shareholder letter",
+          "url": "https://www.sec.gov/Archives/edgar/data/1513845/000110465926126008/tm2629571d1_ex99-2.htm"
         }
       ]
     },
