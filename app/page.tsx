@@ -3,7 +3,7 @@ import { Badge } from "@/components/ui/badge";
 import { DcfModel } from "@/components/dcf-model";
 import { VolModel } from "@/components/vol-model";
 import { centers, feeds, financials, guidance, quotes } from "@/lib/load";
-import { MODEL_VERSION, MARKET_CLOSE, PEER_MULTIPLE, VALUATION_DATE, PRICE_TARGET_DATE, allCases, headlineValue, weightedValue, twelveMonthPriceTarget } from "@/lib/dcf";
+import { MODEL_VERSION, MARKET_CLOSE, PEER_MULTIPLE, STREET_BENCHMARK, VALUATION_DATE, PRICE_TARGET_DATE, allCases, headlineValue, weightedValue, twelveMonthPriceTarget } from "@/lib/dcf";
 import { scoreGuidance, STATUS_TONE, groupGuidance, guidanceStatusLabel } from "@/lib/guidance";
 
 function dollars(value: number): string {
@@ -18,6 +18,8 @@ export default function HomePage() {
   const baseTarget = targets[1];
   const targetReturn = (baseTarget.target / MARKET_CLOSE.value - 1) * 100;
   const weightedTarget = targets.reduce((sum, scenario) => sum + scenario.weight * scenario.target, 0);
+  const upside = targets[2].target / MARKET_CLOSE.value - 1;
+  const downside = 1 - targets[0].target / MARKET_CLOSE.value;
   const scored = groupGuidance(guidance.items, guidance.asOf).flatMap(group => group.items.map((item) => ({ item, score: scoreGuidance(item, guidance.asOf) })));
   return (
     <div className="home">
@@ -27,15 +29,15 @@ export default function HomePage() {
         <div className="eyebrow mb-0">/ NBIS · Independent investment research</div>
         <div className="grid min-w-0 items-start gap-6 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)]">
           <div className="min-w-0 space-y-4">
-            <h1 id="overview-title">AI infrastructure at scale.</h1>
-            <p className="text-lg leading-relaxed text-muted">Our thesis: Nebius can turn scarce power and GPU capacity into a scaled, profitable AI cloud. The opportunity is substantial, but shareholder returns depend on capital efficiency, financing and execution—not growth alone.</p>
+            <h1 id="overview-title">Demand is not the constraint; delivery is.</h1>
+            <p className="text-lg leading-relaxed text-muted">Investment thesis: AI compute demand, rising contract economics and customer-funded capacity underpin a positive absolute-return view. The debate is whether Nebius can commission power on schedule and finance growth without eroding per-share returns.</p>
             <div className="hero-actions">
               <Link className="pill-link" href="/models">Explore the valuation <span aria-hidden="true">↗</span></Link>
               <Link className="pill-link" href="/financials">Reported results <span aria-hidden="true">↗</span></Link>
             </div>
           </div>
           <article className="min-w-0 border border-line bg-panel p-4 sm:p-6">
-            <div className="section-label"><span>/ 12-month price target</span><span>Base case</span></div>
+            <div className="section-label"><span>/ 12-month price target</span><span>Base case · Positive view</span></div>
             <div className="mt-4 break-words font-mono text-5xl tracking-tight text-foreground sm:text-6xl">{dollars(baseTarget.target)}</div>
             <p className={`mt-2 font-mono text-lg ${targetReturn >= 0 ? "text-good" : "text-bad"}`}>{targetReturn >= 0 ? "+" : ""}{targetReturn.toFixed(1)}% implied price change</p>
             <dl className="mt-4 grid grid-cols-2 gap-3 border-t border-line pt-4 text-sm">
@@ -45,12 +47,12 @@ export default function HomePage() {
             <div className="mt-4 grid grid-cols-3 gap-2 border-t border-line pt-3">
               {targets.map(scenario => <div key={scenario.name} className="min-w-0"><div className="text-xs capitalize text-muted">{scenario.name}</div><div className="break-words font-mono text-lg">{dollars(scenario.target)}</div></div>)}
             </div>
-            <p className="mt-3 text-xs text-muted">All cases use FY2028 adjusted EBITDA × scenario EV/EBITDA, with modeled cash, debt and dilution. Blended scenario-weighted target: {dollars(weightedTarget)}. DCF dated {VALUATION_DATE}; market reference dated {MARKET_CLOSE.asOf}; not a live quote or guaranteed return.</p>
+            <p className="mt-3 text-xs text-muted">All cases use FY2028 adjusted EBITDA × scenario EV/EBITDA, with modeled cash, debt and dilution. Scenario-weighted sensitivity (not the PT): {dollars(weightedTarget)}. DCF dated {VALUATION_DATE}; market reference dated {MARKET_CLOSE.asOf}; not a live quote or guaranteed return.</p>
             <p className="mt-2 text-xs text-muted">Separate forward DCF distress stress test: {dollars(Math.max(0, targets[0].dcfRaw))} (raw {dollars(targets[0].dcfRaw)}). This is not the headline bear price target.</p>
             <Link href="/methodology#price-target" className="mt-3 inline-block text-sm underline text-muted">Target assumptions and limitations ↗</Link>
           </article>
         </div>
-        <div className="section-label"><span>/ Why Nebius</span><span>Three thesis pillars</span></div>
+        <div className="section-label"><span>/ Investment debate</span><span>Key drivers</span></div>
         <div className="grid min-w-0 gap-3 md:grid-cols-3">
           <article className="min-w-0 border border-line p-4">
             <div className="eyebrow mb-2">01 / Revenue growth</div>
@@ -80,19 +82,44 @@ export default function HomePage() {
         </div>
       </section>
 
+      <section className="min-w-0 border border-line p-4 sm:p-6" aria-label="Risk reward">
+        <div className="section-label"><span>/ Risk / reward</span><span>12-month absolute price return</span></div>
+        <div className="mt-3 grid gap-3 md:grid-cols-3">
+          {targets.map(t => <article key={t.name} className="min-w-0 border border-line p-3"><div className="text-xs capitalize text-muted">{t.name} case</div><div className="mt-1 font-mono text-2xl">{dollars(t.target)}</div><p className="text-sm">{((t.target / MARKET_CLOSE.value - 1) * 100).toFixed(0)}% return · {t.multiple}× FY28E EBITDA</p><p className="mt-2 text-xs text-muted">{t.name === "bear" ? "Supply normalizes; third-party delivery slips; funding becomes more expensive. Going concern, not default." : t.name === "base" ? "2027 guidance delivered; owned-site ramp and high contract pricing sustain growth." : "Faster commissioning, stronger enterprise mix and durable pricing; higher margin and a rerating."}</p></article>)}
+        </div>
+        <p className="mt-3 text-sm text-muted">Bull upside / bear downside: {downside > 0 ? (upside / downside).toFixed(1) + "×" : "not applicable"}. This is an endpoint ratio, not a probability-adjusted expected return. <strong className="text-foreground">Catalyst path:</strong> February ARR milestone, remaining Microsoft tranches in Q2 2027, 2027 prepayment receipts and Q4 pre-tax breakeven. <a href="https://www.sec.gov/Archives/edgar/data/1513845/000110465926126008/tm2629571d1_ex99-2.htm" className="underline">Company source</a>.</p>
+      </section>
+      <section className="min-w-0 border border-line p-4 sm:p-6" aria-label="External research benchmark">
+        <div className="section-label">/ Street benchmark · Morgan Stanley (reported)</div>
+        <p className="mt-2 text-sm text-muted">November 13 coverage of the Q3 note: {dollars(STREET_BENCHMARK.target)} PT, {STREET_BENCHMARK.rating}; {dollars(STREET_BENCHMARK.bear)} bear / {dollars(STREET_BENCHMARK.bull)} bull. The bank reportedly applies 6× FY2028E EBITDA and year-end 2027 net debt. <a href={STREET_BENCHMARK.source} className="underline">Public report</a>. External reference only; independent estimates are not affiliated with Morgan Stanley.</p>
+        <div className="mt-3 overflow-x-auto"><table className="w-full min-w-[450px] text-sm"><thead><tr>{["USD B", "2026E", "2027E", "2028E"].map(v=><th key={v} className="p-2 text-left">{v}</th>)}</tr></thead><tbody>{[
+          ["Revenue — independent", ...[baseTarget.fy2026,baseTarget.fy2027,baseTarget.fy2028].map(x=>(x/1000).toFixed(2))],
+          ["Revenue — MS (reported)", ...STREET_BENCHMARK.revenue.map(x=>(x/1000).toFixed(2))],
+          ["Adj. EBITDA — independent", ...["—", (baseTarget.ebitda27/1000).toFixed(2),(baseTarget.nextYearEbitda/1000).toFixed(2)]],
+          ["Adj. EBITDA — MS (reported)", ...STREET_BENCHMARK.ebitda.map(x=>(x/1000).toFixed(2))],
+        ].map(([label,...vs])=><tr key={label} className="border-t border-line"><th className="p-2 text-left font-normal" scope="row">{label}</th>{vs.map((v,i)=><td key={i} className="p-2 font-mono">{v}</td>)}</tr>)}</tbody></table></div>
+        <p className="mt-3 text-xs text-muted">Target history: {STREET_BENCHMARK.prior.map((p,i)=><span key={p.date}>{i>0?" · ":""}<a className="underline" href={p.source}>{p.date}: {dollars(p.target)}</a></span>)} · November 2026: {dollars(STREET_BENCHMARK.target)}. No proprietary research report accessed.</p>
+      </section>
+
       <section className="min-w-0 border border-line p-4 sm:p-6" aria-label="Price target assumptions">
-        <div className="section-label">/ Price target audit · USD billions except share price and multiples</div>
-        <p className="mt-2 text-sm text-muted">Current CoreWeave comparable: {PEER_MULTIPLE.toFixed(1)}× FY2027 consensus EBITDA, using November 25 market capitalization and September 30 filing debt and cash. The applied multiples are judgments, not company guidance or live peer quotes. FY2028 is a model forecast; there is no company FY2028 revenue guide. The base assumes a major acceleration in monetization; this is a major risk to the upside thesis.</p>
+        <div className="section-label">/ Valuation & estimates · USD billions unless indicated</div>
+        <p className="mt-2 text-sm text-muted">Secondary CoreWeave spot comparable: {PEER_MULTIPLE.toFixed(1)}× FY2027 consensus EBITDA, using November 25 market capitalization and September 30 filing debt and cash. Primary valuation anchor: reported Morgan Stanley 6× FY2028E EBITDA methodology. Multiples are independent judgments, not bank recommendations. Annual average revenue-eligible capacity is distinct from year-end energized capacity. FY2028 is not company guidance.</p>
         <div className="mt-4 overflow-x-auto">
           <table className="w-full min-w-[560px] text-left text-sm">
             <thead><tr>{["Assumption", "Bear", "Base", "Bull"].map(x => <th key={x} className="p-2">{x}</th>)}</tr></thead>
             <tbody>{[
-              ["FY2027 revenue", ...cases.map(x => (x.fy2027 / 1000).toFixed(2))],
-              ["FY2028 revenue", ...cases.map(x => (x.fy2028 / 1000).toFixed(2))],
-              ["FY2028 revenue growth", ...cases.map(x => ((x.fy2028 / x.fy2027 - 1) * 100).toFixed(0) + "%")],
-              ["FY2027 gross capex", ...cases.map(x => (x.inputs.capex2027 / 1000).toFixed(1))],
-              ["FY2027 prepayments", ...cases.map(x => (x.inputs.prepay_2027 / 1000).toFixed(1))],
-              ["FY2027 capex coverage", ...cases.map(x => ((x.inputs.prepay_2027 + x.inputs.abf_share * x.rows[1].capexNet) / x.inputs.capex2027 * 100).toFixed(0) + "%")],
+              ["FY2027 revenue", ...targets.map(x => (x.fy2027 / 1000).toFixed(2))],
+              ["FY2028 revenue", ...targets.map(x => (x.fy2028 / 1000).toFixed(2))],
+              ["FY2027 avg. revenue-eligible MW", ...targets.map(x=>String(x.mw27))],
+              ["FY2028 avg. revenue-eligible MW", ...targets.map(x=>String(x.mw28))],
+              ["Utilization assumption", ...targets.map(x=>(x.utilization*100).toFixed(0)+"%")],
+              ["Annual revenue per MW at full use ($M)", ...targets.map(x=>x.yieldPerMw.toFixed(1))],
+              ["FY2027 adj. EBITDA margin", ...targets.map(x=>(x.margin27*100).toFixed(0)+"%")],
+              ["FY2028 adj. EBITDA margin", ...targets.map(x=>(x.margin28*100).toFixed(0)+"%")],
+              ["FY2028 revenue growth", ...targets.map(x => ((x.fy2028 / x.fy2027 - 1) * 100).toFixed(0) + "%")],
+              ["FY2027 gross capex", ...targets.map(x => (x.capex27 / 1000).toFixed(1))],
+              ["FY2027 prepayments", ...targets.map(x => (x.prepay / 1000).toFixed(1))],
+              ["FY2027 capex coverage", ...targets.map(x => (x.fundingCoverage * 100).toFixed(0) + "%")],
               ["FY2028 adj. EBITDA", ...targets.map(x => (x.nextYearEbitda / 1000).toFixed(1))],
               ["EV / adj. EBITDA", ...targets.map(x => x.multiple.toFixed(1) + "×")],
               ["Target EV", ...targets.map(x => (x.targetEv / 1000).toFixed(1))],
@@ -104,7 +131,7 @@ export default function HomePage() {
               ["12-month target / share", ...targets.map(x => dollars(x.target))],
               ["If EBITDA 20% lower / share", ...targets.map(x => dollars(x.lowerEbitdaTarget))],
               ["If multiple 1× lower / share", ...targets.map(x => dollars(x.lowerMultipleTarget))],
-              ["Forward DCF cross-check / share (raw)", ...targets.map(x => dollars(x.dcfRaw))],
+              ["Separate DCF scenario / share (raw)", ...targets.map(x => dollars(x.dcfRaw))],
             ].map(([label, ...values]) => <tr key={label} className="border-t border-line"><th scope="row" className="p-2 font-normal text-muted">{label}</th>{values.map((v,i) => <td key={i} className="p-2 font-mono">{v}</td>)}</tr>)}</tbody>
           </table>
         </div>
