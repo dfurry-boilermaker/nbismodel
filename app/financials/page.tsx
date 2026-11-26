@@ -29,7 +29,7 @@ export default function FinancialsPage() {
           recast the quarter, the later figure is shown and the first-reported figure sits under it.
           Third-quarter 2026 revenue of $980.8 million includes $325.1 million of non-recurring
           strategic-partnership revenue. Recurring group revenue for the quarter is $655.7 million,
-          which is the reported figure minus that amount.
+          which is the reported figure minus that amount. Reported adjusted EBITDA margin is not a recurring-revenue margin; costs for the non-recurring revenue are not separately provided here. The server/network useful-life extension from four to five years reduced Q3 depreciation by $43.1 million, which affects reported earnings comparability.
         </p>
         <p className="mt-2 text-sm">
           <SourceA source="ir" sources={sources}>All releases on nebius.com/financials</SourceA>
@@ -69,7 +69,7 @@ export default function FinancialsPage() {
                 </td>
                 <td className="px-3 py-3 font-mono text-[13px]">
                   <MetricValue metric={quarter.arr} sources={sources} digits={0} />
-                  {quarter.arr?.note ? (
+                  {quarter.arr?.value != null && quarter.arr.note?.includes("floor") ? (
                     <span className="mt-0.5 block font-sans text-[11px] text-muted">Floor, not an exact ARR.</span>
                   ) : null}
                 </td>
@@ -94,7 +94,7 @@ export default function FinancialsPage() {
               <div className="min-w-0">
                 <dt className="text-xs text-muted">ARR</dt>
                 <dd className="font-mono"><MetricValue metric={quarter.arr} sources={sources} digits={0} /></dd>
-                {quarter.arr?.note ? <p className="text-[11px] text-muted">Floor, not an exact ARR.</p> : null}
+                {quarter.arr?.value != null && quarter.arr.note?.includes("floor") ? <p className="text-[11px] text-muted">Floor, not an exact ARR.</p> : null}
               </div>
               <div className="min-w-0">
                 <dt className="text-xs text-muted">Current debt</dt>

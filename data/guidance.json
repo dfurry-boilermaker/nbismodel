@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "retrievedAt": "2026-11-24",
-  "asOf": "2026-11-24",
+  "retrievedAt": "2026-11-26",
+  "asOf": "2026-11-26",
   "omitted": [
     "A full-year 2026 revenue range of $3.0–3.2 billion is sometimes attributed to the November 12, 2026 earnings call. The furnished shareholder letter and earnings release say the company expects the low end of the existing $3.0–3.4 billion range. No earnings-call transcript was furnished on EDGAR through November 24, 2026, so a $3.0–3.2 billion call figure is not given a row.",
     "A 2025 capex raise to about $5 billion, and a FY 2025 revenue range of $500–550 million, are widely attributed to the November 11, 2025 earnings call. They were not in the shareholder letter or earnings release extracted for this version.",
@@ -200,6 +200,12 @@
       "url": "https://www.sec.gov/Archives/edgar/data/1513845/000110465925110025/tm2530771-1_424b5.htm",
       "title": "Prospectus supplement filed November 12, 2025",
       "date": "2025-11-12"
+    },
+    "call-q3-2026": {
+      "id": "call-q3-2026",
+      "url": "https://www.fool.com/earnings/call-transcripts/2026/11/12/nebius-group-nbis-q3-2026-earnings-call-transcript/",
+      "title": "Third-party transcript of Q3 2026 earnings call (not SEC-furnished)",
+      "date": "2026-11-12"
     }
   },
   "items": [
@@ -359,7 +365,7 @@
           "periodEnd": "2026-12-31",
           "source": "shl-q3-2026",
           "change": "cut",
-          "note": "The furnished November 12, 2026 letter says some third-party capacity moved into the first half of 2027 and the company now expects revenue at the low end of the existing $3.0–3.4 billion range. The top of the range was not withdrawn. A narrower $3.0–3.2 billion range was not in the furnished letter or release. No call transcript was furnished on EDGAR through November 24, 2026."
+          "note": "The furnished November 12, 2026 letter says some third-party capacity moved into the first half of 2027 and the company now expects revenue at the low end of the existing $3.0–3.4 billion range. The top of the range was not withdrawn. A narrower $3.0–3.2 billion range was not in the furnished letter or release. No call transcript was furnished on EDGAR through November 24, 2026. The independently published earnings-call transcript reports a narrowed $3.0–3.2 billion range; see the November 12 call transcript in the source catalog. This row preserves the filed letter wording rather than silently conflating the two."
         }
       ],
       "actual": {

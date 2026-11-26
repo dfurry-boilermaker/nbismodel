@@ -1,10 +1,95 @@
 {
   "schemaVersion": 1,
   "symbol": "NBIS",
-  "retrievedAt": null,
-  "sourceUrl": null,
-  "sourceTitle": null,
+  "retrievedAt": "2026-11-26",
+  "sourceUrl": "https://stockanalysis.com/stocks/nbis/history/",
+  "sourceTitle": "Stock Analysis historical NBIS closes (S&P Global Market Intelligence)",
   "currency": "USD",
-  "points": [],
-  "note": "No stored daily closes. The short-term band starts from the hand-entered close and a typed volatility."
+  "points": [
+    {
+      "date": "2026-10-28",
+      "close": 182.34
+    },
+    {
+      "date": "2026-10-29",
+      "close": 171.99
+    },
+    {
+      "date": "2026-10-30",
+      "close": 154.14
+    },
+    {
+      "date": "2026-11-02",
+      "close": 141.39
+    },
+    {
+      "date": "2026-11-03",
+      "close": 151.64
+    },
+    {
+      "date": "2026-11-04",
+      "close": 141.52
+    },
+    {
+      "date": "2026-11-05",
+      "close": 120.37
+    },
+    {
+      "date": "2026-11-06",
+      "close": 129.49
+    },
+    {
+      "date": "2026-11-09",
+      "close": 141.45
+    },
+    {
+      "date": "2026-11-10",
+      "close": 134
+    },
+    {
+      "date": "2026-11-11",
+      "close": 154.69
+    },
+    {
+      "date": "2026-11-12",
+      "close": 128.64
+    },
+    {
+      "date": "2026-11-13",
+      "close": 115.88
+    },
+    {
+      "date": "2026-11-16",
+      "close": 107.13
+    },
+    {
+      "date": "2026-11-17",
+      "close": 106.04
+    },
+    {
+      "date": "2026-11-18",
+      "close": 106.96
+    },
+    {
+      "date": "2026-11-19",
+      "close": 96.92
+    },
+    {
+      "date": "2026-11-20",
+      "close": 81.31
+    },
+    {
+      "date": "2026-11-23",
+      "close": 97.8
+    },
+    {
+      "date": "2026-11-24",
+      "close": 87.31
+    },
+    {
+      "date": "2026-11-25",
+      "close": 84.99
+    }
+  ],
+  "note": "21 consecutive completed trading sessions through November 25, 2026; split-adjusted closing prices, manually verified and not a live feed."
 }

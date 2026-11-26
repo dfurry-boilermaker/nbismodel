@@ -1,4 +1,19 @@
 {
-  "asOf": "2026-11-24",
-  "note": "Peer share prices and vendor enterprise-value tables are not published. A multiple is shown only when it can be rebuilt from a hand-entered close and the peer's own filings. None are entered in this version."
+  "asOf": "2026-11-25",
+  "note": "CoreWeave comparable, using November 25 market cap, September 30 reported carrying debt and finance leases, unrestricted cash and marketable securities, and current FY2027 consensus EBITDA. Operating leases excluded. Not a peer average, live quote or a forecast. Target multiples are scenario judgments.",
+  "coreweave": {
+    "marketCapUsdM": 23670,
+    "debtUsdM": 46873,
+    "financeLeasesUsdM": 649,
+    "cashUsdM": 4122,
+    "securitiesUsdM": 62,
+    "fy2027ConsensusEbitdaUsdM": 17221,
+    "enterpriseValueUsdM": 67008,
+    "evToEbitda": 3.8910632367458335,
+    "sources": [
+      "https://stockanalysis.com/stocks/crwv/statistics/",
+      "https://www.sec.gov/Archives/edgar/data/1769628/000176962826000461/coreweave3q26earningspress.htm",
+      "https://www.marketscreener.com/quote/stock/COREWEAVE-INC-185380761/finances/"
+    ]
+  }
 }

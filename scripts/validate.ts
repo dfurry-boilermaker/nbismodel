@@ -15,10 +15,10 @@ import {
   weightedRaw,
   weightedValue,
   PRICE_TARGET_DATE,
-  BEAR_FORWARD_EBITDA_MULTIPLE,
+  TARGET_ASSUMPTIONS, PEER_MULTIPLE, MARKET_CLOSE,
   twelveMonthPriceTarget,
 } from "../lib/dcf";
-import { priceBand } from "../lib/vol";
+import { priceBand, realizedVol } from "../lib/vol";
 import { GPU_CASES, gpuEconomics, historicalCapitalEfficiency, projectedCapitalEfficiency } from "../lib/capital-efficiency";
 
 const ids = new Set(Object.keys(financials.sources));
@@ -62,7 +62,7 @@ if (!december || scoreGuidance(december, "2026-11-23").status !== "superseded") 
   throw new Error("December 2026 ARR should be superseded");
 }
 
-if (MODEL_VERSION !== "4.0.0") throw new Error(`model version ${MODEL_VERSION}`);
+if (MODEL_VERSION !== "4.1.0") throw new Error(`model version ${MODEL_VERSION}`);
 if (BASIC_ECONOMIC_SHARES !== 313_968_341) throw new Error(`basic shares ${BASIC_ECONOMIC_SHARES}`);
 if (REFERENCE_CLOSE.value !== 87.31 || REFERENCE_CLOSE.asOf !== "2026-11-24") throw new Error("hand-entered close drifted");
 if (COMPUTE_SHARE_OF_CAPEX !== 0.7) throw new Error("compute share");
@@ -92,7 +92,7 @@ for (const item of cases) {
   }
 }
 if (Math.abs(base.fy2026 / 3000 - 1) > 0.05) throw new Error("base 2026 guide");
-if (Math.abs(base.fy2027 / 12000 - 1) > 0.25) throw new Error("base 2027 guide");
+if (base.fy2027 < 12000 || base.fy2027 > 13000) throw new Error("base 2027 guide");
 if (Math.abs(base.q3Engine / 655.7 - 1) > 0.1) throw new Error(`q3 backtest ${base.q3Engine}`);
 const pay = { bear: bear.payback.deal, base: base.payback.deal, bull: bull.payback.deal };
 if (!(DISCLOSED_PAYBACK_MONTHS * 0.75 <= pay.base && pay.base <= DISCLOSED_PAYBACK_MONTHS * 1.25)) throw new Error(`payback ${pay.base}`);
@@ -121,15 +121,15 @@ if (Math.abs(atClose.claims - 14010.8) > 0.05 || Math.round(atClose.shares) !== 
   throw new Error(`bridge tie ${atClose.claims} ${atClose.shares}`);
 }
 const sides = sideRuns();
-if (Math.abs(sides.guide.raw - 51.96) > 0.02) throw new Error(`guide run ${sides.guide.raw}`);
-if (Math.abs(sides.lag.raw - 82.22) > 0.02) throw new Error(`lag run ${sides.lag.raw}`);
-if (Math.abs(sides.sfc0 - 122.79) > 0.02 || Math.abs(sides.sfc7 - 85.58) > 0.02) throw new Error(`sfc ${sides.sfc0} ${sides.sfc7}`);
-if (Math.abs(base.bridge.perShareRaw - 96.35) > 0.02) throw new Error(`base ${base.bridge.perShareRaw}`);
+if (Math.abs(sides.guide.raw - 51.32) > 0.02) throw new Error(`guide run ${sides.guide.raw}`);
+if (Math.abs(sides.lag.raw - 81.69) > 0.02) throw new Error(`lag run ${sides.lag.raw}`);
+if (Math.abs(sides.sfc0 - 122.12) > 0.02 || Math.abs(sides.sfc7 - 84.89) > 0.02) throw new Error(`sfc ${sides.sfc0} ${sides.sfc7}`);
+if (Math.abs(base.bridge.perShareRaw - 95.67) > 0.02) throw new Error(`base ${base.bridge.perShareRaw}`);
 if (Math.abs(bear.bridge.perShareRaw + 209.29) > 0.02) throw new Error(`bear ${bear.bridge.perShareRaw}`);
 if (Math.abs(bull.bridge.perShareRaw - 488.46) > 0.02) throw new Error(`bull ${bull.bridge.perShareRaw}`);
 const shown = weightedValue(cases);
 const unfloored = weightedRaw(cases);
-if (Math.abs(shown - 141.05) > 0.02 || Math.abs(unfloored - 67.8) > 0.02) throw new Error(`weights ${shown} ${unfloored}`);
+if (Math.abs(shown - 140.74) > 0.02 || Math.abs(unfloored - 67.49) > 0.02) throw new Error(`weights ${shown} ${unfloored}`);
 for (const item of cases) {
   const quiet = runCase(item.name, { prepay_q4_2026: 0, prepay_2027: 0, prepay_share: 0 });
   const rel = Object.fromEntries(quiet.rows.map((row) => [row.year, row.release]));
@@ -171,6 +171,8 @@ for (const item of cases) {
   if (Math.abs(panel.fundingRows.reduce((sum, row) => sum + row.equityDraw, 0) - panel.equity) > 1e-6) throw new Error("equity funding bridge");
 }
 
+const quoteSnapshot = JSON.parse(readFileSync("data/market/quotes.json", "utf8"));
+if (quoteSnapshot.points.length !== 21 || quoteSnapshot.points.at(-1).close !== MARKET_CLOSE.value || quoteSnapshot.points.at(-1).date !== MARKET_CLOSE.asOf || !realizedVol(quoteSnapshot.points.map((p: { close: number }) => p.close))) throw new Error("dated quote snapshot");
 const band = priceBand({ price: 100, annualVol: 0.8, horizonDays: 5, z: 1.96 });
 if ("error" in band || !(band.low < 100 && band.high > 100)) throw new Error("Vol band");
 
@@ -219,16 +221,18 @@ const forwardTargets = cases.map(twelveMonthPriceTarget);
 for (const target of forwardTargets) {
   if (!Number.isFinite(target.raw) || target.target !== Math.max(0, target.raw) || target.shares <= 0) throw new Error("invalid forward price target");
   const original = cases.find(item => item.name === target.name)!;
-  const through2027 = financingPanel(original).fundingRows.filter(row => row.year <= 2027);
+  const through2027 = financingPanel(original, []).fundingRows.filter(row => row.year <= 2027);
   const issuance = through2027.reduce((sum, row) => sum + row.equityDraw, 0);
   if (Math.abs(target.equityIssued - issuance) > 1e-6) throw new Error("target financing window");
   if (Math.abs(target.cash - through2027.at(-1)!.endingCash) > 1e-6) throw new Error("target closing cash");
 }
 const [bearTarget, baseTarget, bullTarget] = forwardTargets;
-if (BEAR_FORWARD_EBITDA_MULTIPLE !== 7 || bearTarget.method !== "forward-ebitda") throw new Error("bear target methodology");
-if (Math.abs(bearTarget.targetEv - bearTarget.nextYearEbitda * 7) > 1e-6) throw new Error("bear EBITDA valuation");
-if (Math.abs(bearTarget.raw - (bearTarget.targetEv + bearTarget.cash + bearTarget.stakes - bearTarget.claims) / bearTarget.shares * 1e6) > 1e-6) throw new Error("bear equity bridge");
+if (Math.abs(PEER_MULTIPLE - 3.89) > 0.02) throw new Error("peer multiple");
+for (const target of forwardTargets) {
+  if (target.method !== "forward-ebitda" || Math.abs(target.targetEv - target.nextYearEbitda * TARGET_ASSUMPTIONS[target.name].multiple) > 1e-6) throw new Error("common target method");
+  if (Math.abs(target.raw - (target.targetEv + target.cash + target.stakes - target.claims) / target.shares * 1e6) > 1e-6) throw new Error("target equity bridge");
+  if (target.lowerEbitdaTarget > target.target || target.lowerMultipleTarget > target.target) throw new Error("target sensitivity");
+  if (target.issuePrice !== MARKET_CLOSE.value * (1 - TARGET_ASSUMPTIONS[target.name].issueDiscount)) throw new Error("target issue price");
+}
 if (!(bearTarget.dcfRaw < 0 && bearTarget.target > 0 && bearTarget.target < baseTarget.target && baseTarget.target < bullTarget.target)) throw new Error("target scenario ordering");
-if (Math.abs(bearTarget.target - 41.20) > 0.15) throw new Error(`bear target ${bearTarget.target}`);
-for (const t of [baseTarget, bullTarget]) if (t.method !== "forward-dcf" || t.raw !== t.dcfRaw) throw new Error("base/bull DCF changed");
 console.log("12-month targets", forwardTargets.map(({ name, target, raw }) => ({ name, target, raw })));

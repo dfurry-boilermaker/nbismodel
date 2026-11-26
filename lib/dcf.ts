@@ -1,7 +1,8 @@
 import capital from "@/data/capital-structure.json";
 
 /** Model 4.0.0. Educational valuation arithmetic. Not a price target, forecast, rating, or recommendation. */
-export const MODEL_VERSION = "4.0.0";
+export const MODEL_VERSION = "4.1.0";
+export const MARKET_CLOSE = { value: 84.99, asOf: "2026-11-25", source: "https://markets.ft.markitdigital.com/data/equities/tearsheet/historical?s=NBIS%3ANSQ" };
 export const VALUATION_DATE = "2026-11-24";
 /** Hand-entered close. Used only in the dilution panel, grids, and the bridge tie-out. Not in the headline path. */
 export const REFERENCE_CLOSE = { value: 87.31, asOf: "2026-11-24", label: "Closing price entered manually as of 2026-11-24; not live; may be out of date." };
@@ -317,13 +318,13 @@ function perShare(eqPre: number, sharesFixed: number): { v: number; opt: number 
   return { v, opt };
 }
 
-export function bridge(ev: number, stakes: number, extraCash = 0, extraDebt = 0): Bridge {
-  const order = NOTES.filter((note) => !FORCED.has(note.id)).sort((a, b) => a.carrying / a.shares - b.carrying / b.shares);
+export function bridge(ev: number, stakes: number, extraCash = 0, extraDebt = 0, additionalShares = 0, forced = FORCED): Bridge {
+  const order = NOTES.filter((note) => !forced.has(note.id)).sort((a, b) => a.carrying / a.shares - b.carrying / b.shares);
   const fixed: Bridge[] = [];
   for (let k = 0; k <= order.length; k += 1) {
-    const conv = new Set<string>([...FORCED, ...order.slice(0, k).map((note) => note.id)]);
+    const conv = new Set<string>([...forced, ...order.slice(0, k).map((note) => note.id)]);
     const debt = NOTES.filter((note) => !conv.has(note.id)).reduce((sum, note) => sum + note.carrying, 0) + TERM_LOAN + OTHER_DEBT + NCI + extraDebt;
-    const sh = S_BASIC + RSU + NOTES.filter((note) => conv.has(note.id)).reduce((sum, note) => sum + note.shares, 0);
+    const sh = S_BASIC + RSU + additionalShares + NOTES.filter((note) => conv.has(note.id)).reduce((sum, note) => sum + note.shares, 0);
     const eq = ev + CASH + extraCash + stakes - debt;
     const { v, opt } = perShare(eq, sh);
     const ok = order.every((note) => (v * note.shares) / 1e6 > note.carrying === conv.has(note.id));
@@ -411,6 +412,8 @@ export function runCase(name: CaseName, overrides: Partial<CaseInput> & { margin
     full[y] = sum + 4 * OTHER_SEG_REV_Q;
     rev[y] = y === 2026 ? revQ[4 * i + 3] + OTHER_SEG_REV_Q : full[y];
   });
+  // A 5% FY2027 commissioning/availability haircut puts the base near the $12–13B preliminary outlook, without reducing installed capacity. Not company guidance.
+  if (name === "base") rev[2027] *= 0.95;
   const fy2026 = NINE_M.revenue + rev[2026];
   const concLoss: Record<number, number> = {};
   for (const y of YEARS) concLoss[y] = 0;
@@ -642,9 +645,9 @@ export function priceCostGrid(): { price: number; cost: number; raw: number }[][
   return ds.map((price_decline) => ds.map((cost_decline) => ({ price: price_decline, cost: cost_decline, raw: runCase("base", { price_decline, cost_decline }).bridge.perShareRaw })));
 }
 
-export function financingPanel(result: ModelResult) {
+export function financingPanel(result: ModelResult, convertedOverride?: string[]) {
   const c = result.inputs;
-  const conv = new Set(result.bridge.converted);
+  const conv = new Set(convertedOverride ?? result.bridge.converted);
   let notes = NOTES.filter((note) => !conv.has(note.id)).map((note) => ({ ...note }));
   let tl = TERM_LOAN_PRINCIPAL;
   const abf: { y: number; a: number; original: number }[] = [];
@@ -719,36 +722,47 @@ export const MODEL_TAX_RATE = TAX;
  */
 export const PRICE_TARGET_DATE = `${Number(VALUATION_DATE.slice(0, 4)) + 1}${VALUATION_DATE.slice(4)}`;
 
-/** Judgmental stressed going-concern multiple on next-year adjusted EBITDA.
- * Not a peer-calibrated multiple or a recovery value. The original DCF remains
- * visible separately as a severe financial-distress stress test.
- */
-export const BEAR_FORWARD_EBITDA_MULTIPLE = 7;
+/** Dated comparable, reconstructed using Q3 carrying debt and finance leases,
+ * excluding operating leases and restricted cash. Consensus is not company guidance.
+ * All values USD millions. Market capitalization is November 25, 2026. */
+export const PEER_ANCHOR = {
+  marketCap: 23670, debt: 46873, financeLeases: 649, cash: 4122, securities: 62, fy2027Ebitda: 17221,
+  marketSource: "https://stockanalysis.com/stocks/crwv/statistics/",
+  filingSource: "https://www.sec.gov/Archives/edgar/data/1769628/000176962826000461/coreweave3q26earningspress.htm",
+  consensusSource: "https://www.marketscreener.com/quote/stock/COREWEAVE-INC-185380761/finances/",
+};
+export const PEER_MULTIPLE = (PEER_ANCHOR.marketCap + PEER_ANCHOR.debt + PEER_ANCHOR.financeLeases - PEER_ANCHOR.cash - PEER_ANCHOR.securities) / PEER_ANCHOR.fy2027Ebitda;
+// Judgmental multiples and issue-price discounts, not predictions or peer averages.
+export const TARGET_ASSUMPTIONS = {
+  bear: { multiple: 4, issueDiscount: 0.20 },
+  base: { multiple: 4.5, issueDiscount: 0.10 },
+  bull: { multiple: 6, issueDiscount: 0 },
+};
 
 export function twelveMonthPriceTarget(result: ModelResult) {
   const targetYear = Number(PRICE_TARGET_DATE.slice(0, 4));
   const elapsed = daysBetween(PRICE_TARGET_DATE) / 365;
   const interimPv = result.rows.filter(row => row.t <= elapsed).reduce((sum, row) => sum + row.pv, 0);
   const forwardEv = (result.ev - interimPv) * (1 + result.wacc) ** elapsed;
-  const funding = financingPanel(result).fundingRows.filter(row => row.year <= targetYear);
+  // Assume no additional note conversions before the snapshot. Economic conversion
+  // at the target is solved separately at the target valuation, not the 2035 DCF.
+  const funding = financingPanel(result, []).fundingRows.filter(row => row.year <= targetYear);
   const snapshot = funding[funding.length - 1];
   const equityIssued = funding.reduce((sum, row) => sum + row.equityDraw, 0);
   const corporateDebt = funding.reduce((sum, row) => sum + row.corporateDraw, 0);
   const termRepayments = funding.reduce((sum, row) => sum + row.termLoanPrincipal, 0);
-  const converted = new Set(result.bridge.converted);
-  const maturedCarrying = NOTES.filter(note => !converted.has(note.id) && Number(note.maturity.slice(0, 4)) <= targetYear).reduce((sum, note) => sum + note.carrying, 0);
-  const claims = result.bridge.claims - TERM_LOAN + Math.max(0, TERM_LOAN_PRINCIPAL - termRepayments) - maturedCarrying + corporateDebt + snapshot.abfEnding;
+  const extraDebt = -TERM_LOAN + Math.max(0, TERM_LOAN_PRINCIPAL - termRepayments) + corporateDebt + snapshot.abfEnding;
   const stakes = result.name === "bear" ? 1064.9 : 1603.9;
-  const equity = forwardEv + snapshot.endingCash + stakes - claims;
-  const newShares = equityIssued / REFERENCE_CLOSE.value * 1e6;
-  // Keep the existing case's convertible treatment; recompute option dilution.
-  const shareBase = result.bridge.shares - result.bridge.options + newShares;
-  const dcf = perShare(equity, shareBase);
+  const assumption = TARGET_ASSUMPTIONS[result.name];
+  const issuePrice = MARKET_CLOSE.value * (1 - assumption.issueDiscount);
+  const newShares = equityIssued / issuePrice * 1e6;
+  const valueAt = (ev: number) => bridge(ev, stakes, snapshot.endingCash - CASH, extraDebt, newShares, new Set<string>());
+  const dcf = valueAt(forwardEv);
   const nextYearEbitda = result.rows.find(row => row.year === targetYear + 1)!.ebitda;
-  const method = result.name === "bear" ? "forward-ebitda" : "forward-dcf";
-  // The 12-month bear is a stressed going-concern market scenario, not a
-  // solvency guarantee. Keep the DCF's raw negative result for disclosure.
-  const targetEv = method === "forward-ebitda" ? nextYearEbitda * BEAR_FORWARD_EBITDA_MULTIPLE : forwardEv;
-  const { v, opt } = perShare(targetEv + snapshot.endingCash + stakes - claims, shareBase);
-  return { name: result.name, weight: result.weight, method, target: floorShare(v), raw: v, dcfRaw: dcf.v, forwardEv, targetEv, nextYearEbitda, stakes, claims, cash: snapshot.endingCash, shares: shareBase + opt, equityIssued };
+  const targetEv = nextYearEbitda * assumption.multiple;
+  const target = valueAt(targetEv);
+  return { name: result.name, weight: result.weight, method: "forward-ebitda", multiple: assumption.multiple, issuePrice,
+    target: target.perShare, raw: target.perShareRaw, dcfRaw: dcf.perShareRaw, forwardEv, targetEv, nextYearEbitda,
+    stakes, claims: target.claims, cash: snapshot.endingCash, shares: target.shares, equityIssued,
+    lowerEbitdaTarget: valueAt(targetEv * 0.8).perShare, lowerMultipleTarget: valueAt(nextYearEbitda * (assumption.multiple - 1)).perShare };
 }

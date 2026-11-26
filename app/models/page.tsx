@@ -15,7 +15,7 @@ export default function ModelsPage() {
         <h1 className="text-3xl font-semibold text-accent">Model lab</h1>
         <p className="mt-3 max-w-3xl text-sm leading-6 text-muted">
           Educational arithmetic under stated assumptions. Not a price target, a forecast, a
-          rating, or a recommendation. Model 4.0.0 is unlevered free cash flow on today&apos;s
+          rating, or a recommendation. Model 4.1.0 is unlevered free cash flow on today&apos;s
           shares. {REFERENCE_CLOSE.label}
         </p>
       </header>

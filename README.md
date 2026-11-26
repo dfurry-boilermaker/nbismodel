@@ -30,7 +30,7 @@ Curated series are JSON in `data/`. Each figure points at a source id. The sourc
 | `data/data-centers.json` | Sites named by Nebius, with Sentinel-2 scenes where a facility coordinate exists |
 | `data/holdings.json` | Avride, TripleTen, Toloka, ClickHouse |
 | `data/pricing/` | Snapshots from OpenRouter, Token Factory, and the GPU price document |
-| `data/market/quotes.json` | Daily NBIS closes, empty until a quote key is set |
+| `data/market/quotes.json` | Dated NBIS closing-price snapshot (not live) |
 | `data/feeds.json` | When each feed was last updated |
 
 Nebius is a foreign private issuer, CIK `0001513845`. It files Forms 20-F and 6-K, not Forms 10-K or 10-Q. Quarterly figures come from the earnings PDFs linked on [nebius.com/financials](https://nebius.com/financials). If a later release recast a quarter, both the later figure and the first-reported figure are stored.
@@ -54,7 +54,7 @@ npm run fetch:prices
 npm run fetch:satellite
 ```
 
-`fetch:satellite` needs `gdalwarp` (`apt install gdal-bin`). Share prices are typed by hand. There is no quote feed.
+`fetch:satellite` needs `gdalwarp` (`apt install gdal-bin`). Daily closes are manually verified; no live quote feed is configured.
 
 Price scripts retain one observation per UTC day, including unchanged prices. The chart starts with the first stored observation; it does not backfill unknown historical rates.
 
@@ -83,10 +83,10 @@ The GitHub Action needs permission to push.
 
 ## Models
 
-The short-term band is a zero-drift lognormal range. The starting price is the hand-entered close of $87.31 as of 2026-11-24. Volatility is typed. This is not a directional forecast.
+The short-term band is a zero-drift lognormal range. The starting price is the November 25, 2026 close of $84.99. Realized volatility is calculated from 21 dated closing prices; implied volatility is user-entered. This is not a directional forecast.
 
-The long-term model is version 4.0.0. The headline is unlevered free cash flow on today's shares. Displayed value per share is floored at zero, and the raw figure is shown beside it. It is not a price target. The overview separately shows 12-month price scenarios with a FY2027 financing snapshot proxy, including modeled equity issuance through that date. Base and bull use forward DCF; the bear uses a judgmental 7x FY2028 adjusted EBITDA going-concern valuation. The original bear forward DCF remains visible as a severe distress stress test. See the methodology page for assumptions and limitations.
+The long-term model is version 4.1.0. The headline is unlevered free cash flow on today's shares. Displayed value per share is floored at zero, and the raw figure is shown beside it. It is not a price target. The overview separately shows 12-month price scenarios with a FY2027 financing snapshot proxy, including modeled equity issuance through that date. All cases use modeled FY2028 adjusted EBITDA at 4x/4.5x/6x, anchored to a reconstructed CoreWeave ~3.89x comparable, and target-specific dilution. The forward DCF remains a separate cross-check. Base FY2027 is calibrated to $12.48B with an explicit 5% availability haircut. See the methodology page for assumptions and limitations.
 
 ### Hand-entered close
 
-The $87.31 figure is a closing price entered by hand as of 2026-11-24. It is not live and it is not fetched.
+The $87.31 November 24 close remains the present-day DCF funding-panel reference; the dated November 25 $84.99 close is used for the target and volatility range. Neither is live.
