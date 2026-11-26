@@ -1,7 +1,7 @@
 import capital from "@/data/capital-structure.json";
 
 /** Model 4.0.0. Educational valuation arithmetic. Not a price target, forecast, rating, or recommendation. */
-export const MODEL_VERSION = "4.1.0";
+export const MODEL_VERSION = "4.2.0";
 export const MARKET_CLOSE = { value: 84.99, asOf: "2026-11-25", source: "https://markets.ft.markitdigital.com/data/equities/tearsheet/historical?s=NBIS%3ANSQ" };
 export const VALUATION_DATE = "2026-11-24";
 /** Hand-entered close. Used only in the dilution panel, grids, and the bridge tie-out. Not in the headline path. */
@@ -106,6 +106,8 @@ type CaseInput = {
   conc: Conc;
   capint_strip?: number;
   open_nc_years?: number;
+  sellSideRevenue?: { 2027: number; 2028: number };
+  margin_2028?: number;
 };
 
 const bearConc: Conc = {
@@ -238,7 +240,7 @@ function sbcRate(name: CaseName, year: number): number {
 function marginRate(c: CaseInput, year: number): number {
   if (year === 2026) return c.margin.q4_2026;
   if (year === 2027) return c.margin[2027];
-  if (year === 2028) return 0.5 * (c.margin[2027] + c.margin.ss);
+  if (year === 2028) return c.margin_2028 ?? 0.5 * (c.margin[2027] + c.margin.ss);
   return c.margin.ss;
 }
 
@@ -431,6 +433,9 @@ export function runCase(name: CaseName, overrides: Partial<CaseInput> & { margin
     }
     for (const y of YEARS) rev[y] -= concLoss[y];
   }
+  // The separate 12-month research case uses annual average revenue-eligible MW,
+  // rather than treating energized capacity as immediately monetized.
+  if (c.sellSideRevenue) { rev[2027] = c.sellSideRevenue[2027]; rev[2028] = c.sellSideRevenue[2028]; }
   const N = c.dr_years;
   const relOpen: Record<number, number> = {};
   const inflow: Record<number, number> = {};
@@ -732,20 +737,33 @@ export const PEER_ANCHOR = {
   consensusSource: "https://www.marketscreener.com/quote/stock/COREWEAVE-INC-185380761/finances/",
 };
 export const PEER_MULTIPLE = (PEER_ANCHOR.marketCap + PEER_ANCHOR.debt + PEER_ANCHOR.financeLeases - PEER_ANCHOR.cash - PEER_ANCHOR.securities) / PEER_ANCHOR.fy2027Ebitda;
-// Judgmental multiples and issue-price discounts, not predictions or peer averages.
+// Independent research inputs, benchmarked against reported sell-side practice.
+// Average revenue-eligible MW excludes noncommissioned capacity; utilization is
+// applied once. ACV is a modeled full-utilization yield, not reported fleet yield.
 export const TARGET_ASSUMPTIONS = {
-  bear: { multiple: 4, issueDiscount: 0.20 },
-  base: { multiple: 4.5, issueDiscount: 0.10 },
-  bull: { multiple: 6, issueDiscount: 0 },
+  bear: { multiple: 5.5, issueDiscount: 0.20, mw27: 520, mw28: 950, utilization: 0.85, yieldPerMw: 22, margin27: 0.43, margin28: 0.50, prepay: 17000, abfShare: 0.38 },
+  base: { multiple: 6, issueDiscount: 0.10, mw27: 550, mw28: 1000, utilization: 0.92, yieldPerMw: 25, margin27: 0.55, margin28: 0.60, prepay: 18500, abfShare: 0.40 },
+  bull: { multiple: 8, issueDiscount: 0, mw27: 620, mw28: 1350, utilization: 0.92, yieldPerMw: 27.5, margin27: 0.60, margin28: 0.65, prepay: 20000, abfShare: 0.40 },
 };
+export const STREET_BENCHMARK = {
+  asOf: "2026-11-13", target: 144, bear: 70, bull: 400, rating: "Equal-weight",
+  revenue: [3050, 12025, 21018], ebitda: [1220, 6921, 13348], multiple: 6,
+  source: "https://www.gmt8press.com/content/detail/452076",
+  prior: [{ date: "2026-01-15", target: 126, source: "https://finance.yahoo.com/news/morgan-stanley-initiates-nebius-nbis-210437033.html" },
+    { date: "2026-05-14", target: 144, source: "https://www.thestreet.com/investing/stocks/morgan-stanley-resets-nebius-stock-price-forecast" }],
+};
+export function sellSideCase(name: CaseName) {
+  const a = TARGET_ASSUMPTIONS[name];
+  const revenue = (mw: number) => mw * a.utilization * a.yieldPerMw + 4 * OTHER_SEG_REV_Q;
+  return runCase(name, {
+    conc: null, prepay_2027: a.prepay, abf_share: a.abfShare,
+    margin: { ...CASES[name].margin, 2027: a.margin27 }, margin_2028: a.margin28,
+    sellSideRevenue: { 2027: revenue(a.mw27), 2028: revenue(a.mw28) },
+  });
+}
 
-export function twelveMonthPriceTarget(result: ModelResult) {
+function targetSnapshot(result: ModelResult, issuePrice: number) {
   const targetYear = Number(PRICE_TARGET_DATE.slice(0, 4));
-  const elapsed = daysBetween(PRICE_TARGET_DATE) / 365;
-  const interimPv = result.rows.filter(row => row.t <= elapsed).reduce((sum, row) => sum + row.pv, 0);
-  const forwardEv = (result.ev - interimPv) * (1 + result.wacc) ** elapsed;
-  // Assume no additional note conversions before the snapshot. Economic conversion
-  // at the target is solved separately at the target valuation, not the 2035 DCF.
   const funding = financingPanel(result, []).fundingRows.filter(row => row.year <= targetYear);
   const snapshot = funding[funding.length - 1];
   const equityIssued = funding.reduce((sum, row) => sum + row.equityDraw, 0);
@@ -753,16 +771,29 @@ export function twelveMonthPriceTarget(result: ModelResult) {
   const termRepayments = funding.reduce((sum, row) => sum + row.termLoanPrincipal, 0);
   const extraDebt = -TERM_LOAN + Math.max(0, TERM_LOAN_PRINCIPAL - termRepayments) + corporateDebt + snapshot.abfEnding;
   const stakes = result.name === "bear" ? 1064.9 : 1603.9;
-  const assumption = TARGET_ASSUMPTIONS[result.name];
-  const issuePrice = MARKET_CLOSE.value * (1 - assumption.issueDiscount);
   const newShares = equityIssued / issuePrice * 1e6;
   const valueAt = (ev: number) => bridge(ev, stakes, snapshot.endingCash - CASH, extraDebt, newShares, new Set<string>());
-  const dcf = valueAt(forwardEv);
-  const nextYearEbitda = result.rows.find(row => row.year === targetYear + 1)!.ebitda;
+  return { valueAt, equityIssued, stakes, cash: snapshot.endingCash };
+}
+
+export function twelveMonthPriceTarget(result: ModelResult) {
+  const elapsed = daysBetween(PRICE_TARGET_DATE) / 365;
+  const interimPv = result.rows.filter(row => row.t <= elapsed).reduce((sum, row) => sum + row.pv, 0);
+  const forwardEv = (result.ev - interimPv) * (1 + result.wacc) ** elapsed;
+  const assumption = TARGET_ASSUMPTIONS[result.name];
+  const issuePrice = MARKET_CLOSE.value * (1 - assumption.issueDiscount);
+  // The DCF stress retains its own operating and financing assumptions.
+  const dcf = targetSnapshot(result, issuePrice).valueAt(forwardEv);
+  const research = sellSideCase(result.name);
+  const snapshot = targetSnapshot(research, issuePrice);
+  const nextYearEbitda = research.rows[2].ebitda;
   const targetEv = nextYearEbitda * assumption.multiple;
-  const target = valueAt(targetEv);
-  return { name: result.name, weight: result.weight, method: "forward-ebitda", multiple: assumption.multiple, issuePrice,
+  const target = snapshot.valueAt(targetEv);
+  return { name: result.name, weight: result.weight, method: "forward-ebitda", issuePrice,
     target: target.perShare, raw: target.perShareRaw, dcfRaw: dcf.perShareRaw, forwardEv, targetEv, nextYearEbitda,
-    stakes, claims: target.claims, cash: snapshot.endingCash, shares: target.shares, equityIssued,
-    lowerEbitdaTarget: valueAt(targetEv * 0.8).perShare, lowerMultipleTarget: valueAt(nextYearEbitda * (assumption.multiple - 1)).perShare };
+    stakes: snapshot.stakes, claims: target.claims, cash: snapshot.cash, shares: target.shares, equityIssued: snapshot.equityIssued,
+    fy2026: research.fy2026, fy2027: research.fy2027, fy2028: research.fy2028, ebitda27: research.rows[1].ebitda,
+    capex27: research.inputs.capex2027, fundingCoverage: (research.inputs.prepay_2027 + research.inputs.abf_share * research.rows[1].capexNet) / research.inputs.capex2027,
+    ...assumption,
+    lowerEbitdaTarget: snapshot.valueAt(targetEv * 0.8).perShare, lowerMultipleTarget: snapshot.valueAt(nextYearEbitda * (assumption.multiple - 1)).perShare };
 }
