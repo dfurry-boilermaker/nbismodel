@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 
 const LINKS = [
-  ["O", "Overview", "/"], ["F", "Financials", "/financials"],
+  ["O", "Overview", "/"], ["N", "News", "/news"], ["F", "Financials", "/financials"],
   ["G", "Guidance", "/guidance"], ["D", "Data centers", "/data-centers"],
   ["P", "Pricing", "/pricing"], ["M", "Models", "/models"],
   ["R", "Methodology", "/methodology"],
