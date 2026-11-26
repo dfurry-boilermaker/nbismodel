@@ -18,7 +18,7 @@ import {
   TARGET_ASSUMPTIONS, PEER_MULTIPLE, MARKET_CLOSE,
   twelveMonthPriceTarget,
 } from "../lib/dcf";
-import { priceBand } from "../lib/vol";
+import { priceBand, realizedVol } from "../lib/vol";
 import { GPU_CASES, gpuEconomics, historicalCapitalEfficiency, projectedCapitalEfficiency } from "../lib/capital-efficiency";
 
 const ids = new Set(Object.keys(financials.sources));
@@ -171,6 +171,8 @@ for (const item of cases) {
   if (Math.abs(panel.fundingRows.reduce((sum, row) => sum + row.equityDraw, 0) - panel.equity) > 1e-6) throw new Error("equity funding bridge");
 }
 
+const quoteSnapshot = JSON.parse(readFileSync("data/market/quotes.json", "utf8"));
+if (quoteSnapshot.points.length !== 21 || quoteSnapshot.points.at(-1).close !== MARKET_CLOSE.value || quoteSnapshot.points.at(-1).date !== MARKET_CLOSE.asOf || !realizedVol(quoteSnapshot.points.map((p: { close: number }) => p.close))) throw new Error("dated quote snapshot");
 const band = priceBand({ price: 100, annualVol: 0.8, horizonDays: 5, z: 1.96 });
 if ("error" in band || !(band.low < 100 && band.high > 100)) throw new Error("Vol band");
 
