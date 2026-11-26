@@ -82,19 +82,23 @@ export default function HomePage() {
 
       <section className="min-w-0 border border-line p-4 sm:p-6" aria-label="Price target assumptions">
         <div className="section-label">/ Price target audit · USD billions except share price and multiples</div>
-        <p className="mt-2 text-sm text-muted">Current CoreWeave comparable: {PEER_MULTIPLE.toFixed(1)}× FY2027 consensus EBITDA, using November 25 market capitalization and September 30 filing debt and cash. The applied multiples are judgments, not company guidance or live peer quotes. FY2028 is a model forecast; there is no company FY2028 revenue guide.</p>
+        <p className="mt-2 text-sm text-muted">Current CoreWeave comparable: {PEER_MULTIPLE.toFixed(1)}× FY2027 consensus EBITDA, using November 25 market capitalization and September 30 filing debt and cash. The applied multiples are judgments, not company guidance or live peer quotes. FY2028 is a model forecast; there is no company FY2028 revenue guide. The base assumes a major acceleration in monetization; this is the primary upside risk in the model.</p>
         <div className="mt-4 overflow-x-auto">
           <table className="w-full min-w-[560px] text-left text-sm">
             <thead><tr>{["Assumption", "Bear", "Base", "Bull"].map(x => <th key={x} className="p-2">{x}</th>)}</tr></thead>
             <tbody>{[
-              ["FY2027 revenue", ...cases.map(x => dollars(x.fy2027 / 1000))],
-              ["FY2028 revenue", ...cases.map(x => dollars(x.fy2028 / 1000))],
+              ["FY2027 revenue", ...cases.map(x => (x.fy2027 / 1000).toFixed(2))],
+              ["FY2028 revenue", ...cases.map(x => (x.fy2028 / 1000).toFixed(2))],
+              ["FY2028 revenue growth", ...cases.map(x => ((x.fy2028 / x.fy2027 - 1) * 100).toFixed(0) + "%")],
+              ["FY2027 gross capex", ...cases.map(x => (x.inputs.capex2027 / 1000).toFixed(1))],
+              ["FY2027 prepayments", ...cases.map(x => (x.inputs.prepay_2027 / 1000).toFixed(1))],
+              ["FY2027 capex coverage", ...cases.map(x => ((x.inputs.prepay_2027 + x.inputs.abf_share * x.rows[1].capexNet) / x.inputs.capex2027 * 100).toFixed(0) + "%")],
               ["FY2028 adj. EBITDA", ...targets.map(x => (x.nextYearEbitda / 1000).toFixed(1))],
               ["EV / adj. EBITDA", ...targets.map(x => x.multiple.toFixed(1) + "×")],
               ["Target EV", ...targets.map(x => (x.targetEv / 1000).toFixed(1))],
               ["Debt and other claims", ...targets.map(x => (x.claims / 1000).toFixed(1))],
               ["New equity raised through 2027", ...targets.map(x => (x.equityIssued / 1000).toFixed(1))],
-              ["Assumed issue price / share", ...targets.map(x => dollars(x.issuePrice))],
+              ["Assumed issue price / share", ...targets.map(x => "$" + x.issuePrice.toFixed(2))],
               ["Target economic shares (M)", ...targets.map(x => (x.shares / 1e6).toFixed(0))],
               ["Target cash + stakes", ...targets.map(x => ((x.cash + x.stakes) / 1000).toFixed(1))],
               ["12-month target / share", ...targets.map(x => dollars(x.target))],
@@ -123,7 +127,7 @@ export default function HomePage() {
           <span>Guidance items <strong>{guidance.items.length}</strong></span>
           <span>Data center sites <strong>{centers.sites.length}</strong></span>
           <span>Public feeds <strong>{feeds.feeds.length}</strong></span>
-          <span>Every figure <strong>Source-linked</strong></span>
+          <span>Reported figures <strong>Source-linked</strong></span>
         </div>
       </section>
 
