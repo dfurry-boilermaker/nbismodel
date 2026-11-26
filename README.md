@@ -19,6 +19,12 @@ npm run build
 npm start -- --port 3847
 ```
 
+## Before pushing changes
+
+Use one commit for interdependent model, data, UI and test updates. Run `npm ci`, `npm run validate` and `npm run build` before pushing. Model CI runs the validation suite and production build on pull requests into main and pushes to main; wait for **Validate and build** and the Vercel preview to pass before merging. Repository administrators should require that check on main (and ensure any automated refresh process uses a compatible pull-request flow before enforcing branch protection).
+
+The model version is defined in `lib/dcf.ts`; the validator checks its format instead of duplicating a specific version. Keep numerical regression checks and update their expected values only when the underlying model change is intentional and reviewed.
+
 ## Where the numbers live
 
 Curated series are JSON in `data/`. Each figure points at a source id. The source map on that file has the URL and the document date.
