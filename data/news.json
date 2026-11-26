@@ -25,7 +25,16 @@
           "label": "Vantage OpenRouter provider data",
           "url": "https://routers.vantage.sh/providers/nebius?pricing=cache"
         }
-      ]
+      ],
+      "social": {
+        "author": "Marcel Larsen",
+        "handle": "MarcelLarsen_",
+        "url": "https://x.com/MarcelLarsen_",
+        "kind": "profile",
+        "text": "Highlighted a record day for Nebius on OpenRouter.",
+        "textKind": "summary",
+        "context": "Original individual post URL unavailable."
+      }
     },
     {
       "id": "openrouter-kimi-mix",
@@ -51,7 +60,15 @@
           "label": "OpenRouter Kimi model",
           "url": "https://openrouter.ai/moonshotai/kimi-k3.1-pro"
         }
-      ]
+      ],
+      "social": {
+        "author": "X commentary",
+        "url": "https://www.kucoin.com/news/insight/NBIS/6b059dc6e284a300073fcd66",
+        "kind": "archive",
+        "text": "Highlighted rising Kimi model traffic on Nebius.",
+        "textKind": "summary",
+        "context": "Syndicated commentary; original account and post URL unverified."
+      }
     },
     {
       "id": "glm-routing-availability",
@@ -100,7 +117,16 @@
           "label": "Nebius shareholder letter · Nov 12",
           "url": "https://www.sec.gov/Archives/edgar/data/1513845/000110465926126008/tm2629571d1_ex99-2.htm"
         }
-      ]
+      ],
+      "social": {
+        "author": "Patrick Wendell",
+        "handle": "pwendell",
+        "url": "https://x.com/pwendell/status/2124574208122593527",
+        "kind": "post",
+        "text": "robust enough isolation",
+        "textKind": "excerpt",
+        "context": "Excerpt reported by TIKR; the post does not name Nebius."
+      }
     },
     {
       "id": "physical-ai",
@@ -146,7 +172,15 @@
           "label": "NVIDIA benchmark commentary",
           "url": "https://blogs.nvidia.com/blog/mlperf-training-endpoints-vera-rubin/"
         }
-      ]
+      ],
+      "social": {
+        "author": "Nebius",
+        "url": "https://grossretention.com/on-x/nebius-and-coreweave-post-fastest-mlperf-a94d28",
+        "kind": "archive",
+        "text": "Reported rack-scale Rubin MLPerf training benchmark results.",
+        "textKind": "summary",
+        "context": "Archived X commentary; company benchmark results linked below."
+      }
     },
     {
       "id": "datadog-integration-signal",

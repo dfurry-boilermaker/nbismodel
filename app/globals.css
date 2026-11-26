@@ -208,3 +208,21 @@ button:not(:disabled), summary { cursor: pointer; }
   .footer-links { flex-wrap: wrap; gap: 15px; }
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition: none !important; animation: none !important; } }
+
+
+/* Local social link previews: no X scripts, trackers, remote avatars or embeds. */
+.x-preview { display: block; min-width: 0; max-width: 100%; overflow: hidden; border-radius: 18px; border: 1px solid #b9c3cc; background: #f7f8fa; color: #17212c; text-decoration: none; font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif; transition: border-color .15s; }
+.x-preview:hover { border-color: #8295a5; }
+.x-preview-body { padding: 14px 15px; }
+.x-preview-header { display: flex; align-items: center; gap: 10px; min-width: 0; margin-bottom: 12px; }
+.x-preview-avatar { flex: 0 0 38px; width: 38px; height: 38px; display: grid; place-items: center; border-radius: 50%; background: #dce4ec; color: #34465a; font-size: 13px; font-weight: 700; }
+.x-preview-identity { min-width: 0; flex: 1; overflow-wrap: anywhere; }
+.x-preview-author { font-size: 14px; font-weight: 700; line-height: 1.3; }
+.x-preview-handle, .x-preview-type, .x-preview-context { color: #566575; font-size: 11px; line-height: 1.5; overflow-wrap: anywhere; }
+.x-preview-logo { flex-shrink: 0; color: #111; }
+.x-preview-type { font-size: 10px; margin-bottom: 5px; }
+.x-preview-copy { font-size: 15px; line-height: 1.45; margin: 0; overflow-wrap: anywhere; white-space: pre-wrap; }
+.x-preview-context { margin-top: 9px; }
+.x-preview-footer { background: #e8ebef; border-top: 1px solid #d7dce1; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 10px; padding: 10px 15px; font-size: 11px; color: #465569; overflow-wrap: anywhere; }
+.x-preview-footer span:last-child { font-weight: 600; }
+@media (max-width: 450px) { .x-preview-body { padding: 12px; } .x-preview-footer { padding: 9px 12px; } }
