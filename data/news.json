@@ -1,0 +1,135 @@
+{
+  "asOf": "2026-11-26",
+  "items": [
+    {
+      "id": "databricks-isolation",
+      "date": "2026-11-24",
+      "dateLabel": "Coverage · Nov 24, 2026",
+      "category": "Customer signal",
+      "status": "Reported / inferred",
+      "impact": "Positive",
+      "title": "Databricks co-founder flags a potential neocloud security moat",
+      "summary": "Patrick Wendell said only one neocloud had met a sufficiently robust isolation bar to potentially run Databricks customer workloads. Nebius had separately disclosed that Databricks selected its AI Cloud for demanding AI R&D after an evaluation.",
+      "quote": "robust enough isolation",
+      "attribution": "Patrick Wendell, Databricks co-founder, on X (as quoted by TIKR)",
+      "why": "A stringent tenant-isolation and physical-security review could differentiate Nebius from commodity GPU rental and support regulated enterprise adoption.",
+      "watch": "Wendell did not identify the provider in the post. The link to Nebius is an inference; live customer workloads, revenue and exclusivity remain unconfirmed.",
+      "sources": [
+        {
+          "label": "Original X post (may require login)",
+          "url": "https://x.com/pwendell/status/2124574208122593527"
+        },
+        {
+          "label": "TIKR reporting · Nov 24",
+          "url": "https://www.tikr.com/blog/databricks-co-founder-says-just-one-neocloud-has-robust-enough-isolation-my-guess-its-probably-not-coreweave?tlnk=yf-261124-wcppqc25"
+        },
+        {
+          "label": "Nebius shareholder letter · Nov 12",
+          "url": "https://www.sec.gov/Archives/edgar/data/1513845/000110465926126008/tm2629571d1_ex99-2.htm"
+        }
+      ]
+    },
+    {
+      "id": "physical-ai",
+      "date": "2026-11-18",
+      "category": "Product & ecosystem",
+      "status": "Company announcement",
+      "impact": "Positive",
+      "title": "Physical AI ecosystem expands beyond model training",
+      "summary": "Nebius announced five Physical AI Awards winners across modeling, perception, simulation, robotics deployment and data tooling. The program received 363 applications and provides compute credits to winners.",
+      "why": "Robotics and industrial AI can broaden demand for simulation, training and inference on the same platform.",
+      "watch": "Credits and awards are not booked revenue; track conversion to paid usage.",
+      "sources": [
+        {
+          "label": "Nebius announcement",
+          "url": "https://nebius.com/blog/posts/physical-ai-awards-2026-winners"
+        }
+      ]
+    },
+    {
+      "id": "enterprise-q3",
+      "date": "2026-11-12",
+      "category": "Customer signal",
+      "status": "Company disclosure",
+      "impact": "Positive",
+      "title": "Databricks, Datadog and Snowflake join enterprise customer expansion",
+      "summary": "Nebius disclosed new multi-year relationships with enterprise data and AI platforms in its Q3 shareholder letter, including Databricks and Datadog.",
+      "why": "A wider customer base may improve demand diversification beyond major hyperscalers.",
+      "watch": "Individual contract economics and realized revenue have not been quantified in this disclosure.",
+      "sources": [
+        {
+          "label": "SEC shareholder letter",
+          "url": "https://www.sec.gov/Archives/edgar/data/1513845/000110465926126008/tm2629571d1_ex99-2.htm"
+        }
+      ]
+    },
+    {
+      "id": "q3-execution",
+      "date": "2026-11-12",
+      "category": "Earnings & capacity",
+      "status": "Company outlook",
+      "impact": "Mixed",
+      "title": "FY2027 revenue outlook rises in scale, but delivery remains the test",
+      "summary": "Nebius outlined preliminary FY2027 revenue of $12–13 billion and shifted its greater-than-$7 billion ARR milestone to February 2027. Some Microsoft capacity deliveries are expected in Q2 2027.",
+      "why": "The outlook supports rapid growth, while the schedule revisions highlight the difference between demand, contracted power and billable capacity.",
+      "watch": "Track February ARR, remaining Microsoft delivery and capital required to bridge any delays.",
+      "sources": [
+        {
+          "label": "SEC shareholder letter",
+          "url": "https://www.sec.gov/Archives/edgar/data/1513845/000110465926126008/tm2629571d1_ex99-2.htm"
+        }
+      ]
+    },
+    {
+      "id": "citi-facility",
+      "date": "2026-10-22",
+      "category": "Financing",
+      "status": "Company announcement",
+      "impact": "Mixed",
+      "title": "Citi provides $3.5 billion secured financing facility",
+      "summary": "The facility has a 364-day maturity and initially carries interest at Term SOFR plus 2.75 percentage points, with step-ups and other adjustments.",
+      "why": "Additional liquidity supports procurement and construction, but short maturity adds refinancing exposure.",
+      "watch": "Monitor refinancing terms, drawdowns and leverage; the facility is not equity or free cash flow.",
+      "sources": [
+        {
+          "label": "Nebius press release",
+          "url": "https://nebius.com/newsroom/nebius-secures-3-5-billion-financing-facility-with-citi"
+        }
+      ]
+    },
+    {
+      "id": "inferize",
+      "date": "2026-10-01",
+      "category": "Product & ecosystem",
+      "status": "Company announcement",
+      "impact": "Positive",
+      "title": "Inferize acquisition strengthens production inference",
+      "summary": "Nebius announced its acquisition of Inferize to expand the production inference capabilities of Token Factory.",
+      "why": "Software and managed inference may deepen customer relationships and capture more of the AI serving stack.",
+      "watch": "Monitor integration, realized usage and inference profitability.",
+      "sources": [
+        {
+          "label": "Nebius press release",
+          "url": "https://nebius.com/newsroom/nebius-acquires-inferize-to-strengthen-nebius-token-factorys-production-inference-stack"
+        }
+      ]
+    },
+    {
+      "id": "palantir",
+      "date": "2026-09-08",
+      "category": "Partnership",
+      "status": "Company announcement",
+      "impact": "Positive",
+      "title": "Palantir names Nebius preferred sovereign AI infrastructure partner",
+      "summary": "The announced partnership aims to bring Nebius compute and inference endpoints into Palantir's enterprise environment following integration.",
+      "why": "This could create a distribution channel to security-sensitive customers requiring control of compute, models and data.",
+      "watch": "Preferred does not mean exclusive. No minimum spend or incremental contract value was disclosed.",
+      "sources": [
+        {
+          "label": "Joint partnership announcement",
+          "url": "https://nebius.com/newsroom/palantir-and-nebius-partner-to-deliver-a-complete-sovereign-ai-stack-to-palantir-customers"
+        }
+      ]
+    }
+  ]
+}
