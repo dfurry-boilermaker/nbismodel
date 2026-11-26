@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "asOf": "2026-11-23",
+  "asOf": "2026-11-26",
   "feeds": [
     {
       "id": "financials",
@@ -63,7 +63,16 @@
       "sourceUrl": "https://planetarycomputer.microsoft.com/api/stac/v1/search",
       "cadence": "Monthly",
       "state": "snapshot",
-      "note": "Four cloud-screened scenes for M\u00e4nts\u00e4l\u00e4. Other sites have no facility coordinate, so they have no image."
+      "note": "Four cloud-screened scenes for Mäntsälä. Other sites have no facility coordinate, so they have no image."
+    },
+    {
+      "id": "quote",
+      "label": "NBIS daily market closes",
+      "updatedAt": "2026-11-25",
+      "sourceUrl": "https://stockanalysis.com/stocks/nbis/history/",
+      "cadence": "Manually verified snapshot; no live quote feed",
+      "state": "snapshot",
+      "note": "21 consecutive trading closes through November 25; realized volatility uses log returns."
     }
   ]
 }
