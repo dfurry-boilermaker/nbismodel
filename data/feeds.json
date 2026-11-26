@@ -73,6 +73,15 @@
       "cadence": "Manually verified snapshot; no live quote feed",
       "state": "snapshot",
       "note": "21 consecutive trading closes through November 25; realized volatility uses log returns."
+    },
+    {
+      "id": "news",
+      "label": "News & market intelligence",
+      "updatedAt": "2026-11-26",
+      "sourceUrl": "https://nbismodel.com/news",
+      "cadence": "Curated source-linked research updates",
+      "state": "snapshot",
+      "note": "Customer commentary, company announcements and independent interpretation; not a live social feed."
     }
   ]
 }
