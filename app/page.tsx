@@ -32,15 +32,15 @@ export default function HomePage() {
         <h1 id="overview-title" className="hero-heading">Behind the<br /><span>Nebius <PixelWord /></span></h1>
         <div className="grid min-w-0 items-start gap-6 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)]">
           <div className="min-w-0 space-y-4">
-            <h2 className="text-2xl sm:text-3xl">Demand is not the constraint; delivery is.</h2>
-            <p className="text-lg leading-relaxed text-muted">Investment thesis: AI compute demand, rising contract economics and customer-funded capacity underpin a positive absolute-return view. The debate is whether Nebius can commission power on schedule and finance growth without eroding per-share returns.</p>
+            <h2 className="text-2xl sm:text-3xl">The next AI hyperscaler is being built.</h2>
+            <p className="text-lg leading-relaxed text-muted">Investment thesis: Nebius is evolving from GPU infrastructure into a full-stack AI cloud. Sovereign AI distribution through Palantir, rapidly growing managed inference and customer-funded capacity create a compelling long-duration opportunity. Delivery, capital efficiency and dilution remain the key underwriting risks.</p>
             <div className="hero-actions">
               <Link className="pill-link" href="/models">Explore the valuation <span aria-hidden="true">↗</span></Link>
               <Link className="pill-link" href="/financials">Reported results <span aria-hidden="true">↗</span></Link>
             </div>
           </div>
           <article className="min-w-0 border border-line bg-panel p-4 sm:p-6">
-            <div className="section-label"><span>/ 12-month price target</span><span>Base case · Positive view</span></div>
+            <div className="section-label"><span>/ 12-month price target</span><span>Base case · Bullish view</span></div>
             <div className="mt-4 break-words font-mono text-5xl tracking-tight text-foreground sm:text-6xl">{dollars(baseTarget.target)}</div>
             <p className={`mt-2 font-mono text-lg ${targetReturn >= 0 ? "text-good" : "text-bad"}`}>{targetReturn >= 0 ? "+" : ""}{targetReturn.toFixed(1)}% implied price change</p>
             <dl className="mt-4 grid grid-cols-2 gap-3 border-t border-line pt-4 text-sm">
@@ -56,7 +56,7 @@ export default function HomePage() {
           </article>
         </div>
         <div className="section-label"><span>/ Investment debate</span><span>Key drivers</span></div>
-        <div className="grid min-w-0 gap-3 md:grid-cols-3">
+        <div className="grid min-w-0 gap-3 md:grid-cols-2 xl:grid-cols-4">
           <article className="min-w-0 border border-line p-4">
             <div className="eyebrow mb-2">01 / Revenue growth</div>
             <div className="font-mono text-2xl text-good">$12–13B</div>
@@ -78,6 +78,13 @@ export default function HomePage() {
             <p className="mt-1 text-sm leading-relaxed text-muted">Expected coverage of 2027 CapEx through prepayments and asset-backed financing. The thesis requires returns above the cost of capital after GPU replacement.</p>
             <Link href="/models#capital-efficiency" className="mt-3 inline-block text-xs underline text-muted">Capital efficiency ↗</Link>
           </article>
+          <article className="min-w-0 border border-line p-4">
+            <div className="eyebrow mb-2">04 / Sovereign AI</div>
+            <div className="font-mono text-2xl text-good">+148%</div>
+            <h2 className="mt-2 text-lg">Palantir opens a distribution channel</h2>
+            <p className="mt-1 text-sm leading-relaxed text-muted">Palantir’s Q3 US commercial revenue growth signals enterprise adoption. As its preferred sovereign AI infrastructure partner, Nebius can serve open-model fine-tuning and production inference. No minimum spend or incremental contract value disclosed.</p>
+            <a href="https://www.sec.gov/Archives/edgar/data/1513845/000110465926105749/tm2624958d1_ex99-1.htm" className="mt-3 inline-block text-xs underline text-muted">Partnership filing ↗</a> · <a href="https://www.sec.gov/Archives/edgar/data/1321655/000132165526000045/a2026q3ex991pressrelease.htm" className="text-xs underline text-muted">PLTR results ↗</a>
+          </article>
         </div>
         <div className="border-l-2 border-amber pl-3 text-sm leading-relaxed text-muted">
           <strong className="text-foreground">What could break the thesis:</strong> delayed commissioning, weaker utilization or GPU pricing, customer concentration and $40–45B of expected 2027 CapEx requiring more debt or dilution. The &gt;$7B ARR milestone already shifted to February 2027. Reassess if capacity and cash generation fail to follow spending.
@@ -88,9 +95,9 @@ export default function HomePage() {
       <section className="min-w-0 border border-line p-4 sm:p-6" aria-label="Risk reward">
         <div className="section-label"><span>/ Risk / reward</span><span>12-month absolute price return</span></div>
         <div className="mt-3 grid gap-3 md:grid-cols-3">
-          {targets.map(t => <article key={t.name} className="min-w-0 border border-line p-3"><div className="text-xs capitalize text-muted">{t.name} case</div><div className="mt-1 font-mono text-2xl">{dollars(t.target)}</div><p className="text-sm">{((t.target / MARKET_CLOSE.value - 1) * 100).toFixed(0)}% return · {t.multiple}× FY28E EBITDA</p><p className="mt-2 text-xs text-muted">{t.name === "bear" ? "Supply normalizes; third-party delivery slips; funding becomes more expensive. Going concern, not default." : t.name === "base" ? "2027 guidance delivered; owned-site ramp and high contract pricing sustain growth." : "Faster commissioning, stronger enterprise mix and durable pricing; higher margin and a rerating."}</p></article>)}
+          {targets.map(t => <article key={t.name} className="min-w-0 border border-line p-3"><div className="text-xs capitalize text-muted">{t.name} case</div><div className="mt-1 font-mono text-2xl">{dollars(t.target)}</div><p className="text-sm">{((t.target / MARKET_CLOSE.value - 1) * 100).toFixed(0)}% return · {t.multiple}× FY28E EBITDA</p><p className="mt-2 text-xs text-muted">{t.name === "bear" ? "Supply normalizes; third-party delivery slips; funding becomes more expensive. Going concern, not default." : t.name === "base" ? "2027 guidance delivered; owned-site ramp and enterprise inference support faster FY2028 monetization." : "Faster commissioning, sovereign AI adoption and stronger enterprise mix support durable pricing, margins and a rerating."}</p></article>)}
         </div>
-        <p className="mt-3 text-sm text-muted">Bull upside / bear downside: {downside > 0 ? (upside / downside).toFixed(1) + "×" : "not applicable"}. This is an endpoint ratio, not a probability-adjusted expected return. <strong className="text-foreground">Catalyst path:</strong> February ARR milestone, remaining Microsoft tranches in Q2 2027, 2027 prepayment receipts and Q4 pre-tax breakeven. <a href="https://www.sec.gov/Archives/edgar/data/1513845/000110465926126008/tm2629571d1_ex99-2.htm" className="underline">Company source</a>.</p>
+        <p className="mt-3 text-sm text-muted">Bull upside / bear downside: {downside > 0 ? (upside / downside).toFixed(1) + "×" : "not applicable"}. This is an endpoint ratio, not a probability-adjusted expected return. <strong className="text-foreground">Catalyst path:</strong> February ARR milestone, remaining Microsoft tranches in Q2 2027, 2027 prepayment receipts, evidence of Palantir-led production deployments and Q4 pre-tax breakeven. <a href="https://www.sec.gov/Archives/edgar/data/1513845/000110465926126008/tm2629571d1_ex99-2.htm" className="underline">Company source</a>.</p>
       </section>
       <section className="min-w-0 border border-line p-4 sm:p-6" aria-label="External research benchmark">
         <div className="section-label">/ Street benchmark · Morgan Stanley (reported)</div>
