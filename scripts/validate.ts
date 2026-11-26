@@ -62,7 +62,9 @@ if (!december || scoreGuidance(december, "2026-11-23").status !== "superseded") 
   throw new Error("December 2026 ARR should be superseded");
 }
 
-if (MODEL_VERSION !== "4.2.0") throw new Error(`model version ${MODEL_VERSION}`);
+// MODEL_VERSION is the single source of truth; validate its format without pinning a second copy.
+// Financial regression assertions below still require review when model assumptions change.
+if (!/^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$/.test(MODEL_VERSION)) throw new Error(`invalid model version ${MODEL_VERSION}`);
 if (BASIC_ECONOMIC_SHARES !== 313_968_341) throw new Error(`basic shares ${BASIC_ECONOMIC_SHARES}`);
 if (REFERENCE_CLOSE.value !== 87.31 || REFERENCE_CLOSE.asOf !== "2026-11-24") throw new Error("hand-entered close drifted");
 if (COMPUTE_SHARE_OF_CAPEX !== 0.7) throw new Error("compute share");
