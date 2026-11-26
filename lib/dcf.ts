@@ -741,7 +741,7 @@ export const PEER_MULTIPLE = (PEER_ANCHOR.marketCap + PEER_ANCHOR.debt + PEER_AN
 // Average revenue-eligible MW excludes noncommissioned capacity; utilization is
 // applied once. ACV is a modeled full-utilization yield, not reported fleet yield.
 export const TARGET_ASSUMPTIONS = {
-  bear: { multiple: 5.5, issueDiscount: 0.20, mw27: 570, mw28: 950, utilization: 0.85, yieldPerMw: 22, margin27: 0.43, margin28: 0.50, prepay: 17000, abfShare: 0.38 },
+  bear: { multiple: 5.5, issueDiscount: 0.20, mw27: 520, mw28: 950, utilization: 0.85, yieldPerMw: 22, margin27: 0.43, margin28: 0.50, prepay: 17000, abfShare: 0.38 },
   base: { multiple: 6, issueDiscount: 0.10, mw27: 550, mw28: 1000, utilization: 0.92, yieldPerMw: 25, margin27: 0.55, margin28: 0.60, prepay: 18500, abfShare: 0.40 },
   bull: { multiple: 8, issueDiscount: 0, mw27: 620, mw28: 1350, utilization: 0.92, yieldPerMw: 27.5, margin27: 0.60, margin28: 0.65, prepay: 20000, abfShare: 0.40 },
 };
