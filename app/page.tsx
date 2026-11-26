@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { NewsFeed } from "@/components/news-feed";
 import { Badge } from "@/components/ui/badge";
 import { DcfModel } from "@/components/dcf-model";
 import { VolModel } from "@/components/vol-model";
@@ -92,6 +93,8 @@ export default function HomePage() {
         </div>
         <p className="mt-3 text-sm text-muted">Bull upside / bear downside: {downside > 0 ? (upside / downside).toFixed(1) + "×" : "not applicable"}. This is an endpoint ratio, not a probability-adjusted expected return. <strong className="text-foreground">Catalyst path:</strong> February ARR milestone, remaining Microsoft tranches in Q2 2027, 2027 prepayment receipts and Q4 pre-tax breakeven. <a href="https://www.sec.gov/Archives/edgar/data/1513845/000110465926126008/tm2629571d1_ex99-2.htm" className="underline">Company source</a>.</p>
       </section>
+      <NewsFeed compact />
+
       <section className="min-w-0 border border-line p-4 sm:p-6" aria-label="External research benchmark">
         <div className="section-label">/ Street benchmark · Morgan Stanley (reported)</div>
         <p className="mt-2 text-sm text-muted">November 13 coverage of the Q3 note: {dollars(STREET_BENCHMARK.target)} PT, {STREET_BENCHMARK.rating}; {dollars(STREET_BENCHMARK.bear)} bear / {dollars(STREET_BENCHMARK.bull)} bull. The bank reportedly applies 6× FY2028E EBITDA and year-end 2027 net debt. <a href={STREET_BENCHMARK.source} className="underline">Public report</a>. External reference only; independent estimates are not affiliated with Morgan Stanley.</p>
