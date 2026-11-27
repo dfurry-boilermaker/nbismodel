@@ -7,9 +7,23 @@ export const metadata: Metadata = {
   title: "Nebius model — NBIS guidance and reported results",
   description:
     "A public, sourced model of Nebius Group (NASDAQ: NBIS): reported financials, guidance versus actuals, data centers, and public prices.",
+  metadataBase: new URL("https://nbismodel.com"),
   icons: {
-    icon: [{ url: "/favicon.png", type: "image/png", sizes: "64x64" }],
-    apple: [{ url: "/apple-icon.png", type: "image/png", sizes: "180x180" }],
+    icon: [{ url: "/nebius-icon.png", type: "image/png", sizes: "600x600" }],
+    apple: [{ url: "/nebius-icon.png", type: "image/png", sizes: "600x600" }],
+  },
+  openGraph: {
+    type: "website",
+    siteName: "Nebius model — independent research",
+    title: "Nebius model — independent NBIS research",
+    description: "A public, independent model of Nebius Group: financials, guidance, valuation and data centers. Not affiliated with Nebius.",
+    images: [{ url: "/nebius-icon.png", width: 600, height: 600, alt: "Nebius N mark" }],
+  },
+  twitter: {
+    card: "summary",
+    title: "Nebius model — independent NBIS research",
+    description: "Independent financials, guidance and valuation research. Not affiliated with Nebius.",
+    images: ["/nebius-icon.png"],
   },
 };
 
