@@ -236,6 +236,13 @@
           "cloudCoverPct": 14.906235,
           "itemId": "S2A_MSIL2A_20261106T094121_R036_T35VMH_20261106T143053",
           "platform": "Sentinel-2A"
+        },
+        {
+          "file": "/satellites/mantasala-2026-11-26.jpg",
+          "acquiredAt": "2026-11-26T09:42:41.024000Z",
+          "cloudCoverPct": 0.985856,
+          "itemId": "S2A_MSIL2A_20261126T094241_R036_T35VMH_20261126T143208",
+          "platform": "Sentinel-2A"
         }
       ],
       "sources": [

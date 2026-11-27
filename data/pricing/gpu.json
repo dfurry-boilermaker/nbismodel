@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "sourceUrl": "https://docs.nebius.com/compute/resources/pricing",
   "sourceTitle": "Compute pricing in Nebius AI Cloud",
-  "retrievedAt": "2026-11-26",
+  "retrievedAt": "2026-11-27",
   "currency": "USD",
   "notes": [
     "On-demand and preemptible USD rates from the compute pricing document. Shekel tables on the same page are omitted.",
@@ -496,6 +496,246 @@
     },
     {
       "retrievedAt": "2026-11-26",
+      "sourceUrl": "https://docs.nebius.com/compute/resources/pricing",
+      "rows": [
+        {
+          "sku": "NVIDIA® B300 NVLink, gpu-b300-sxm",
+          "item": "NVIDIA® B300 NVLink",
+          "priceUsd": 9.5,
+          "unit": "gpu-hour",
+          "priceIsFloor": false,
+          "term": "on-demand",
+          "regionsNote": "uk-south1, eu-west2 and us-north1"
+        },
+        {
+          "sku": "NVIDIA® B300 NVLink, gpu-b300-sxm",
+          "item": "Preemptible NVIDIA® B300 NVLink",
+          "priceUsd": 0.99,
+          "unit": "gpu-hour",
+          "priceIsFloor": true,
+          "term": "preemptible",
+          "regionsNote": "uk-south1, eu-west2 and us-north1"
+        },
+        {
+          "sku": "NVIDIA® B200 NVLink, gpu-b200-sxm",
+          "item": "NVIDIA® B200 NVLink",
+          "priceUsd": 8.5,
+          "unit": "gpu-hour",
+          "priceIsFloor": false,
+          "term": "on-demand",
+          "regionsNote": "us-central1"
+        },
+        {
+          "sku": "NVIDIA® B200 NVLink, gpu-b200-sxm",
+          "item": "Preemptible NVIDIA® B200 NVLink",
+          "priceUsd": 0.99,
+          "unit": "gpu-hour",
+          "priceIsFloor": true,
+          "term": "preemptible",
+          "regionsNote": "us-central1"
+        },
+        {
+          "sku": "NVIDIA® B200 NVLink, gpu-b200-sxm-a",
+          "item": "NVIDIA® B200 NVLink",
+          "priceUsd": 8.5,
+          "unit": "gpu-hour",
+          "priceIsFloor": false,
+          "term": "on-demand",
+          "regionsNote": "me-west1"
+        },
+        {
+          "sku": "NVIDIA® B200 NVLink, gpu-b200-sxm-a",
+          "item": "Preemptible NVIDIA® B200 NVLink",
+          "priceUsd": 0.99,
+          "unit": "gpu-hour",
+          "priceIsFloor": true,
+          "term": "preemptible",
+          "regionsNote": "me-west1"
+        },
+        {
+          "sku": "NVIDIA® H200 NVLink",
+          "item": "NVIDIA® H200 NVLink",
+          "priceUsd": 5.4,
+          "unit": "gpu-hour",
+          "priceIsFloor": false,
+          "term": "on-demand",
+          "regionsNote": "eu-north1, eu-north2, eu-west1, and us-central1"
+        },
+        {
+          "sku": "NVIDIA® H200 NVLink",
+          "item": "Preemptible NVIDIA® H200 NVLink",
+          "priceUsd": 0.79,
+          "unit": "gpu-hour",
+          "priceIsFloor": true,
+          "term": "preemptible",
+          "regionsNote": "eu-north1, eu-north2, eu-west1, and us-central1"
+        },
+        {
+          "sku": "NVIDIA® H100 NVLink",
+          "item": "NVIDIA® H100 NVLink",
+          "priceUsd": 4.5,
+          "unit": "gpu-hour",
+          "priceIsFloor": false,
+          "term": "on-demand",
+          "regionsNote": "eu-north1"
+        },
+        {
+          "sku": "NVIDIA® H100 NVLink",
+          "item": "Preemptible NVIDIA® H100 NVLink",
+          "priceUsd": 0.79,
+          "unit": "gpu-hour",
+          "priceIsFloor": true,
+          "term": "preemptible",
+          "regionsNote": "eu-north1"
+        },
+        {
+          "sku": "NVIDIA® RTX PRO™ 6000, gpu-rtx6000",
+          "item": "NVIDIA® RTX PRO™ 6000",
+          "priceUsd": 1.8,
+          "unit": "gpu-hour",
+          "priceIsFloor": false,
+          "term": "on-demand",
+          "regionsNote": "us-central1"
+        },
+        {
+          "sku": "NVIDIA® RTX PRO™ 6000, gpu-rtx6000",
+          "item": "Preemptible NVIDIA® RTX PRO™ 6000",
+          "priceUsd": 0.79,
+          "unit": "gpu-hour",
+          "priceIsFloor": true,
+          "term": "preemptible",
+          "regionsNote": "us-central1"
+        },
+        {
+          "sku": "NVIDIA® RTX PRO™ 6000, gpu-rtx6000-a",
+          "item": "NVIDIA® RTX PRO™ 6000",
+          "priceUsd": 1.8,
+          "unit": "gpu-hour",
+          "priceIsFloor": false,
+          "term": "on-demand",
+          "regionsNote": "uk-south2 and eu-south1"
+        },
+        {
+          "sku": "NVIDIA® RTX PRO™ 6000, gpu-rtx6000-a",
+          "item": "Preemptible NVIDIA® RTX PRO™ 6000",
+          "priceUsd": 0.79,
+          "unit": "gpu-hour",
+          "priceIsFloor": true,
+          "term": "preemptible",
+          "regionsNote": "uk-south2 and eu-south1"
+        },
+        {
+          "sku": "NVIDIA® L40S Intel",
+          "item": "NVIDIA® L40S Intel. GPU",
+          "priceUsd": 1.35,
+          "unit": "gpu-hour",
+          "priceIsFloor": false,
+          "term": "on-demand",
+          "regionsNote": "eu-north1"
+        },
+        {
+          "sku": "NVIDIA® L40S Intel",
+          "item": "NVIDIA® L40S Intel. CPU",
+          "priceUsd": 0.012,
+          "unit": "cpu-hour",
+          "priceIsFloor": false,
+          "term": "on-demand",
+          "regionsNote": "eu-north1"
+        },
+        {
+          "sku": "NVIDIA® L40S Intel",
+          "item": "NVIDIA® L40S Intel. RAM",
+          "priceUsd": 0.0032,
+          "unit": "gib-hour",
+          "priceIsFloor": false,
+          "term": "on-demand",
+          "regionsNote": "eu-north1"
+        },
+        {
+          "sku": "NVIDIA® L40S Intel",
+          "item": "Preemptible NVIDIA® L40S Intel. GPU",
+          "priceUsd": 0.65,
+          "unit": "gpu-hour",
+          "priceIsFloor": false,
+          "term": "preemptible",
+          "regionsNote": "eu-north1"
+        },
+        {
+          "sku": "NVIDIA® L40S Intel",
+          "item": "Preemptible NVIDIA® L40S Intel. CPU",
+          "priceUsd": 0.006,
+          "unit": "cpu-hour",
+          "priceIsFloor": false,
+          "term": "preemptible",
+          "regionsNote": "eu-north1"
+        },
+        {
+          "sku": "NVIDIA® L40S Intel",
+          "item": "Preemptible NVIDIA® L40S Intel. RAM",
+          "priceUsd": 0.0016,
+          "unit": "gib-hour",
+          "priceIsFloor": false,
+          "term": "preemptible",
+          "regionsNote": "eu-north1"
+        },
+        {
+          "sku": "NVIDIA® L40S AMD",
+          "item": "NVIDIA® L40S AMD. GPU",
+          "priceUsd": 1.35,
+          "unit": "gpu-hour",
+          "priceIsFloor": false,
+          "term": "on-demand",
+          "regionsNote": ""
+        },
+        {
+          "sku": "NVIDIA® L40S AMD",
+          "item": "NVIDIA® L40S AMD. CPU",
+          "priceUsd": 0.01,
+          "unit": "cpu-hour",
+          "priceIsFloor": false,
+          "term": "on-demand",
+          "regionsNote": ""
+        },
+        {
+          "sku": "NVIDIA® L40S AMD",
+          "item": "NVIDIA® L40S AMD. RAM",
+          "priceUsd": 0.0032,
+          "unit": "gib-hour",
+          "priceIsFloor": false,
+          "term": "on-demand",
+          "regionsNote": ""
+        },
+        {
+          "sku": "NVIDIA® L40S AMD",
+          "item": "Preemptible NVIDIA® L40S AMD. GPU",
+          "priceUsd": 0.65,
+          "unit": "gpu-hour",
+          "priceIsFloor": false,
+          "term": "preemptible",
+          "regionsNote": ""
+        },
+        {
+          "sku": "NVIDIA® L40S AMD",
+          "item": "Preemptible NVIDIA® L40S AMD. CPU",
+          "priceUsd": 0.005,
+          "unit": "cpu-hour",
+          "priceIsFloor": false,
+          "term": "preemptible",
+          "regionsNote": ""
+        },
+        {
+          "sku": "NVIDIA® L40S AMD",
+          "item": "Preemptible NVIDIA® L40S AMD. RAM",
+          "priceUsd": 0.0016,
+          "unit": "gib-hour",
+          "priceIsFloor": false,
+          "term": "preemptible",
+          "regionsNote": ""
+        }
+      ]
+    },
+    {
+      "retrievedAt": "2026-11-27",
       "sourceUrl": "https://docs.nebius.com/compute/resources/pricing",
       "rows": [
         {
